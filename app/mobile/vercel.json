@@ -1,11 +1,10 @@
 {
-  "buildCommand": "flutter build web --release",
+  "buildCommand": "sh vercel-build.sh",
   "outputDirectory": "build/web",
-  "framework": "flutter",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
