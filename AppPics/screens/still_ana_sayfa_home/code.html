@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Still - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Manrope:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#1c1c16",
+                        "on-primary-fixed-variant": "#3c4b38",
+                        "surface-tint": "#53624f",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#605e57",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "surface-container-low": "#f3f3f4",
+                        "on-primary-container": "#243221",
+                        "surface-variant": "#e2e2e3",
+                        "inverse-primary": "#bbcbb3",
+                        "on-tertiary-fixed-variant": "#6f3728",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#cb836f",
+                        "outline": "#747871",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary-fixed-dim": "#ffb5a1",
+                        "on-secondary-fixed-variant": "#484740",
+                        "on-primary-fixed": "#121f10",
+                        "on-secondary": "#ffffff",
+                        "primary": "#53624f",
+                        "on-surface-variant": "#444841",
+                        "outline-variant": "#c4c8bf",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "surface-dim": "#dadadb",
+                        "surface-container-highest": "#e2e2e3",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9fa",
+                        "primary-container": "#8a9a84",
+                        "on-tertiary-fixed": "#380d03",
+                        "on-secondary-container": "#66645d",
+                        "on-tertiary-container": "#501f11",
+                        "surface": "#f9f9fa",
+                        "error": "#ba1a1a",
+                        "tertiary": "#8b4e3d",
+                        "inverse-surface": "#2f3132",
+                        "surface-container": "#eeeeef",
+                        "surface-bright": "#f9f9fa",
+                        "primary-fixed-dim": "#bbcbb3",
+                        "on-surface": "#1a1c1d",
+                        "primary-fixed": "#d7e7cf",
+                        "surface-container-high": "#e8e8e9",
+                        "secondary-container": "#e6e2d8",
+                        "on-background": "#1a1c1d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "margin-mobile": "24px",
+                        "section-gap": "48px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "support-text": ["literata"],
+                        "body-lg": ["manrope"],
+                        "headline-sm": ["literata"],
+                        "headline-md": ["literata"],
+                        "display-lg": ["literata"],
+                        "label-md": ["manrope"],
+                        "body-md": ["manrope"]
+                    },
+                    "fontSize": {
+                        "support-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["22px", { "lineHeight": "30px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "500" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen pb-[100px]">
+<!-- TopAppBar JSON Component -->
+<header class="bg-surface dark:bg-surface-dim full-width top-0 sticky flex justify-between items-center px-margin-mobile w-full h-16 max-w-[720px] mx-auto z-40 flat no shadows">
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">
+            Still
+        </div>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</button>
+</header>
+<main class="max-w-[720px] mx-auto px-margin-mobile flex flex-col gap-section-gap pt-8">
+<!-- Greeting Section -->
+<section class="flex flex-col gap-2">
+<h1 class="font-display-lg text-display-lg text-on-surface">Bugün kendini seçtin</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Kendine alan tanımaya devam et.</p>
+</section>
+<!-- Day Counter Card -->
+<section class="bg-surface-container-low rounded-3xl p-8 flex flex-col items-center justify-center gap-4 relative overflow-hidden shadow-[0_20px_40px_rgba(83,98,79,0.05)] border border-outline-variant/30">
+<!-- Decorative organic shape background -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary-container rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<span class="material-symbols-outlined text-primary text-[48px]" data-icon="self_improvement">self_improvement</span>
+<div class="text-center">
+<h2 class="font-display-lg text-display-lg text-primary">7</h2>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant">gündür temas yok</p>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full mt-4 overflow-hidden">
+<div class="h-full bg-primary-container w-1/4 rounded-full"></div>
+</div>
+</section>
+<!-- SOS Section -->
+<section class="bg-tertiary-fixed rounded-2xl p-6 flex flex-col gap-4 border border-tertiary-fixed-dim shadow-[0_20px_40px_rgba(139,78,61,0.08)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-icon="emergency_home">emergency_home</span>
+<h3 class="font-headline-sm text-headline-sm text-on-tertiary-container">Zorlandığında</h3>
+</div>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">Dürtü geldiğinde durakla. Derin bir nefes al ve bu anın geçmesine izin ver.</p>
+<button class="bg-tertiary text-on-tertiary font-label-md text-label-md py-4 px-6 rounded-full w-full flex items-center justify-center gap-2 mt-2 hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+                Nefes Egzersizi Başlat
+            </button>
+</section>
+<!-- Mood Check-in -->
+<section class="flex flex-col gap-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Bugün kendini nasıl hissediyorsun?</h3>
+<div class="grid grid-cols-4 gap-4">
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="cloud">cloud</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Bulutlu</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Dalgalı</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="lens_blur">lens_blur</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Durgun</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="wb_sunny">wb_sunny</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Aydınlık</span>
+</button>
+</div>
+</section>
+<!-- Bento Grid for Features -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Unsent Letters -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/30 flex flex-col gap-4 shadow-[0_10px_30px_rgba(83,98,79,0.03)] h-full">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-2">
+<span class="material-symbols-outlined" data-icon="edit_document">edit_document</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Güvenli Alanlar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">Yaz, ama göndermek zorunda değilsin. İçindekileri buraya dök.</p>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 mt-2 hover:opacity-80 transition-opacity w-fit">
+                    Kalemi Eline Al <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Recovery Path Card -->
+<div class="bg-primary rounded-2xl p-6 border border-outline-variant/10 flex flex-col gap-4 shadow-[0_10px_30px_rgba(83,98,79,0.1)] h-full relative overflow-hidden">
+<!-- Decorative element -->
+<div class="absolute -bottom-8 -right-8 w-32 h-32 border-[20px] border-primary-container rounded-full opacity-30"></div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed mb-2 relative z-10">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-primary relative z-10">İyileşme Yolun</h3>
+<p class="font-body-md text-body-md text-inverse-primary flex-grow relative z-10">Nereden başladığını ve ne kadar ilerlediğini gör.</p>
+<button class="text-on-primary font-label-md text-label-md flex items-center gap-1 mt-2 hover:opacity-80 transition-opacity w-fit relative z-10">
+                    Haritayı Aç <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Privacy Reassurance -->
+<section class="flex items-center justify-center gap-2 py-6 border-t border-outline-variant/30 mt-4">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="lock">lock</span>
+<p class="font-support-text text-support-text text-outline text-sm text-center">Hassas alanların bu cihazda korunur.</p>
+</section>
+</main>
+<!-- BottomNavBar JSON Component -->
+<nav class="bg-surface-container-low/90 dark:bg-surface-container/90 backdrop-blur-md fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-margin-mobile py-4 max-w-[720px] mx-auto w-full rounded-t-xl shadow-[0_-20px_40px_rgba(83,98,79,0.06)] shadow-2xl md:hidden">
+<!-- Active Item: Home -->
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors scale-90 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="home_max" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home_max</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</button>
+<!-- Inactive Items -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-label-md font-label-md mt-1">Journal</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined" data-icon="auto_graph">auto_graph</span>
+<span class="text-label-md font-label-md mt-1">Path</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md mt-1">Settings</span>
+</button>
+</nav>
+<!-- Spacer for Bottom Nav on Web/Desktop if needed (though shell layout dictates mobile view mostly) -->
+<div class="hidden md:flex fixed bottom-0 w-full h-16 bg-surface z-50 md:hidden"></div>
+</body></html>

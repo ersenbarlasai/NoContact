@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Still - Settings &amp; Privacy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;500;600&amp;family=Manrope:wght@400;500;600;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed-dim": "#cac6bd",
+                "on-secondary": "#ffffff",
+                "primary": "#53624f",
+                "surface-container-low": "#f3f3f4",
+                "secondary": "#605e57",
+                "on-primary-fixed": "#121f10",
+                "on-primary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#ffb5a1",
+                "on-tertiary-container": "#501f11",
+                "on-primary-container": "#243221",
+                "inverse-on-surface": "#f0f1f1",
+                "inverse-surface": "#2f3132",
+                "surface-container-highest": "#e2e2e3",
+                "primary-fixed": "#d7e7cf",
+                "surface-variant": "#e2e2e3",
+                "on-surface-variant": "#444841",
+                "on-primary-fixed-variant": "#3c4b38",
+                "surface-tint": "#53624f",
+                "on-secondary-fixed-variant": "#484740",
+                "on-error-container": "#93000a",
+                "surface-container": "#eeeeef",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#ffdbd1",
+                "tertiary": "#8b4e3d",
+                "primary-fixed-dim": "#bbcbb3",
+                "secondary-fixed": "#e6e2d8",
+                "on-secondary-fixed": "#1c1c16",
+                "secondary-container": "#e6e2d8",
+                "outline-variant": "#c4c8bf",
+                "surface-dim": "#dadadb",
+                "on-surface": "#1a1c1d",
+                "tertiary-container": "#cb836f",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "background": "#f9f9fa",
+                "inverse-primary": "#bbcbb3",
+                "surface": "#f9f9fa",
+                "surface-bright": "#f9f9fa",
+                "on-tertiary-fixed": "#380d03",
+                "on-background": "#1a1c1d",
+                "error": "#ba1a1a",
+                "primary-container": "#8a9a84",
+                "on-secondary-container": "#66645d",
+                "surface-container-high": "#e8e8e9",
+                "on-tertiary-fixed-variant": "#6f3728",
+                "outline": "#747871"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "section-gap": "48px",
+                "gutter": "16px",
+                "unit": "8px",
+                "margin-desktop": "64px",
+                "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                "headline-md": ["Literata"],
+                "support-text": ["Literata"],
+                "body-md": ["Manrope"],
+                "body-lg": ["Manrope"],
+                "label-md": ["Manrope"],
+                "display-lg": ["Literata"],
+                "headline-sm": ["Literata"]
+            },
+            "fontSize": {
+                "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                "support-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "headline-sm": ["22px", {"lineHeight": "30px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim full-width top-0 sticky z-50 flex justify-between items-center px-margin-mobile w-full h-16 max-w-[720px] mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed-dim tracking-tight">Settings</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">eco</span>
+</div>
+</header>
+<main class="max-w-[720px] mx-auto px-margin-mobile pt-8 pb-32">
+<!-- Intro Section -->
+<div class="mb-section-gap">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">Privacy &amp; Agency</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage how your journey is protected and how you interact with Still.</p>
+</div>
+<!-- Privacy & Data Section -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">shield_person</span>
+<h3 class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">Privacy &amp; Data</h3>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 shadow-[0_20px_40px_rgba(83,98,79,0.05)]">
+<p class="text-body-md font-body-md text-on-surface mb-6 border-l-2 border-primary-container pl-4">
+                    Your private notes stay on this device and are not shared. We believe healing requires a space that is entirely your own.
+                </p>
+<div class="space-y-4">
+<button class="w-full flex justify-between items-center p-4 rounded-lg hover:bg-surface-container transition-colors group">
+<span class="text-body-md font-body-md">Export Data</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">download</span>
+</button>
+<button class="w-full flex justify-between items-center p-4 rounded-lg hover:bg-surface-container transition-colors group">
+<span class="text-body-md font-body-md text-error">Clear Local Data</span>
+<span class="material-symbols-outlined text-error/60 group-hover:text-error transition-colors">delete_sweep</span>
+</button>
+</div>
+</div>
+</section>
+<!-- AI Boundaries Section -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h3 class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">AI Boundaries</h3>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 shadow-[0_20px_40px_rgba(83,98,79,0.05)]">
+<div class="flex items-start justify-between mb-6">
+<div>
+<h4 class="text-body-lg font-body-lg text-on-surface">Reflection Assistance</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">Allow AI to suggest journaling prompts based on your mood trends.</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full ml-auto"></div>
+</div>
+</div>
+<div class="flex items-start justify-between">
+<div>
+<h4 class="text-body-lg font-body-lg text-on-surface">Data Anonymization</h4>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">Strip personal identifiers before processing reflection patterns.</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full ml-auto"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Subscription Section -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">potted_plant</span>
+<h3 class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">Subscription</h3>
+</div>
+<div class="bg-secondary-container rounded-xl p-6 border border-outline-variant/30">
+<div class="flex justify-between items-center mb-4">
+<div>
+<span class="text-label-md font-label-md bg-primary-container text-on-primary-container px-2 py-1 rounded">PRO PLAN</span>
+<h4 class="text-headline-sm font-headline-sm text-on-secondary-container mt-2">Annual Companion</h4>
+</div>
+<div class="text-right">
+<p class="text-label-md font-label-md text-on-secondary-container">Renewing on</p>
+<p class="text-body-md font-body-md text-on-secondary-container">Oct 12, 2024</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-full font-label-md hover:opacity-90 transition-opacity">Manage Subscription</button>
+</div>
+</section>
+<!-- Crisis Support Section -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary">emergency</span>
+<h3 class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">Crisis Support</h3>
+</div>
+<div class="bg-tertiary-container/10 border border-tertiary/20 rounded-xl p-6">
+<p class="text-body-md font-body-md text-on-tertiary-container mb-4">If you are feeling overwhelmed or unsafe, immediate support is available. You don't have to carry this alone.</p>
+<div class="grid grid-cols-1 gap-3">
+<a class="flex items-center justify-center gap-2 bg-tertiary text-white py-3 rounded-full font-label-md hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-[20px]">call</span>
+                        Get Immediate Help
+                    </a>
+<a class="flex items-center justify-center gap-2 text-tertiary border border-tertiary py-3 rounded-full font-label-md hover:bg-tertiary/5 transition-colors" href="#">
+                        Local Resources
+                    </a>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="mb-section-gap border-t border-outline-variant/30 pt-section-gap">
+<h3 class="text-label-md font-label-md text-error uppercase tracking-widest mb-6">Account Agency</h3>
+<button class="w-full flex items-center justify-between p-4 bg-error-container/20 text-on-error-container rounded-xl hover:bg-error-container/30 transition-colors">
+<div class="text-left">
+<p class="text-body-md font-body-md font-semibold">Delete Account</p>
+<p class="text-label-md font-label-md opacity-80">Permanently erase all your data from our servers.</p>
+</div>
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<p class="text-center text-label-md font-label-md text-on-surface-variant mt-8 opacity-60">Version 2.4.0 • Made with care for your healing.</p>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-margin-mobile py-4 max-w-[720px] mx-auto bg-surface-container-low/90 dark:bg-surface-container/90 backdrop-blur-md rounded-t-xl shadow-2xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home_max">home_max</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-label-md font-label-md">Journal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="auto_graph">auto_graph</span>
+<span class="text-label-md font-label-md">Path</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 Active: scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<!-- SOS Component (Floating Breath Button) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-tertiary-container rounded-full flex items-center justify-center text-on-tertiary-container shadow-lg animate-pulse" title="Quick Breath">
+<span class="material-symbols-outlined text-[32px]">air</span>
+</button>
+</body></html>

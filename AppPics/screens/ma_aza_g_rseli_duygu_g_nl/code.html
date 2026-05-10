@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>App Store Screenshot - Mood Journal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c4c8bf",
+                        "on-surface": "#1a1c1d",
+                        "secondary-container": "#e6e2d8",
+                        "on-background": "#1a1c1d",
+                        "on-secondary-fixed": "#1c1c16",
+                        "inverse-primary": "#bbcbb3",
+                        "surface-bright": "#f9f9fa",
+                        "secondary": "#605e57",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-primary-fixed": "#121f10",
+                        "surface-tint": "#53624f",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#cac6bd",
+                        "primary-container": "#8a9a84",
+                        "primary": "#53624f",
+                        "tertiary-fixed-dim": "#ffb5a1",
+                        "on-tertiary-fixed": "#380d03",
+                        "inverse-surface": "#2f3132",
+                        "outline": "#747871",
+                        "on-primary-fixed-variant": "#3c4b38",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f3f4",
+                        "surface-container-high": "#e8e8e9",
+                        "on-secondary-fixed-variant": "#484740",
+                        "surface-container-highest": "#e2e2e3",
+                        "on-secondary-container": "#66645d",
+                        "on-surface-variant": "#444841",
+                        "primary-fixed-dim": "#bbcbb3",
+                        "on-tertiary-container": "#501f11",
+                        "surface-variant": "#e2e2e3",
+                        "surface-dim": "#dadadb",
+                        "tertiary": "#8b4e3d",
+                        "on-tertiary-fixed-variant": "#6f3728",
+                        "tertiary-container": "#cb836f",
+                        "surface-container": "#eeeeef",
+                        "surface": "#f9f9fa",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#d7e7cf",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#243221",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "16px",
+                        "margin-mobile": "24px",
+                        "unit": "8px",
+                        "section-gap": "48px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["manrope"],
+                        "support-text": ["literata"],
+                        "body-md": ["manrope"],
+                        "label-md": ["manrope"],
+                        "headline-sm": ["literata"],
+                        "headline-md": ["literata"],
+                        "display-lg": ["literata"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "support-text": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["22px", { "lineHeight": "30px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "500" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f0ebe1; /* Cream background for the app store shot */ }
+        .iphone-frame {
+            box-shadow: 0 40px 80px -20px rgba(83,98,79,0.15), 0 0 0 12px #2a2a2a, 0 0 0 13px #e2e2e3, inset 0 0 0 2px #555;
+        }
+        .notch {
+            background-color: #2a2a2a;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex items-center justify-center p-8 font-body-md text-on-background">
+<!-- App Store Layout Container -->
+<div class="max-w-[1200px] w-full flex flex-col lg:flex-row items-center justify-between gap-16">
+<!-- Typography / Marketing Copy Side -->
+<div class="flex-1 flex flex-col justify-center max-w-lg">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6 tracking-tight">
+                Duygunu fark et
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Ruh halini sakin ve güvenli bir alanda takip et.
+            </p>
+</div>
+<!-- iPhone Mockup Side -->
+<div class="relative w-[375px] h-[812px] bg-surface rounded-[48px] iphone-frame overflow-hidden shrink-0 flex flex-col">
+<!-- Hardware Notch Mock -->
+<div class="absolute top-0 inset-x-0 h-[30px] flex justify-center z-50 pointer-events-none">
+<div class="w-[160px] h-full notch relative"></div>
+</div>
+<!-- Status Bar Mock -->
+<div class="h-12 w-full flex justify-between items-end px-6 pb-2 text-[12px] font-semibold text-on-surface relative z-40 pointer-events-none">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[16px]">battery_full</span>
+</div>
+</div>
+<!-- APP CONTENT (Journal) -->
+<div class="flex-1 overflow-y-auto hide-scrollbar flex flex-col bg-surface relative z-10">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-30 flex justify-between items-center px-margin-mobile w-full h-16">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity p-2 -ml-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Still</h2>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity p-2 -mr-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</button>
+</header>
+<main class="px-margin-mobile pb-32 pt-8 flex flex-col gap-section-gap">
+<!-- Date & Greeting -->
+<section class="flex flex-col gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Today, 24 Oct</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">How is your internal weather?</h3>
+</section>
+<!-- Mood Expressors (Tonal Shapes) -->
+<section class="flex justify-between items-center px-2">
+<!-- Overwhelmed -->
+<div class="flex flex-col items-center gap-3">
+<button class="w-16 h-16 rounded-[2rem] bg-surface-container-highest border border-outline-variant flex items-center justify-center opacity-50 transition-all">
+<div class="w-8 h-8 rounded-full bg-on-surface-variant/20 blur-[2px]"></div>
+</button>
+</div>
+<!-- Heavy -->
+<div class="flex flex-col items-center gap-3">
+<button class="w-16 h-16 rounded-[2rem] bg-surface-container-highest border border-outline-variant flex items-center justify-center opacity-50 transition-all">
+<div class="w-10 h-10 rounded-lg bg-on-surface-variant/40 rotate-12 blur-[1px]"></div>
+</button>
+</div>
+<!-- Calm (Selected) -->
+<div class="flex flex-col items-center gap-3">
+<button class="w-[72px] h-[72px] rounded-[2rem] bg-primary-container border-2 border-primary-fixed-dim shadow-[0_10px_20px_rgba(83,98,79,0.15)] flex items-center justify-center transition-all scale-105">
+<div class="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm shadow-inner flex items-center justify-center">
+<div class="w-6 h-6 rounded-full bg-primary-fixed-dim opacity-80"></div>
+</div>
+</button>
+</div>
+<!-- Light -->
+<div class="flex flex-col items-center gap-3">
+<button class="w-16 h-16 rounded-[2rem] bg-surface-container-highest border border-outline-variant flex items-center justify-center opacity-50 transition-all">
+<div class="w-8 h-8 bg-tertiary-fixed-dim/40 rounded-[10px] rotate-45"></div>
+</button>
+</div>
+</section>
+<!-- Journal Input Area -->
+<section class="flex flex-col gap-6">
+<h4 class="font-support-text text-support-text text-on-surface-variant italic">Reflections</h4>
+<div class="bg-surface-bright rounded-2xl p-6 shadow-[0_8px_24px_rgba(83,98,79,0.04)] border border-surface-variant/50">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none font-body-lg text-body-lg text-on-surface placeholder:text-outline p-0 min-h-[120px]" placeholder="The air feels a bit lighter today. I noticed the way the morning light caught the..."></textarea>
+<div class="w-full h-px bg-surface-variant mt-4 mb-4"></div>
+<div class="flex justify-between items-center">
+<button class="text-outline hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">add_photo_alternate</span>
+</button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:bg-primary/90 transition-colors">
+                                    Save Entry
+                                </button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full rounded-t-xl bg-surface-container-low/90 backdrop-blur-md shadow-[0_-20px_40px_rgba(83,98,79,0.06)] z-50 flex justify-around items-center px-margin-mobile py-4 max-w-[375px] mx-auto absolute">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="home_max">home_max</span>
+<span class="font-label-md text-label-md mt-1 hidden">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 scale-90 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="edit_note" data-weight="fill">edit_note</span>
+<span class="font-label-md text-label-md mt-1 hidden">Journal</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="auto_graph">auto_graph</span>
+<span class="font-label-md text-label-md mt-1 hidden">Path</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md mt-1 hidden">Settings</span>
+</button>
+</nav>
+</div>
+</div>
+</body></html>

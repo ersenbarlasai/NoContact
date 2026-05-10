@@ -1,0 +1,46 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs / temp
+*.log
+*.tmp
+*.swp
+test_output.txt
+**/test_output.txt
+
+# Secrets / local config
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.jks
+key.properties
+GoogleService-Info.plist
+google-services.json
+
+# Dart / Flutter
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# Build artifacts
+**/app.*.symbols
+**/app.*.map.json
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+
+# Generated native plugin symlinks
+**/flutter/ephemeral/

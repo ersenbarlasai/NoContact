@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-secondary": "#ffffff",
+                        "primary": "#53624f",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#605e57",
+                        "on-primary-fixed": "#121f10",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb5a1",
+                        "on-tertiary-container": "#501f11",
+                        "on-primary-container": "#243221",
+                        "inverse-on-surface": "#f0f1f1",
+                        "inverse-surface": "#2f3132",
+                        "surface-container-highest": "#e2e2e3",
+                        "primary-fixed": "#d7e7cf",
+                        "surface-variant": "#e2e2e3",
+                        "on-surface-variant": "#444841",
+                        "on-primary-fixed-variant": "#3c4b38",
+                        "surface-tint": "#53624f",
+                        "on-secondary-fixed-variant": "#484740",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "tertiary": "#8b4e3d",
+                        "primary-fixed-dim": "#bbcbb3",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-secondary-fixed": "#1c1c16",
+                        "secondary-container": "#e6e2d8",
+                        "outline-variant": "#c4c8bf",
+                        "surface-dim": "#dadadb",
+                        "on-surface": "#1a1c1d",
+                        "tertiary-container": "#cb836f",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9fa",
+                        "inverse-primary": "#bbcbb3",
+                        "surface": "#f9f9fa",
+                        "surface-bright": "#f9f9fa",
+                        "on-tertiary-fixed": "#380d03",
+                        "on-background": "#1a1c1d",
+                        "error": "#ba1a1a",
+                        "primary-container": "#8a9a84",
+                        "on-secondary-container": "#66645d",
+                        "surface-container-high": "#e8e8e9",
+                        "on-tertiary-fixed-variant": "#6f3728",
+                        "outline": "#747871"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "48px",
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Literata"],
+                        "support-text": ["Literata"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "display-lg": ["Literata"],
+                        "headline-sm": ["Literata"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                        "support-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["22px", {"lineHeight": "30px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .organic-progress-node {
+            transition: all 0.5s ease-in-out;
+            clip-path: ellipse(50% 40% at 50% 50%);
+        }
+        .organic-progress-node.active {
+            clip-path: ellipse(45% 55% at 50% 50%);
+        }
+        .writing-surface::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #747871 50%, transparent);
+            opacity: 0.2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim full-width top-0 sticky z-50 flex justify-between items-center px-margin-mobile w-full h-16 max-w-[720px] mx-auto">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Still</h1>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</button>
+</header>
+<main class="max-w-[720px] mx-auto px-margin-mobile py-unit mb-section-gap">
+<!-- Progress Indicator -->
+<div class="flex justify-center items-center space-x-4 py-8">
+<div class="organic-progress-node w-6 h-6 bg-primary-container"></div>
+<div class="organic-progress-node w-6 h-6 bg-primary-container"></div>
+<div class="organic-progress-node active w-10 h-10 bg-primary shadow-lg shadow-primary/20"></div>
+<div class="organic-progress-node w-6 h-6 bg-surface-container-highest"></div>
+</div>
+<section class="mt-8 text-center">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2">Write Here Instead</h2>
+<p class="font-support-text text-support-text text-on-surface-variant max-w-[500px] mx-auto">
+                Pour your thoughts onto this page. Let the weight of the words leave your mind and stay here instead.
+            </p>
+</section>
+<!-- Main Input Canvas -->
+<div class="mt-section-gap relative">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm min-h-[400px] flex flex-col relative overflow-hidden">
+<!-- Abstract Texture Placeholder -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+<img alt="" class="w-full h-full object-cover grayscale" data-alt="A macro photograph of high-quality handmade linen paper texture with subtle organic fibers and natural imperfections. The lighting is soft and diffused, highlighting the tactile and warm minimalist aesthetic of the paper. The color palette is a neutral cream and pale sand, evoking a sense of calm, silence, and focused journaling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbzciqAC7mUa8q9zTIxgQdliJWN0L4zhDHDL-oxoDS3L6-KxORxs3rrUroUGo4U5WBPxw3biJ3DSbSOTw9U7Fsjv5QejwX2Cn_kBBGlwCdarZQhXfBexD6pfCiMAxmkp0qmC_0WBe0GTP7kPEraP9N0axbYBI8fQFn-MIS1Ax8braTTom-W7F-iE9LRTjlgiH3iIC7tcsZbQcOv2NqQ8D024a6ZACW2_9q24ODz3FFfE2p25idMkLuex_VgmS-cmM6JNQ8XmueJPM"/>
+</div>
+<textarea class="flex-grow w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-outline-variant resize-none z-10" placeholder="Tell them what you're feeling, even if they'll never hear it..." spellcheck="false"></textarea>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 z-10">
+<div class="flex items-center justify-center space-x-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+<p class="font-label-md text-label-md italic">This will never be sent. It is for your eyes only.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Release Action -->
+<div class="mt-section-gap flex flex-col items-center space-y-6">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-12 py-4 rounded-full shadow-lg shadow-primary/10 hover:shadow-xl hover:opacity-90 transition-all active:scale-95 duration-200 flex items-center space-x-3">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span>Release this message</span>
+</button>
+<!-- SOS Pulse Element -->
+<div class="relative flex items-center justify-center pt-8">
+<div class="absolute w-16 h-16 bg-tertiary-container/20 rounded-full animate-ping"></div>
+<div class="relative w-12 h-12 bg-tertiary-container rounded-full flex items-center justify-center text-on-tertiary-container shadow-md">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Space for Layout Balance (No BottomNav as per Shell Suppression) -->
+<footer class="h-16"></footer>
+</body></html>

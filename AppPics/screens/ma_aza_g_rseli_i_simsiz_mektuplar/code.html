@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>App Store Screenshot - Unsent Letters</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c8bf",
+                    "on-surface": "#1a1c1d",
+                    "secondary-container": "#e6e2d8",
+                    "on-background": "#1a1c1d",
+                    "on-secondary-fixed": "#1c1c16",
+                    "inverse-primary": "#bbcbb3",
+                    "surface-bright": "#f9f9fa",
+                    "secondary": "#605e57",
+                    "inverse-on-surface": "#f0f1f1",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdbd1",
+                    "secondary-fixed": "#e6e2d8",
+                    "on-primary-fixed": "#121f10",
+                    "surface-tint": "#53624f",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#cac6bd",
+                    "primary-container": "#8a9a84",
+                    "primary": "#53624f",
+                    "tertiary-fixed-dim": "#ffb5a1",
+                    "on-tertiary-fixed": "#380d03",
+                    "inverse-surface": "#2f3132",
+                    "outline": "#747871",
+                    "on-primary-fixed-variant": "#3c4b38",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f3f4",
+                    "surface-container-high": "#e8e8e9",
+                    "on-secondary-fixed-variant": "#484740",
+                    "surface-container-highest": "#e2e2e3",
+                    "on-secondary-container": "#66645d",
+                    "on-surface-variant": "#444841",
+                    "primary-fixed-dim": "#bbcbb3",
+                    "on-tertiary-container": "#501f11",
+                    "surface-variant": "#e2e2e3",
+                    "surface-dim": "#dadadb",
+                    "tertiary": "#8b4e3d",
+                    "on-tertiary-fixed-variant": "#6f3728",
+                    "tertiary-container": "#cb836f",
+                    "surface-container": "#eeeeef",
+                    "surface": "#f9f9fa",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d7e7cf",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#243221",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "gutter": "16px",
+                    "margin-mobile": "24px",
+                    "unit": "8px",
+                    "section-gap": "48px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Manrope", "sans-serif"],
+                    "support-text": ["Literata", "serif"],
+                    "body-md": ["Manrope", "sans-serif"],
+                    "label-md": ["Manrope", "sans-serif"],
+                    "headline-sm": ["Literata", "serif"],
+                    "headline-md": ["Literata", "serif"],
+                    "display-lg": ["Literata", "serif"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "support-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["22px", {"lineHeight": "30px", "fontWeight": "500"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom Utilities for App Store Presentation */
+        .phone-mockup {
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15), inset 0 0 0 8px #1c1c16;
+        }
+        .notch {
+            width: 150px;
+            height: 30px;
+            background-color: #1c1c16;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+        .soft-gradient-mask {
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-secondary-container min-h-screen flex flex-col items-center justify-center py-12 px-4 overflow-hidden font-body-md text-on-surface">
+<!-- App Store Marketing Overlay -->
+<div class="text-center mb-12 max-w-2xl z-10 relative">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-4 tracking-tight">Yaz, ama gönderme</h1>
+<p class="font-headline-sm text-headline-sm text-secondary">İçinden geçenleri özel kasana bırak.</p>
+</div>
+<!-- Realistic iPhone Frame -->
+<div class="phone-mockup relative w-[375px] h-[812px] bg-background rounded-[48px] overflow-hidden border-[8px] border-[#1c1c16]/5 flex flex-col z-20">
+<!-- Hardware Notch Mockup -->
+<div class="notch"></div>
+<!-- ========================================== -->
+<!-- START OF APP UI (The "Quiet Companion")    -->
+<!-- ========================================== -->
+<!-- TopAppBar Shared Component -->
+<header class="bg-surface sticky top-0 z-40 px-margin-mobile flex justify-between items-center w-full h-16 pt-6">
+<button aria-label="Menu" class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Still</h2>
+<button aria-label="Eco" class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">eco</span>
+</button>
+</header>
+<!-- Main Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile pt-8 pb-32 bg-background flex flex-col gap-section-gap">
+<!-- Vault Header Banner -->
+<section class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-secondary-container/50 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-tertiary" style="font-size: 32px; font-variation-settings: 'FILL' 0;">enhanced_encryption</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Unsent Letters</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[250px]">
+                    Your thoughts are locked locally on this device. Safe, silent, and entirely yours.
+                </p>
+</section>
+<!-- Organic Abstract Image representation of a safe space -->
+<div class="w-full h-32 rounded-xl bg-surface-container-low overflow-hidden relative shadow-[0_20px_40px_rgba(83,98,79,0.05)]">
+<img alt="Abstract organic texture" class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A macro photograph of gently folded, light sage-green linen fabric bathed in soft, diffused morning light. The composition is highly abstract and minimalist, focusing on the organic curves and subtle shadows created by the textile's weave. The color palette is restricted to soft creams, muted greens, and delicate warm grey undertones, evoking a profound sense of calm, privacy, and tactile warmth characteristic of a high-end mindfulness application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH9MtTxyECKJmNauL2AakWJlvS5rhN9oFo2DiwGJKzK8OmmLfxCArfy7HXWtvPhTCNFdXlzZv3cg-oiMAMvz_NEn-Pg7bnARk2DsQuLqtS-3KgQqVz04XfK4eJptn44ZCXEPpdzjva68y69MWbiTCHdeP3W_g9B6TnFzZUbV47ifWJmJWgwdeUXkPAB2NprFQKwc2fsWJRTZQcEKC4cROOKYOKqCNwUt6oiMnxRUHsw4BL21syxK5qyd9MfpVhCh7COouWl6Tjkyg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<!-- List of Unsent Letters -->
+<section class="flex flex-col gap-gutter">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_8px_30px_rgba(83,98,79,0.04)] relative">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-label-md text-label-md text-on-surface">To my anger</h4>
+<span class="font-body-md text-[12px] text-outline">Oct 12</span>
+</div>
+<p class="font-support-text text-support-text text-on-surface-variant soft-gradient-mask">
+                        I am writing this because I cannot say it out loud yet. The weight of expectations has been...
+                    </p>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_8px_30px_rgba(83,98,79,0.04)] relative">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-label-md text-label-md text-on-surface">Things I wish I said</h4>
+<span class="font-body-md text-[12px] text-outline">Sep 28</span>
+</div>
+<p class="font-support-text text-support-text text-on-surface-variant soft-gradient-mask">
+                        Looking back at that evening, I realize my silence wasn't agreement, it was just...
+                    </p>
+</article>
+</section>
+<!-- Floating Action Button (Contextual to Journaling) -->
+<div class="flex justify-center mt-4">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity shadow-[0_10px_25px_rgba(83,98,79,0.2)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit</span>
+                    Draft New Letter
+                </button>
+</div>
+</main>
+<!-- BottomNavBar Shared Component -->
+<!-- Note: Using absolute instead of fixed to constrain it within the phone mockup -->
+<nav class="absolute bottom-0 left-0 right-0 z-50 flex justify-around items-center px-margin-mobile py-6 pb-8 bg-surface-container-low/90 backdrop-blur-md rounded-t-xl shadow-[0_-20px_40px_rgba(83,98,79,0.06)] border-none">
+<!-- Home: Inactive -->
+<button aria-label="Home" class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home_max</span>
+<span class="font-label-md text-[11px]">Home</span>
+</button>
+<!-- Journal: Active (Semantic match for Unsent Letters) -->
+<button aria-label="Journal" class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 scale-90 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="font-label-md text-[11px]">Journal</span>
+</button>
+<!-- Path: Inactive -->
+<button aria-label="Path" class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">auto_graph</span>
+<span class="font-label-md text-[11px]">Path</span>
+</button>
+<!-- Settings: Inactive -->
+<button aria-label="Settings" class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-md text-[11px]">Settings</span>
+</button>
+</nav>
+<!-- ========================================== -->
+<!-- END OF APP UI                              -->
+<!-- ========================================== -->
+</div>
+<!-- Decorative background blurred circle for depth -->
+<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-surface-bright/40 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+</body></html>

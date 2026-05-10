@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Still - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#cac6bd",
+                    "on-secondary": "#ffffff",
+                    "primary": "#53624f",
+                    "surface-container-low": "#f3f3f4",
+                    "secondary": "#605e57",
+                    "on-primary-fixed": "#121f10",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb5a1",
+                    "on-tertiary-container": "#501f11",
+                    "on-primary-container": "#243221",
+                    "inverse-on-surface": "#f0f1f1",
+                    "inverse-surface": "#2f3132",
+                    "surface-container-highest": "#e2e2e3",
+                    "primary-fixed": "#d7e7cf",
+                    "surface-variant": "#e2e2e3",
+                    "on-surface-variant": "#444841",
+                    "on-primary-fixed-variant": "#3c4b38",
+                    "surface-tint": "#53624f",
+                    "on-secondary-fixed-variant": "#484740",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eeeeef",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdbd1",
+                    "tertiary": "#8b4e3d",
+                    "primary-fixed-dim": "#bbcbb3",
+                    "secondary-fixed": "#e6e2d8",
+                    "on-secondary-fixed": "#1c1c16",
+                    "secondary-container": "#e6e2d8",
+                    "outline-variant": "#c4c8bf",
+                    "surface-dim": "#dadadb",
+                    "on-surface": "#1a1c1d",
+                    "tertiary-container": "#cb836f",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9fa",
+                    "inverse-primary": "#bbcbb3",
+                    "surface": "#f9f9fa",
+                    "surface-bright": "#f9f9fa",
+                    "on-tertiary-fixed": "#380d03",
+                    "on-background": "#1a1c1d",
+                    "error": "#ba1a1a",
+                    "primary-container": "#8a9a84",
+                    "on-secondary-container": "#66645d",
+                    "surface-container-high": "#e8e8e9",
+                    "on-tertiary-fixed-variant": "#6f3728",
+                    "outline": "#747871"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "48px",
+                    "gutter": "16px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["literata"],
+                    "support-text": ["literata"],
+                    "body-md": ["manrope"],
+                    "body-lg": ["manrope"],
+                    "label-md": ["manrope"],
+                    "display-lg": ["literata"],
+                    "headline-sm": ["literata"]
+            },
+            "fontSize": {
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "support-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["22px", {"lineHeight": "30px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f9f9fa; /* background from theme */
+            color: #1a1c1d; /* on-background from theme */
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0 20px 40px rgba(83, 98, 79, 0.05);
+        }
+        .pulse-slow {
+            animation: pulse-slow 6s ease-in-out infinite;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface dark:bg-surface-dim full-width top-0 sticky z-50">
+<div class="flex justify-between items-center px-margin-mobile w-full h-16 max-w-[720px] mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity cursor-pointer active:scale-95 transition-transform duration-200" data-icon="menu">menu</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Still</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity cursor-pointer active:scale-95 transition-transform duration-200" data-icon="eco">eco</span>
+</div>
+</div>
+</header>
+<main class="max-w-[720px] mx-auto px-margin-mobile min-h-[calc(100vh-64px)] flex flex-col items-center justify-center space-y-section-gap pb-section-gap">
+<!-- Abstract Visual Representation: The Breath -->
+<div class="relative w-full flex justify-center py-unit">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-64 h-64 rounded-full bg-primary-fixed opacity-10 pulse-slow blur-3xl"></div>
+</div>
+<img alt="Abstract representation of a breath" class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full shadow-2xl z-10 opacity-90 ring-8 ring-surface-container-low" data-alt="An abstract, minimalist digital art piece representing the concept of a deep breath and emotional calm. The image features soft, ethereal layers of translucent sage green and warm cream gradients that overlap like silk or fluid water. The lighting is diffused and high-key, creating a gentle light-mode aesthetic. Centered in the composition is a subtle, organic circular pulse that feels quiet and steady. The mood is serene, grounding, and profoundly peaceful, evoking a sense of safety and visual silence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCghg9iApWcRq8lRGBpFcowYpLHVL4yEgZbSil4gJC7weBVsPdBi1nogc5QnsW4qXcXu0wX1IF7TDP2h4BBXZgLrAM6aWYflViN_5g2392QnNpdvRu5t_-VSPRWMLdQqw8Yz2wyfKJCYD8STf11AYpcoqaI2axoDzjvAFhyaMc5898-WCcnVvwaWm20TrZFTMHpQK5ceh4qW0AqnqzJR-lWqWqd1dHZpcLYbP1PkrQ-eGxCFPfl1jjzFQqH25O1qXHyg1mMtJXq5QQ"/>
+</div>
+<!-- Typography Cluster -->
+<div class="text-center space-y-gutter px-4">
+<h2 class="font-display-lg text-display-lg text-on-surface leading-tight">
+                You are not here because you are weak. You are here because this moment is hard.
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[480px] mx-auto">
+                Your private companion for emotional recovery and self-respect.
+            </p>
+</div>
+<!-- Action Cluster -->
+<div class="w-full flex flex-col items-center space-y-gutter pt-unit">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-4 px-12 rounded-full hover:opacity-90 active:scale-95 transition-all duration-300 soft-shadow">
+                Start My Path
+            </button>
+<button class="text-on-surface-variant font-label-md text-label-md py-2 px-6 hover:text-primary transition-colors">
+                I already have an account
+            </button>
+</div>
+<!-- Asymmetric Detail / Tonal Layering -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full mt-12">
+<div class="p-8 rounded-xl bg-surface-container-low/50 border-none flex flex-col space-y-2">
+<span class="material-symbols-outlined text-primary" data-icon="auto_graph">auto_graph</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Non-Linear Progress</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Healing isn't a straight line. We track the tide marks of your growth, not just the goals.</p>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low/50 border-none flex flex-col space-y-2 translate-y-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="edit_note">edit_note</span>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">Secure Space</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Your thoughts are yours alone. End-to-end privacy for your most vulnerable moments.</p>
+</div>
+</div>
+</main>
+<!-- Contextual SOS Component (Breath Pulse) -->
+<div class="fixed bottom-margin-mobile right-margin-mobile z-50">
+<button class="w-16 h-16 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center soft-shadow relative group">
+<div class="absolute inset-0 rounded-full bg-tertiary-container animate-ping opacity-20 group-hover:hidden"></div>
+<span class="material-symbols-outlined text-3xl" data-icon="air">air</span>
+<span class="sr-only">Panic/Breath Tool</span>
+</button>
+</div>
+<!-- Background Decoration for Warm Minimalism -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-primary-fixed opacity-5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-tertiary-fixed opacity-5 blur-[120px]"></div>
+</div>
+</body></html>

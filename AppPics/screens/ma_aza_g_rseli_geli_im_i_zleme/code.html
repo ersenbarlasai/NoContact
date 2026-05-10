@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sessiz Gelişim - The Quiet Companion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c4c8bf",
+                      "on-surface": "#1a1c1d",
+                      "secondary-container": "#e6e2d8",
+                      "on-background": "#1a1c1d",
+                      "on-secondary-fixed": "#1c1c16",
+                      "inverse-primary": "#bbcbb3",
+                      "surface-bright": "#f9f9fa",
+                      "secondary": "#605e57",
+                      "inverse-on-surface": "#f0f1f1",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#ffdbd1",
+                      "secondary-fixed": "#e6e2d8",
+                      "on-primary-fixed": "#121f10",
+                      "surface-tint": "#53624f",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#cac6bd",
+                      "primary-container": "#8a9a84",
+                      "primary": "#53624f",
+                      "tertiary-fixed-dim": "#ffb5a1",
+                      "on-tertiary-fixed": "#380d03",
+                      "inverse-surface": "#2f3132",
+                      "outline": "#747871",
+                      "on-primary-fixed-variant": "#3c4b38",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f3f3f4",
+                      "surface-container-high": "#e8e8e9",
+                      "on-secondary-fixed-variant": "#484740",
+                      "surface-container-highest": "#e2e2e3",
+                      "on-secondary-container": "#66645d",
+                      "on-surface-variant": "#444841",
+                      "primary-fixed-dim": "#bbcbb3",
+                      "on-tertiary-container": "#501f11",
+                      "surface-variant": "#e2e2e3",
+                      "surface-dim": "#dadadb",
+                      "tertiary": "#8b4e3d",
+                      "on-tertiary-fixed-variant": "#6f3728",
+                      "tertiary-container": "#cb836f",
+                      "surface-container": "#eeeeef",
+                      "surface": "#f9f9fa",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#d7e7cf",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#243221",
+                      "error-container": "#ffdad6",
+                      "background": "#f9f9fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "gutter": "16px",
+                      "margin-mobile": "24px",
+                      "unit": "8px",
+                      "section-gap": "48px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "manrope"
+                      ],
+                      "support-text": [
+                              "literata"
+                      ],
+                      "body-md": [
+                              "manrope"
+                      ],
+                      "label-md": [
+                              "manrope"
+                      ],
+                      "headline-sm": [
+                              "literata"
+                      ],
+                      "headline-md": [
+                              "literata"
+                      ],
+                      "display-lg": [
+                              "literata"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "support-text": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "22px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline-sm, .font-headline-md, .font-display-lg, .font-support-text { font-family: 'Literata', serif; }
+        
+        /* Soft organic shapes utility */
+        .shape-blob {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            transition: all 1s ease;
+        }
+        
+        /* Hide scrollbar for a cleaner presentation */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-fixed-dim min-h-screen flex items-center justify-center p-4">
+<!-- App Store Screenshot Presentation Wrapper -->
+<div class="relative w-full max-w-[430px] aspect-[9/19.5] bg-surface rounded-[56px] shadow-[0_32px_64px_-12px_rgba(83,98,79,0.2)] overflow-hidden border-[8px] border-surface-container-highest ring-1 ring-black/5 flex flex-col">
+<!-- Shared Component: TopAppBar -->
+<nav class="absolute top-0 left-0 right-0 z-40 bg-surface flex justify-between items-center px-margin-mobile w-full h-16 max-w-[720px] mx-auto flat no shadows">
+<button aria-label="Menu" class="text-on-surface-variant hover:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">Still</span>
+<button aria-label="Leaf" class="text-on-surface-variant hover:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined">eco</span>
+</button>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto overflow-x-hidden pt-20 pb-32 px-margin-mobile flex flex-col gap-section-gap">
+<!-- Header Section -->
+<header class="flex flex-col gap-unit">
+<h1 class="font-display-lg text-display-lg text-on-surface">Sessiz gelişimini izle</h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant">Skor değil; gerçek ilerlemeyi fark et.</p>
+</header>
+<!-- Insights Bento Grid -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Full Width Metric: Urges Managed -->
+<article class="col-span-2 relative overflow-hidden rounded-[32px] bg-secondary-container p-6 min-h-[160px] flex flex-col justify-between">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-surface-bright/40 shape-blob blur-xl"></div>
+<div class="absolute -left-8 -bottom-8 w-40 h-40 bg-primary-fixed/30 shape-blob blur-lg"></div>
+<div class="relative z-10 flex justify-between items-start">
+<div>
+<span class="font-label-md text-label-md text-on-secondary-container uppercase tracking-wider">Dalgaları Aşmak</span>
+<h2 class="font-body-md text-body-md text-on-surface mt-1">Yönetilen Dürtüler</h2>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="relative z-10 flex items-baseline gap-2 mt-4">
+<span class="font-display-lg text-[64px] leading-none tracking-tighter text-on-surface">14</span>
+<span class="font-body-md text-body-md text-on-surface-variant">kez duraksadın</span>
+</div>
+</article>
+<!-- Half Width Metric: Reflection Frequency -->
+<article class="col-span-1 rounded-[28px] bg-tertiary-fixed p-5 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary">psychology</span>
+</div>
+<div>
+<span class="font-display-lg text-[40px] leading-none text-on-tertiary-container">8</span>
+<h3 class="font-label-md text-label-md text-on-tertiary-container mt-2">İçe Dönüş Günü</h3>
+<p class="font-body-md text-[13px] leading-tight text-on-tertiary-container/80 mt-1">Bu ay tutulan notlar</p>
+</div>
+</article>
+<!-- Half Width Metric: Current Pace -->
+<article class="col-span-1 rounded-[28px] bg-primary-fixed p-5 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary">self_improvement</span>
+</div>
+<div>
+<span class="font-headline-md text-headline-md text-on-primary-container">Sakin</span>
+<h3 class="font-label-md text-label-md text-on-primary-container mt-2">Şu Anki Ritim</h3>
+<p class="font-body-md text-[13px] leading-tight text-on-primary-container/80 mt-1">Kendine zaman tanıyorsun</p>
+</div>
+</article>
+<!-- Full Width Qualitative Insight -->
+<article class="col-span-2 rounded-[28px] bg-surface-bright shadow-[0_8px_24px_rgba(83,98,79,0.04)] p-6 border border-outline-variant/20 relative">
+<!-- Subtle background texture indication -->
+<div class="absolute inset-0 opacity-[0.02] mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); pointer-events: none;"></div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined" style="font-size: 20px;">menu_book</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Günlükten Yansıyanlar</span>
+</div>
+<p class="font-support-text text-support-text text-on-surface-variant italic leading-relaxed">
+                            "Bu hafta, akşam saatlerindeki zorlanmalara karşı daha naziktin. Kendini yargılamadan izlemeyi başarıyorsun; bu sessiz bir güç."
+                        </p>
+</div>
+</article>
+</div>
+<!-- Spacing at bottom for nav -->
+<div class="h-8"></div>
+</main>
+<!-- Shared Component: BottomNavBar -->
+<!-- Note: Using absolute instead of fixed to stay within the device presentation frame -->
+<nav class="absolute bottom-0 left-0 right-0 z-50 flex justify-around items-center px-margin-mobile py-4 max-w-[720px] mx-auto bg-surface-container-low/90 backdrop-blur-md rounded-t-xl shadow-[0_-20px_40px_rgba(83,98,79,0.06)] shadow-2xl">
+<!-- Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home_max</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</button>
+<!-- Journal (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-label-md font-label-md mt-1">Journal</span>
+</button>
+<!-- Path (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 scale-90 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+<span class="text-label-md font-label-md mt-1">Path</span>
+</button>
+<!-- Settings (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1.5 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md mt-1">Settings</span>
+</button>
+</nav>
+</div>
+</body></html>

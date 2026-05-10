@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Still - Emotion Check-in</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-secondary": "#ffffff",
+                        "primary": "#53624f",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#605e57",
+                        "on-primary-fixed": "#121f10",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb5a1",
+                        "on-tertiary-container": "#501f11",
+                        "on-primary-container": "#243221",
+                        "inverse-on-surface": "#f0f1f1",
+                        "inverse-surface": "#2f3132",
+                        "surface-container-highest": "#e2e2e3",
+                        "primary-fixed": "#d7e7cf",
+                        "surface-variant": "#e2e2e3",
+                        "on-surface-variant": "#444841",
+                        "on-primary-fixed-variant": "#3c4b38",
+                        "surface-tint": "#53624f",
+                        "on-secondary-fixed-variant": "#484740",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "tertiary": "#8b4e3d",
+                        "primary-fixed-dim": "#bbcbb3",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-secondary-fixed": "#1c1c16",
+                        "secondary-container": "#e6e2d8",
+                        "outline-variant": "#c4c8bf",
+                        "surface-dim": "#dadadb",
+                        "on-surface": "#1a1c1d",
+                        "tertiary-container": "#cb836f",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9fa",
+                        "inverse-primary": "#bbcbb3",
+                        "surface": "#f9f9fa",
+                        "surface-bright": "#f9f9fa",
+                        "on-tertiary-fixed": "#380d03",
+                        "on-background": "#1a1c1d",
+                        "error": "#ba1a1a",
+                        "primary-container": "#8a9a84",
+                        "on-secondary-container": "#66645d",
+                        "surface-container-high": "#e8e8e9",
+                        "on-tertiary-fixed-variant": "#6f3728",
+                        "outline": "#747871"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "48px",
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Literata"],
+                        "support-text": ["Literata"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "display-lg": ["Literata"],
+                        "headline-sm": ["Literata"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                        "support-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["22px", {"lineHeight": "30px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .emotion-card:hover {
+            box-shadow: 0 10px 30px rgba(83, 98, 79, 0.08);
+        }
+        .emotion-card.active {
+            background-color: theme('colors.primary-fixed');
+            color: theme('colors.on-primary-container');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen selection:bg-primary-fixed">
+<nav class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md">
+<div class="max-w-[720px] mx-auto px-margin-mobile h-16 flex items-center justify-between">
+<button class="p-2 -ml-2 text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-1 px-8">
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 45%;"></div>
+</div>
+</div>
+<div class="w-10"></div>
+</div>
+</nav>
+<main class="max-w-[720px] mx-auto px-margin-mobile pt-10 pb-32">
+<header class="mb-section-gap">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-4">
+                Which emotion is strongest today?
+            </h1>
+<p class="font-support-text text-support-text text-on-surface-variant leading-relaxed">
+                Identifying your feelings is the first step toward regulation.
+            </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button class="emotion-card group flex items-center justify-between p-6 bg-surface-container-low rounded-xl border border-transparent transition-all duration-300 text-left hover:border-outline-variant active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="cloud">cloud</span>
+<span class="font-body-lg text-body-lg">Loneliness</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-[.active]:opacity-100" data-icon="check_circle">check_circle</span>
+</button>
+<button class="emotion-card group flex items-center justify-between p-6 bg-surface-container-low rounded-xl border border-transparent transition-all duration-300 text-left hover:border-outline-variant active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-body-lg text-body-lg">Anger</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-[.active]:opacity-100" data-icon="check_circle">check_circle</span>
+</button>
+<button class="emotion-card group flex items-center justify-between p-6 bg-surface-container-low rounded-xl border border-transparent transition-all duration-300 text-left hover:border-outline-variant active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="cyclone">cyclone</span>
+<span class="font-body-lg text-body-lg">Confusion</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-[.active]:opacity-100" data-icon="check_circle">check_circle</span>
+</button>
+<button class="emotion-card group flex items-center justify-between p-6 bg-surface-container-low rounded-xl border border-transparent transition-all duration-300 text-left hover:border-outline-variant active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="water_drop">water_drop</span>
+<span class="font-body-lg text-body-lg">Sadness</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-[.active]:opacity-100" data-icon="check_circle">check_circle</span>
+</button>
+<button class="emotion-card group flex items-center justify-between p-6 bg-surface-container-low rounded-xl border border-transparent transition-all duration-300 text-left hover:border-outline-variant active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="waves">waves</span>
+<span class="font-body-lg text-body-lg">Anxiety</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-[.active]:opacity-100" data-icon="check_circle">check_circle</span>
+</button>
+<button class="emotion-card group flex items-center justify-between p-6 bg-surface-container-low rounded-xl border border-transparent transition-all duration-300 text-left hover:border-outline-variant active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl" data-icon="circle">circle</span>
+<span class="font-body-lg text-body-lg">Numbness</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-[.active]:opacity-100" data-icon="check_circle">check_circle</span>
+</button>
+</div>
+<div class="mt-section-gap rounded-2xl overflow-hidden relative aspect-video shadow-xl">
+<img alt="Calm natural scene" class="w-full h-full object-cover" data-alt="A serene and tranquil photograph of tall grass swaying gently in a soft morning mist. The color palette consists of muted sage greens, warm creams, and earthy sand tones, reflecting a peaceful and grounded aesthetic. The lighting is soft and diffused, creating a hazy, dreamlike atmosphere that feels non-judgmental and steady. The overall composition is minimalist and organic, focusing on the quiet texture of nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUMAiBly_Gq1QPgu3AwgOHnLdA71jTf1aASbPHnqmWwWBlulvfvAXSf27i4eoOYSeN73sPgVkf9Iyjipz6aYIw62XvQr6G2_nhYxSM3zWw6vfl6qhKHybKQr2gNW1P5P9RPuCaPCKu2IwwTWs8XuHjLh6N-fZbsC5xHBrS-WJV7sew5FCe_nvJInt7827uF8L3D82kjiEKgjTCpEOIJxrGo4DEWwyxUrAHOM5d9JQ8PHC8SMgzjPNJ36pWoB5ZRpQ65qv_V36CxwM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-lg pt-4 pb-8 border-none">
+<div class="max-w-[720px] mx-auto px-margin-mobile">
+<button class="w-full h-14 bg-primary text-on-primary font-label-md text-label-md rounded-full shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all duration-200">
+                Continue
+            </button>
+</div>
+</footer>
+<div class="fixed bottom-24 right-6 md:right-[calc(50%-336px)] z-40">
+<button class="w-14 h-14 bg-tertiary-container text-on-tertiary-container rounded-full shadow-xl flex items-center justify-center animate-pulse hover:animate-none transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="air" style="font-variation-settings: 'wght' 700;">air</span>
+</button>
+</div>
+</body></html>

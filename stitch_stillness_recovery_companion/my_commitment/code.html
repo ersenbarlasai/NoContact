@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commitment Contract | Still</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cac6bd",
+                        "on-secondary": "#ffffff",
+                        "primary": "#53624f",
+                        "surface-container-low": "#f3f3f4",
+                        "secondary": "#605e57",
+                        "on-primary-fixed": "#121f10",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb5a1",
+                        "on-tertiary-container": "#501f11",
+                        "on-primary-container": "#243221",
+                        "inverse-on-surface": "#f0f1f1",
+                        "inverse-surface": "#2f3132",
+                        "surface-container-highest": "#e2e2e3",
+                        "primary-fixed": "#d7e7cf",
+                        "surface-variant": "#e2e2e3",
+                        "on-surface-variant": "#444841",
+                        "on-primary-fixed-variant": "#3c4b38",
+                        "surface-tint": "#53624f",
+                        "on-secondary-fixed-variant": "#484740",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbd1",
+                        "tertiary": "#8b4e3d",
+                        "primary-fixed-dim": "#bbcbb3",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-secondary-fixed": "#1c1c16",
+                        "secondary-container": "#e6e2d8",
+                        "outline-variant": "#c4c8bf",
+                        "surface-dim": "#dadadb",
+                        "on-surface": "#1a1c1d",
+                        "tertiary-container": "#cb836f",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9fa",
+                        "inverse-primary": "#bbcbb3",
+                        "surface": "#f9f9fa",
+                        "surface-bright": "#f9f9fa",
+                        "on-tertiary-fixed": "#380d03",
+                        "on-background": "#1a1c1d",
+                        "error": "#ba1a1a",
+                        "primary-container": "#8a9a84",
+                        "on-secondary-container": "#66645d",
+                        "surface-container-high": "#e8e8e9",
+                        "on-tertiary-fixed-variant": "#6f3728",
+                        "outline": "#747871"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "48px",
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["literata"],
+                        "support-text": ["literata"],
+                        "body-md": ["manrope"],
+                        "body-lg": ["manrope"],
+                        "label-md": ["manrope"],
+                        "display-lg": ["literata"],
+                        "headline-sm": ["literata"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                        "support-text": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["22px", {"lineHeight": "30px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .commitment-card-shadow {
+            box-shadow: 0 20px 40px rgba(83, 98, 79, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="bg-surface dark:bg-surface-dim full-width top-0 sticky z-50">
+<nav class="flex justify-between items-center px-margin-mobile w-full h-16 max-w-[720px] mx-auto">
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Still</h1>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity Active: scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</button>
+</nav>
+</header>
+<main class="max-w-[720px] mx-auto px-margin-mobile pt-10 pb-section-gap">
+<!-- Header Section -->
+<section class="mb-section-gap text-center">
+<span class="font-label-md text-label-md text-tertiary-container uppercase tracking-widest mb-4 block">The Inner Covenant</span>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-6">A promise to yourself.</h2>
+<p class="font-support-text text-support-text text-on-surface-variant max-w-[500px] mx-auto">
+                Healing isn't a linear path, but a series of intentional choices. Today, you are choosing your peace over your impulses.
+            </p>
+</section>
+<!-- Commitment Items (Asymmetric Layout) -->
+<section class="grid grid-cols-1 gap-8 mb-section-gap">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl commitment-card-shadow border-l-4 border-primary/20">
+<div class="flex items-start gap-6">
+<div class="bg-primary-fixed w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="emergency">emergency</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Opening SOS before contacting my ex</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">I will give my emotions ten minutes of breathing space before acting on the urge to reach out.</p>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl commitment-card-shadow border-l-4 border-tertiary/20">
+<div class="flex items-start gap-6">
+<div class="bg-tertiary-fixed w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="visibility_off">visibility_off</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Not using no-contact as manipulation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">My silence is a tool for my own recovery, not a strategy to provoke a response from someone else.</p>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl commitment-card-shadow border-l-4 border-primary-container/20">
+<div class="flex items-start gap-6">
+<div class="bg-primary-fixed-dim w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="psychology_alt">psychology_alt</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Noticing social media checking as a trigger</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">I acknowledge that looking for updates is an attempt to self-soothe that only increases my anxiety.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Anchor -->
+<section class="mb-section-gap overflow-hidden rounded-2xl relative h-[240px]">
+<img alt="Grounded landscape" class="w-full h-full object-cover grayscale opacity-80" data-alt="A serene and grounded landscape photograph of a misty forest at dawn. The lighting is soft and high-key, creating a warm minimalist aesthetic with muted greens and sandy creams. The composition is calm and spacious, evoking a sense of Visual Silence and emotional stability. Thin fog weaves between textured tree trunks, mimicking the tactile feel of high-quality linen journal paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6V08yEn79hKrXqFqfbR82LgLk49i8uvoT5Zqq93F-6Wdo5l0t0h85buqZS1FGwGTmka8YWPMTtirLzgYV6cYC2t0IfD1TkNFOKAcvqSmkdRkG9YnY12k1P88UV4jHOO3fxURI3bHM5Sw4RLbifrephbDhl6tRCiIkkZpHaphJ7qTWMM70m9BgkONzMal-cddCVOpBZ96dT8mtauJFKRDXUW-acTAYIz4Vuq13Jx_xHoSy6ITijzaju35AWeOQWoQHHufYPldzoKY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="p-6 bg-surface/80 backdrop-blur-md rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary scale-150" data-icon="draw">draw</span>
+</div>
+</div>
+</section>
+<!-- Commitment Action -->
+<section class="flex flex-col items-center justify-center py-8">
+<p class="text-label-md font-label-md text-on-surface-variant mb-12 italic">Hold your finger on the button to seal your commitment.</p>
+<div class="relative group cursor-pointer">
+<!-- Outer Progress Circle (Static Representation) -->
+<div class="absolute -inset-4 border-2 border-primary/10 rounded-full scale-100 group-active:scale-110 transition-transform duration-700"></div>
+<div class="absolute -inset-4 border-2 border-primary border-t-transparent rounded-full rotate-45 animate-[spin_8s_linear_infinite] opacity-30"></div>
+<!-- Main Button -->
+<button class="relative bg-primary text-on-primary w-48 h-48 rounded-full flex flex-col items-center justify-center shadow-xl active:scale-95 transition-all duration-300 ease-out z-10">
+<span class="material-symbols-outlined text-4xl mb-2" data-icon="fingerprint" data-weight="fill" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+<span class="font-label-md text-label-md tracking-widest">HOLD TO COMMIT</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-low/90 dark:bg-surface-container/90 backdrop-blur-md shadow-[0_-20px_40px_rgba(83,98,79,0.06)] rounded-t-xl max-w-[720px] mx-auto">
+<div class="flex justify-around items-center px-margin-mobile py-4 h-20">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="home_max">home_max</span>
+<span class="text-label-md font-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="edit_note">edit_note</span>
+<span class="text-label-md font-label-md">Journal</span>
+</div>
+<!-- Active Tab: Path (Semantic mapping for Commitment/Contract journey) -->
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 scale-90 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="auto_graph" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+<span class="text-label-md font-label-md">Path</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-5 py-1.5 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</div>
+</div>
+</footer>
+<!-- Breath SOS Component (Floating) -->
+<div class="fixed bottom-24 right-6 md:right-[calc(50%-330px)] z-50">
+<button class="bg-tertiary text-on-tertiary w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:opacity-90 transition-opacity animate-pulse">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+</button>
+</div>
+</body></html>
