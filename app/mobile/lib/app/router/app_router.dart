@@ -6,7 +6,6 @@ import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/sos/presentation/sos_screen.dart';
 import '../../features/mood_journal/presentation/mood_journal_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
-import '../../features/settings/presentation/beta_feedback_screen.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 import '../bootstrap/app_startup_controller.dart';
 import '../../features/onboarding/presentation/onboarding_controller.dart';
@@ -32,7 +31,6 @@ const _freeRouteSet = {'/splash', '/onboarding', '/', '/sos', '/subscription', '
 const _routeFeatureMap = <String, PremiumFeature>{
   '/mood-journal':   PremiumFeature.moodJournal,
   '/letters-vault':  PremiumFeature.lettersVault,
-  '/beta-feedback':  PremiumFeature.betaFeedback,
   '/recovery-path':  PremiumFeature.recoveryPath,
   '/insights':       PremiumFeature.insights,
   '/support-center': PremiumFeature.supportCenter,
@@ -139,13 +137,6 @@ final appRouter = Provider<GoRouter>((ref) {
             path: '/support-center',
             pageBuilder: (context, state) => StillPageTransition(
               child: const SupportCenterScreen(),
-              type: StillTransitionType.fadeThrough,
-            ),
-          ),
-          GoRoute(
-            path: '/beta-feedback',
-            pageBuilder: (context, state) => StillPageTransition(
-              child: const BetaFeedbackScreen(),
               type: StillTransitionType.fadeThrough,
             ),
           ),

@@ -54,24 +54,10 @@ class SettingsScreen extends ConsumerWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      leading: const Icon(Icons.person_outline, color: AppColors.primary),
-                      title: const Text('Profil Ayarları'),
-                      trailing: const Icon(Icons.chevron_right, size: 20, color: AppColors.outlineVariant),
-                      onTap: () {},
-                    ),
-                    const Divider(height: 1, indent: 56),
-                    ListTile(
                       leading: const Icon(Icons.star_outline, color: AppColors.primary),
                       title: const Text('Plan ve Limitler'),
                       trailing: const Icon(Icons.chevron_right, size: 20, color: AppColors.outlineVariant),
                       onTap: () => context.push('/subscription'),
-                    ),
-                    const Divider(height: 1, indent: 56),
-                    ListTile(
-                      leading: const Icon(Icons.feedback_outlined, color: AppColors.primary),
-                      title: const Text('Beta geri bildirimi gönder'),
-                      trailing: const Icon(Icons.open_in_new, size: 20, color: AppColors.outlineVariant),
-                      onTap: () => context.push('/beta-feedback'),
                     ),
                     const Divider(height: 1, indent: 56),
                     Consumer(
