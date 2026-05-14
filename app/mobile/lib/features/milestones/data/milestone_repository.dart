@@ -10,7 +10,7 @@ class MilestoneRepository {
     if (jsonString == null) return [];
 
     try {
-      final List<dynamic> decoded = json.decode(jsonString);
+      final decoded = json.decode(jsonString) as List<dynamic>;
       return decoded.map((item) => Milestone.fromJson(item as Map<String, dynamic>)).toList();
     } catch (e) {
       return [];

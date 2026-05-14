@@ -67,9 +67,9 @@ class _BottomNavBar extends StatelessWidget {
                   onTap: () => context.go('/mood-journal'),
                 ),
                 _NavItem(
-                  icon: Icons.auto_graph,
-                  label: 'Yolum',
-                  isActive: location == '/letters-vault', // Shared with path for now
+                  icon: Icons.history_edu,
+                  label: 'Kasa',
+                  isActive: location.startsWith('/letters-vault'),
                   onTap: () => context.go('/letters-vault'),
                 ),
                 _NavItem(

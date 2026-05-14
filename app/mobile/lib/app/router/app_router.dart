@@ -15,6 +15,10 @@ import '../../features/letters_vault/presentation/letter_editor_screen.dart';
 import '../../features/subscription/presentation/subscription_screen.dart';
 import '../../features/recovery_path/presentation/recovery_path_screen.dart';
 import '../../features/insights/presentation/insights_screen.dart';
+import '../../features/support_system/presentation/support_center_screen.dart';
+import '../../features/library/presentation/library_screen.dart';
+import '../../features/library/presentation/library_detail_screen.dart';
+import '../../features/silent_reply/presentation/silent_reply_screen.dart';
 import '../presentation/main_scaffold.dart';
 import '../../core/navigation/still_page_transitions.dart';
 import '../../data/models/unsent_letter.dart';
@@ -122,9 +126,42 @@ final appRouter = Provider<GoRouter>((ref) {
             ),
           ),
           GoRoute(
+            path: '/support-center',
+            pageBuilder: (context, state) => StillPageTransition(
+              child: const SupportCenterScreen(),
+              type: StillTransitionType.fadeThrough,
+            ),
+          ),
+          GoRoute(
             path: '/beta-feedback',
             pageBuilder: (context, state) => StillPageTransition(
               child: const BetaFeedbackScreen(),
+              type: StillTransitionType.fadeThrough,
+            ),
+          ),
+          GoRoute(
+            path: '/library',
+            pageBuilder: (context, state) => StillPageTransition(
+              child: const LibraryScreen(),
+              type: StillTransitionType.fadeThrough,
+            ),
+            routes: [
+              GoRoute(
+                path: ':id',
+                pageBuilder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  return StillPageTransition(
+                    child: LibraryDetailScreen(itemId: id),
+                    type: StillTransitionType.fadeThrough,
+                  );
+                },
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/silent-reply',
+            pageBuilder: (context, state) => StillPageTransition(
+              child: const SilentReplyScreen(),
               type: StillTransitionType.fadeThrough,
             ),
           ),

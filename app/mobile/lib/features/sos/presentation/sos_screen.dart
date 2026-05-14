@@ -4,7 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'dart:async';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/design_system/emotional_background.dart';
+import '../../../core/design_system/emotional_tokens.dart';
 import '../../onboarding/presentation/onboarding_controller.dart';
+import '../../support_system/presentation/support_controller.dart';
 import 'sos_controller.dart';
 
 class SosScreen extends ConsumerStatefulWidget {
@@ -46,58 +49,63 @@ class _SosScreenState extends ConsumerState<SosScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Top Bar
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.close, color: AppColors.onSurfaceVariant),
-                    onPressed: () => context.go('/'),
-                  ),
-                  Text(
-                    'STILL',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          letterSpacing: 4,
-                          color: AppColors.primary,
-                        ),
-                  ),
-                  const SizedBox(width: 48), // Balance for leading icon
-                ],
+      backgroundColor: Colors.transparent,
+      body: EmotionalBackground(
+        variant: EmotionalVariant.sos,
+        child: SafeArea(
+          child: Column(
+            children: [
+              // Top Bar
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.close, color: AppColors.onSurfaceVariant),
+                      onPressed: () => context.go('/'),
+                    ),
+                    Text(
+                      'KORUMA ALANI',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            letterSpacing: 4,
+                            color: AppColors.primary,
+                            fontFamily: 'Manrope',
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    const SizedBox(width: 48), // Balance for leading icon
+                  ],
+                ),
               ),
-            ),
-            
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: StillProgressIndicator(
-                currentStep: _currentPage,
-                totalSteps: 4,
+              
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: StillProgressIndicator(
+                  currentStep: _currentPage,
+                  totalSteps: 4,
+                ),
               ),
-            ),
-            
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                physics: const NeverScrollableScrollPhysics(),
-                onPageChanged: (page) => setState(() => _currentPage = page),
-                children: [
-                  _StepBreathe(onNext: _nextPage),
-                  _StepRemember(onNext: _nextPage),
-                  _StepWrite(onNext: _nextPage),
-                  _StepChoose(onComplete: () async {
-                    final router = GoRouter.of(context);
-                    await ref.read(sosControllerProvider.notifier).finishSession();
-                    if (mounted) router.go('/');
-                  }),
-                ],
+              
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (page) => setState(() => _currentPage = page),
+                  children: [
+                    _StepBreathe(onNext: _nextPage),
+                    _StepRemember(onNext: _nextPage),
+                    _StepWrite(onNext: _nextPage),
+                    _StepChoose(onComplete: () async {
+                      final router = GoRouter.of(context);
+                      await ref.read(sosControllerProvider.notifier).finishSession();
+                      if (mounted) router.go('/');
+                    }),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -174,60 +182,73 @@ class _StepBreatheState extends State<_StepBreathe> with TickerProviderStateMixi
         ),
         const Spacer(),
         
-        // Breathing Component
+        // Breathing Component (Organic Soft Aura)
         AnimatedBuilder(
           animation: _breathingController,
           builder: (context, child) {
             return SizedBox(
-              width: 300,
-              height: 300,
+              width: 320,
+              height: 320,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  // Outer soft glow
+                  // Outer misty aura
                   Container(
-                    width: 280 * _scaleAnimation.value,
-                    height: 280 * _scaleAnimation.value,
+                    width: 300 * _scaleAnimation.value,
+                    height: 300 * _scaleAnimation.value,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.primary.withOpacity(0.05 * _opacityAnimation.value),
-                    ),
-                  ),
-                  // Medium shell
-                  Container(
-                    width: 220 * _scaleAnimation.value,
-                    height: 220 * _scaleAnimation.value,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: AppColors.primary.withOpacity(0.2),
-                        width: 1,
+                      gradient: RadialGradient(
+                        colors: [
+                          AppColors.primary.withValues(alpha: 0.15 * _opacityAnimation.value),
+                          AppColors.primary.withValues(alpha: 0.0),
+                        ],
                       ),
                     ),
                   ),
-                  // Main breathing element
+                  // Secondary glow
+                  Container(
+                    width: 240 * _scaleAnimation.value,
+                    height: 240 * _scaleAnimation.value,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: RadialGradient(
+                        colors: [
+                          AppColors.primary.withValues(alpha: 0.2 * _opacityAnimation.value),
+                          AppColors.primary.withValues(alpha: 0.0),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Core aura
                   Container(
                     width: 160 * _scaleAnimation.value,
                     height: 160 * _scaleAnimation.value,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.primaryFixed,
+                      color: AppColors.primary.withValues(alpha: 0.1),
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.primary.withOpacity(0.1),
-                          blurRadius: 30,
-                          spreadRadius: 5,
+                          color: AppColors.primary.withValues(alpha: 0.05 * _opacityAnimation.value),
+                          blurRadius: 60,
+                          spreadRadius: 20,
                         ),
                       ],
                     ),
                     child: Center(
-                      child: Text(
-                        _breathLabel,
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              color: AppColors.primary,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 18,
-                            ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _breathLabel,
+                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  color: AppColors.primary,
+                                  fontStyle: FontStyle.italic,
+                                  fontFamily: 'Literata',
+                                  fontSize: 20,
+                                ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -251,13 +272,16 @@ class _StepBreatheState extends State<_StepBreathe> with TickerProviderStateMixi
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: StillPrimaryButton(
             label: 'DAHA SAKİN HİSSEDİYORUM',
-            onPressed: _secondsLeft < 58 ? widget.onNext : null,
+            onPressed: _secondsLeft < 52 ? widget.onNext : null,
           ),
         ),
         const SizedBox(height: 16),
         Text(
           'Kalan süre: $_secondsLeft saniye',
-          style: Theme.of(context).textTheme.labelSmall,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+            color: AppColors.onSurfaceVariant,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 32),
       ],
@@ -273,6 +297,8 @@ class _StepRemember extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(onboardingControllerProvider);
+    final supportState = ref.watch(supportControllerProvider);
+    final pinnedCards = supportState.cards.where((c) => c.isPinned).toList();
     
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32.0),
@@ -284,33 +310,66 @@ class _StepRemember extends ConsumerWidget {
             subtitle: 'Healing doğrusal değildir, ancak bilinçli seçimlerle ilerler.',
           ),
           const SizedBox(height: 32),
-          StillCard(
-            color: AppColors.tertiaryFixed.withOpacity(0.3),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Icon(Icons.favorite, color: AppColors.tertiary),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hatırla, ${profile.name}',
-                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18),
+          
+          if (pinnedCards.isNotEmpty)
+            ...pinnedCards.map((card) => Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: StillCard(
+                color: AppColors.tertiaryFixed.withOpacity(0.3),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(Icons.favorite, color: AppColors.tertiary),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            card.title,
+                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            card.body,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Şu an ${profile.dominantEmotion.toLowerCase()} hissediyorsun çünkü "${profile.reason}" seni buraya getirdi.',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
+            ))
+          else
+            StillCard(
+              color: AppColors.tertiaryFixed.withOpacity(0.3),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.favorite, color: AppColors.tertiary),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hatırla, ${profile.name}',
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Şu an ${profile.dominantEmotion.toLowerCase()} hissediyor olabilirsin. Neden başladığını hatırla: "${profile.reason}"',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 40),
+          
+          const SizedBox(height: 24),
           const StillSectionHeader(title: 'Kendine verdiğin sözler'),
           const SizedBox(height: 16),
           _buildCommitmentItem(
@@ -400,17 +459,17 @@ class _StepWriteState extends ConsumerState<_StepWrite> {
           Expanded(
             child: Stack(
               children: [
-                StillCard(
+                StillGlassCard(
                   padding: const EdgeInsets.all(24),
-                  color: AppColors.surfaceContainerLowest,
+                  opacity: 0.4,
                   child: TextField(
                     controller: _controller,
                     maxLines: null,
                     expands: true,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6, color: AppColors.onSurface),
                     decoration: InputDecoration(
                       hintText: 'Ona ne söylemek istiyorsan buraya yaz, asla duyulmayacak olsa bile...',
-                      hintStyle: TextStyle(color: AppColors.outline.withOpacity(0.5), fontStyle: FontStyle.italic),
+                      hintStyle: TextStyle(color: AppColors.outline.withOpacity(0.8), fontStyle: FontStyle.italic),
                       border: InputBorder.none,
                       fillColor: Colors.transparent,
                     ),

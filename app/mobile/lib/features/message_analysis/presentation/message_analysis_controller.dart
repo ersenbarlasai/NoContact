@@ -1,19 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../subscription/presentation/entitlement_controller.dart';
+import '../../onboarding/presentation/onboarding_controller.dart';
+import '../../../data/repositories/providers.dart';
 import '../domain/message_analysis_result.dart';
-import '../application/mock_message_analyzer.dart';
 
 class MessageAnalysisState {
   final String inputText;
   final bool isAnalyzing;
   final MessageAnalysisResult? result;
   final String? error;
+  final bool needsConsent;
 
   MessageAnalysisState({
     this.inputText = '',
     this.isAnalyzing = false,
     this.result,
     this.error,
+    this.needsConsent = false,
   });
 
   MessageAnalysisState copyWith({
@@ -21,6 +24,7 @@ class MessageAnalysisState {
     bool? isAnalyzing,
     MessageAnalysisResult? result,
     String? error,
+    bool? needsConsent,
     bool clearResult = false,
   }) {
     return MessageAnalysisState(
@@ -28,14 +32,28 @@ class MessageAnalysisState {
       isAnalyzing: isAnalyzing ?? this.isAnalyzing,
       result: clearResult ? null : (result ?? this.result),
       error: error ?? this.error,
+      needsConsent: needsConsent ?? this.needsConsent,
     );
   }
 }
 
-
 class MessageAnalysisController extends StateNotifier<MessageAnalysisState> {
   final Ref _ref;
-  MessageAnalysisController(this._ref) : super(MessageAnalysisState());
+  MessageAnalysisController(this._ref) : super(MessageAnalysisState()) {
+    _checkConsent();
+  }
+
+  void _checkConsent() {
+    final profile = _ref.read(onboardingControllerProvider);
+    if (!profile.aiConsentAccepted) {
+      state = state.copyWith(needsConsent: true);
+    }
+  }
+
+  Future<void> acceptConsent() async {
+    await _ref.read(onboardingControllerProvider.notifier).acceptAiConsent();
+    state = state.copyWith(needsConsent: false);
+  }
 
   void updateInput(String text) {
     state = state.copyWith(inputText: text, error: null);
@@ -48,28 +66,31 @@ class MessageAnalysisController extends StateNotifier<MessageAnalysisState> {
       return;
     }
 
-    final entitlement = _ref.read(entitlementControllerProvider);
-    if (!entitlement.canUseMessageAnalysis) {
-      state = state.copyWith(
-        error: 'Günlük limitine ulaştın. Gerçek AI analizi yayınlandığında daha yüksek limitler Premium’da olacak.',
-      );
+    if (state.needsConsent) {
+      state = state.copyWith(error: 'Analiz için önce veri izni vermelisin.');
       return;
     }
 
     state = state.copyWith(isAnalyzing: true, error: null, clearResult: true);
 
     try {
-      final result = await MockMessageAnalyzer.analyze(input);
+      final repo = _ref.read(messageAnalysisRepositoryProvider);
+      final result = await repo.analyzeMessage(input);
+      
       state = state.copyWith(isAnalyzing: false, result: result);
-      // Increment usage after successful analysis
+      
+      // Local usage increment (optional, server handles it now but useful for UI state)
       await _ref.read(entitlementControllerProvider.notifier).incrementUsage();
     } catch (e) {
-      state = state.copyWith(isAnalyzing: false, error: 'Analiz sırasında bir hata oluştu.');
+      state = state.copyWith(
+        isAnalyzing: false, 
+        error: e.toString().replaceFirst('Exception: ', ''),
+      );
     }
   }
 
   void clear() {
-    state = MessageAnalysisState();
+    state = MessageAnalysisState(needsConsent: !_ref.read(onboardingControllerProvider).aiConsentAccepted);
   }
 
   void resetResult() {

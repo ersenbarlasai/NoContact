@@ -5,7 +5,15 @@ enum RiskLevel {
 }
 
 enum RecommendedAction {
+  wait,
   doNotReply,
-  wait24Hours,
   replyWithBoundary,
+  useSos,
+  writeUnsentLetter,
+}
+
+enum AnalysisConfidence {
+  low,
+  medium,
+  high,
 }

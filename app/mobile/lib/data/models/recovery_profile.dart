@@ -18,6 +18,7 @@ class RecoveryProfile with _$RecoveryProfile {
     @JsonKey(name: 'commitment_accepted_at') DateTime? commitmentAcceptedAt,
     @JsonKey(name: 'onboarding_completed') @Default(false) bool isOnboardingCompleted,
     @JsonKey(name: 'app_disclaimer_seen') @Default(false) bool appDisclaimerSeen,
+    @JsonKey(name: 'ai_consent_accepted') @Default(false) bool aiConsentAccepted,
   }) = _RecoveryProfile;
 
   factory RecoveryProfile.fromJson(Map<String, dynamic> json) =>

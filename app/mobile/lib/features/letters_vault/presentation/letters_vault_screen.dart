@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/design_system/emotional_background.dart';
 import '../../../data/models/unsent_letter.dart';
 import 'letters_vault_controller.dart';
 
@@ -18,67 +19,118 @@ class LettersVaultScreen extends ConsumerWidget {
 
     return PrivacyLockGate(
       child: Scaffold(
-        backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Top Bar
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back, color: AppColors.onSurfaceVariant),
-                    onPressed: () => context.go('/'),
+        backgroundColor: Colors.transparent,
+        body: EmotionalBackground(
+          variant: EmotionalVariant.recovery,
+          child: SafeArea(
+            child: Column(
+              children: [
+                // Top Bar
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back, color: AppColors.onSurfaceVariant),
+                        onPressed: () => context.go('/'),
+                      ),
+                      Text(
+                        'MEKTUP KASASI',
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                              letterSpacing: 2,
+                              color: AppColors.primary,
+                            ),
+                      ),
+                      const SizedBox(width: 48),
+                    ],
                   ),
-                  Text(
-                    'MEKTUP KASASI',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          letterSpacing: 2,
-                          color: AppColors.primary,
+                ),
+                
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: StillPrivacyNotice(
+                    text: 'Buraya yazdıkların bu cihazda şifreli saklanır ve asla kimseye gönderilmez.',
+                  ),
+                ),
+                
+                Expanded(
+                  child: state.isLoading
+                      ? const Center(child: StillProgressIndicator(currentStep: 1, totalSteps: 3))
+                      : DefaultTabController(
+                          length: 2,
+                          child: Column(
+                            children: [
+                              const TabBar(
+                                labelColor: AppColors.primary,
+                                unselectedLabelColor: AppColors.onSurfaceVariant,
+                                indicatorColor: AppColors.primary,
+                                tabs: [
+                                  Tab(text: 'Aktif Mektuplar'),
+                                  Tab(text: 'Arşivlenenler'),
+                                ],
+                              ),
+                              Expanded(
+                                child: TabBarView(
+                                  children: [
+                                    // Aktif Mektuplar Tab
+                                    state.activeLetters.isEmpty
+                                        ? const _EmptyState(
+                                            title: 'Henüz burada sakladığın bir mektup yok.',
+                                            subtitle: 'Yazmak istediğinde burası güvenli alanın.',
+                                          )
+                                        : ListView.builder(
+                                            padding: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 100),
+                                            itemCount: state.activeLetters.length,
+                                            itemBuilder: (context, index) {
+                                              return _LetterCard(letter: state.activeLetters[index]);
+                                            },
+                                          ),
+                                    // Arşivlenenler Tab
+                                    state.archivedLetters.isEmpty
+                                        ? const _EmptyState(
+                                            title: 'Henüz arşivlediğin bir mektup yok.',
+                                            subtitle: 'Hazır olduğunda bazı mektupları gözünün önünden kaldırabilirsin.',
+                                          )
+                                        : ListView.builder(
+                                            padding: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 100),
+                                            itemCount: state.archivedLetters.length,
+                                            itemBuilder: (context, index) {
+                                              return _LetterCard(letter: state.archivedLetters[index], isArchived: true);
+                                            },
+                                          ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                  ),
-                  const SizedBox(width: 48),
-                ],
-              ),
+                ),
+              ],
             ),
-            
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: StillPrivacyNotice(
-                text: 'Buraya yazdıkların bu cihazda şifreli saklanır ve asla kimseye gönderilmez.',
-              ),
-            ),
-            
-            Expanded(
-              child: state.isLoading
-                  ? const Center(child: StillProgressIndicator(currentStep: 1, totalSteps: 3))
-                  : state.letters.isEmpty
-                      ? const _EmptyState()
-                      : _LettersList(activeLetters: state.activeLetters, archivedLetters: state.archivedLetters),
-            ),
-          ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            final draft = ref.read(lettersVaultControllerProvider.notifier).createDraft();
+            context.push('/letters-vault/editor', extra: draft);
+          },
+          backgroundColor: AppColors.primary,
+          foregroundColor: AppColors.onPrimary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          label: const Text('MEKTUP YAZ'),
+          icon: const Icon(Icons.history_edu),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          final draft = ref.read(lettersVaultControllerProvider.notifier).createDraft();
-          context.push('/letters-vault/editor', extra: draft);
-        },
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.onPrimary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        label: const Text('MEKTUP YAZ'),
-        icon: const Icon(Icons.history_edu),
-      ),
-    ),
     );
   }
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState();
+  final String title;
+  final String subtitle;
+
+  const _EmptyState({required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -98,49 +150,21 @@ class _EmptyState extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             Text(
-              'İçinde tutmak zorunda değilsin.',
+              title,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontFamily: 'Literata',
                   ),
             ),
             const SizedBox(height: 16),
             Text(
-              'Ona söylemek isteyip de söyleyemediğin her şeyi burada, güvenli bir kasada bırakabilirsin.',
+              subtitle,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _LettersList extends StatelessWidget {
-  final List<UnsentLetter> activeLetters;
-  final List<UnsentLetter> archivedLetters;
-
-  const _LettersList({required this.activeLetters, required this.archivedLetters});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(24),
-      children: [
-        if (activeLetters.isNotEmpty) ...[
-          const StillSectionHeader(title: 'Yazılan Mektuplar'),
-          const SizedBox(height: 16),
-          ...activeLetters.map((l) => _LetterCard(letter: l)),
-        ],
-        if (archivedLetters.isNotEmpty) ...[
-          const SizedBox(height: 32),
-          const StillSectionHeader(title: 'Arşiv'),
-          const SizedBox(height: 16),
-          ...archivedLetters.map((l) => _LetterCard(letter: l, isArchived: true)),
-        ],
-        const SizedBox(height: 100), // Space for FAB
-      ],
     );
   }
 }

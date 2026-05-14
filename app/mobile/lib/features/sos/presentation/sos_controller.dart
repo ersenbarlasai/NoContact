@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../data/models/sos_session.dart';
 import '../../../data/repositories/providers.dart';
 import '../../onboarding/presentation/onboarding_controller.dart';
+import '../../daily_rhythm/presentation/rhythm_controller.dart';
+import '../../../core/notifications/notification_service.dart';
 
 class SosController extends StateNotifier<SosSession> {
   final Ref _ref;
@@ -41,8 +43,15 @@ class SosController extends StateNotifier<SosSession> {
     // 1. Update Local Stats
     if (state.selectedOutcome == 'maintained_nc') {
       final localSosRepo = _ref.read(localSosSessionRepositoryProvider);
-      await localSosRepo.incrementManagedUrgeCount();
+      await _ref.read(localManagedUrgeRepositoryProvider).saveEvent('sos');
+      _ref.invalidate(managedUrgeCountProvider);
       await localSosRepo.saveLastSosCompletedAt(now);
+
+      // Bağlamsal bildirimleri planla (kullanıcı izin verdiyse).
+      final rhythmSettings = _ref.read(rhythmControllerProvider);
+      if (rhythmSettings.isEnabled && rhythmSettings.contextualEnabled) {
+        await NotificationService.schedulePostSosFollowUp();
+      }
     }
 
     // 2. Persist to Supabase

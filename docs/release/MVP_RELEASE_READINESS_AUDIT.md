@@ -1,7 +1,7 @@
 # NoContact MVP Release Readiness Audit
 
-**Date:** 2026-05-10
-**Status:** Stabilized & Release Candidate Ready
+**Date:** 2026-05-11
+**Status:** Web Beta Completed; Mobile Release Candidate Ready
 
 ## 1. Audit Summary
 An extensive MVP stabilization and release readiness audit was conducted to ensure the NoContact app meets strict privacy, stability, and design standards before release. The audit confirmed that the app is a calm, local-first, privacy-respecting companion that avoids manipulative gamification and medical claims.
@@ -42,6 +42,12 @@ An extensive MVP stabilization and release readiness audit was conducted to ensu
 ### 2.7 Design Consistency (Passed)
 - Strict adherence to the `Still` design system.
 - Confirmed absence of legacy colors (e.g., bright blue/purple); consistently using Sage, Cream, and Terracotta.
+
+### 2.8 Web Beta Phase (Completed)
+- Successfully deployed a temporary Vercel-hosted web beta.
+- Gathered early user feedback on onboarding, SOS, and AI concepts.
+- Cleanly removed the web beta layer (banners, platform bypasses) to return focus to mobile builds.
+- Verified that mobile features (Biometric Lock, Local Notifications) are fully restored for the release candidate.
 
 ## 3. Fixed Issues
 - **Async Widget Test Issue:** Fixed a race condition in `MilestoneController` where `state` was updated after the widget was unmounted in tests. Added a `!mounted` check to resolve `#1 StateNotifier._debugIsMounted` errors without altering product behavior.

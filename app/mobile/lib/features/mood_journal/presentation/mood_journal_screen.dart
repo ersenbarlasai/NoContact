@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/design_system/emotional_background.dart';
 import '../../../data/models/mood_entry.dart';
 import 'mood_journal_controller.dart';
 import '../../privacy_lock/presentation/privacy_lock_gate.dart';
@@ -12,33 +13,41 @@ class MoodJournalScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Ensure state is fresh for today
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(moodJournalControllerProvider.notifier).prepareForEntry();
+    });
+
     final state = ref.watch(moodJournalControllerProvider);
 
     return PrivacyLockGate(
       child: Scaffold(
-        backgroundColor: AppColors.background,
-        body: state.isLoading
-            ? const Center(child: StillProgressIndicator(currentStep: 1, totalSteps: 3)) // Simple loader
-            : SafeArea(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const StillSectionHeader(
-                        title: 'Akşam Yansıması',
-                        subtitle: 'Şu an nasıl hissettiğini onurlandırmak için sessiz bir alan.',
-                      ),
-                      const SizedBox(height: 32),
-                      _WeeklySnapshot(state: state),
-                      const SizedBox(height: 48),
-                      _TodayCheckIn(state: state),
-                      const SizedBox(height: 48),
-                      _History(state: state),
-                    ],
+        backgroundColor: Colors.transparent,
+        body: EmotionalBackground(
+          variant: EmotionalVariant.mood,
+          child: state.isLoading
+              ? const Center(child: StillProgressIndicator(currentStep: 1, totalSteps: 3)) // Simple loader
+              : SafeArea(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(24, 32, 24, 180),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const StillSectionHeader(
+                          title: 'Akşam Yansıması',
+                          subtitle: 'Şu an nasıl hissettiğini onurlandırmak için sessiz bir alan.',
+                        ),
+                        const SizedBox(height: 32),
+                        _WeeklySnapshot(state: state),
+                        const SizedBox(height: 48),
+                        _TodayCheckIn(state: state),
+                        const SizedBox(height: 48),
+                        _History(state: state),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+        ),
       ),
     );
   }
@@ -72,6 +81,15 @@ class _TodayCheckInState extends ConsumerState<_TodayCheckIn> {
     final entry = widget.state.todayEntry;
     final controller = ref.read(moodJournalControllerProvider.notifier);
 
+    // Sync controller if state changes from external load/reset
+    ref.listen(moodJournalControllerProvider.select((s) => s.todayEntry?.note), (prev, next) {
+      if (next != null && next != _noteController.text) {
+        _noteController.text = next;
+      } else if (next == null) {
+        _noteController.clear();
+      }
+    });
+
     final moodItems = [
       {'label': 'Ağır', 'icon': Icons.water_drop},
       {'label': 'Yumuşak', 'icon': Icons.filter_vintage},
@@ -83,127 +101,161 @@ class _TodayCheckInState extends ConsumerState<_TodayCheckIn> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const StillSectionHeader(title: 'Kalbin nasıl hissediyor?'),
-        const SizedBox(height: 16),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          clipBehavior: Clip.none,
-          child: Row(
-            children: moodItems.map((item) {
-              final isSelected = entry?.mood == item['label'];
-              return Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: GestureDetector(
-                  onTap: () => controller.updateMood(item['label'] as String),
-                  child: Column(
+        StillGlassCard(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.state.isEditing) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        width: 64,
-                        height: 64,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: isSelected ? AppColors.primaryContainer : AppColors.surfaceContainerHigh,
-                          border: isSelected ? Border.all(color: AppColors.primary, width: 2) : null,
-                        ),
-                        child: Icon(
-                          item['icon'] as IconData,
-                          color: isSelected ? AppColors.onPrimaryContainer : AppColors.primary,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
+                      const Icon(Icons.edit_note, size: 16, color: AppColors.primary),
+                      const SizedBox(width: 8),
                       Text(
-                        item['label'] as String,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                              color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant,
-                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                            ),
+                        'Bugünkü yansımanı düzenliyorsun.',
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.primary),
                       ),
                     ],
                   ),
                 ),
-              );
-            }).toList(),
-          ),
-        ),
-        const SizedBox(height: 40),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const StillSectionHeader(title: 'Yoğunluk'),
-            Text(
-              '${entry?.intensity ?? 3}',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: AppColors.primary),
-            ),
-          ],
-        ),
-        Slider(
-          value: (entry?.intensity ?? 3).toDouble(),
-          min: 1,
-          max: 5,
-          divisions: 4,
-          activeColor: AppColors.primary,
-          inactiveColor: AppColors.surfaceContainerHigh,
-          onChanged: (value) => controller.updateIntensity(value.toInt()),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Fısıltı', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.outline)),
-              Text('Fırtına', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.outline)),
-            ],
-          ),
-        ),
-        const SizedBox(height: 40),
-        const StillSectionHeader(title: 'Buna ne sebep oldu?'),
-        const SizedBox(height: 16),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: triggerOptions.map((trigger) {
-            final isSelected = entry?.triggers.contains(trigger) ?? false;
-            return GestureDetector(
-              onTap: () => controller.toggleTrigger(trigger),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: isSelected ? AppColors.tertiaryContainer : Colors.transparent,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: isSelected ? AppColors.tertiaryContainer : AppColors.outlineVariant,
-                  ),
-                ),
-                child: Text(
-                  trigger,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: isSelected ? AppColors.onTertiaryContainer : AppColors.onSurfaceVariant,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                const SizedBox(height: 24),
+              ],
+              const StillSectionHeader(title: 'Kalbin nasıl hissediyor?'),
+              const SizedBox(height: 16),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                clipBehavior: Clip.none,
+                child: Row(
+                  children: moodItems.map((item) {
+                    final isSelected = entry?.mood == item['label'];
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: GestureDetector(
+                        onTap: () => controller.updateMood(item['label'] as String),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 64,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: isSelected ? AppColors.primaryContainer : AppColors.surfaceContainerHigh,
+                                border: isSelected ? Border.all(color: AppColors.primary, width: 2) : null,
+                              ),
+                              child: Icon(
+                                item['icon'] as IconData,
+                                color: isSelected ? AppColors.onPrimaryContainer : AppColors.primary,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              item['label'] as String,
+                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                    color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant,
+                                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
+                    );
+                  }).toList(),
                 ),
               ),
-            );
-          }).toList(),
-        ),
-        const SizedBox(height: 40),
-        const StillSectionHeader(title: 'Özel Not (Opsiyonel)'),
-        const SizedBox(height: 16),
-        StillTextField(
-          controller: _noteController,
-          hintText: 'Zihninden geçenleri buraya dök...',
-          isLarge: true,
-        ),
-        const SizedBox(height: 40),
-        StillPrimaryButton(
-          label: 'YANSIMAYI KAYDET',
-          onPressed: () async {
-            await controller.saveTodayEntry();
-            if (mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Yansıman güvenle saklandı.')),
-              );
-            }
-          },
+              const SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const StillSectionHeader(title: 'Yoğunluk'),
+                  Text(
+                    '${entry?.intensity ?? 3}',
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: AppColors.primary),
+                  ),
+                ],
+              ),
+              Slider(
+                value: (entry?.intensity ?? 3).toDouble(),
+                min: 1,
+                max: 5,
+                divisions: 4,
+                activeColor: AppColors.primary,
+                inactiveColor: AppColors.surfaceContainerHigh,
+                onChanged: (value) => controller.updateIntensity(value.toInt()),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Fısıltı', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.outline)),
+                    Text('Fırtına', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.outline)),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 40),
+              const StillSectionHeader(title: 'Buna ne sebep oldu?'),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: triggerOptions.map((trigger) {
+                  final isSelected = entry?.triggers.contains(trigger) ?? false;
+                  return GestureDetector(
+                    onTap: () => controller.toggleTrigger(trigger),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: isSelected ? AppColors.tertiaryFixed : Colors.transparent, // More readable warm terracotta
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: isSelected ? AppColors.tertiary : AppColors.outlineVariant,
+                        ),
+                      ),
+                      child: Text(
+                        trigger,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              color: isSelected ? AppColors.onTertiaryFixed : AppColors.onSurfaceVariant,
+                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 40),
+              const StillSectionHeader(title: 'Özel Not (Opsiyonel)'),
+              const SizedBox(height: 16),
+              StillTextField(
+                controller: _noteController,
+                hintText: 'Zihninden geçenleri buraya dök...',
+                isLarge: true,
+                onChanged: (value) => controller.updateNote(value),
+              ),
+              const SizedBox(height: 40),
+              StillPrimaryButton(
+                label: widget.state.isEditing ? 'YANSIMAYI GÜNCELLE' : 'YANSIMAYI KAYDET',
+                onPressed: () async {
+                  await controller.saveTodayEntry();
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          widget.state.isEditing ? 'Bugünkü yansıman güncellendi.' : 'Yansıman güvenle saklandı.',
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -313,7 +365,7 @@ class _History extends StatelessWidget {
           separatorBuilder: (context, index) => const SizedBox(height: 16),
           itemBuilder: (context, index) {
             final entry = sortedEntries[index];
-            return StillCard(
+            return StillGlassCard(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

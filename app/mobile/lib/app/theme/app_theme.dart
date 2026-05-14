@@ -23,6 +23,7 @@ class AppColors {
   static const Color primaryContainer = Color(0xFF8A9A84);
   static const Color onPrimaryContainer = Color(0xFF243221);
   static const Color primaryFixed = Color(0xFFD7E7CF);
+  static const Color onPrimaryFixed = Color(0xFF101E0F);
   static const Color primaryFixedDim = Color(0xFFBBCBB3);
 
   static const Color secondary = Color(0xFF605E57); // Warm Neutral
@@ -35,6 +36,7 @@ class AppColors {
   static const Color tertiaryContainer = Color(0xFFCB836F);
   static const Color onTertiaryContainer = Color(0xFF501F11);
   static const Color tertiaryFixed = Color(0xFFFFDBD1);
+  static const Color onTertiaryFixed = Color(0xFF3B0900);
   static const Color tertiaryFixedDim = Color(0xFFFFB5A1);
 
   static const Color error = Color(0xFFBA1A1A);

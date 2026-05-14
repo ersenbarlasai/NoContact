@@ -1,0 +1,218 @@
+import '../domain/library_item.dart';
+
+class StaticLibraryRepository {
+  static const List<LibraryItem> items = [
+    // İlk Günler
+    LibraryItem(
+      id: 'ilk-gunler-1',
+      title: 'İlk Adımın Gücü',
+      category: LibraryCategory.ilkGunler,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 2,
+      summary: 'Neden bugün buradasın?',
+      body: 'Bugün burada olman, kendine verdiğin en büyük sözün ilk adımı. Zihnin sana "yapamayacağını" söyleyebilir, ama şu an tam da yapıyorsun. Sadece bu anı yaşamak yeterli.',
+      reflectionQuestion: 'Bugün kendim için yaptığım en küçük iyi şey neydi?',
+      suggestedActionType: LibrarySuggestedAction.moodJournal,
+      suggestedActionLabel: 'GÜNLÜĞE YAZ',
+    ),
+    LibraryItem(
+      id: 'ilk-gunler-2',
+      title: 'Sessizliğin Dili',
+      category: LibraryCategory.ilkGunler,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 3,
+      summary: 'Sessizlik bir tepki değil, bir iyileşme alanıdır.',
+      body: 'Sessiz kalmak, karşı tarafa bir şey kanıtlamak değildir. Sessizlik, kendi gürültünü dindirip neye ihtiyacın olduğunu duyabilmen için kendine açtığın bir alandır.',
+      reflectionQuestion: 'Sessizlik bana ne anlatmaya çalışıyor?',
+      suggestedActionType: LibrarySuggestedAction.lettersVault,
+      suggestedActionLabel: 'MEKTUP KASASINA YAZ',
+    ),
+    // Dürtü Geldiğinde
+    LibraryItem(
+      id: 'durtu-1',
+      title: 'Dürtü Bir Dalga Gibidir',
+      category: LibraryCategory.durtuGeldiginde,
+      type: LibraryItemType.egzersiz,
+      estimatedMinutes: 2,
+      summary: 'Dürtüler kalıcı değildir, sadece yoğunlukları değişir.',
+      body: 'Bir dürtü geldiğinde zihnin bunu hemen çözmen gerekiyormuş gibi anlatabilir. Oysa çoğu dürtü, üzerine hareket etmeden de azalır. Sadece 10 dakika bekle.',
+      reflectionQuestion: 'Şu an gerçekten neye ihtiyacım var: bir cevap mı, yoksa sakinleşmek mi?',
+      suggestedActionType: LibrarySuggestedAction.supportWait,
+      suggestedActionLabel: '24 SAAT BEKLEME BAŞLAT',
+    ),
+    LibraryItem(
+      id: 'durtu-2',
+      title: 'Duyguya Alan Aç',
+      category: LibraryCategory.durtuGeldiginde,
+      type: LibraryItemType.yansima,
+      estimatedMinutes: 3,
+      summary: 'Duyguyu yok etme, onunla kalmayı dene.',
+      body: 'Şu an hissettiğin o sıkışma hissi, vücudunun bir tepkisi. Ona "hoş geldin" diyebilir misin? Onu yok etmeye çalışmak yerine, sadece orada olduğunu fark et.',
+      reflectionQuestion: 'Bu duygu vücudumda nerede hissediliyor?',
+      suggestedActionType: LibrarySuggestedAction.sos,
+      suggestedActionLabel: 'SOS MODUNA GEÇ',
+    ),
+    // Sosyal Medya Kontrolü
+    LibraryItem(
+      id: 'sosyal-medya-1',
+      title: 'Hayali Senaryolar',
+      category: LibraryCategory.sosyalMedyaKontrolu,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 2,
+      summary: 'Profiline bakmak, sadece zihnini yorar.',
+      body: 'Onun profiline baktığında gördüğün şey, gerçeğin sadece küçük bir parçasıdır. Geri kalanını zihnin kendi korkularınla doldurur. Bu senaryolara inanmak zorunda değilsin.',
+      reflectionQuestion: 'Bakmak bana şu an ne kazandıracak, ne kaybettirecek?',
+      suggestedActionType: LibrarySuggestedAction.moodJournal,
+      suggestedActionLabel: 'DUYGUNU NOT ET',
+    ),
+    LibraryItem(
+      id: 'sosyal-medya-2',
+      title: 'Dijital Mesafe',
+      category: LibraryCategory.sosyalMedyaKontrolu,
+      type: LibraryItemType.egzersiz,
+      estimatedMinutes: 2,
+      summary: 'Gözden uzak olan, yavaşça zihinden de uzaklaşır.',
+      body: 'Dijital dünyada mesafe koymak, zayıflık değil, özsaygıdır. Bugün telefonunu bir saatliğine başka bir odaya bırakmayı dene.',
+      reflectionQuestion: 'Telefonum olmadan kendimi nasıl hissediyorum?',
+      suggestedActionType: LibrarySuggestedAction.supportWait,
+      suggestedActionLabel: 'DİJİTAL DURAKLAMA',
+    ),
+    // Özlem Dalgası
+    LibraryItem(
+      id: 'ozlem-1',
+      title: 'Anıların Filtresi',
+      category: LibraryCategory.ozlemDalgasi,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 3,
+      summary: 'Özlem, sadece iyi anları hatırlar.',
+      body: 'Özlediğinde zihnin bir "seçici hafıza" filtresi kullanır. Sadece güzel günleri, gülüşleri getirir önüne. Neden ayrıldığınızı ve o zor anları da aynı netlikte hatırlamaya çalış.',
+      reflectionQuestion: 'Şu an özlediğim şey o kişi mi, yoksa hissettiğim o duygu mu?',
+      suggestedActionType: LibrarySuggestedAction.supportCenter,
+      suggestedActionLabel: 'NEDEN BAŞLADIM?',
+    ),
+    LibraryItem(
+      id: 'ozlem-2',
+      title: 'Boşluğa İzin Ver',
+      category: LibraryCategory.ozlemDalgasi,
+      type: LibraryItemType.egzersiz,
+      estimatedMinutes: 2,
+      summary: 'Boşluk, yeni bir şeylerin filizlenmesi içindir.',
+      body: 'O kişinin bıraktığı boşluk şu an çok büyük görünebilir. O boşluğu hemen doldurmaya çalışma. O boşlukla beraber nefes almayı öğren.',
+      reflectionQuestion: 'Şu an bu boşlukta neyi keşfedebilirim?',
+      suggestedActionType: LibrarySuggestedAction.sos,
+      suggestedActionLabel: 'NEFES AL',
+    ),
+    // Sınır Koymak
+    LibraryItem(
+      id: 'sinir-1',
+      title: 'Sınırların Koruyucu Gücü',
+      category: LibraryCategory.sinirKoymak,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 2,
+      summary: 'Sınır koymak, kendine verdiğin bir değerdir.',
+      body: 'Sınırlar başkalarına kapıları kapatmak değil, kendi bahçeni korumaktır. Bugün hayır demenin verdiği o sessiz gücü hisset.',
+      reflectionQuestion: 'Bugün hangi sınırım benim için en önemli?',
+      suggestedActionType: LibrarySuggestedAction.moodJournal,
+      suggestedActionLabel: 'SINIRINI YAZ',
+    ),
+    LibraryItem(
+      id: 'sinir-2',
+      title: 'Mesajlara "Hayır" Demek',
+      category: LibraryCategory.sinirKoymak,
+      type: LibraryItemType.egzersiz,
+      estimatedMinutes: 3,
+      summary: 'Cevap vermemek de bir cevaptır.',
+      body: 'Gelen bir mesaja cevap vermen gerektiğini düşünebilirsin. Ama bazen en güçlü cevap, kendi huzurunu seçip sessiz kalmaktır.',
+      reflectionQuestion: 'Bu mesaja cevap vermek benim hangi ihtiyacımı besliyor?',
+      suggestedActionType: LibrarySuggestedAction.supportWait,
+      suggestedActionLabel: 'CEVABI ERTELE',
+    ),
+    // Kendini Suçlama
+    LibraryItem(
+      id: 'suclama-1',
+      title: 'Geçmişin Yükü',
+      category: LibraryCategory.kendiniSuclama,
+      type: LibraryItemType.yansima,
+      estimatedMinutes: 3,
+      summary: 'O an bildiğinle elinden geleni yaptın.',
+      body: 'Bugünkü aklınla geçmişteki hatalarını görmek kolaydır. Ama o gün o kararları verirken elindeki bilgi ve duygu durumu buydu. Kendine bir yabancıya göstereceğin şefkati göster.',
+      reflectionQuestion: 'Geçmişteki kendime ne söylemek isterdim?',
+      suggestedActionType: LibrarySuggestedAction.lettersVault,
+      suggestedActionLabel: 'KENDİNE MEKTUP YAZ',
+    ),
+    LibraryItem(
+      id: 'suclama-2',
+      title: 'Sorumluluk Paylaşımı',
+      category: LibraryCategory.kendiniSuclama,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 2,
+      summary: 'İlişki iki kişiliktir, suç tek kişilik değildir.',
+      body: 'Her ne yaşandıysa, bu iki kişinin dinamiklerinin sonucuydu. Tüm yükü kendi omuzlarına alma. Kendi payına düşeni al ve geri kalanını serbest bırak.',
+      reflectionQuestion: 'Şu an omuzlarımdaki hangi yük benim değil?',
+      suggestedActionType: LibrarySuggestedAction.moodJournal,
+      suggestedActionLabel: 'YÜKLERİ LİSTELE',
+    ),
+    // Geri Dönme Döngüsü
+    LibraryItem(
+      id: 'donme-1',
+      title: 'Neden Gittin?',
+      category: LibraryCategory.geriDonmeDongusu,
+      type: LibraryItemType.yansima,
+      estimatedMinutes: 2,
+      summary: 'Döngüyü kırmak için hatırlamak gerekir.',
+      body: 'Geri dönme isteği geldiğinde, zihnin sana "bu sefer farklı olacak" diyebilir. Ama neden ayrıldığınızı, o son konuşmaları ve hissettiklerini hatırla. Gerçekten farklı mı olacak?',
+      reflectionQuestion: 'Bu döngüden çıkmak bana ne sağlayacak?',
+      suggestedActionType: LibrarySuggestedAction.supportCenter,
+      suggestedActionLabel: 'NEDENLERİME BAK',
+    ),
+    LibraryItem(
+      id: 'donme-2',
+      title: 'Kısa Süreli Rahatlama, Uzun Süreli Acı',
+      category: LibraryCategory.geriDonmeDongusu,
+      type: LibraryItemType.okuma,
+      estimatedMinutes: 3,
+      summary: 'Dönmek, yarayı sadece kapatır; iyileştirmez.',
+      body: 'Geri dönmek o anki o yoğun özlemi dindirir, evet. Ama temel sorunlar çözülmediyse, aynı acı döngüsü daha sert bir şekilde geri döner. İyileşmek için bu döngüyü kırmalısın.',
+      reflectionQuestion: 'Gerçek iyileşme için neyi feda etmeye hazırım?',
+      suggestedActionType: LibrarySuggestedAction.supportWait,
+      suggestedActionLabel: 'DURAKLAT VE DÜŞÜN',
+    ),
+    // Gece Zorlanmaları
+    LibraryItem(
+      id: 'gece-1',
+      title: 'Gece Gelen Düşünceler',
+      category: LibraryCategory.geceZorlanmalari,
+      type: LibraryItemType.egzersiz,
+      estimatedMinutes: 3,
+      summary: 'Zihin gece daha savunmasızdır.',
+      body: 'Gece olduğunda dünya sessizleşir ve zihin daha gürültülü hale gelir. Bu normaldir. Bu düşünceleri sabahın ışığında tekrar değerlendirmek üzere yastığının altına bırak.',
+      reflectionQuestion: 'Şu an zihnimdeki en gürültülü düşünce ne?',
+      suggestedActionType: LibrarySuggestedAction.lettersVault,
+      suggestedActionLabel: 'GECE NOTU BIRAK',
+    ),
+    LibraryItem(
+      id: 'gece-2',
+      title: 'Güvenli Uykuya Geçiş',
+      category: LibraryCategory.geceZorlanmalari,
+      type: LibraryItemType.egzersiz,
+      estimatedMinutes: 2,
+      summary: 'Kendine şefkatli bir uyku alanı yarat.',
+      body: 'Uykuya geçmeden önce telefonunu kapat. Derin nefesler al ve vücudundaki gerginliği serbest bırak. Yarın yeni bir gün ve sen daha güçlü uyanacaksın.',
+      reflectionQuestion: 'Yarın sabah kendimi nasıl hissetmek istiyorum?',
+      suggestedActionType: LibrarySuggestedAction.sos,
+      suggestedActionLabel: 'NEFES EGZERSİZİ',
+    ),
+  ];
+
+  static List<LibraryItem> getByCategory(LibraryCategory category) {
+    return items.where((item) => item.category == category).toList();
+  }
+
+  static LibraryItem? getById(String id) {
+    try {
+      return items.firstWhere((item) => item.id == id);
+    } catch (_) {
+      return null;
+    }
+  }
+}

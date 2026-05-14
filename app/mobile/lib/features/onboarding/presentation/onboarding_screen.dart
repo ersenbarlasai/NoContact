@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/design_system/emotional_background.dart';
 import '../../../data/models/recovery_profile.dart';
 import 'onboarding_controller.dart';
 
@@ -54,107 +55,110 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final state = ref.watch(onboardingControllerProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: StillProgressIndicator(
-                currentStep: _currentPage,
-                totalSteps: _totalSteps,
-              ),
-            ),
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                physics: const NeverScrollableScrollPhysics(),
-                onPageChanged: (page) => setState(() => _currentPage = page),
-                children: [
-                  _StepWelcome(onNext: _nextPage),
-                  _StepName(
-                    controller: _nameController,
-                    onNext: (name) {
-                      ref.read(onboardingControllerProvider.notifier).updateName(name);
-                      _nextPage();
-                    },
-                  ),
-                  _StepReason(
-                    selectedReason: state.reason,
-                    onSelected: (reason) {
-                      ref.read(onboardingControllerProvider.notifier).updateReason(reason);
-                      _nextPage();
-                    },
-                  ),
-                  _StepRelationshipDuration(
-                    selectedDuration: state.relationshipDuration,
-                    onSelected: (duration) {
-                      ref.read(onboardingControllerProvider.notifier).updateRelationshipDuration(duration);
-                      _nextPage();
-                    },
-                  ),
-                  _StepTimeSinceBreakup(
-                    selectedTime: state.timeSinceBreakup,
-                    onSelected: (time) {
-                      ref.read(onboardingControllerProvider.notifier).updateTimeSinceBreakup(time);
-                      _nextPage();
-                    },
-                  ),
-                  _StepWhoEnded(
-                    selectedWho: state.whoEnded,
-                    onSelected: (who) {
-                      ref.read(onboardingControllerProvider.notifier).updateWhoEnded(who);
-                      _nextPage();
-                    },
-                  ),
-                  _StepNoContactDate(
-                    selectedDate: state.noContactStartDate ?? DateTime.now(),
-                    onSelected: (date) {
-                      ref.read(onboardingControllerProvider.notifier).updateNoContactStartDate(date);
-                      _nextPage();
-                    },
-                    onSkip: _nextPage,
-                  ),
-                  _StepEmotion(
-                    selectedEmotion: state.dominantEmotion,
-                    onSelected: (emotion) {
-                      ref.read(onboardingControllerProvider.notifier).updateDominantEmotion(emotion);
-                      _nextPage();
-                    },
-                  ),
-                  _StepTriggers(
-                    selectedTriggers: state.contactTriggers,
-                    onToggle: (trigger) {
-                      ref.read(onboardingControllerProvider.notifier).toggleContactTrigger(trigger);
-                    },
-                    onNext: _nextPage,
-                  ),
-                  _StepContract(
-                    onCommit: () {
-                      ref.read(onboardingControllerProvider.notifier).commitToContract();
-                      _nextPage();
-                    },
-                  ),
-                  _StepPlanPreview(
-                    state: state,
-                    onComplete: () async {
-                      final router = GoRouter.of(context);
-                      await ref.read(onboardingControllerProvider.notifier).completeOnboarding();
-                      if (mounted) router.go('/');
-                    },
-                  ),
-                ],
-              ),
-            ),
-            if (_currentPage > 0 && _currentPage < _totalSteps - 1)
+      backgroundColor: Colors.transparent,
+      body: EmotionalBackground(
+        variant: EmotionalVariant.onboarding,
+        child: SafeArea(
+          child: Column(
+            children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                child: TextButton(
-                  onPressed: _previousPage,
-                  child: Text('GERİ GİT', style: Theme.of(context).textTheme.labelLarge?.copyWith(color: AppColors.onSurfaceVariant)),
+                child: StillProgressIndicator(
+                  currentStep: _currentPage,
+                  totalSteps: _totalSteps,
                 ),
               ),
-          ],
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  onPageChanged: (page) => setState(() => _currentPage = page),
+                  children: [
+                    _StepWelcome(onNext: _nextPage),
+                    _StepName(
+                      controller: _nameController,
+                      onNext: (name) {
+                        ref.read(onboardingControllerProvider.notifier).updateName(name);
+                        _nextPage();
+                      },
+                    ),
+                    _StepReason(
+                      selectedReason: state.reason,
+                      onSelected: (reason) {
+                        ref.read(onboardingControllerProvider.notifier).updateReason(reason);
+                        _nextPage();
+                      },
+                    ),
+                    _StepRelationshipDuration(
+                      selectedDuration: state.relationshipDuration,
+                      onSelected: (duration) {
+                        ref.read(onboardingControllerProvider.notifier).updateRelationshipDuration(duration);
+                        _nextPage();
+                      },
+                    ),
+                    _StepTimeSinceBreakup(
+                      selectedTime: state.timeSinceBreakup,
+                      onSelected: (time) {
+                        ref.read(onboardingControllerProvider.notifier).updateTimeSinceBreakup(time);
+                        _nextPage();
+                      },
+                    ),
+                    _StepWhoEnded(
+                      selectedWho: state.whoEnded,
+                      onSelected: (who) {
+                        ref.read(onboardingControllerProvider.notifier).updateWhoEnded(who);
+                        _nextPage();
+                      },
+                    ),
+                    _StepNoContactDate(
+                      selectedDate: state.noContactStartDate ?? DateTime.now(),
+                      onSelected: (date) {
+                        ref.read(onboardingControllerProvider.notifier).updateNoContactStartDate(date);
+                        _nextPage();
+                      },
+                      onSkip: _nextPage,
+                    ),
+                    _StepEmotion(
+                      selectedEmotion: state.dominantEmotion,
+                      onSelected: (emotion) {
+                        ref.read(onboardingControllerProvider.notifier).updateDominantEmotion(emotion);
+                        _nextPage();
+                      },
+                    ),
+                    _StepTriggers(
+                      selectedTriggers: state.contactTriggers,
+                      onToggle: (trigger) {
+                        ref.read(onboardingControllerProvider.notifier).toggleContactTrigger(trigger);
+                      },
+                      onNext: _nextPage,
+                    ),
+                    _StepContract(
+                      onCommit: () {
+                        ref.read(onboardingControllerProvider.notifier).commitToContract();
+                        _nextPage();
+                      },
+                    ),
+                    _StepPlanPreview(
+                      state: state,
+                      onComplete: () async {
+                        final router = GoRouter.of(context);
+                        await ref.read(onboardingControllerProvider.notifier).completeOnboarding();
+                        if (mounted) router.go('/');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              if (_currentPage > 0 && _currentPage < _totalSteps - 1)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: TextButton(
+                    onPressed: _previousPage,
+                    child: Text('GERİ GİT', style: Theme.of(context).textTheme.labelLarge?.copyWith(color: AppColors.onSurfaceVariant)),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -408,7 +412,7 @@ class _StepNoContactDate extends StatelessWidget {
             ),
             const SizedBox(height: 64),
             Center(
-              child: StillCard(
+              child: StillGlassCard(
                 padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
                 child: Column(
                   children: [
@@ -606,7 +610,7 @@ class _ContractItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 24),
-      child: StillCard(
+      child: StillGlassCard(
         padding: const EdgeInsets.all(24),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

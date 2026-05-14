@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/design_system/emotional_background.dart';
 import '../../milestones/domain/milestone.dart';
 import 'insights_controller.dart';
 import '../domain/insights_data.dart';
@@ -16,60 +17,66 @@ class InsightsScreen extends ConsumerWidget {
     final state = ref.watch(insightsControllerProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: AppColors.background,
-            floating: true,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: AppColors.primary),
-              onPressed: () => context.pop(),
-            ),
-            title: Text(
-              'Yansımalar',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: AppColors.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-          ),
-          if (state.isLoading)
-            const SliverFillRemaining(
-              child: Center(child: CircularProgressIndicator()),
-            )
-          else
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const StillSectionHeader(
-                      title: 'Sessiz Gelişim',
-                      subtitle: 'İyileşme yolculuğunun nazik bir özeti.',
+      backgroundColor: Colors.transparent,
+      body: EmotionalBackground(
+        variant: EmotionalVariant.neutral,
+        child: SafeArea(
+          child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              floating: true,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back, color: AppColors.primary),
+                onPressed: () => context.pop(),
+              ),
+              title: Text(
+                'Yansımalar',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Literata',
                     ),
-                    const SizedBox(height: 32),
-                    _SummaryGrid(state: state),
-                    const SizedBox(height: 48),
-                    _MoodInsights(distribution: state.moodDistribution),
-                    const SizedBox(height: 48),
-                    _MilestoneHistory(history: state.milestoneHistory),
-                    const SizedBox(height: 48),
-                    _SosReflection(managedUrges: state.managedUrgeCount),
-                    const SizedBox(height: 64),
-                    const StillPrivacyNotice(
-                      text: 'Bu alan yalnızca cihazındaki özet verilerle hazırlanır. Günlük notların ve mektup içeriklerin burada gösterilmez.',
-                    ),
-                    const SizedBox(height: 80),
-                  ],
-                ),
               ),
             ),
-        ],
+            if (state.isLoading)
+              const SliverFillRemaining(
+                child: Center(child: StillProgressIndicator(currentStep: 1, totalSteps: 3)),
+              )
+            else
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 140),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const StillSectionHeader(
+                        title: 'Sessiz Gelişim',
+                        subtitle: 'İyileşme yolculuğunun nazik bir özeti.',
+                      ),
+                      const SizedBox(height: 32),
+                      _SummaryGrid(state: state),
+                      const SizedBox(height: 48),
+                      _MoodInsights(distribution: state.moodDistribution),
+                      const SizedBox(height: 48),
+                      _MilestoneHistory(history: state.milestoneHistory),
+                      const SizedBox(height: 48),
+                      _SosReflection(managedUrges: state.managedUrgeCount),
+                      const SizedBox(height: 64),
+                      const StillPrivacyNotice(
+                        text: 'Bu alan yalnızca cihazındaki özet verilerle hazırlanır. Günlük notların ve mektup içeriklerin burada gösterilmez.',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
-    );
-  }
+    ),
+  );
+}
 }
 
 class _SummaryGrid extends StatelessWidget {
@@ -130,9 +137,8 @@ class _StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StillCard(
+    return StillGlassCard(
       padding: const EdgeInsets.all(20),
-      color: color.withValues(alpha: 0.05),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -179,7 +185,7 @@ class _MoodInsights extends StatelessWidget {
           subtitle: 'Son 14 gündeki baskın hislerin.',
         ),
         const SizedBox(height: 24),
-        StillCard(
+        StillGlassCard(
           padding: const EdgeInsets.all(24),
           child: Column(
             children: distribution.entries.map((entry) {

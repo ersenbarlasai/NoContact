@@ -28,6 +28,7 @@ _$RecoveryProfileImpl _$$RecoveryProfileImplFromJson(
       : DateTime.parse(json['commitment_accepted_at'] as String),
   isOnboardingCompleted: json['onboarding_completed'] as bool? ?? false,
   appDisclaimerSeen: json['app_disclaimer_seen'] as bool? ?? false,
+  aiConsentAccepted: json['ai_consent_accepted'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$$RecoveryProfileImplToJson(
@@ -44,4 +45,5 @@ Map<String, dynamic> _$$RecoveryProfileImplToJson(
   'commitment_accepted_at': instance.commitmentAcceptedAt?.toIso8601String(),
   'onboarding_completed': instance.isOnboardingCompleted,
   'app_disclaimer_seen': instance.appDisclaimerSeen,
+  'ai_consent_accepted': instance.aiConsentAccepted,
 };

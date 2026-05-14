@@ -30,7 +30,7 @@ void main() {
       );
 
       // Wait for build
-      await Future.delayed(Duration.zero);
+      await Future<void>.delayed(Duration.zero);
       
       final streak = container.read(insightsControllerProvider).moodStreak;
       expect(streak, 3);
@@ -50,7 +50,7 @@ void main() {
         ],
       );
 
-      await Future.delayed(Duration.zero);
+      await Future<void>.delayed(Duration.zero);
       final streak = container.read(insightsControllerProvider).moodStreak;
       expect(streak, 1); 
     });
@@ -80,6 +80,9 @@ class _MockMoodJournalController extends StateNotifier<MoodJournalState> impleme
 
   @override
   void initTodayEntry() {}
+
+  @override
+  void prepareForEntry() {}
 
   @override
   Future<void> loadEntries() async {}

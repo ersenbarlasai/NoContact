@@ -77,6 +77,23 @@ class OnboardingController extends StateNotifier<RecoveryProfile> {
     }
   }
 
+  Future<void> acceptAiConsent() async {
+    state = state.copyWith(aiConsentAccepted: true);
+    
+    // Save locally
+    final localRepo = _ref.read(localRecoveryProfileRepositoryProvider);
+    await localRepo.saveProfile(state);
+
+    // Persist remotely if possible
+    final authRepo = _ref.read(authRepositoryProvider);
+    if (authRepo.isAuthenticated) {
+      try {
+        final remoteRepo = _ref.read(recoveryProfileRepositoryProvider);
+        await remoteRepo.upsertRecoveryProfile(state);
+      } catch (_) {}
+    }
+  }
+
   void hydrate(RecoveryProfile profile) {
     state = profile;
   }

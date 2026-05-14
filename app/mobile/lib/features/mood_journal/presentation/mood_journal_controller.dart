@@ -11,6 +11,7 @@ class MoodJournalState with _$MoodJournalState {
   const factory MoodJournalState({
     @Default([]) List<MoodEntry> entries,
     MoodEntry? todayEntry,
+    @Default(false) bool isEditing,
     @Default(false) bool isLoading,
   }) = _MoodJournalState;
 
@@ -97,8 +98,31 @@ class MoodJournalController extends StateNotifier<MoodJournalState> {
     state = state.copyWith(
       entries: entries,
       todayEntry: today,
+      isEditing: today != null,
       isLoading: false,
     );
+  }
+
+  void prepareForEntry() {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    
+    // If we have an entry in state, verify it is still for "today"
+    if (state.todayEntry != null) {
+      final entryDate = DateTime(
+        state.todayEntry!.date.year,
+        state.todayEntry!.date.month,
+        state.todayEntry!.date.day,
+      );
+      
+      if (entryDate != today) {
+        // Stale entry from previous day/session, clear it
+        state = state.copyWith(todayEntry: null, isEditing: false);
+      }
+    }
+    
+    // If after verification todayEntry is still null, we might need to load from DB 
+    // or wait for the user to start interacting (initTodayEntry)
   }
 
   void initTodayEntry() {

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:local_auth_android/local_auth_android.dart';
 import 'package:local_auth_darwin/local_auth_darwin.dart';
@@ -9,20 +10,25 @@ class PrivacyLockRepository {
   static const String _lastUnlockedAtKey = 'biometric_lock_last_unlocked_at';
 
   bool isBiometricLockEnabled() {
+    // Disable biometric lock on web since it's not supported by local_auth
+    if (kIsWeb) return false;
     return LocalStorageService.getBool(_lockEnabledKey) ?? false;
   }
 
   Future<void> setBiometricLockEnabled(bool enabled) async {
+    if (kIsWeb) return;
     await LocalStorageService.setBool(_lockEnabledKey, enabled);
   }
 
   Future<bool> canCheckBiometrics() async {
+    if (kIsWeb) return false;
     final bool canAuthenticateWithBiometrics = await _auth.canCheckBiometrics;
     final bool canAuthenticate = canAuthenticateWithBiometrics || await _auth.isDeviceSupported();
     return canAuthenticate;
   }
 
   Future<bool> authenticate() async {
+    if (kIsWeb) return true; // Bypass on web to allow testing
     try {
       final bool didAuthenticate = await _auth.authenticate(
         localizedReason: 'Günlük ve mektuplarını açmak için cihaz doğrulaması gerekiyor.',

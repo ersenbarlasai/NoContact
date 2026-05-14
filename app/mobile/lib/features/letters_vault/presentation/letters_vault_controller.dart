@@ -73,6 +73,18 @@ class LettersVaultController extends StateNotifier<LettersVaultState> {
     await repo.deleteLetter(id);
     await loadLetters();
   }
+
+  Future<void> restoreLetter(String id) async {
+    final repo = _ref.read(localLettersVaultRepositoryProvider);
+    await repo.restoreLetter(id);
+    await loadLetters();
+  }
+
+  Future<void> hardDeleteLetter(String id) async {
+    final repo = _ref.read(localLettersVaultRepositoryProvider);
+    await repo.hardDeleteLetter(id);
+    await loadLetters();
+  }
 }
 
 final lettersVaultControllerProvider =

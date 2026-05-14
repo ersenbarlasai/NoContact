@@ -12,6 +12,10 @@ _$RhythmSettingsImpl _$$RhythmSettingsImplFromJson(Map<String, dynamic> json) =>
       hour: (json['hour'] as num?)?.toInt() ?? 20,
       minute: (json['minute'] as num?)?.toInt() ?? 30,
       hasRequestedPermission: json['hasRequestedPermission'] as bool? ?? false,
+      morningEnabled: json['morningEnabled'] as bool? ?? false,
+      middayEnabled: json['middayEnabled'] as bool? ?? false,
+      eveningEnabled: json['eveningEnabled'] as bool? ?? false,
+      contextualEnabled: json['contextualEnabled'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$RhythmSettingsImplToJson(
@@ -21,4 +25,8 @@ Map<String, dynamic> _$$RhythmSettingsImplToJson(
   'hour': instance.hour,
   'minute': instance.minute,
   'hasRequestedPermission': instance.hasRequestedPermission,
+  'morningEnabled': instance.morningEnabled,
+  'middayEnabled': instance.middayEnabled,
+  'eveningEnabled': instance.eveningEnabled,
+  'contextualEnabled': instance.contextualEnabled,
 };

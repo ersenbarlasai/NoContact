@@ -7,8 +7,16 @@ import 'local_sos_session_repository.dart';
 import 'local_mood_journal_repository.dart';
 import 'local_letters_vault_repository.dart';
 import 'beta_feedback_repository.dart';
+import 'local_managed_urge_repository.dart';
+import '../../features/message_analysis/data/message_analysis_repository.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final authRepositoryProvider = Provider((ref) => AuthRepository());
+// ... other providers
+
+final messageAnalysisRepositoryProvider = Provider((ref) {
+  return MessageAnalysisRepository(Supabase.instance.client);
+});
 
 final recoveryProfileRepositoryProvider = Provider((ref) => RecoveryProfileRepository());
 
@@ -21,5 +29,12 @@ final localSosSessionRepositoryProvider = Provider((ref) => LocalSosSessionRepos
 final localMoodJournalRepositoryProvider = Provider((ref) => LocalMoodJournalRepository());
 
 final localLettersVaultRepositoryProvider = Provider((ref) => LocalLettersVaultRepository());
+
+final localManagedUrgeRepositoryProvider = Provider((ref) => LocalManagedUrgeRepository(ref.watch(localSosSessionRepositoryProvider)));
+
+final managedUrgeCountProvider = FutureProvider<int>((ref) async {
+  final repo = ref.watch(localManagedUrgeRepositoryProvider);
+  return await repo.getUnifiedCount();
+});
 
 final betaFeedbackRepositoryProvider = Provider((ref) => BetaFeedbackRepository());

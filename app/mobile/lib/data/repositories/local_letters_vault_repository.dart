@@ -49,6 +49,18 @@ class LocalLettersVaultRepository {
     }
   }
 
+  Future<void> restoreLetter(String id) async {
+    final letters = await fetchLetters();
+    final index = letters.indexWhere((e) => e.id == id);
+    if (index >= 0) {
+      letters[index] = letters[index].copyWith(
+        archivedAt: null,
+        updatedAt: DateTime.now(),
+      );
+      await _saveAll(letters);
+    }
+  }
+
   Future<void> deleteLetter(String id) async {
     final letters = await fetchLetters();
     final index = letters.indexWhere((e) => e.id == id);
@@ -61,6 +73,13 @@ class LocalLettersVaultRepository {
       await _saveAll(letters);
     }
   }
+
+  Future<void> hardDeleteLetter(String id) async {
+    final letters = await fetchLetters();
+    letters.removeWhere((e) => e.id == id);
+    await _saveAll(letters);
+  }
+
 
   Future<void> clearLetters() async {
     await EncryptedStorageService.delete(_storageKey);

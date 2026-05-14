@@ -51,8 +51,10 @@ class BetaFeedbackController extends StateNotifier<BetaFeedbackState> {
       );
 
       await repo.submitFeedback(enrichedFeedback);
+      if (!mounted) return;
       state = state.copyWith(isLoading: false, isSuccess: true);
     } catch (e) {
+      if (!mounted) return;
       state = state.copyWith(isLoading: false, error: e.toString());
     }
   }

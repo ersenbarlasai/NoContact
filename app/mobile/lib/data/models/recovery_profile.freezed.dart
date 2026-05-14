@@ -43,6 +43,8 @@ mixin _$RecoveryProfile {
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'app_disclaimer_seen')
   bool get appDisclaimerSeen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ai_consent_accepted')
+  bool get aiConsentAccepted => throw _privateConstructorUsedError;
 
   /// Serializes this RecoveryProfile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,6 +75,7 @@ abstract class $RecoveryProfileCopyWith<$Res> {
     @JsonKey(name: 'commitment_accepted_at') DateTime? commitmentAcceptedAt,
     @JsonKey(name: 'onboarding_completed') bool isOnboardingCompleted,
     @JsonKey(name: 'app_disclaimer_seen') bool appDisclaimerSeen,
+    @JsonKey(name: 'ai_consent_accepted') bool aiConsentAccepted,
   });
 }
 
@@ -102,6 +105,7 @@ class _$RecoveryProfileCopyWithImpl<$Res, $Val extends RecoveryProfile>
     Object? commitmentAcceptedAt = freezed,
     Object? isOnboardingCompleted = null,
     Object? appDisclaimerSeen = null,
+    Object? aiConsentAccepted = null,
   }) {
     return _then(
       _value.copyWith(
@@ -149,6 +153,10 @@ class _$RecoveryProfileCopyWithImpl<$Res, $Val extends RecoveryProfile>
                 ? _value.appDisclaimerSeen
                 : appDisclaimerSeen // ignore: cast_nullable_to_non_nullable
                       as bool,
+            aiConsentAccepted: null == aiConsentAccepted
+                ? _value.aiConsentAccepted
+                : aiConsentAccepted // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -176,6 +184,7 @@ abstract class _$$RecoveryProfileImplCopyWith<$Res>
     @JsonKey(name: 'commitment_accepted_at') DateTime? commitmentAcceptedAt,
     @JsonKey(name: 'onboarding_completed') bool isOnboardingCompleted,
     @JsonKey(name: 'app_disclaimer_seen') bool appDisclaimerSeen,
+    @JsonKey(name: 'ai_consent_accepted') bool aiConsentAccepted,
   });
 }
 
@@ -204,6 +213,7 @@ class __$$RecoveryProfileImplCopyWithImpl<$Res>
     Object? commitmentAcceptedAt = freezed,
     Object? isOnboardingCompleted = null,
     Object? appDisclaimerSeen = null,
+    Object? aiConsentAccepted = null,
   }) {
     return _then(
       _$RecoveryProfileImpl(
@@ -251,6 +261,10 @@ class __$$RecoveryProfileImplCopyWithImpl<$Res>
             ? _value.appDisclaimerSeen
             : appDisclaimerSeen // ignore: cast_nullable_to_non_nullable
                   as bool,
+        aiConsentAccepted: null == aiConsentAccepted
+            ? _value.aiConsentAccepted
+            : aiConsentAccepted // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }
@@ -272,6 +286,7 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
     @JsonKey(name: 'commitment_accepted_at') this.commitmentAcceptedAt,
     @JsonKey(name: 'onboarding_completed') this.isOnboardingCompleted = false,
     @JsonKey(name: 'app_disclaimer_seen') this.appDisclaimerSeen = false,
+    @JsonKey(name: 'ai_consent_accepted') this.aiConsentAccepted = false,
   }) : _contactTriggers = contactTriggers;
 
   factory _$RecoveryProfileImpl.fromJson(Map<String, dynamic> json) =>
@@ -316,10 +331,13 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
   @override
   @JsonKey(name: 'app_disclaimer_seen')
   final bool appDisclaimerSeen;
+  @override
+  @JsonKey(name: 'ai_consent_accepted')
+  final bool aiConsentAccepted;
 
   @override
   String toString() {
-    return 'RecoveryProfile(name: $name, reason: $reason, relationshipDuration: $relationshipDuration, timeSinceBreakup: $timeSinceBreakup, whoEnded: $whoEnded, noContactStartDate: $noContactStartDate, dominantEmotion: $dominantEmotion, contactTriggers: $contactTriggers, commitmentAcceptedAt: $commitmentAcceptedAt, isOnboardingCompleted: $isOnboardingCompleted, appDisclaimerSeen: $appDisclaimerSeen)';
+    return 'RecoveryProfile(name: $name, reason: $reason, relationshipDuration: $relationshipDuration, timeSinceBreakup: $timeSinceBreakup, whoEnded: $whoEnded, noContactStartDate: $noContactStartDate, dominantEmotion: $dominantEmotion, contactTriggers: $contactTriggers, commitmentAcceptedAt: $commitmentAcceptedAt, isOnboardingCompleted: $isOnboardingCompleted, appDisclaimerSeen: $appDisclaimerSeen, aiConsentAccepted: $aiConsentAccepted)';
   }
 
   @override
@@ -348,7 +366,9 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
             (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
                 other.isOnboardingCompleted == isOnboardingCompleted) &&
             (identical(other.appDisclaimerSeen, appDisclaimerSeen) ||
-                other.appDisclaimerSeen == appDisclaimerSeen));
+                other.appDisclaimerSeen == appDisclaimerSeen) &&
+            (identical(other.aiConsentAccepted, aiConsentAccepted) ||
+                other.aiConsentAccepted == aiConsentAccepted));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -366,6 +386,7 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
     commitmentAcceptedAt,
     isOnboardingCompleted,
     appDisclaimerSeen,
+    aiConsentAccepted,
   );
 
   /// Create a copy of RecoveryProfile
@@ -399,6 +420,7 @@ abstract class _RecoveryProfile implements RecoveryProfile {
     final DateTime? commitmentAcceptedAt,
     @JsonKey(name: 'onboarding_completed') final bool isOnboardingCompleted,
     @JsonKey(name: 'app_disclaimer_seen') final bool appDisclaimerSeen,
+    @JsonKey(name: 'ai_consent_accepted') final bool aiConsentAccepted,
   }) = _$RecoveryProfileImpl;
 
   factory _RecoveryProfile.fromJson(Map<String, dynamic> json) =
@@ -437,6 +459,9 @@ abstract class _RecoveryProfile implements RecoveryProfile {
   @override
   @JsonKey(name: 'app_disclaimer_seen')
   bool get appDisclaimerSeen;
+  @override
+  @JsonKey(name: 'ai_consent_accepted')
+  bool get aiConsentAccepted;
 
   /// Create a copy of RecoveryProfile
   /// with the given fields replaced by the non-null parameter values.

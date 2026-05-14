@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart'; // Added for kIsWeb
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/theme/app_theme.dart';
@@ -15,7 +14,6 @@ class PrivacyLockGate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (kIsWeb) return child; // Bypass on web
 
     ref.watch(privacyLockControllerProvider);
     final lockController = ref.read(privacyLockControllerProvider.notifier);

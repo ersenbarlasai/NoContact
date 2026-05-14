@@ -10,7 +10,7 @@ class RhythmRepository {
     if (jsonString == null) return const RhythmSettings();
 
     try {
-      return RhythmSettings.fromJson(json.decode(jsonString));
+      return RhythmSettings.fromJson(json.decode(jsonString) as Map<String, dynamic>);
     } catch (e) {
       return const RhythmSettings();
     }

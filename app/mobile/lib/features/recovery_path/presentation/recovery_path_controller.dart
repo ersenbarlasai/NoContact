@@ -51,6 +51,8 @@ class RecoveryPathController extends StateNotifier<RecoveryPathState> {
 
     final managedUrgeCount = await sosRepo.fetchManagedUrgeCount();
     
+    if (!mounted) return;
+
     final startDate = profile.noContactStartDate ?? DateTime.now();
     final ncDays = DateTime.now().difference(startDate).inDays;
 

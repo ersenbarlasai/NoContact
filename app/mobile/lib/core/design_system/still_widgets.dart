@@ -1,5 +1,7 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../app/theme/app_theme.dart';
+import 'still_tactile.dart';
 
 class StillCard extends StatelessWidget {
   final Widget child;
@@ -8,6 +10,7 @@ class StillCard extends StatelessWidget {
   final VoidCallback? onTap;
   final double borderRadius;
   final bool hasShadow;
+  final bool useTactile;
 
   const StillCard({
     super.key,
@@ -17,6 +20,7 @@ class StillCard extends StatelessWidget {
     this.onTap,
     this.borderRadius = 20,
     this.hasShadow = false,
+    this.useTactile = true,
   });
 
   @override
@@ -26,15 +30,7 @@ class StillCard extends StatelessWidget {
       child: child,
     );
 
-    if (onTap != null) {
-      content = InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: content,
-      );
-    }
-
-    return Container(
+    Widget cardBody = Container(
       decoration: BoxDecoration(
         color: color ?? AppColors.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(borderRadius),
@@ -52,6 +48,79 @@ class StillCard extends StatelessWidget {
         child: content,
       ),
     );
+
+    if (onTap != null) {
+      if (useTactile) {
+        return StillTactilePress(
+          onTap: onTap,
+          child: cardBody,
+        );
+      }
+      return InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: cardBody,
+      );
+    }
+
+    return cardBody;
+  }
+}
+
+class StillGlassCard extends StatelessWidget {
+  final Widget child;
+  final EdgeInsetsGeometry? padding;
+  final VoidCallback? onTap;
+  final double borderRadius;
+  final double blur;
+  final double opacity;
+
+  const StillGlassCard({
+    super.key,
+    required this.child,
+    this.padding,
+    this.onTap,
+    this.borderRadius = 24,
+    this.blur = 20.0,
+    this.opacity = 0.78, // Slightly more opaque as requested (0.74-0.82)
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final cardContent = ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+        child: Container(
+          padding: padding ?? const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: const Color(0xFFFCFBF8).withValues(alpha: opacity), // Warmer cream-tinted glass
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.7),
+              width: 0.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.primary.withValues(alpha: 0.06), // Sage-tinted shadow
+                blurRadius: 30,
+                offset: const Offset(0, 10),
+              ),
+            ],
+          ),
+          child: child,
+        ),
+      ),
+    );
+
+    if (onTap != null) {
+      return StillTactilePress(
+        onTap: onTap,
+        child: cardContent,
+      );
+    }
+
+    return cardContent;
   }
 }
 
@@ -60,6 +129,7 @@ class StillPrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool isLoading;
   final IconData? icon;
+  final bool useTactile;
 
   const StillPrimaryButton({
     super.key,
@@ -67,18 +137,25 @@ class StillPrimaryButton extends StatelessWidget {
     this.onPressed,
     this.isLoading = false,
     this.icon,
+    this.useTactile = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    final bool isEnabled = onPressed != null && !isLoading;
+    
+    final buttonContent = SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: isLoading ? null : onPressed,
+        onPressed: isEnabled ? () {} : null,
         style: ElevatedButton.styleFrom(
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: Colors.transparent,
           padding: const EdgeInsets.symmetric(vertical: 20),
           backgroundColor: AppColors.primary,
+          disabledBackgroundColor: AppColors.primary.withValues(alpha: 0.15), // Soft sage instead of grey
           foregroundColor: AppColors.onPrimary,
+          disabledForegroundColor: AppColors.primary.withValues(alpha: 0.4),
           shape: const StadiumBorder(),
           elevation: 0,
         ),
@@ -98,7 +175,7 @@ class StillPrimaryButton extends StatelessWidget {
                   Text(
                     label.toUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                      color: AppColors.onPrimary,
+                      color: isEnabled ? AppColors.onPrimary : AppColors.primary.withValues(alpha: 0.4),
                       letterSpacing: 1.2,
                     ),
                   ),
@@ -108,6 +185,15 @@ class StillPrimaryButton extends StatelessWidget {
               ),
       ),
     );
+
+    if (useTactile && !isLoading && onPressed != null) {
+      return StillTactilePress(
+        onTap: onPressed,
+        child: IgnorePointer(child: buttonContent),
+      );
+    }
+
+    return buttonContent;
   }
 }
 
@@ -115,26 +201,34 @@ class StillSecondaryButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
   final IconData? icon;
+  final bool useTactile;
 
   const StillSecondaryButton({
     super.key,
     required this.label,
     this.onPressed,
     this.icon,
+    this.useTactile = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    final bool isEnabled = onPressed != null;
+
+    final buttonContent = SizedBox(
       width: double.infinity,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: Colors.transparent,
           padding: const EdgeInsets.symmetric(vertical: 20),
-          side: const BorderSide(color: AppColors.outlineVariant),
+          side: BorderSide(
+            color: isEnabled ? AppColors.outlineVariant : AppColors.outlineVariant.withValues(alpha: 0.3),
+          ),
           shape: const StadiumBorder(),
-          foregroundColor: AppColors.onSurfaceVariant,
+          foregroundColor: isEnabled ? AppColors.onSurfaceVariant : AppColors.onSurfaceVariant.withValues(alpha: 0.38),
         ),
-        onPressed: onPressed,
+        onPressed: isEnabled ? () {} : null,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -145,7 +239,7 @@ class StillSecondaryButton extends StatelessWidget {
             Text(
               label.toUpperCase(),
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: AppColors.onSurfaceVariant,
+                    color: isEnabled ? AppColors.onSurfaceVariant : AppColors.onSurfaceVariant.withValues(alpha: 0.38),
                     letterSpacing: 1.2,
                   ),
             ),
@@ -153,6 +247,15 @@ class StillSecondaryButton extends StatelessWidget {
         ),
       ),
     );
+
+    if (useTactile && onPressed != null) {
+      return StillTactilePress(
+        onTap: onPressed,
+        child: IgnorePointer(child: buttonContent),
+      );
+    }
+
+    return buttonContent;
   }
 }
 
@@ -160,27 +263,35 @@ class StillTertiaryButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
   final IconData? icon;
+  final bool useTactile;
 
   const StillTertiaryButton({
     super.key,
     required this.label,
     this.onPressed,
     this.icon,
+    this.useTactile = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    final bool isEnabled = onPressed != null;
+
+    final buttonContent = SizedBox(
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: Colors.transparent,
           backgroundColor: AppColors.tertiaryContainer,
+          disabledBackgroundColor: AppColors.surfaceContainerHigh,
           foregroundColor: AppColors.onTertiaryContainer,
+          disabledForegroundColor: AppColors.onSurfaceVariant.withValues(alpha: 0.38),
           padding: const EdgeInsets.symmetric(vertical: 20),
           shape: const StadiumBorder(),
           elevation: 0,
         ),
-        onPressed: onPressed,
+        onPressed: isEnabled ? () {} : null,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -191,7 +302,7 @@ class StillTertiaryButton extends StatelessWidget {
             Text(
               label.toUpperCase(),
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: AppColors.onTertiaryContainer,
+                color: isEnabled ? AppColors.onTertiaryContainer : AppColors.onSurfaceVariant.withValues(alpha: 0.38),
                 letterSpacing: 1.2,
               ),
             ),
@@ -199,6 +310,15 @@ class StillTertiaryButton extends StatelessWidget {
         ),
       ),
     );
+
+    if (useTactile && onPressed != null) {
+      return StillTactilePress(
+        onTap: onPressed,
+        child: IgnorePointer(child: buttonContent),
+      );
+    }
+
+    return buttonContent;
   }
 }
 
@@ -319,21 +439,23 @@ class StillMoodChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color backgroundColor = isSelected ? AppColors.primary : AppColors.surfaceContainerLowest;
+    final Color textColor = isSelected ? AppColors.onPrimary : AppColors.onSurfaceVariant;
+    final Color borderColor = isSelected ? AppColors.primary : AppColors.outlineVariant;
+
     return GestureDetector(
       onTap: onSelected,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary : AppColors.surfaceContainerLowest,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(fullRadius),
-          border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.outlineVariant,
-          ),
+          border: Border.all(color: borderColor),
         ),
         child: Text(
           label,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            color: isSelected ? AppColors.onPrimary : AppColors.onSurfaceVariant,
+            color: textColor,
             fontSize: 14,
           ),
         ),
@@ -399,6 +521,8 @@ class StillTextField extends StatelessWidget {
   final String hintText;
   final bool isLarge;
   final ValueChanged<String>? onChanged;
+  final bool autofocus;
+  final int? maxLength;
 
   const StillTextField({
     super.key,
@@ -406,6 +530,8 @@ class StillTextField extends StatelessWidget {
     required this.hintText,
     this.isLarge = false,
     this.onChanged,
+    this.autofocus = false,
+    this.maxLength,
   });
 
   @override
@@ -413,6 +539,8 @@ class StillTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       onChanged: onChanged,
+      autofocus: autofocus,
+      maxLength: maxLength,
       maxLines: isLarge ? 5 : 1, // Changed from null to 5 for better UX in large state
       minLines: isLarge ? 3 : 1,
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -431,7 +559,8 @@ class StillTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.all(24),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
+        counterText: '', // Hide default counter if needed
       ),
     );
   }

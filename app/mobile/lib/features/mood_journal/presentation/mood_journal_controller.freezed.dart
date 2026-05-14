@@ -19,6 +19,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MoodJournalState {
   List<MoodEntry> get entries => throw _privateConstructorUsedError;
   MoodEntry? get todayEntry => throw _privateConstructorUsedError;
+  bool get isEditing => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of MoodJournalState
@@ -35,7 +36,12 @@ abstract class $MoodJournalStateCopyWith<$Res> {
     $Res Function(MoodJournalState) then,
   ) = _$MoodJournalStateCopyWithImpl<$Res, MoodJournalState>;
   @useResult
-  $Res call({List<MoodEntry> entries, MoodEntry? todayEntry, bool isLoading});
+  $Res call({
+    List<MoodEntry> entries,
+    MoodEntry? todayEntry,
+    bool isEditing,
+    bool isLoading,
+  });
 
   $MoodEntryCopyWith<$Res>? get todayEntry;
 }
@@ -57,6 +63,7 @@ class _$MoodJournalStateCopyWithImpl<$Res, $Val extends MoodJournalState>
   $Res call({
     Object? entries = null,
     Object? todayEntry = freezed,
+    Object? isEditing = null,
     Object? isLoading = null,
   }) {
     return _then(
@@ -69,6 +76,10 @@ class _$MoodJournalStateCopyWithImpl<$Res, $Val extends MoodJournalState>
                 ? _value.todayEntry
                 : todayEntry // ignore: cast_nullable_to_non_nullable
                       as MoodEntry?,
+            isEditing: null == isEditing
+                ? _value.isEditing
+                : isEditing // ignore: cast_nullable_to_non_nullable
+                      as bool,
             isLoading: null == isLoading
                 ? _value.isLoading
                 : isLoading // ignore: cast_nullable_to_non_nullable
@@ -102,7 +113,12 @@ abstract class _$$MoodJournalStateImplCopyWith<$Res>
   ) = __$$MoodJournalStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<MoodEntry> entries, MoodEntry? todayEntry, bool isLoading});
+  $Res call({
+    List<MoodEntry> entries,
+    MoodEntry? todayEntry,
+    bool isEditing,
+    bool isLoading,
+  });
 
   @override
   $MoodEntryCopyWith<$Res>? get todayEntry;
@@ -124,6 +140,7 @@ class __$$MoodJournalStateImplCopyWithImpl<$Res>
   $Res call({
     Object? entries = null,
     Object? todayEntry = freezed,
+    Object? isEditing = null,
     Object? isLoading = null,
   }) {
     return _then(
@@ -136,6 +153,10 @@ class __$$MoodJournalStateImplCopyWithImpl<$Res>
             ? _value.todayEntry
             : todayEntry // ignore: cast_nullable_to_non_nullable
                   as MoodEntry?,
+        isEditing: null == isEditing
+            ? _value.isEditing
+            : isEditing // ignore: cast_nullable_to_non_nullable
+                  as bool,
         isLoading: null == isLoading
             ? _value.isLoading
             : isLoading // ignore: cast_nullable_to_non_nullable
@@ -151,6 +172,7 @@ class _$MoodJournalStateImpl extends _MoodJournalState {
   const _$MoodJournalStateImpl({
     final List<MoodEntry> entries = const [],
     this.todayEntry,
+    this.isEditing = false,
     this.isLoading = false,
   }) : _entries = entries,
        super._();
@@ -168,11 +190,14 @@ class _$MoodJournalStateImpl extends _MoodJournalState {
   final MoodEntry? todayEntry;
   @override
   @JsonKey()
+  final bool isEditing;
+  @override
+  @JsonKey()
   final bool isLoading;
 
   @override
   String toString() {
-    return 'MoodJournalState(entries: $entries, todayEntry: $todayEntry, isLoading: $isLoading)';
+    return 'MoodJournalState(entries: $entries, todayEntry: $todayEntry, isEditing: $isEditing, isLoading: $isLoading)';
   }
 
   @override
@@ -183,6 +208,8 @@ class _$MoodJournalStateImpl extends _MoodJournalState {
             const DeepCollectionEquality().equals(other._entries, _entries) &&
             (identical(other.todayEntry, todayEntry) ||
                 other.todayEntry == todayEntry) &&
+            (identical(other.isEditing, isEditing) ||
+                other.isEditing == isEditing) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -192,6 +219,7 @@ class _$MoodJournalStateImpl extends _MoodJournalState {
     runtimeType,
     const DeepCollectionEquality().hash(_entries),
     todayEntry,
+    isEditing,
     isLoading,
   );
 
@@ -211,6 +239,7 @@ abstract class _MoodJournalState extends MoodJournalState {
   const factory _MoodJournalState({
     final List<MoodEntry> entries,
     final MoodEntry? todayEntry,
+    final bool isEditing,
     final bool isLoading,
   }) = _$MoodJournalStateImpl;
   const _MoodJournalState._() : super._();
@@ -219,6 +248,8 @@ abstract class _MoodJournalState extends MoodJournalState {
   List<MoodEntry> get entries;
   @override
   MoodEntry? get todayEntry;
+  @override
+  bool get isEditing;
   @override
   bool get isLoading;
 

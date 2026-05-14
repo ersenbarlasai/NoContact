@@ -41,6 +41,8 @@ google-services.json
 **/android/app/debug/
 **/android/app/profile/
 **/android/app/release/
+*.apk
+**/*.apk
 
 # Generated native plugin symlinks
 **/flutter/ephemeral/

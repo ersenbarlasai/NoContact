@@ -45,7 +45,7 @@ class RecoveryPathBuilder {
         status: letterCount > 0 
             ? StepStatus.completed 
             : (ncDays >= 3 ? StepStatus.active : StepStatus.locked),
-        suggestedActionRoute: '/letters-vault',
+        suggestedActionRoute: '/silent-reply',
         icon: Icons.history_edu_outlined,
       ),
 
@@ -68,7 +68,8 @@ class RecoveryPathBuilder {
         description: 'Duyguların gelip geçici olduğunu fark etmeye başla.',
         phase: RecoveryPhase.understand,
         dayTarget: 12,
-        status: ncDays >= 12 ? StepStatus.active : StepStatus.locked,
+        status: ncDays >= 12 ? StepStatus.active : (ncDays >= 7 ? StepStatus.active : StepStatus.locked),
+        suggestedActionRoute: '/library',
         icon: Icons.waves_outlined,
       ),
 
@@ -80,7 +81,18 @@ class RecoveryPathBuilder {
         phase: RecoveryPhase.resist,
         dayTarget: 15,
         status: ncDays >= 15 ? StepStatus.active : StepStatus.locked,
+        suggestedActionRoute: '/support-center',
         icon: Icons.fitness_center_outlined,
+      ),
+      RecoveryPathStep(
+        id: 'resist_2',
+        title: 'Sınır Koymak',
+        description: 'Hayır demenin ve sessiz kalmanın özgürleştirici gücünü kullan.',
+        phase: RecoveryPhase.resist,
+        dayTarget: 18,
+        status: ncDays >= 18 ? StepStatus.active : StepStatus.locked,
+        suggestedActionRoute: '/silent-reply',
+        icon: Icons.shield_outlined,
       ),
 
       // Phase 4: Rebuild (Gün 22-27)
@@ -91,6 +103,7 @@ class RecoveryPathBuilder {
         phase: RecoveryPhase.rebuild,
         dayTarget: 22,
         status: ncDays >= 22 ? StepStatus.active : StepStatus.locked,
+        suggestedActionRoute: '/recovery-path',
         icon: Icons.auto_fix_high_outlined,
       ),
 
@@ -102,6 +115,7 @@ class RecoveryPathBuilder {
         phase: RecoveryPhase.moveForward,
         dayTarget: 30,
         status: ncDays >= 30 ? StepStatus.active : StepStatus.locked,
+        suggestedActionRoute: '/support-center',
         icon: Icons.celebration_outlined,
       ),
     ];

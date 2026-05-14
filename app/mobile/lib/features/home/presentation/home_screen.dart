@@ -1,26 +1,16 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/design_system/emotional_background.dart';
+import '../../../core/design_system/emotional_tokens.dart';
 import '../../../data/models/recovery_profile.dart';
 import '../../onboarding/presentation/onboarding_controller.dart';
 import '../../sos/presentation/sos_controller.dart';
+import '../../support_system/presentation/support_controller.dart';
 import '../../../data/repositories/providers.dart';
-
-final managedUrgeCountProvider = FutureProvider<int>((ref) async {
-  final remoteRepo = ref.watch(sosSessionRepositoryProvider);
-  final localRepo = ref.watch(localSosSessionRepositoryProvider);
-  
-  int count = 0;
-  try {
-    count = await remoteRepo.getManagedUrgeCount();
-  } catch (_) {}
-
-  final localCount = await localRepo.fetchManagedUrgeCount();
-  return count > localCount ? count : localCount;
-});
+import '../../recovery_path/data/static_30_day_recovery_plan.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -32,150 +22,120 @@ class HomeScreen extends ConsumerWidget {
     final managedUrges = ref.watch(managedUrgeCountProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header & Greeting
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Hoş geldin, ${onboardingState.name}',
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                color: AppColors.primary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          'Bugün harika gidiyorsun. Sadece bu anı yaşa.',
-                          style: Theme.of(context).textTheme.labelSmall,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.analytics_outlined, color: AppColors.primary),
-                        onPressed: () => context.push('/insights'),
-                      ),
-                      const Icon(Icons.eco_outlined, color: AppColors.primary),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              if (kIsWeb)
-                Container(
-                  margin: const EdgeInsets.only(bottom: 24),
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: AppColors.surfaceContainerLow,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppColors.outlineVariant.withValues(alpha: 0.5)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
+      backgroundColor: Colors.transparent,
+      body: EmotionalBackground(
+        variant: EmotionalVariant.home,
+        useTimeOfDay: true,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(24, 32, 24, MediaQuery.of(context).padding.bottom + 180),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header & Greeting
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.science_outlined, color: AppColors.primary),
-                          const SizedBox(width: 12),
                           Text(
-                            'Still Web Test Sürümü',
-                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
+                            'Hoş geldin, ${onboardingState.name}',
+                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   color: AppColors.primary,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Literata',
                                 ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Bugün harika gidiyorsun. Sadece bu anı yaşa.',
+                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Bu sürüm App Store / Play Store öncesi ürün hissini test etmek için hazırlandı. Mobil uygulamadaki bazı özellikler web’de farklı çalışabilir:',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: 12),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, bottom: 4),
-                        child: Text('• Biyometrik kilit web’de aktif değil.', style: Theme.of(context).textTheme.bodyMedium),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, bottom: 4),
-                        child: Text('• Yerel bildirimler web’de aktif değil.', style: Theme.of(context).textTheme.bodyMedium),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, bottom: 4),
-                        child: Text('• Web sürümünde gerçek hassas içerik yazmamanı öneririz.', style: Theme.of(context).textTheme.bodyMedium),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        'Bu testte özellikle ilk izlenimini, onboarding akışını, SOS modunu, günlük/mektup alanlarının güven hissini ve mesaj analizi fikrini değerlendirmek istiyoruz.',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        'Geri bildirimin uygulamanın gerçek mobil sürümünü şekillendirecek.',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontStyle: FontStyle.italic,
-                              color: AppColors.onSurfaceVariant,
-                            ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 12),
+                    IconButton(
+                      icon: const Icon(Icons.eco_outlined, color: AppColors.primary, size: 22),
+                      onPressed: () => context.push('/recovery-path'),
+                      tooltip: 'İyileşme Yolum',
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 24),
+  
+                if (sosState.completedAt != null && 
+                    DateTime.now().difference(sosState.completedAt!).inMinutes < 60)
+                  _SosSuccessMessage(onDismiss: () {
+                    ref.read(sosControllerProvider.notifier).reset();
+                  }),
+  
+                // No-Contact Day Counter
+                _DayCounterCard(onboardingState: onboardingState),
+                const SizedBox(height: 32),
+  
+                // Today's Support (Priority Card)
+                const _BentoSupportCard(),
+                const SizedBox(height: 32),
+  
+                // Bento Grid
+                const StillSectionHeader(title: 'Senin Alanın'),
+                const SizedBox(height: 16),
+                
+                // Row 1: Today's Step & Library
+                Row(
+                  children: [
+                    Expanded(
+                      child: _TodayStepMiniCard(onboardingState: onboardingState),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: _BentoLibraryCard(),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
 
-              if (sosState.completedAt != null && 
-                  DateTime.now().difference(sosState.completedAt!).inMinutes < 60)
-                _SosSuccessMessage(onDismiss: () {
-                  ref.read(sosControllerProvider.notifier).reset();
-                }),
-
-              // No-Contact Day Counter
-              _DayCounterCard(onboardingState: onboardingState),
-              const SizedBox(height: 32),
-
-              // Bento Grid
-              const StillSectionHeader(title: 'Senin Alanın'),
-              const SizedBox(height: 16),
-              
-              // Row 1: Mood
-              _BentoMoodCard(onboardingState: onboardingState),
-              const SizedBox(height: 16),
-              
-              const SizedBox(height: 16),
-              
-              // Row 2: Stats & Action
-              Row(
-                children: [
-                  Expanded(
-                    child: _BentoStatsCard(managedUrges: managedUrges),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: _BentoActionCard(onboardingState: onboardingState),
-                  ),
-                ],
-              ),
-              
-              const SizedBox(height: 16),
-              _RecoveryPathCard(),
-              
-              const SizedBox(height: 40),
-              const StillPrivacyNotice(
-                text: 'Verilerin gizlidir ve sadece bu cihazda saklanır.',
-              ),
-              const SizedBox(height: 80), // Space for FAB
-            ],
+                // Row 2: Mood & Silent Reply
+                Row(
+                  children: [
+                    Expanded(
+                      child: _BentoMoodCard(onboardingState: onboardingState),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: _BentoSilentReplyCard(),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                
+                // Row 3: Stats & Letters
+                Row(
+                  children: [
+                    Expanded(
+                      child: _BentoStatsCard(managedUrges: managedUrges),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: _BentoActionCard(onboardingState: onboardingState),
+                    ),
+                  ],
+                ),
+                
+                const SizedBox(height: 24),
+                
+                const StillPrivacyNotice(
+                  text: 'Veriler bu cihazda şifreli saklanır.',
+                ),
+                const SizedBox(height: 180), // Safe space for bottom nav & FAB
+              ],
+            ),
           ),
         ),
       ),
@@ -192,8 +152,7 @@ class _DayCounterCard extends StatelessWidget {
     final startDate = onboardingState.noContactStartDate ?? DateTime.now();
     final days = DateTime.now().difference(startDate).inDays;
 
-    return StillCard(
-      hasShadow: true,
+    return StillGlassCard(
       padding: const EdgeInsets.symmetric(vertical: 48),
       child: Center(
         child: Column(
@@ -203,6 +162,7 @@ class _DayCounterCard extends StatelessWidget {
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     letterSpacing: 2,
                     fontWeight: FontWeight.bold,
+                    color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
                   ),
             ),
             const SizedBox(height: 16),
@@ -210,14 +170,16 @@ class _DayCounterCard extends StatelessWidget {
               '$days Gün',
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     color: AppColors.primary,
+                    fontFamily: 'Literata',
                   ),
             ),
             const SizedBox(height: 12),
             Text(
               'Kendini seçtiğin anlar',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.onSurfaceVariant,
+                    color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
                     fontStyle: FontStyle.italic,
+                    fontFamily: 'Literata',
                   ),
             ),
           ],
@@ -252,13 +214,13 @@ class _BentoMoodCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Şu an nasıl hissediyorsun?',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18),
+                  'Nasıl hissediyorsun?',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 16),
                 ),
               ],
             ),
           ),
-          const Icon(Icons.favorite, color: AppColors.primary, size: 28),
+          const Icon(Icons.favorite, color: AppColors.primary, size: 24),
         ],
       ),
     );
@@ -272,22 +234,22 @@ class _BentoStatsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StillCard(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(20),
       color: AppColors.tertiaryFixed.withValues(alpha: 0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.health_and_safety_outlined, color: AppColors.tertiary, size: 28),
-          const SizedBox(height: 24),
+          const Icon(Icons.health_and_safety_outlined, color: AppColors.tertiary, size: 24),
+          const SizedBox(height: 20),
           managedUrges.when(
             data: (count) => Text(
               '$count',
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     color: AppColors.tertiary,
-                    fontSize: 40,
+                    fontSize: 32,
                   ),
             ),
-            loading: () => const CircularProgressIndicator(),
+            loading: () => const SizedBox(height: 32, child: CircularProgressIndicator(strokeWidth: 2)),
             error: (_, __) => const Text('0'),
           ),
           const SizedBox(height: 4),
@@ -296,6 +258,14 @@ class _BentoStatsCard extends StatelessWidget {
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: AppColors.onTertiaryContainer,
+                ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Temas etmeden atlattığın anlar',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.onTertiaryContainer.withValues(alpha: 0.7),
+                  fontSize: 10,
                 ),
           ),
         ],
@@ -311,19 +281,19 @@ class _BentoActionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StillCard(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(20),
       onTap: () => context.push('/letters-vault'),
       color: AppColors.primaryFixed.withValues(alpha: 0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.auto_stories, color: AppColors.primary, size: 28),
-          const SizedBox(height: 24),
+          const Icon(Icons.auto_stories, color: AppColors.primary, size: 24),
+          const SizedBox(height: 20),
           Text(
             'Göndermeyeceğin Mektup',
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   height: 1.2,
-                  fontSize: 14,
+                  fontSize: 13,
                 ),
           ),
           const SizedBox(height: 4),
@@ -370,37 +340,184 @@ class _SosSuccessMessage extends StatelessWidget {
   }
 }
 
-class _RecoveryPathCard extends StatelessWidget {
+class _BentoSupportCard extends ConsumerWidget {
+  const _BentoSupportCard();
+
+  String _formatDuration(Duration? duration) {
+    if (duration == null) return '';
+    final hours = duration.inHours;
+    final minutes = duration.inMinutes % 60;
+    return '${hours}s ${minutes}dk kaldı';
+  }
+
   @override
-  Widget build(BuildContext context) {
-    return StillCard(
-      onTap: () => context.push('/recovery-path'),
-      color: AppColors.primaryContainer.withValues(alpha: 0.1),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final supportState = ref.watch(supportControllerProvider);
+    final status = supportState.pauseStatus;
+    final latestNote = supportState.latestNote;
+
+    final isActive = status == SupportPauseStatus.active;
+    final isExpired = status == SupportPauseStatus.expired;
+
+    String title = 'BUGÜNÜN DESTEĞİ';
+    String subtitle = latestNote?.body ?? 'Şu an ihtiyacın olan küçük adımı seç.';
+    IconData icon = Icons.shield_outlined;
+    Color cardColor = AppColors.surfaceContainerLow;
+
+    if (isActive) {
+      title = '24 SAATLİK DURAKLAMA AKTİF';
+      subtitle = '${_formatDuration(supportState.remainingPauseTime)}\nKararını şu an koruyorsun.';
+      icon = Icons.timer_outlined;
+      cardColor = AppColors.primaryContainer.withValues(alpha: 0.2);
+    } else if (isExpired) {
+      title = 'DURAKLAMA TAMAMLANDI';
+      subtitle = 'Şimdi daha sakin bir yerden karar verebilirsin.';
+      icon = Icons.check_circle_outline;
+      cardColor = AppColors.primaryContainer.withValues(alpha: 0.2);
+    } else {
+      cardColor = AppColors.surfaceContainerLowest.withValues(alpha: 0.7);
+    }
+
+    return StillGlassCard(
+      onTap: () => context.push('/support-center'),
+      opacity: (isActive || isExpired) ? 0.8 : 0.6,
+      padding: const EdgeInsets.all(28),
       child: Row(
         children: [
-          const Icon(Icons.auto_graph, color: AppColors.primary, size: 28),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: AppColors.primary.withValues(alpha: 0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, color: AppColors.primary, size: 28),
+          ),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'İYİLEŞME YOLUN',
+                  title,
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        letterSpacing: 1.2,
+                        letterSpacing: 1.5,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primary,
                       ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
                 Text(
-                  'Sıradaki nazik adımı gör.',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  subtitle,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.onSurface,
+                    fontFamily: (isActive || isExpired) ? 'Literata' : null,
+                    fontStyle: (isActive || isExpired) ? FontStyle.italic : null,
+                  ),
                 ),
               ],
             ),
           ),
           const Icon(Icons.chevron_right, color: AppColors.outline),
+        ],
+      ),
+    );
+  }
+}
+
+class _BentoLibraryCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StillCard(
+      padding: const EdgeInsets.all(20),
+      onTap: () => context.push('/library'),
+      color: AppColors.secondaryContainer.withValues(alpha: 0.3),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.local_library_outlined, color: AppColors.secondary, size: 24),
+          const SizedBox(height: 20),
+          Text(
+            'Sessiz Kütüphane',
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  height: 1.2,
+                  fontSize: 13,
+                ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Sakin içerikler',
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BentoSilentReplyCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StillCard(
+      padding: const EdgeInsets.all(20),
+      onTap: () => context.push('/silent-reply'),
+      color: AppColors.primaryContainer.withValues(alpha: 0.1),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.chat_bubble_outline, color: AppColors.primary, size: 24),
+          const SizedBox(height: 20),
+          Text(
+            'Sessiz Cevap',
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  height: 1.2,
+                  fontSize: 13,
+                ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Göndermeden yaz.',
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
+        ],
+      ),
+    );
+  }
+}
+class _TodayStepMiniCard extends StatelessWidget {
+  final RecoveryProfile onboardingState;
+  const _TodayStepMiniCard({required this.onboardingState});
+
+  @override
+  Widget build(BuildContext context) {
+    final startDate = onboardingState.noContactStartDate ?? DateTime.now();
+    final days = DateTime.now().difference(startDate).inDays;
+    final step = Static30DayRecoveryPlan.getStepForDay(days);
+
+    return StillCard(
+      padding: const EdgeInsets.all(20),
+      onTap: () => context.push('/recovery-path'),
+      color: AppColors.tertiaryFixed.withValues(alpha: 0.3),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.flare_outlined, color: AppColors.tertiary, size: 24),
+          const SizedBox(height: 20),
+          Text(
+            'GÜN ${step.dayNumber}',
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppColors.tertiary,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Bugünün Adımı',
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 13),
+          ),
         ],
       ),
     );
