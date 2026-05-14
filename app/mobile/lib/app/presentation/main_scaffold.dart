@@ -88,16 +88,12 @@ class _BottomNavBar extends ConsumerWidget {
                     feature: PremiumFeature.lettersVault,
                   ),
                 ),
-                // Settings — premium
+                // Settings — free
                 _NavItem(
                   icon: Icons.settings,
                   label: l10n.navSettings,
                   isActive: location == '/settings',
-                  onTap: () => guardPremiumAccess(
-                    context, ref,
-                    targetRoute: '/settings',
-                    feature: PremiumFeature.settings,
-                  ),
+                  onTap: () => context.go('/settings'),
                 ),
               ],
             ),

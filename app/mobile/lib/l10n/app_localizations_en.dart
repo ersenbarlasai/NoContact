@@ -891,9 +891,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'The Quiet Library is unlocked with premium.';
 
   @override
-  String get subscriptionGateSettings => 'Settings are unlocked with premium.';
-
-  @override
   String get subscriptionGateBetaFeedback =>
       'The feedback screen is unlocked with premium.';
 

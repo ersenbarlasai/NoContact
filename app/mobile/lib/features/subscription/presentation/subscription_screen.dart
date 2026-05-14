@@ -158,7 +158,6 @@ class SubscriptionScreen extends ConsumerWidget {
                   '30 Günlük İyileşme Yolu',
                   'Sessiz Cevap Rehberi',
                   'Gelişmiş İçgörüler',
-                  'Ayarlar ve Kişiselleştirme',
                 ],
                 isCurrent: state.isPremium,
                 isPremiumPlan: true,
@@ -231,8 +230,8 @@ class SubscriptionScreen extends ConsumerWidget {
       PremiumFeature.recoveryPath  => l10n.subscriptionGateRecoveryPath,
       PremiumFeature.silentReply   => l10n.subscriptionGateSilentReply,
       PremiumFeature.insights      => l10n.subscriptionGateInsights,
-      PremiumFeature.settings      => l10n.subscriptionGateSettings,
       PremiumFeature.betaFeedback  => l10n.subscriptionGateBetaFeedback,
+      PremiumFeature.settings      => l10n.subscriptionGateDefault,
       PremiumFeature.generic       => l10n.subscriptionGateDefault,
     };
   }

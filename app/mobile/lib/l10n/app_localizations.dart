@@ -1691,14 +1691,8 @@ abstract class AppLocalizations {
   /// No description provided for @subscriptionGateLibrary.
   ///
   /// In tr, this message translates to:
-  /// **'Sessiz Küтüphane premium ile açılır.'**
+  /// **'Sessiz Kütüphane premium ile açılır.'**
   String get subscriptionGateLibrary;
-
-  /// No description provided for @subscriptionGateSettings.
-  ///
-  /// In tr, this message translates to:
-  /// **'Ayarlar premium ile açılır.'**
-  String get subscriptionGateSettings;
 
   /// No description provided for @subscriptionGateBetaFeedback.
   ///

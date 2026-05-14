@@ -26,13 +26,12 @@ import '../../core/navigation/premium_guard.dart';
 import '../../data/models/unsent_letter.dart';
 
 /// Routes that are always free (no premium check).
-const _freeRouteSet = {'/splash', '/onboarding', '/', '/sos', '/subscription'};
+const _freeRouteSet = {'/splash', '/onboarding', '/', '/sos', '/subscription', '/settings'};
 
 /// Map from route prefix → PremiumFeature for contextual paywall messages.
 const _routeFeatureMap = <String, PremiumFeature>{
   '/mood-journal':   PremiumFeature.moodJournal,
   '/letters-vault':  PremiumFeature.lettersVault,
-  '/settings':       PremiumFeature.settings,
   '/beta-feedback':  PremiumFeature.betaFeedback,
   '/recovery-path':  PremiumFeature.recoveryPath,
   '/insights':       PremiumFeature.insights,

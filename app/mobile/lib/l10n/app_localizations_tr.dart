@@ -884,10 +884,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bugünün Desteği premium ile açılır.';
 
   @override
-  String get subscriptionGateLibrary => 'Sessiz Küтüphane premium ile açılır.';
-
-  @override
-  String get subscriptionGateSettings => 'Ayarlar premium ile açılır.';
+  String get subscriptionGateLibrary => 'Sessiz Kütüphane premium ile açılır.';
 
   @override
   String get subscriptionGateBetaFeedback =>
