@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../l10n/app_localizations.dart';
 import '../domain/message_analysis_types.dart';
 import 'message_analysis_controller.dart';
 
@@ -57,7 +58,9 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
                     },
                   ),
                   Text(
-                    isAnalyzed ? 'ANALİZ SONUCU' : 'MESAJ ANALİZİ',
+                    isAnalyzed
+                        ? AppLocalizations.of(context).messageAnalysisDetailTitle.toUpperCase()
+                        : AppLocalizations.of(context).messageAnalysisTitle.toUpperCase(),
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           letterSpacing: 2,
                           color: AppColors.primary,
@@ -75,12 +78,12 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
               
               const SizedBox(height: 48),
               
-              const StillPrivacyNotice(
-                text: 'Mesaj metni sunucularımızda saklanmaz, sadece analiz için işlenir.',
+              StillPrivacyNotice(
+                text: AppLocalizations.of(context).messageAnalysisInputSubtitle,
               ),
               const SizedBox(height: 16),
               Text(
-                'AI desteği profesyonel terapi veya acil yardım yerine geçmez.',
+                AppLocalizations.of(context).appDisclaimer,
                 textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.onSurfaceVariant.withValues(alpha: 0.6),
@@ -110,18 +113,18 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
             const Icon(Icons.privacy_tip_outlined, size: 48, color: AppColors.primary),
             const SizedBox(height: 24),
             Text(
-              'Veri İşleme İzni',
+              AppLocalizations.of(context).messageAnalysisInputTitle,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 16),
             Text(
-              'Bu analiz için yapıştırdığın mesaj güvenli sunucu üzerinden AI sağlayıcısına gönderilir. Mesaj metni veritabanına kaydedilmez. Devam ederek bunu kabul edersin.',
+              AppLocalizations.of(context).messageAnalysisInputSubtitle,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 32),
             StillPrimaryButton(
-              label: 'KABUL EDİYORUM',
+              label: AppLocalizations.of(context).okBtn,
               onPressed: () {
                 ref.read(messageAnalysisControllerProvider.notifier).acceptConsent();
                 Navigator.pop(context);
@@ -137,14 +140,14 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const StillSectionHeader(
-          title: 'Mesajı Paylaş',
-          subtitle: 'Gelen mesajın altındaki niyetleri daha sakin bir gözle değerlendirelim.',
+        StillSectionHeader(
+          title: AppLocalizations.of(context).messageAnalysisInputTitle,
+          subtitle: AppLocalizations.of(context).messageAnalysisInputSubtitle,
         ),
         const SizedBox(height: 32),
         StillTextField(
           controller: _messageController,
-          hintText: 'Mesajı buraya yapıştır...',
+          hintText: AppLocalizations.of(context).messageAnalysisHint,
           isLarge: true,
           onChanged: (val) => ref.read(messageAnalysisControllerProvider.notifier).updateInput(val),
         ),
@@ -154,7 +157,9 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
         ],
         const SizedBox(height: 32),
         StillPrimaryButton(
-          label: state.isAnalyzing ? 'ANALİZ EDİLİYOR...' : 'ANALİZİ BAŞLAT',
+          label: state.isAnalyzing
+              ? AppLocalizations.of(context).messageAnalysisLoading
+              : AppLocalizations.of(context).messageAnalysisAnalyzeBtn,
           icon: state.isAnalyzing ? null : Icons.psychology_outlined,
           isLoading: state.isAnalyzing,
           onPressed: state.inputText.trim().isEmpty || state.isAnalyzing
@@ -216,7 +221,8 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
                       size: 24
                     ),
                     const SizedBox(height: 12),
-                    Text('Risk Seviyesi', style: Theme.of(context).textTheme.labelSmall),
+                    Text(AppLocalizations.of(context).messageAnalysisRisk,
+                        style: Theme.of(context).textTheme.labelSmall),
                     const SizedBox(height: 4),
                     Row(
                       children: [
@@ -244,7 +250,8 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
         const SizedBox(height: 24),
 
         if (result.detectedPatterns.isNotEmpty) ...[
-          Text('Tespit Edilen Paternler', style: Theme.of(context).textTheme.labelSmall),
+          Text(AppLocalizations.of(context).messageAnalysisPatterns,
+              style: Theme.of(context).textTheme.labelSmall),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
@@ -269,7 +276,7 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Önerilen Eylem',
+                AppLocalizations.of(context).messageAnalysisSuggestedAction,
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(color: _getOnActionColor(result.recommendedAction).withValues(alpha: 0.8)),
               ),
               const SizedBox(height: 8),
@@ -298,7 +305,8 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Detaylı Analiz', style: Theme.of(context).textTheme.labelSmall),
+              Text(AppLocalizations.of(context).messageAnalysisDetailTitle,
+                  style: Theme.of(context).textTheme.labelSmall),
               const SizedBox(height: 12),
               Text(
                 result.userFacingExplanation,
@@ -316,7 +324,8 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Güvenli Yanıt Örneği', style: Theme.of(context).textTheme.labelSmall),
+                Text(AppLocalizations.of(context).messageAnalysisSafeReply,
+                    style: Theme.of(context).textTheme.labelSmall),
                 const SizedBox(height: 12),
                 Text(
                   result.safeReplyExample!,
@@ -324,7 +333,7 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
                 ),
                 const SizedBox(height: 16),
                 StillSecondaryButton(
-                  label: 'KOPYALA',
+                  label: AppLocalizations.of(context).copyBtn,
                   onPressed: () {
                     // TODO: Implement clipboard copy
                   },
@@ -337,7 +346,7 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
         const SizedBox(height: 32),
         
         // Grounding Reminder
-        const StillSectionHeader(title: 'İçsel Onaylama'),
+        StillSectionHeader(title: AppLocalizations.of(context).messageAnalysisGrounding),
         const SizedBox(height: 16),
         Container(
           padding: const EdgeInsets.all(20),
@@ -369,7 +378,7 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
         ),
         const SizedBox(height: 32),
         StillSecondaryButton(
-          label: 'YENİ ANALİZ',
+          label: AppLocalizations.of(context).newAnalysisBtn,
           onPressed: () => ref.read(messageAnalysisControllerProvider.notifier).resetResult(),
         ),
       ],
@@ -385,18 +394,20 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
   }
 
   String _getRiskLabel(RiskLevel level) {
+    final l10n = AppLocalizations.of(_context!);
     switch (level) {
-      case RiskLevel.high: return 'Yüksek';
-      case RiskLevel.medium: return 'Orta';
-      case RiskLevel.low: return 'Düşük';
+      case RiskLevel.high:   return l10n.messageAnalysisRiskHigh;
+      case RiskLevel.medium: return l10n.messageAnalysisRiskMedium;
+      case RiskLevel.low:    return l10n.messageAnalysisRiskLow;
     }
   }
 
   String _getRiskDescription(RiskLevel level) {
+    final l10n = AppLocalizations.of(_context!);
     switch (level) {
-      case RiskLevel.high: return 'Duygusal güvenliğin için yanıt vermemek en iyisidir.';
-      case RiskLevel.medium: return 'İletişim döngüsünü yeniden açma riski taşır.';
-      case RiskLevel.low: return 'Bu mesaj düşük duygusal risk içeriyor gibi görünüyor.';
+      case RiskLevel.high:   return l10n.messageAnalysisRiskHighDesc;
+      case RiskLevel.medium: return l10n.messageAnalysisRiskMediumDesc;
+      case RiskLevel.low:    return l10n.messageAnalysisRiskLowDesc;
     }
   }
 
@@ -421,12 +432,15 @@ class _MessageAnalysisScreenState extends ConsumerState<MessageAnalysisScreen> {
   }
 
   String _getActionLabel(RecommendedAction action) {
+    final l10n = AppLocalizations.of(_context!);
     switch (action) {
-      case RecommendedAction.doNotReply: return 'Cevap Verme';
-      case RecommendedAction.wait: return 'Bekle';
-      case RecommendedAction.replyWithBoundary: return 'Sınır Koy';
-      case RecommendedAction.useSos: return 'SOS Kullan';
-      case RecommendedAction.writeUnsentLetter: return 'Mektup Yaz';
+      case RecommendedAction.doNotReply:        return l10n.messageAnalysisActionDoNotReply;
+      case RecommendedAction.wait:              return l10n.messageAnalysisActionWait;
+      case RecommendedAction.replyWithBoundary: return l10n.messageAnalysisActionBoundary;
+      case RecommendedAction.useSos:            return l10n.messageAnalysisActionSos;
+      case RecommendedAction.writeUnsentLetter: return l10n.messageAnalysisActionLetter;
     }
   }
+
+  BuildContext? get _context => context;
 }
