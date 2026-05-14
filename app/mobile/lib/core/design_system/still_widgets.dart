@@ -543,6 +543,7 @@ class StillTextField extends StatelessWidget {
       maxLength: maxLength,
       maxLines: isLarge ? 5 : 1, // Changed from null to 5 for better UX in large state
       minLines: isLarge ? 3 : 1,
+      textAlignVertical: TextAlignVertical.top,
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
         fontFamily: 'Literata',
         height: 1.6,

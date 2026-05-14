@@ -289,45 +289,46 @@ class _StepWriteState extends ConsumerState<_StepWrite> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(32.0),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(32.0).copyWith(bottom: MediaQuery.viewInsetsOf(context).bottom + 32),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           StillSectionHeader(title: l10n.sosWriteTitle, subtitle: l10n.sosWriteSubtitle, centered: true),
           const SizedBox(height: 32),
-          Expanded(
-            child: Stack(
+          StillGlassCard(
+            padding: const EdgeInsets.all(24),
+            opacity: 0.4,
+            child: Column(
               children: [
-                StillGlassCard(
-                  padding: const EdgeInsets.all(24),
-                  opacity: 0.4,
-                  child: TextField(
-                    controller: _controller,
-                    maxLines: null,
-                    expands: true,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6, color: AppColors.onSurface),
-                    decoration: InputDecoration(
-                      hintText: l10n.sosWriteHint,
-                      hintStyle: TextStyle(color: AppColors.outline.withOpacity(0.8), fontStyle: FontStyle.italic),
-                      border: InputBorder.none,
-                      fillColor: Colors.transparent,
-                    ),
-                    onChanged: (val) => ref.read(sosControllerProvider.notifier).updateUrgeText(val),
+                TextField(
+                  controller: _controller,
+                  minLines: 6,
+                  maxLines: 12,
+                  textAlignVertical: TextAlignVertical.top,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6, color: AppColors.onSurface),
+                  decoration: InputDecoration(
+                    hintText: l10n.sosWriteHint,
+                    hintStyle: TextStyle(color: AppColors.outline.withValues(alpha: 0.8), fontStyle: FontStyle.italic),
+                    border: InputBorder.none,
+                    fillColor: Colors.transparent,
                   ),
+                  onChanged: (val) => ref.read(sosControllerProvider.notifier).updateUrgeText(val),
                 ),
-                Positioned(
-                  bottom: 16, left: 0, right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.lock_outline, size: 14, color: AppColors.onSurfaceVariant),
-                      const SizedBox(width: 8),
-                      Text(l10n.sosWritePrivacyNote,
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.lock_outline, size: 14, color: AppColors.onSurfaceVariant),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(l10n.sosWritePrivacyNote,
+                          textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                               fontStyle: FontStyle.italic,
-                              color: AppColors.onSurfaceVariant.withOpacity(0.6))),
-                    ],
-                  ),
+                              color: AppColors.onSurfaceVariant.withValues(alpha: 0.6))),
+                    ),
+                  ],
                 ),
               ],
             ),

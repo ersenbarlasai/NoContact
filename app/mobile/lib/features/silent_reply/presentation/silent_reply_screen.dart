@@ -132,7 +132,9 @@ class _Step1Write extends ConsumerWidget {
           StillGlassCard(
             padding: EdgeInsets.zero,
             child: TextField(
+              minLines: 8,
               maxLines: 12,
+              textAlignVertical: TextAlignVertical.top,
               onChanged: (val) => ref.read(silentReplyControllerProvider.notifier).updateDraftText(val),
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(context).silentReplyHint,
