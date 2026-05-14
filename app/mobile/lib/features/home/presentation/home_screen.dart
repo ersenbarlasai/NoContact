@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
+import '../../../core/navigation/premium_guard.dart';
 import '../../../data/models/recovery_profile.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../onboarding/presentation/onboarding_controller.dart';
@@ -56,7 +57,7 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(width: 12),
                     IconButton(
                       icon: const Icon(Icons.eco_outlined, color: AppColors.primary, size: 22),
-                      onPressed: () => context.push('/recovery-path'),
+                      onPressed: () => guardPremiumAccess(context, ref, targetRoute: '/recovery-path'),
                       tooltip: l10n.recoveryPathTitle,
                     ),
                   ],
@@ -460,13 +461,13 @@ class _BentoLibraryCard extends StatelessWidget {
   }
 }
 
-class _BentoSilentReplyCard extends StatelessWidget {
+class _BentoSilentReplyCard extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
-      onTap: () => context.push('/silent-reply'),
+      onTap: () => guardPremiumAccess(context, ref, targetRoute: '/silent-reply'),
       color: AppColors.primaryContainer.withValues(alpha: 0.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -493,12 +494,12 @@ class _BentoSilentReplyCard extends StatelessWidget {
   }
 }
 
-class _TodayStepMiniCard extends StatelessWidget {
+class _TodayStepMiniCard extends ConsumerWidget {
   final RecoveryProfile onboardingState;
   const _TodayStepMiniCard({required this.onboardingState});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final startDate = onboardingState.noContactStartDate ?? DateTime.now();
     final days = DateTime.now().difference(startDate).inDays;
@@ -506,7 +507,7 @@ class _TodayStepMiniCard extends StatelessWidget {
 
     return StillCard(
       padding: const EdgeInsets.all(20),
-      onTap: () => context.push('/recovery-path'),
+      onTap: () => guardPremiumAccess(context, ref, targetRoute: '/recovery-path'),
       color: AppColors.tertiaryFixed.withValues(alpha: 0.3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -326,30 +326,6 @@
   "settingsClearBtn": "CLEAR",
   "settingsClearCancelBtn": "CANCEL",
 
-  "messageAnalysisTitle": "Message Analysis",
-  "messageAnalysisInputTitle": "Paste the Message",
-  "messageAnalysisInputSubtitle": "Paste the message you received from them. This content is processed on your device.",
-  "messageAnalysisHint": "Paste the message here...",
-  "messageAnalysisAnalyzeBtn": "ANALYZE",
-  "messageAnalysisLoading": "Analyzing...",
-  "messageAnalysisRisk": "Risk Level",
-  "messageAnalysisPatterns": "Detected Patterns",
-  "messageAnalysisSuggestedAction": "Recommended Action",
-  "messageAnalysisDetailTitle": "Detailed Analysis",
-  "messageAnalysisSafeReply": "Safe Reply Example",
-  "messageAnalysisGrounding": "Inner Validation",
-  "messageAnalysisRiskHigh": "High",
-  "messageAnalysisRiskMedium": "Medium",
-  "messageAnalysisRiskLow": "Low",
-  "messageAnalysisRiskHighDesc": "For your emotional safety, it's best not to reply.",
-  "messageAnalysisRiskMediumDesc": "Carries a risk of reopening the communication cycle.",
-  "messageAnalysisRiskLowDesc": "This message appears to carry low emotional risk.",
-  "messageAnalysisActionDoNotReply": "Don't Reply",
-  "messageAnalysisActionWait": "Wait",
-  "messageAnalysisActionBoundary": "Set a Boundary",
-  "messageAnalysisActionSos": "Use SOS",
-  "messageAnalysisActionLetter": "Write a Letter",
-
   "notifMorningTitle": "Good morning 🌿",
   "notifMorningBody": "Today, you're still here with yourself. That's a strong enough start.",
   "notifMiddayTitle": "A quiet pause ✨",
@@ -363,3 +339,4 @@
   "notifSilentReplySavedTitle": "You wrote. You didn't send.",
   "notifSilentReplySavedBody": "That takes strength. Your quiet reply is waiting in the vault."
 }
+

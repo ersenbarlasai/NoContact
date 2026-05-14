@@ -16,46 +16,24 @@ void main() {
       repository = EntitlementRepository();
     });
 
-    test('Free tier starts with 3 analyses limit', () async {
+    test('Default tier is free', () async {
       final state = await repository.fetchEntitlement();
       expect(state.tier, SubscriptionTier.free);
-      expect(state.messageAnalysisDailyLimit, 3);
-      expect(state.messageAnalysisUsedToday, 0);
-      expect(state.canUseMessageAnalysis, true);
+      expect(state.isPremium, false);
     });
 
-    test('Usage increments correctly', () async {
-      await repository.incrementMessageAnalysisUsage();
-      var state = await repository.fetchEntitlement();
-      expect(state.messageAnalysisUsedToday, 1);
-      expect(state.remainingMessageAnalyses, 2);
-
-      await repository.incrementMessageAnalysisUsage();
-      await repository.incrementMessageAnalysisUsage();
-      state = await repository.fetchEntitlement();
-      expect(state.messageAnalysisUsedToday, 3);
-      expect(state.canUseMessageAnalysis, false);
-      expect(state.remainingMessageAnalyses, 0);
-    });
-
-    test('Premium tier has higher limit (50)', () async {
+    test('setMockTier switches to premium', () async {
       await repository.setMockTier(SubscriptionTier.premium);
       final state = await repository.fetchEntitlement();
       expect(state.tier, SubscriptionTier.premium);
-      expect(state.messageAnalysisDailyLimit, 50);
+      expect(state.isPremium, true);
     });
 
-    test('Usage resets on next calendar day', () async {
-      // Set usage for "yesterday"
-      final yesterday = DateTime.now().subtract(const Duration(days: 1));
-      await LocalStorageService.setJson('ai_usage_daily', {
-        'date': yesterday.toIso8601String(),
-        'messageAnalysisUsedCount': 3,
-      });
-
+    test('setMockTier can revert to free', () async {
+      await repository.setMockTier(SubscriptionTier.premium);
+      await repository.setMockTier(SubscriptionTier.free);
       final state = await repository.fetchEntitlement();
-      expect(state.messageAnalysisUsedToday, 0, reason: 'Usage should reset for a new day');
-      expect(state.canUseMessageAnalysis, true);
+      expect(state.tier, SubscriptionTier.free);
     });
   });
 }

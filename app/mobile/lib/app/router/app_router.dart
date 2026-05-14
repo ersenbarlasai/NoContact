@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/sos/presentation/sos_screen.dart';
-import '../../features/message_analysis/presentation/message_analysis_screen.dart';
 import '../../features/mood_journal/presentation/mood_journal_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../../features/settings/presentation/beta_feedback_screen.dart';
@@ -98,13 +97,6 @@ final appRouter = Provider<GoRouter>((ref) {
             ],
           ),
           GoRoute(
-            path: '/message-analysis',
-            pageBuilder: (context, state) => StillPageTransition(
-              child: const MessageAnalysisScreen(),
-              type: StillTransitionType.fadeThrough,
-            ),
-          ),
-          GoRoute(
             path: '/subscription',
             pageBuilder: (context, state) => StillPageTransition(
               child: const SubscriptionScreen(),
@@ -170,7 +162,7 @@ final appRouter = Provider<GoRouter>((ref) {
     ],
     redirect: (context, state) {
       final status = startupState.status;
-      
+
       final isSplash = state.matchedLocation == '/splash';
       final isOnboarding = state.matchedLocation == '/onboarding';
 
@@ -178,7 +170,6 @@ final appRouter = Provider<GoRouter>((ref) {
         return isSplash ? null : '/splash';
       }
 
-      // If onboarding is completed (either restored or just finished), we are good to go to Home
       if (onboardingCompleted) {
         if (isSplash || isOnboarding) {
           return '/';
@@ -186,13 +177,10 @@ final appRouter = Provider<GoRouter>((ref) {
         return null;
       }
 
-      // If we reach here, onboarding is NOT completed.
-      // If startup says we need onboarding, force it.
       if (status == AppStartupStatus.needsOnboarding) {
         return isOnboarding ? null : '/onboarding';
       }
 
-      // Otherwise, stay on splash if still loading or undetermined
       if (status == AppStartupStatus.loading) return '/splash';
 
       return null;

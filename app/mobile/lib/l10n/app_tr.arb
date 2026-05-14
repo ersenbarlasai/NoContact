@@ -1,4 +1,4 @@
-{
+﻿{
   "@@locale": "tr",
 
   "appTitle": "STILL",
@@ -326,30 +326,6 @@
   "settingsClearBtn": "TEMİZLE",
   "settingsClearCancelBtn": "VAZGEÇ",
 
-  "messageAnalysisTitle": "Mesaj Analizi",
-  "messageAnalysisInputTitle": "Mesajı Yapıştır",
-  "messageAnalysisInputSubtitle": "Ondan aldığın mesajı buraya yapıştır. Bu içerik cihazında işlenir.",
-  "messageAnalysisHint": "Mesajı buraya yapıştır...",
-  "messageAnalysisAnalyzeBtn": "ANALİZ ET",
-  "messageAnalysisLoading": "Analiz ediliyor...",
-  "messageAnalysisRisk": "Risk Seviyesi",
-  "messageAnalysisPatterns": "Tespit Edilen Paternler",
-  "messageAnalysisSuggestedAction": "Önerilen Eylem",
-  "messageAnalysisDetailTitle": "Detaylı Analiz",
-  "messageAnalysisSafeReply": "Güvenli Yanıt Örneği",
-  "messageAnalysisGrounding": "İçsel Onaylama",
-  "messageAnalysisRiskHigh": "Yüksek",
-  "messageAnalysisRiskMedium": "Orta",
-  "messageAnalysisRiskLow": "Düşük",
-  "messageAnalysisRiskHighDesc": "Duygusal güvenliğin için yanıt vermemek en iyisidir.",
-  "messageAnalysisRiskMediumDesc": "İletişim döngüsünü yeniden açma riski taşır.",
-  "messageAnalysisRiskLowDesc": "Bu mesaj düşük duygusal risk içeriyor gibi görünüyor.",
-  "messageAnalysisActionDoNotReply": "Cevap Verme",
-  "messageAnalysisActionWait": "Bekle",
-  "messageAnalysisActionBoundary": "Sınır Koy",
-  "messageAnalysisActionSos": "SOS Kullan",
-  "messageAnalysisActionLetter": "Mektup Yaz",
-
   "notifMorningTitle": "Günaydın 🌿",
   "notifMorningBody": "Bugün de kendinle birliktesin. Bu yeterlice güçlü bir başlangıç.",
   "notifMiddayTitle": "Bir an dur ✨",
@@ -363,3 +339,4 @@
   "notifSilentReplySavedTitle": "Yazdın, göndermedin.",
   "notifSilentReplySavedBody": "Bu da bir güç. Sessiz cevabın kasada seni bekliyor."
 }
+

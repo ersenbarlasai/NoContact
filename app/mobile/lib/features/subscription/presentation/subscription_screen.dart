@@ -29,7 +29,7 @@ class SubscriptionScreen extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    'PLAN VE LİMİTLER',
+                    'STILL PREMIUM',
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           letterSpacing: 2,
                           color: AppColors.primary,
@@ -43,51 +43,41 @@ class SubscriptionScreen extends ConsumerWidget {
 
               const StillSectionHeader(
                 title: 'İyileşme Yolculuğunu Destekle',
-                subtitle: 'NoContact gelişim aşamasındadır. Şimdilik tüm özellikleri deneyebilirsin.',
+                subtitle:
+                    'Premium özellikler, daha derin bir iyileşme deneyimi için tasarlandı.',
               ),
               const SizedBox(height: 32),
 
-              // Current Status Card
-              StillCard(
-                color: AppColors.surfaceContainerLow,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              // Current status badge
+              StillGlassCard(
+                padding: const EdgeInsets.all(20),
+                child: Row(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Icon(
+                      state.isPremium
+                          ? Icons.workspace_premium_rounded
+                          : Icons.eco_outlined,
+                      color: AppColors.primary,
+                      size: 28,
+                    ),
+                    const SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Mevcut Planın',
+                          'Mevcut Plan',
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: state.isPremium ? AppColors.tertiaryContainer : AppColors.secondaryContainer,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            state.tier == SubscriptionTier.free ? 'ÜCRETSİZ' : 'PREMIUM',
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: state.isPremium ? AppColors.onTertiaryContainer : AppColors.onSecondaryContainer,
-                            ),
-                          ),
+                        const SizedBox(height: 4),
+                        Text(
+                          state.isPremium ? 'Premium' : 'Ücretsiz',
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.primary,
+                                  ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      ref.read(entitlementControllerProvider.notifier).usageStatusText,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 8),
-                    LinearProgressIndicator(
-                      value: state.messageAnalysisUsedToday / state.messageAnalysisDailyLimit,
-                      backgroundColor: AppColors.surfaceContainerHigh,
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(4),
                     ),
                   ],
                 ),
@@ -95,47 +85,55 @@ class SubscriptionScreen extends ConsumerWidget {
 
               const SizedBox(height: 40),
 
-              // Plans Comparison
-              _buildPlanFeature(
+              // Free plan
+              _buildPlanSection(
                 context,
-                'Ücretsiz Plan',
-                [
+                title: 'Ücretsiz Plan',
+                features: const [
                   'SOS Yardımı (Sınırsız)',
                   'No-Contact Sayacı',
-                  'Duygu Günlüğü',
+                  'Duygu Günlüğü (Temel)',
                   'Mektup Kasası',
-                  'Günlük 3 Mesaj Analizi',
+                  'Sakin Kütüphane',
                 ],
-                true,
+                isCurrent: !state.isPremium,
+                isPremium: false,
               ),
               const SizedBox(height: 24),
-              _buildPlanFeature(
+
+              // Premium plan
+              _buildPlanSection(
                 context,
-                'Premium Plan (Yakında)',
-                [
-                  'Gelişmiş AI Mesaj Analizi (Yüksek Limit)',
-                  'Haftalık İyileşme Raporları',
-                  'Duygusal Trend Analizleri',
-                  'AI İyileşme Koçu Erişimi',
-                  'Özel Temalar ve Fontlar',
+                title: 'Premium Plan (Yakında)',
+                features: const [
+                  '30 Günlük İyileşme Yolu',
+                  'Sessiz Cevap Rehberi',
+                  'Gelişmiş İçgörüler ve Trendler',
+                  'Haftalık İyileşme Özeti',
+                  'Kişisel Ritim ve Destek Önerileri',
                 ],
-                false,
+                isCurrent: state.isPremium,
+                isPremium: true,
               ),
 
               const SizedBox(height: 48),
 
-              // Note about payments
+              // Payment note
               StillCard(
                 color: AppColors.primary.withValues(alpha: 0.05),
                 padding: const EdgeInsets.all(20),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(Icons.info_outline, color: AppColors.primary),
                     const SizedBox(width: 16),
                     Expanded(
                       child: Text(
-                        'Ödeme entegrasyonu henüz aktif değil. Geliştirme sürecinde bize geri bildirim vererek destek olabilirsin.',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.primary),
+                        'Ödeme entegrasyonu henüz aktif değil. Şu an tüm özellikleri ücretsiz deneyebilirsin.',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(color: AppColors.primary),
                       ),
                     ),
                   ],
@@ -144,20 +142,26 @@ class SubscriptionScreen extends ConsumerWidget {
 
               const SizedBox(height: 32),
 
-              // CTA
               StillPrimaryButton(
                 label: 'DEVAM ET',
                 onPressed: () => Navigator.pop(context),
               ),
+
               const SizedBox(height: 16),
-              
-              // Dev Toggle
+
+              // DEV ONLY — visible only in debug builds
               Center(
                 child: TextButton(
-                  onPressed: () => ref.read(entitlementControllerProvider.notifier).toggleMockTier(),
+                  onPressed: () =>
+                      ref.read(entitlementControllerProvider.notifier).toggleMockTier(),
                   child: Text(
-                    state.isPremium ? 'Ücretsiz Moduna Dön (DEV)' : 'Premium Moduna Geç (DEV)',
-                    style: TextStyle(color: AppColors.onSurfaceVariant.withValues(alpha: 0.5), fontSize: 12),
+                    state.isPremium
+                        ? 'Ücretsiz Moduna Dön (DEV)'
+                        : 'Premium Moduna Geç (DEV)',
+                    style: TextStyle(
+                      color: AppColors.onSurfaceVariant.withValues(alpha: 0.4),
+                      fontSize: 11,
+                    ),
                   ),
                 ),
               ),
@@ -168,37 +172,64 @@ class SubscriptionScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildPlanFeature(BuildContext context, String title, List<String> features, bool isCurrent) {
+  Widget _buildPlanSection(
+    BuildContext context, {
+    required String title,
+    required List<String> features,
+    required bool isCurrent,
+    required bool isPremium,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: isCurrent ? AppColors.onSurface : AppColors.onSurfaceVariant,
+        Row(
+          children: [
+            if (isPremium)
+              const Padding(
+                padding: EdgeInsets.only(right: 8),
+                child: Icon(Icons.workspace_premium_rounded,
+                    size: 16, color: AppColors.tertiary),
               ),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: isCurrent
+                        ? AppColors.onSurface
+                        : AppColors.onSurfaceVariant,
+                  ),
+            ),
+          ],
         ),
         const SizedBox(height: 12),
-        ...features.map((f) => Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.check_circle_outline,
-                    size: 16,
-                    color: isCurrent ? AppColors.primary : AppColors.onSurfaceVariant.withValues(alpha: 0.5),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
+        ...features.map(
+          (f) => Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.check_circle_outline,
+                  size: 16,
+                  color: isCurrent
+                      ? AppColors.primary
+                      : AppColors.onSurfaceVariant.withValues(alpha: 0.4),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
                     f,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: isCurrent ? AppColors.onSurface : AppColors.onSurfaceVariant.withValues(alpha: 0.7),
+                          color: isCurrent
+                              ? AppColors.onSurface
+                              : AppColors.onSurfaceVariant
+                                  .withValues(alpha: 0.6),
                         ),
                   ),
-                ],
-              ),
-            )),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

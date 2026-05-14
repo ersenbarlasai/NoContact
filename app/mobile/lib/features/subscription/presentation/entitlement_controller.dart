@@ -15,28 +15,18 @@ class EntitlementController extends StateNotifier<EntitlementState> {
     state = await _repository.fetchEntitlement();
   }
 
-  Future<void> incrementUsage() async {
-    await _repository.incrementMessageAnalysisUsage();
-    await refresh();
-  }
-
+  /// DEV ONLY — toggles mock premium tier for testing. Not shown in production UI.
   Future<void> toggleMockTier() async {
-    final newTier = state.tier == SubscriptionTier.free 
-        ? SubscriptionTier.premium 
+    final newTier = state.tier == SubscriptionTier.free
+        ? SubscriptionTier.premium
         : SubscriptionTier.free;
     await _repository.setMockTier(newTier);
     await refresh();
   }
-
-  String get usageStatusText {
-    if (state.tier == SubscriptionTier.premium) {
-      return 'Premium Plan: ${state.remainingMessageAnalyses} analiz hakkın kaldı.';
-    }
-    return 'Ücretsiz Plan: Bugün ${state.remainingMessageAnalyses} analiz hakkın kaldı.';
-  }
 }
 
-final entitlementControllerProvider = StateNotifierProvider<EntitlementController, EntitlementState>((ref) {
+final entitlementControllerProvider =
+    StateNotifierProvider<EntitlementController, EntitlementState>((ref) {
   final repository = ref.watch(entitlementRepositoryProvider);
   return EntitlementController(repository);
 });

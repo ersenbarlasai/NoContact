@@ -8,15 +8,8 @@ import 'local_mood_journal_repository.dart';
 import 'local_letters_vault_repository.dart';
 import 'beta_feedback_repository.dart';
 import 'local_managed_urge_repository.dart';
-import '../../features/message_analysis/data/message_analysis_repository.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 final authRepositoryProvider = Provider((ref) => AuthRepository());
-// ... other providers
-
-final messageAnalysisRepositoryProvider = Provider((ref) {
-  return MessageAnalysisRepository(Supabase.instance.client);
-});
 
 final recoveryProfileRepositoryProvider = Provider((ref) => RecoveryProfileRepository());
 
