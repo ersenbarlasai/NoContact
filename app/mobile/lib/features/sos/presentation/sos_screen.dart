@@ -169,7 +169,7 @@ class _StepBreatheState extends State<_StepBreathe> with TickerProviderStateMixi
                       blurRadius: 60, spreadRadius: 20)]),
                   child: Center(
                     child: Text(
-                      _isInhale ? l10n.sosTitle : '...',
+                      _isInhale ? l10n.sosBreathIn : l10n.sosBreathOut,
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             color: AppColors.primary, fontStyle: FontStyle.italic,
                             fontFamily: 'Literata', fontSize: 20),

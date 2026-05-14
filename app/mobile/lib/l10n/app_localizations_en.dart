@@ -374,6 +374,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sosTitle => 'Breathe';
 
   @override
+  String get sosBreathIn => 'Breathe In';
+
+  @override
+  String get sosBreathOut => 'Breathe Out';
+
+  @override
   String get sosSubtitle => 'Pause for a moment. We\'re right here.';
 
   @override

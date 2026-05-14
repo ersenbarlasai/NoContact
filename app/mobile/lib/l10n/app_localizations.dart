@@ -758,6 +758,18 @@ abstract class AppLocalizations {
   /// **'Nefes Al'**
   String get sosTitle;
 
+  /// No description provided for @sosBreathIn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nefes Al'**
+  String get sosBreathIn;
+
+  /// No description provided for @sosBreathOut.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nefes Ver'**
+  String get sosBreathOut;
+
   /// No description provided for @sosSubtitle.
   ///
   /// In tr, this message translates to:

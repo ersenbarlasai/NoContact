@@ -375,6 +375,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sosTitle => 'Nefes Al';
 
   @override
+  String get sosBreathIn => 'Nefes Al';
+
+  @override
+  String get sosBreathOut => 'Nefes Ver';
+
+  @override
   String get sosSubtitle => 'Bir an için dur. Buradayız.';
 
   @override
