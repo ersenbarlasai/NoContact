@@ -105,7 +105,7 @@ void main() {
     await tester.pump(); // Use pump instead of pumpAndSettle for Home
 
     // Should be on Home
-    expect(find.textContaining('İLETİŞİM'), findsOneWidget);
+    expect(find.textContaining('NO-CONTACT'), findsOneWidget);
     expect(find.textContaining('Kayıtlı Kullanıcı'), findsWidgets);
     
     await tester.binding.setSurfaceSize(null);

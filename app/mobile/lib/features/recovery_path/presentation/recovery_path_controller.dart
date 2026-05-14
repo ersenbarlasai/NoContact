@@ -13,7 +13,7 @@ part 'recovery_path_controller.freezed.dart';
 class RecoveryPathState with _$RecoveryPathState {
   const factory RecoveryPathState({
     @Default([]) List<RecoveryPathStep> steps,
-    @Default(0) int ncDays,
+    @Default(1) int journeyDays,
     @Default(0) int moodCount,
     @Default(0) int letterCount,
     @Default(0) int managedUrgeCount,
@@ -31,7 +31,7 @@ class RecoveryPathState with _$RecoveryPathState {
   }
 
   int get completedCount => steps.where((s) => s.status == StepStatus.completed).length;
-  double get progressPercent => steps.isEmpty ? 0 : (ncDays / 30).clamp(0.0, 1.0);
+  double get progressPercent => steps.isEmpty ? 0 : (journeyDays / 30).clamp(0.0, 1.0);
 }
 
 class RecoveryPathController extends StateNotifier<RecoveryPathState> {
@@ -53,11 +53,15 @@ class RecoveryPathController extends StateNotifier<RecoveryPathState> {
     
     if (!mounted) return;
 
-    final startDate = profile.noContactStartDate ?? DateTime.now();
-    final ncDays = DateTime.now().difference(startDate).inDays;
+    final journeyStartDate = profile.recoveryJourneyStartDate ?? DateTime.now();
+    
+    // We add 1 so the day you start is Day 1
+    final journeyDays = DateTime.now().difference(DateTime(
+      journeyStartDate.year, journeyStartDate.month, journeyStartDate.day
+    )).inDays + 1;
 
     final steps = RecoveryPathBuilder.buildPath(
-      noContactStartDate: startDate,
+      recoveryJourneyStartDate: journeyStartDate,
       moodEntryCount: moodState.entries.length,
       hasMoodEntryToday: moodState.todayEntry != null && moodState.todayEntry!.mood.isNotEmpty,
       letterCount: lettersState.letters.length,
@@ -66,7 +70,7 @@ class RecoveryPathController extends StateNotifier<RecoveryPathState> {
 
     state = state.copyWith(
       steps: steps,
-      ncDays: ncDays,
+      journeyDays: journeyDays,
       moodCount: moodState.entries.length,
       letterCount: lettersState.letters.length,
       managedUrgeCount: managedUrgeCount,

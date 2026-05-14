@@ -54,13 +54,13 @@ class RecoveryPathScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 32),
                     _ProgressCard(
-                      ncDays: state.ncDays,
+                      ncDays: state.journeyDays,
                       progress: state.progressPercent,
                       activeStepTitle: state.activeStep?.title ?? 'Tüm adımlar tamamlandı',
                     ),
                     const SizedBox(height: 32),
                     _TodayStepCard(
-                      step: Static30DayRecoveryPlan.getStepForDay(state.ncDays),
+                      step: Static30DayRecoveryPlan.getStepForDay(state.journeyDays),
                     ),
                     const SizedBox(height: 48),
                   ],

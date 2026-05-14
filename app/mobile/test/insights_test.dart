@@ -89,7 +89,7 @@ class _MockMoodJournalController extends StateNotifier<MoodJournalState> impleme
 }
 
 class _MockRecoveryPathController extends StateNotifier<RecoveryPathState> implements RecoveryPathController {
-  _MockRecoveryPathController() : super(const RecoveryPathState(ncDays: 10, managedUrgeCount: 5, letterCount: 2));
+  _MockRecoveryPathController() : super(const RecoveryPathState(journeyDays: 10, managedUrgeCount: 5, letterCount: 2));
   
   @override
   Future<void> refreshPath() async {}

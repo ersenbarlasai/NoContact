@@ -36,7 +36,7 @@ class MilestoneController extends StateNotifier<MilestoneState> {
 
     final newMilestones = MilestoneService.checkNewMilestones(
       existingMilestones: state.allMilestones,
-      ncDays: pathState.ncDays,
+      ncDays: pathState.journeyDays,
       moodCount: pathState.moodCount,
       letterCount: pathState.letterCount,
       managedUrgeCount: pathState.managedUrgeCount,

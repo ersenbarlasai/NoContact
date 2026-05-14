@@ -33,6 +33,8 @@ mixin _$RecoveryProfile {
   String get whoEnded => throw _privateConstructorUsedError;
   @JsonKey(name: 'no_contact_start_date')
   DateTime? get noContactStartDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'recovery_journey_start_date')
+  DateTime? get recoveryJourneyStartDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'dominant_emotion')
   String get dominantEmotion => throw _privateConstructorUsedError;
   @JsonKey(name: 'contact_triggers')
@@ -70,6 +72,8 @@ abstract class $RecoveryProfileCopyWith<$Res> {
     @JsonKey(name: 'time_since_breakup') String timeSinceBreakup,
     @JsonKey(name: 'ended_by') String whoEnded,
     @JsonKey(name: 'no_contact_start_date') DateTime? noContactStartDate,
+    @JsonKey(name: 'recovery_journey_start_date')
+    DateTime? recoveryJourneyStartDate,
     @JsonKey(name: 'dominant_emotion') String dominantEmotion,
     @JsonKey(name: 'contact_triggers') List<String> contactTriggers,
     @JsonKey(name: 'commitment_accepted_at') DateTime? commitmentAcceptedAt,
@@ -100,6 +104,7 @@ class _$RecoveryProfileCopyWithImpl<$Res, $Val extends RecoveryProfile>
     Object? timeSinceBreakup = null,
     Object? whoEnded = null,
     Object? noContactStartDate = freezed,
+    Object? recoveryJourneyStartDate = freezed,
     Object? dominantEmotion = null,
     Object? contactTriggers = null,
     Object? commitmentAcceptedAt = freezed,
@@ -132,6 +137,10 @@ class _$RecoveryProfileCopyWithImpl<$Res, $Val extends RecoveryProfile>
             noContactStartDate: freezed == noContactStartDate
                 ? _value.noContactStartDate
                 : noContactStartDate // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            recoveryJourneyStartDate: freezed == recoveryJourneyStartDate
+                ? _value.recoveryJourneyStartDate
+                : recoveryJourneyStartDate // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
             dominantEmotion: null == dominantEmotion
                 ? _value.dominantEmotion
@@ -179,6 +188,8 @@ abstract class _$$RecoveryProfileImplCopyWith<$Res>
     @JsonKey(name: 'time_since_breakup') String timeSinceBreakup,
     @JsonKey(name: 'ended_by') String whoEnded,
     @JsonKey(name: 'no_contact_start_date') DateTime? noContactStartDate,
+    @JsonKey(name: 'recovery_journey_start_date')
+    DateTime? recoveryJourneyStartDate,
     @JsonKey(name: 'dominant_emotion') String dominantEmotion,
     @JsonKey(name: 'contact_triggers') List<String> contactTriggers,
     @JsonKey(name: 'commitment_accepted_at') DateTime? commitmentAcceptedAt,
@@ -208,6 +219,7 @@ class __$$RecoveryProfileImplCopyWithImpl<$Res>
     Object? timeSinceBreakup = null,
     Object? whoEnded = null,
     Object? noContactStartDate = freezed,
+    Object? recoveryJourneyStartDate = freezed,
     Object? dominantEmotion = null,
     Object? contactTriggers = null,
     Object? commitmentAcceptedAt = freezed,
@@ -240,6 +252,10 @@ class __$$RecoveryProfileImplCopyWithImpl<$Res>
         noContactStartDate: freezed == noContactStartDate
             ? _value.noContactStartDate
             : noContactStartDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        recoveryJourneyStartDate: freezed == recoveryJourneyStartDate
+            ? _value.recoveryJourneyStartDate
+            : recoveryJourneyStartDate // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
         dominantEmotion: null == dominantEmotion
             ? _value.dominantEmotion
@@ -280,6 +296,7 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
     @JsonKey(name: 'time_since_breakup') this.timeSinceBreakup = '',
     @JsonKey(name: 'ended_by') this.whoEnded = '',
     @JsonKey(name: 'no_contact_start_date') this.noContactStartDate,
+    @JsonKey(name: 'recovery_journey_start_date') this.recoveryJourneyStartDate,
     @JsonKey(name: 'dominant_emotion') this.dominantEmotion = '',
     @JsonKey(name: 'contact_triggers')
     final List<String> contactTriggers = const [],
@@ -311,6 +328,9 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
   @JsonKey(name: 'no_contact_start_date')
   final DateTime? noContactStartDate;
   @override
+  @JsonKey(name: 'recovery_journey_start_date')
+  final DateTime? recoveryJourneyStartDate;
+  @override
   @JsonKey(name: 'dominant_emotion')
   final String dominantEmotion;
   final List<String> _contactTriggers;
@@ -337,7 +357,7 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
 
   @override
   String toString() {
-    return 'RecoveryProfile(name: $name, reason: $reason, relationshipDuration: $relationshipDuration, timeSinceBreakup: $timeSinceBreakup, whoEnded: $whoEnded, noContactStartDate: $noContactStartDate, dominantEmotion: $dominantEmotion, contactTriggers: $contactTriggers, commitmentAcceptedAt: $commitmentAcceptedAt, isOnboardingCompleted: $isOnboardingCompleted, appDisclaimerSeen: $appDisclaimerSeen, aiConsentAccepted: $aiConsentAccepted)';
+    return 'RecoveryProfile(name: $name, reason: $reason, relationshipDuration: $relationshipDuration, timeSinceBreakup: $timeSinceBreakup, whoEnded: $whoEnded, noContactStartDate: $noContactStartDate, recoveryJourneyStartDate: $recoveryJourneyStartDate, dominantEmotion: $dominantEmotion, contactTriggers: $contactTriggers, commitmentAcceptedAt: $commitmentAcceptedAt, isOnboardingCompleted: $isOnboardingCompleted, appDisclaimerSeen: $appDisclaimerSeen, aiConsentAccepted: $aiConsentAccepted)';
   }
 
   @override
@@ -355,6 +375,11 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
                 other.whoEnded == whoEnded) &&
             (identical(other.noContactStartDate, noContactStartDate) ||
                 other.noContactStartDate == noContactStartDate) &&
+            (identical(
+                  other.recoveryJourneyStartDate,
+                  recoveryJourneyStartDate,
+                ) ||
+                other.recoveryJourneyStartDate == recoveryJourneyStartDate) &&
             (identical(other.dominantEmotion, dominantEmotion) ||
                 other.dominantEmotion == dominantEmotion) &&
             const DeepCollectionEquality().equals(
@@ -381,6 +406,7 @@ class _$RecoveryProfileImpl implements _RecoveryProfile {
     timeSinceBreakup,
     whoEnded,
     noContactStartDate,
+    recoveryJourneyStartDate,
     dominantEmotion,
     const DeepCollectionEquality().hash(_contactTriggers),
     commitmentAcceptedAt,
@@ -414,6 +440,8 @@ abstract class _RecoveryProfile implements RecoveryProfile {
     @JsonKey(name: 'time_since_breakup') final String timeSinceBreakup,
     @JsonKey(name: 'ended_by') final String whoEnded,
     @JsonKey(name: 'no_contact_start_date') final DateTime? noContactStartDate,
+    @JsonKey(name: 'recovery_journey_start_date')
+    final DateTime? recoveryJourneyStartDate,
     @JsonKey(name: 'dominant_emotion') final String dominantEmotion,
     @JsonKey(name: 'contact_triggers') final List<String> contactTriggers,
     @JsonKey(name: 'commitment_accepted_at')
@@ -444,6 +472,9 @@ abstract class _RecoveryProfile implements RecoveryProfile {
   @override
   @JsonKey(name: 'no_contact_start_date')
   DateTime? get noContactStartDate;
+  @override
+  @JsonKey(name: 'recovery_journey_start_date')
+  DateTime? get recoveryJourneyStartDate;
   @override
   @JsonKey(name: 'dominant_emotion')
   String get dominantEmotion;

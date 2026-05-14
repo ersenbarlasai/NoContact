@@ -17,6 +17,9 @@ _$RecoveryProfileImpl _$$RecoveryProfileImplFromJson(
   noContactStartDate: json['no_contact_start_date'] == null
       ? null
       : DateTime.parse(json['no_contact_start_date'] as String),
+  recoveryJourneyStartDate: json['recovery_journey_start_date'] == null
+      ? null
+      : DateTime.parse(json['recovery_journey_start_date'] as String),
   dominantEmotion: json['dominant_emotion'] as String? ?? '',
   contactTriggers:
       (json['contact_triggers'] as List<dynamic>?)
@@ -40,6 +43,8 @@ Map<String, dynamic> _$$RecoveryProfileImplToJson(
   'time_since_breakup': instance.timeSinceBreakup,
   'ended_by': instance.whoEnded,
   'no_contact_start_date': instance.noContactStartDate?.toIso8601String(),
+  'recovery_journey_start_date': instance.recoveryJourneyStartDate
+      ?.toIso8601String(),
   'dominant_emotion': instance.dominantEmotion,
   'contact_triggers': instance.contactTriggers,
   'commitment_accepted_at': instance.commitmentAcceptedAt?.toIso8601String(),

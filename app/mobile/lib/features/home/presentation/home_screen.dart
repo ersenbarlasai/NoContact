@@ -513,9 +513,11 @@ class _TodayStepMiniCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    final startDate = onboardingState.noContactStartDate ?? DateTime.now();
-    final days = DateTime.now().difference(startDate).inDays;
-    final step = Static30DayRecoveryPlan.getStepForDay(days);
+    final journeyStartDate = onboardingState.recoveryJourneyStartDate ?? DateTime.now();
+    final journeyDays = DateTime.now().difference(DateTime(
+      journeyStartDate.year, journeyStartDate.month, journeyStartDate.day
+    )).inDays + 1;
+    final step = Static30DayRecoveryPlan.getStepForDay(journeyDays);
 
     return StillCard(
       padding: const EdgeInsets.all(20),

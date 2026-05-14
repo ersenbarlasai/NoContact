@@ -54,6 +54,7 @@ class OnboardingController extends StateNotifier<RecoveryProfile> {
     state = state.copyWith(
       isOnboardingCompleted: true,
       noContactStartDate: state.noContactStartDate ?? DateTime.now(),
+      recoveryJourneyStartDate: state.recoveryJourneyStartDate ?? DateTime.now(),
     );
 
     // 1. Save Locally first (Guaranteed to work if storage initialized)

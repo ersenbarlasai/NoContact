@@ -3,14 +3,16 @@ import '../domain/recovery_path_step.dart';
 
 class RecoveryPathBuilder {
   static List<RecoveryPathStep> buildPath({
-    required DateTime noContactStartDate,
+    required DateTime recoveryJourneyStartDate,
     required int moodEntryCount,
     required bool hasMoodEntryToday,
     required int letterCount,
     required int managedUrgeCount,
   }) {
     final now = DateTime.now();
-    final ncDays = now.difference(noContactStartDate).inDays;
+    final journeyDays = now.difference(DateTime(
+      recoveryJourneyStartDate.year, recoveryJourneyStartDate.month, recoveryJourneyStartDate.day
+    )).inDays + 1;
 
     final steps = <RecoveryPathStep>[
       // Phase 1: Stabilize (Gün 1-7)
@@ -20,7 +22,7 @@ class RecoveryPathBuilder {
         description: 'En zorlu anlarda SOS aracını kullanarak temas etmemeyi başar.',
         phase: RecoveryPhase.stabilize,
         dayTarget: 1,
-        status: ncDays >= 1 ? StepStatus.completed : StepStatus.active,
+        status: journeyDays >= 2 ? StepStatus.completed : StepStatus.active,
         suggestedActionRoute: '/sos',
         icon: Icons.emergency_outlined,
       ),
@@ -32,7 +34,7 @@ class RecoveryPathBuilder {
         dayTarget: 2,
         status: hasMoodEntryToday 
             ? StepStatus.completed 
-            : (ncDays >= 1 ? StepStatus.active : StepStatus.locked),
+            : (journeyDays >= 2 ? StepStatus.active : StepStatus.locked),
         suggestedActionRoute: '/mood-journal',
         icon: Icons.wb_sunny_outlined,
       ),
@@ -44,7 +46,7 @@ class RecoveryPathBuilder {
         dayTarget: 4,
         status: letterCount > 0 
             ? StepStatus.completed 
-            : (ncDays >= 3 ? StepStatus.active : StepStatus.locked),
+            : (journeyDays >= 4 ? StepStatus.active : StepStatus.locked),
         suggestedActionRoute: '/silent-reply',
         icon: Icons.history_edu_outlined,
       ),
@@ -58,7 +60,7 @@ class RecoveryPathBuilder {
         dayTarget: 8,
         status: moodEntryCount >= 5 
             ? StepStatus.completed 
-            : (ncDays >= 7 ? StepStatus.active : StepStatus.locked),
+            : (journeyDays >= 8 ? StepStatus.active : StepStatus.locked),
         suggestedActionRoute: '/mood-journal',
         icon: Icons.analytics_outlined,
       ),
@@ -68,7 +70,7 @@ class RecoveryPathBuilder {
         description: 'Duyguların gelip geçici olduğunu fark etmeye başla.',
         phase: RecoveryPhase.understand,
         dayTarget: 12,
-        status: ncDays >= 12 ? StepStatus.active : (ncDays >= 7 ? StepStatus.active : StepStatus.locked),
+        status: journeyDays >= 13 ? StepStatus.active : (journeyDays >= 8 ? StepStatus.active : StepStatus.locked),
         suggestedActionRoute: '/library',
         icon: Icons.waves_outlined,
       ),
@@ -80,7 +82,7 @@ class RecoveryPathBuilder {
         description: 'Anlık dürtülere karşı koyma becerini geliştir.',
         phase: RecoveryPhase.resist,
         dayTarget: 15,
-        status: ncDays >= 15 ? StepStatus.active : StepStatus.locked,
+        status: journeyDays >= 15 ? StepStatus.active : StepStatus.locked,
         suggestedActionRoute: '/support-center',
         icon: Icons.fitness_center_outlined,
       ),
@@ -90,7 +92,7 @@ class RecoveryPathBuilder {
         description: 'Hayır demenin ve sessiz kalmanın özgürleştirici gücünü kullan.',
         phase: RecoveryPhase.resist,
         dayTarget: 18,
-        status: ncDays >= 18 ? StepStatus.active : StepStatus.locked,
+        status: journeyDays >= 18 ? StepStatus.active : StepStatus.locked,
         suggestedActionRoute: '/silent-reply',
         icon: Icons.shield_outlined,
       ),
@@ -102,7 +104,7 @@ class RecoveryPathBuilder {
         description: 'Eski alışkanlıkların yerine yeni ve sağlıklı rutinler koy.',
         phase: RecoveryPhase.rebuild,
         dayTarget: 22,
-        status: ncDays >= 22 ? StepStatus.active : StepStatus.locked,
+        status: journeyDays >= 22 ? StepStatus.active : StepStatus.locked,
         suggestedActionRoute: '/recovery-path',
         icon: Icons.auto_fix_high_outlined,
       ),
@@ -114,7 +116,7 @@ class RecoveryPathBuilder {
         description: 'Artık kontrol sende. İyileşme yolunda dev bir adım attın.',
         phase: RecoveryPhase.moveForward,
         dayTarget: 30,
-        status: ncDays >= 30 ? StepStatus.active : StepStatus.locked,
+        status: journeyDays >= 30 ? StepStatus.active : StepStatus.locked,
         suggestedActionRoute: '/support-center',
         icon: Icons.celebration_outlined,
       ),

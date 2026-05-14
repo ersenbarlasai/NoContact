@@ -13,6 +13,7 @@ class RecoveryProfile with _$RecoveryProfile {
     @JsonKey(name: 'time_since_breakup') @Default('') String timeSinceBreakup,
     @JsonKey(name: 'ended_by') @Default('') String whoEnded,
     @JsonKey(name: 'no_contact_start_date') DateTime? noContactStartDate,
+    @JsonKey(name: 'recovery_journey_start_date') DateTime? recoveryJourneyStartDate,
     @JsonKey(name: 'dominant_emotion') @Default('') String dominantEmotion,
     @JsonKey(name: 'contact_triggers') @Default([]) List<String> contactTriggers,
     @JsonKey(name: 'commitment_accepted_at') DateTime? commitmentAcceptedAt,

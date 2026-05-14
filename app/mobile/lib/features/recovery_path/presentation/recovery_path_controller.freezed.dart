@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RecoveryPathState {
   List<RecoveryPathStep> get steps => throw _privateConstructorUsedError;
-  int get ncDays => throw _privateConstructorUsedError;
+  int get journeyDays => throw _privateConstructorUsedError;
   int get moodCount => throw _privateConstructorUsedError;
   int get letterCount => throw _privateConstructorUsedError;
   int get managedUrgeCount => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $RecoveryPathStateCopyWith<$Res> {
   @useResult
   $Res call({
     List<RecoveryPathStep> steps,
-    int ncDays,
+    int journeyDays,
     int moodCount,
     int letterCount,
     int managedUrgeCount,
@@ -64,7 +64,7 @@ class _$RecoveryPathStateCopyWithImpl<$Res, $Val extends RecoveryPathState>
   @override
   $Res call({
     Object? steps = null,
-    Object? ncDays = null,
+    Object? journeyDays = null,
     Object? moodCount = null,
     Object? letterCount = null,
     Object? managedUrgeCount = null,
@@ -76,9 +76,9 @@ class _$RecoveryPathStateCopyWithImpl<$Res, $Val extends RecoveryPathState>
                 ? _value.steps
                 : steps // ignore: cast_nullable_to_non_nullable
                       as List<RecoveryPathStep>,
-            ncDays: null == ncDays
-                ? _value.ncDays
-                : ncDays // ignore: cast_nullable_to_non_nullable
+            journeyDays: null == journeyDays
+                ? _value.journeyDays
+                : journeyDays // ignore: cast_nullable_to_non_nullable
                       as int,
             moodCount: null == moodCount
                 ? _value.moodCount
@@ -113,7 +113,7 @@ abstract class _$$RecoveryPathStateImplCopyWith<$Res>
   @useResult
   $Res call({
     List<RecoveryPathStep> steps,
-    int ncDays,
+    int journeyDays,
     int moodCount,
     int letterCount,
     int managedUrgeCount,
@@ -136,7 +136,7 @@ class __$$RecoveryPathStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? steps = null,
-    Object? ncDays = null,
+    Object? journeyDays = null,
     Object? moodCount = null,
     Object? letterCount = null,
     Object? managedUrgeCount = null,
@@ -148,9 +148,9 @@ class __$$RecoveryPathStateImplCopyWithImpl<$Res>
             ? _value._steps
             : steps // ignore: cast_nullable_to_non_nullable
                   as List<RecoveryPathStep>,
-        ncDays: null == ncDays
-            ? _value.ncDays
-            : ncDays // ignore: cast_nullable_to_non_nullable
+        journeyDays: null == journeyDays
+            ? _value.journeyDays
+            : journeyDays // ignore: cast_nullable_to_non_nullable
                   as int,
         moodCount: null == moodCount
             ? _value.moodCount
@@ -178,7 +178,7 @@ class __$$RecoveryPathStateImplCopyWithImpl<$Res>
 class _$RecoveryPathStateImpl extends _RecoveryPathState {
   const _$RecoveryPathStateImpl({
     final List<RecoveryPathStep> steps = const [],
-    this.ncDays = 0,
+    this.journeyDays = 1,
     this.moodCount = 0,
     this.letterCount = 0,
     this.managedUrgeCount = 0,
@@ -197,7 +197,7 @@ class _$RecoveryPathStateImpl extends _RecoveryPathState {
 
   @override
   @JsonKey()
-  final int ncDays;
+  final int journeyDays;
   @override
   @JsonKey()
   final int moodCount;
@@ -213,7 +213,7 @@ class _$RecoveryPathStateImpl extends _RecoveryPathState {
 
   @override
   String toString() {
-    return 'RecoveryPathState(steps: $steps, ncDays: $ncDays, moodCount: $moodCount, letterCount: $letterCount, managedUrgeCount: $managedUrgeCount, isLoading: $isLoading)';
+    return 'RecoveryPathState(steps: $steps, journeyDays: $journeyDays, moodCount: $moodCount, letterCount: $letterCount, managedUrgeCount: $managedUrgeCount, isLoading: $isLoading)';
   }
 
   @override
@@ -222,7 +222,8 @@ class _$RecoveryPathStateImpl extends _RecoveryPathState {
         (other.runtimeType == runtimeType &&
             other is _$RecoveryPathStateImpl &&
             const DeepCollectionEquality().equals(other._steps, _steps) &&
-            (identical(other.ncDays, ncDays) || other.ncDays == ncDays) &&
+            (identical(other.journeyDays, journeyDays) ||
+                other.journeyDays == journeyDays) &&
             (identical(other.moodCount, moodCount) ||
                 other.moodCount == moodCount) &&
             (identical(other.letterCount, letterCount) ||
@@ -237,7 +238,7 @@ class _$RecoveryPathStateImpl extends _RecoveryPathState {
   int get hashCode => Object.hash(
     runtimeType,
     const DeepCollectionEquality().hash(_steps),
-    ncDays,
+    journeyDays,
     moodCount,
     letterCount,
     managedUrgeCount,
@@ -259,7 +260,7 @@ class _$RecoveryPathStateImpl extends _RecoveryPathState {
 abstract class _RecoveryPathState extends RecoveryPathState {
   const factory _RecoveryPathState({
     final List<RecoveryPathStep> steps,
-    final int ncDays,
+    final int journeyDays,
     final int moodCount,
     final int letterCount,
     final int managedUrgeCount,
@@ -270,7 +271,7 @@ abstract class _RecoveryPathState extends RecoveryPathState {
   @override
   List<RecoveryPathStep> get steps;
   @override
-  int get ncDays;
+  int get journeyDays;
   @override
   int get moodCount;
   @override

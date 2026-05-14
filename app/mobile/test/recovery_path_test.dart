@@ -9,7 +9,7 @@ void main() {
   group('RecoveryPathBuilder Tests', () {
     test('returns core steps regardless of state', () {
       final steps = RecoveryPathBuilder.buildPath(
-        noContactStartDate: DateTime.now(),
+        recoveryJourneyStartDate: DateTime.now(),
         moodEntryCount: 0,
         hasMoodEntryToday: false,
         letterCount: 0,
@@ -23,7 +23,7 @@ void main() {
 
     test('step 1 is active on day 0', () {
       final steps = RecoveryPathBuilder.buildPath(
-        noContactStartDate: DateTime.now(),
+        recoveryJourneyStartDate: DateTime.now(),
         moodEntryCount: 0,
         hasMoodEntryToday: false,
         letterCount: 0,
@@ -36,7 +36,7 @@ void main() {
 
     test('step 1 is completed on day 1', () {
       final steps = RecoveryPathBuilder.buildPath(
-        noContactStartDate: DateTime.now().subtract(const Duration(days: 1)),
+        recoveryJourneyStartDate: DateTime.now().subtract(const Duration(days: 1)),
         moodEntryCount: 0,
         hasMoodEntryToday: false,
         letterCount: 0,
@@ -49,7 +49,7 @@ void main() {
 
     test('step 2 is completed if mood entry exists today', () {
       final steps = RecoveryPathBuilder.buildPath(
-        noContactStartDate: DateTime.now().subtract(const Duration(days: 1)),
+        recoveryJourneyStartDate: DateTime.now().subtract(const Duration(days: 1)),
         moodEntryCount: 1,
         hasMoodEntryToday: true,
         letterCount: 0,
@@ -60,9 +60,9 @@ void main() {
       expect(step2.status, StepStatus.completed);
     });
 
-    test('understand phase steps are locked if ncDays < 7', () {
+    test('understand phase steps are locked if journeyDays < 8', () {
       final steps = RecoveryPathBuilder.buildPath(
-        noContactStartDate: DateTime.now().subtract(const Duration(days: 2)),
+        recoveryJourneyStartDate: DateTime.now().subtract(const Duration(days: 2)),
         moodEntryCount: 0,
         hasMoodEntryToday: false,
         letterCount: 0,

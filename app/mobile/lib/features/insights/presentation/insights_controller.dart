@@ -42,7 +42,7 @@ class InsightsController extends StateNotifier<InsightsData> {
       ..sort((a, b) => (b.seenAt ?? DateTime.now()).compareTo(a.seenAt ?? DateTime.now()));
 
     state = state.copyWith(
-      ncDays: pathState.ncDays,
+      ncDays: pathState.journeyDays,
       managedUrgeCount: pathState.managedUrgeCount,
       moodCount: pathState.moodCount, // Wait, I didn't add this to InsightsData, I'll add it or use streak
       moodStreak: streak,
