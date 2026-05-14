@@ -873,5 +873,26 @@ class AppLocalizationsTr extends AppLocalizations {
       'Gelişmiş içgörüler premium ile açılır.';
 
   @override
+  String get subscriptionGateMoodJournal => 'Duygu Günlüğü premium ile açılır.';
+
+  @override
+  String get subscriptionGateLettersVault =>
+      'Mektup Kasası premium ile açılır.';
+
+  @override
+  String get subscriptionGateSupportCenter =>
+      'Bugünün Desteği premium ile açılır.';
+
+  @override
+  String get subscriptionGateLibrary => 'Sessiz Küтüphane premium ile açılır.';
+
+  @override
+  String get subscriptionGateSettings => 'Ayarlar premium ile açılır.';
+
+  @override
+  String get subscriptionGateBetaFeedback =>
+      'Geri bildirim ekranı premium ile açılır.';
+
+  @override
   String get subscriptionGateDefault => 'Bu özellik premium üyelere özeldir.';
 }

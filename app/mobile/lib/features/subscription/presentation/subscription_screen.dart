@@ -16,8 +16,18 @@ class SubscriptionScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final state = ref.watch(entitlementControllerProvider);
 
-    // Contextual feature message — passed via GoRouter extra
-    final feature = GoRouterState.of(context).extra as PremiumFeature?;
+    // Feature context can come from two sources:
+    // 1. GoRouter extra (when coming from guardPremiumAccess)
+    // 2. Query param ?from=featureName (when redirected at router level)
+    final routerState = GoRouterState.of(context);
+    PremiumFeature? feature = routerState.extra as PremiumFeature?;
+    if (feature == null) {
+      final fromParam = routerState.uri.queryParameters['from'];
+      if (fromParam != null) {
+        feature = PremiumFeature.values.where((f) => f.name == fromParam).firstOrNull;
+      }
+    }
+
     final gateMessage = _gateMessage(l10n, feature);
 
     return Scaffold(
@@ -33,7 +43,9 @@ class SubscriptionScreen extends ConsumerWidget {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.close, color: AppColors.onSurfaceVariant),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Navigator.canPop(context)
+                        ? Navigator.pop(context)
+                        : context.go('/'),
                   ),
                   const Spacer(),
                   Text(
@@ -49,7 +61,7 @@ class SubscriptionScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 40),
 
-              // Contextual gate message (feature-specific paywall hint)
+              // Contextual gate message banner
               if (gateMessage != null) ...[
                 Container(
                   width: double.infinity,
@@ -66,11 +78,10 @@ class SubscriptionScreen extends ConsumerWidget {
                       Expanded(
                         child: Text(
                           gateMessage,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: AppColors.primary,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ),
                     ],
@@ -107,14 +118,11 @@ class SubscriptionScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          state.isPremium
-                              ? 'Premium'
-                              : l10n.subscriptionFreePlan,
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.primary,
-                                  ),
+                          state.isPremium ? 'Premium' : l10n.subscriptionFreePlan,
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primary,
+                              ),
                         ),
                       ],
                     ),
@@ -124,32 +132,33 @@ class SubscriptionScreen extends ConsumerWidget {
 
               const SizedBox(height: 40),
 
-              // Free plan features
+              // Free plan — now minimal
               _buildPlanSection(
                 context,
                 title: l10n.subscriptionFreePlan,
                 features: const [
-                  'SOS Yardımı (Sınırsız)',
                   'No-Contact Sayacı',
-                  'Duygu Günlüğü',
-                  'Mektup Kasası',
-                  'Sakin Kütüphane',
+                  'SOS Desteği (Sınırsız)',
+                  'Ana Ekran Görüntüleme',
                 ],
                 isCurrent: !state.isPremium,
                 isPremiumPlan: false,
               ),
               const SizedBox(height: 24),
 
-              // Premium plan features
+              // Premium plan — all features
               _buildPlanSection(
                 context,
                 title: l10n.subscriptionPremiumPlan,
                 features: const [
+                  'Duygu Günlüğü',
+                  'Mektup Kasası',
+                  'Bugünün Desteği',
+                  'Sessiz Kütüphane',
                   '30 Günlük İyileşme Yolu',
                   'Sessiz Cevap Rehberi',
-                  'Gelişmiş İçgörüler ve Trendler',
-                  'Haftalık İyileşme Özeti',
-                  'Kişisel Ritim ve Destek Önerileri',
+                  'Gelişmiş İçgörüler',
+                  'Ayarlar ve Kişiselleştirme',
                 ],
                 isCurrent: state.isPremium,
                 isPremiumPlan: true,
@@ -169,10 +178,8 @@ class SubscriptionScreen extends ConsumerWidget {
                     Expanded(
                       child: Text(
                         l10n.subscriptionPaymentNote,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(color: AppColors.primary),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: AppColors.primary),
                       ),
                     ),
                   ],
@@ -183,7 +190,9 @@ class SubscriptionScreen extends ConsumerWidget {
 
               StillPrimaryButton(
                 label: l10n.subscriptionContinueBtn,
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Navigator.canPop(context)
+                    ? Navigator.pop(context)
+                    : context.go('/'),
               ),
 
               const SizedBox(height: 16),
@@ -215,9 +224,16 @@ class SubscriptionScreen extends ConsumerWidget {
   String? _gateMessage(AppLocalizations l10n, PremiumFeature? feature) {
     if (feature == null) return null;
     return switch (feature) {
-      PremiumFeature.recoveryPath => l10n.subscriptionGateRecoveryPath,
-      PremiumFeature.silentReply => l10n.subscriptionGateSilentReply,
-      PremiumFeature.insights => l10n.subscriptionGateInsights,
+      PremiumFeature.moodJournal   => l10n.subscriptionGateMoodJournal,
+      PremiumFeature.lettersVault  => l10n.subscriptionGateLettersVault,
+      PremiumFeature.supportCenter => l10n.subscriptionGateSupportCenter,
+      PremiumFeature.library       => l10n.subscriptionGateLibrary,
+      PremiumFeature.recoveryPath  => l10n.subscriptionGateRecoveryPath,
+      PremiumFeature.silentReply   => l10n.subscriptionGateSilentReply,
+      PremiumFeature.insights      => l10n.subscriptionGateInsights,
+      PremiumFeature.settings      => l10n.subscriptionGateSettings,
+      PremiumFeature.betaFeedback  => l10n.subscriptionGateBetaFeedback,
+      PremiumFeature.generic       => l10n.subscriptionGateDefault,
     };
   }
 
@@ -270,8 +286,7 @@ class SubscriptionScreen extends ConsumerWidget {
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: isCurrent
                               ? AppColors.onSurface
-                              : AppColors.onSurfaceVariant
-                                  .withValues(alpha: 0.6),
+                              : AppColors.onSurfaceVariant.withValues(alpha: 0.6),
                         ),
                   ),
                 ),

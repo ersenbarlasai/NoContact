@@ -1670,6 +1670,42 @@ abstract class AppLocalizations {
   /// **'Gelişmiş içgörüler premium ile açılır.'**
   String get subscriptionGateInsights;
 
+  /// No description provided for @subscriptionGateMoodJournal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Duygu Günlüğü premium ile açılır.'**
+  String get subscriptionGateMoodJournal;
+
+  /// No description provided for @subscriptionGateLettersVault.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mektup Kasası premium ile açılır.'**
+  String get subscriptionGateLettersVault;
+
+  /// No description provided for @subscriptionGateSupportCenter.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünün Desteği premium ile açılır.'**
+  String get subscriptionGateSupportCenter;
+
+  /// No description provided for @subscriptionGateLibrary.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sessiz Küтüphane premium ile açılır.'**
+  String get subscriptionGateLibrary;
+
+  /// No description provided for @subscriptionGateSettings.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayarlar premium ile açılır.'**
+  String get subscriptionGateSettings;
+
+  /// No description provided for @subscriptionGateBetaFeedback.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri bildirim ekranı premium ile açılır.'**
+  String get subscriptionGateBetaFeedback;
+
   /// No description provided for @subscriptionGateDefault.
   ///
   /// In tr, this message translates to:

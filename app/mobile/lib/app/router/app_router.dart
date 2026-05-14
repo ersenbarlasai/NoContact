@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../features/home/presentation/home_screen.dart';
@@ -12,6 +13,7 @@ import '../../features/onboarding/presentation/onboarding_controller.dart';
 import '../../features/letters_vault/presentation/letters_vault_screen.dart';
 import '../../features/letters_vault/presentation/letter_editor_screen.dart';
 import '../../features/subscription/presentation/subscription_screen.dart';
+import '../../features/subscription/presentation/entitlement_controller.dart';
 import '../../features/recovery_path/presentation/recovery_path_screen.dart';
 import '../../features/insights/presentation/insights_screen.dart';
 import '../../features/support_system/presentation/support_center_screen.dart';
@@ -20,7 +22,24 @@ import '../../features/library/presentation/library_detail_screen.dart';
 import '../../features/silent_reply/presentation/silent_reply_screen.dart';
 import '../presentation/main_scaffold.dart';
 import '../../core/navigation/still_page_transitions.dart';
+import '../../core/navigation/premium_guard.dart';
 import '../../data/models/unsent_letter.dart';
+
+/// Routes that are always free (no premium check).
+const _freeRouteSet = {'/splash', '/onboarding', '/', '/sos', '/subscription'};
+
+/// Map from route prefix → PremiumFeature for contextual paywall messages.
+const _routeFeatureMap = <String, PremiumFeature>{
+  '/mood-journal':   PremiumFeature.moodJournal,
+  '/letters-vault':  PremiumFeature.lettersVault,
+  '/settings':       PremiumFeature.settings,
+  '/beta-feedback':  PremiumFeature.betaFeedback,
+  '/recovery-path':  PremiumFeature.recoveryPath,
+  '/insights':       PremiumFeature.insights,
+  '/support-center': PremiumFeature.supportCenter,
+  '/library':        PremiumFeature.library,
+  '/silent-reply':   PremiumFeature.silentReply,
+};
 
 final appRouter = Provider<GoRouter>((ref) {
   final startupState = ref.watch(appStartupProvider);
@@ -161,27 +180,47 @@ final appRouter = Provider<GoRouter>((ref) {
       ),
     ],
     redirect: (context, state) {
+      final location = state.matchedLocation;
       final status = startupState.status;
 
-      final isSplash = state.matchedLocation == '/splash';
-      final isOnboarding = state.matchedLocation == '/onboarding';
+      final isSplash = location == '/splash';
+      final isOnboarding = location == '/onboarding';
 
+      // 1. App still loading → hold at splash
       if (status == AppStartupStatus.loading) {
         return isSplash ? null : '/splash';
       }
 
-      if (onboardingCompleted) {
-        if (isSplash || isOnboarding) {
-          return '/';
+      // 2. Onboarding not completed → force onboarding
+      if (!onboardingCompleted) {
+        if (status == AppStartupStatus.needsOnboarding) {
+          return isOnboarding ? null : '/onboarding';
         }
-        return null;
+        return '/splash';
       }
 
-      if (status == AppStartupStatus.needsOnboarding) {
-        return isOnboarding ? null : '/onboarding';
-      }
+      // 3. Onboarding done, skip splash/onboarding
+      if (isSplash || isOnboarding) return '/';
 
-      if (status == AppStartupStatus.loading) return '/splash';
+      // 4. Premium route guard
+      final isFree = _freeRouteSet.any((r) => location == r);
+      if (!isFree) {
+        final isPremium = ProviderScope.containerOf(context)
+            .read(entitlementControllerProvider)
+            .isPremium;
+        if (!isPremium) {
+          // Find the most specific feature for contextual paywall
+          PremiumFeature feature = PremiumFeature.generic;
+          for (final entry in _routeFeatureMap.entries) {
+            if (location.startsWith(entry.key)) {
+              feature = entry.value;
+              break;
+            }
+          }
+          // Encode feature as query param since we can't pass extra in redirect
+          return '/subscription?from=${feature.name}';
+        }
+      }
 
       return null;
     },

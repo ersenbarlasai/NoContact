@@ -352,6 +352,12 @@
   "subscriptionGateRecoveryPath": "The 30-Day Recovery Path is unlocked with premium.",
   "subscriptionGateSilentReply": "The Silent Reply guide is unlocked with premium.",
   "subscriptionGateInsights": "Advanced insights are unlocked with premium.",
+  "subscriptionGateMoodJournal": "Mood Journal is unlocked with premium.",
+  "subscriptionGateLettersVault": "Letters Vault is unlocked with premium.",
+  "subscriptionGateSupportCenter": "Today's Support is unlocked with premium.",
+  "subscriptionGateLibrary": "The Quiet Library is unlocked with premium.",
+  "subscriptionGateSettings": "Settings are unlocked with premium.",
+  "subscriptionGateBetaFeedback": "The feedback screen is unlocked with premium.",
   "subscriptionGateDefault": "This feature is for premium members."
 }
 

@@ -875,5 +875,28 @@ class AppLocalizationsEn extends AppLocalizations {
       'Advanced insights are unlocked with premium.';
 
   @override
+  String get subscriptionGateMoodJournal =>
+      'Mood Journal is unlocked with premium.';
+
+  @override
+  String get subscriptionGateLettersVault =>
+      'Letters Vault is unlocked with premium.';
+
+  @override
+  String get subscriptionGateSupportCenter =>
+      'Today\'s Support is unlocked with premium.';
+
+  @override
+  String get subscriptionGateLibrary =>
+      'The Quiet Library is unlocked with premium.';
+
+  @override
+  String get subscriptionGateSettings => 'Settings are unlocked with premium.';
+
+  @override
+  String get subscriptionGateBetaFeedback =>
+      'The feedback screen is unlocked with premium.';
+
+  @override
   String get subscriptionGateDefault => 'This feature is for premium members.';
 }

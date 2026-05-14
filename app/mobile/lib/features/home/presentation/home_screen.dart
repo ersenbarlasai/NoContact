@@ -195,15 +195,17 @@ class _DayCounterCard extends StatelessWidget {
   }
 }
 
-class _BentoMoodCard extends StatelessWidget {
+class _BentoMoodCard extends ConsumerWidget {
   final RecoveryProfile onboardingState;
   const _BentoMoodCard({required this.onboardingState});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     return StillCard(
-      onTap: () => context.push('/mood-journal'),
+      onTap: () => guardPremiumAccess(context, ref,
+          targetRoute: '/mood-journal',
+          feature: PremiumFeature.moodJournal),
       color: AppColors.secondaryContainer.withValues(alpha: 0.3),
       child: Row(
         children: [
@@ -282,16 +284,18 @@ class _BentoStatsCard extends StatelessWidget {
   }
 }
 
-class _BentoActionCard extends StatelessWidget {
+class _BentoActionCard extends ConsumerWidget {
   final RecoveryProfile onboardingState;
   const _BentoActionCard({required this.onboardingState});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
-      onTap: () => context.push('/letters-vault'),
+      onTap: () => guardPremiumAccess(context, ref,
+          targetRoute: '/letters-vault',
+          feature: PremiumFeature.lettersVault),
       color: AppColors.primaryFixed.withValues(alpha: 0.4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -385,7 +389,9 @@ class _BentoSupportCard extends ConsumerWidget {
     }
 
     return StillGlassCard(
-      onTap: () => context.push('/support-center'),
+      onTap: () => guardPremiumAccess(context, ref,
+          targetRoute: '/support-center',
+          feature: PremiumFeature.supportCenter),
       opacity: (isActive || isExpired) ? 0.8 : 0.6,
       padding: const EdgeInsets.all(28),
       child: Row(
@@ -432,13 +438,15 @@ class _BentoSupportCard extends ConsumerWidget {
   }
 }
 
-class _BentoLibraryCard extends StatelessWidget {
+class _BentoLibraryCard extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
-      onTap: () => context.push('/library'),
+      onTap: () => guardPremiumAccess(context, ref,
+          targetRoute: '/library',
+          feature: PremiumFeature.library),
       color: AppColors.secondaryContainer.withValues(alpha: 0.3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

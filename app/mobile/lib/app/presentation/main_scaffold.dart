@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme/app_theme.dart';
+import '../../core/navigation/premium_guard.dart';
 import '../../features/milestones/presentation/milestone_overlay.dart';
+import '../../features/subscription/presentation/entitlement_controller.dart';
 import '../../l10n/app_localizations.dart';
 
-class MainScaffold extends StatelessWidget {
+class MainScaffold extends ConsumerWidget {
   final Widget child;
   const MainScaffold({super.key, required this.child});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final location = GoRouterState.of(context).matchedLocation;
 
     return Stack(
@@ -17,9 +20,8 @@ class MainScaffold extends StatelessWidget {
         Scaffold(
           backgroundColor: AppColors.background,
           body: child,
-          // The SOS button is now a separate floating element to match the Stitch design
-          floatingActionButton: location != '/onboarding' && location != '/sos' 
-              ? const _SosPulseButton() 
+          floatingActionButton: location != '/onboarding' && location != '/sos'
+              ? const _SosPulseButton()
               : null,
           bottomNavigationBar: _BottomNavBar(location: location),
         ),
@@ -29,12 +31,14 @@ class MainScaffold extends StatelessWidget {
   }
 }
 
-class _BottomNavBar extends StatelessWidget {
+class _BottomNavBar extends ConsumerWidget {
   final String location;
   const _BottomNavBar({required this.location});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+
     return Container(
       decoration: BoxDecoration(
         color: AppColors.surfaceContainerLow.withOpacity(0.9),
@@ -55,29 +59,45 @@ class _BottomNavBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // Home — always free
                 _NavItem(
                   icon: Icons.home_max,
-                  label: AppLocalizations.of(context).navHome,
+                  label: l10n.navHome,
                   isActive: location == '/',
                   onTap: () => context.go('/'),
                 ),
+                // Journal — premium
                 _NavItem(
                   icon: Icons.edit_note,
-                  label: AppLocalizations.of(context).navJournal,
+                  label: l10n.navJournal,
                   isActive: location == '/mood-journal',
-                  onTap: () => context.go('/mood-journal'),
+                  onTap: () => guardPremiumAccess(
+                    context, ref,
+                    targetRoute: '/mood-journal',
+                    feature: PremiumFeature.moodJournal,
+                  ),
                 ),
+                // Vault — premium
                 _NavItem(
                   icon: Icons.history_edu,
-                  label: AppLocalizations.of(context).navVault,
+                  label: l10n.navVault,
                   isActive: location.startsWith('/letters-vault'),
-                  onTap: () => context.go('/letters-vault'),
+                  onTap: () => guardPremiumAccess(
+                    context, ref,
+                    targetRoute: '/letters-vault',
+                    feature: PremiumFeature.lettersVault,
+                  ),
                 ),
+                // Settings — premium
                 _NavItem(
                   icon: Icons.settings,
-                  label: AppLocalizations.of(context).navSettings,
+                  label: l10n.navSettings,
                   isActive: location == '/settings',
-                  onTap: () => context.go('/settings'),
+                  onTap: () => guardPremiumAccess(
+                    context, ref,
+                    targetRoute: '/settings',
+                    feature: PremiumFeature.settings,
+                  ),
                 ),
               ],
             ),
@@ -144,7 +164,8 @@ class _SosPulseButton extends StatefulWidget {
   State<_SosPulseButton> createState() => _SosPulseButtonState();
 }
 
-class _SosPulseButtonState extends State<_SosPulseButton> with SingleTickerProviderStateMixin {
+class _SosPulseButtonState extends State<_SosPulseButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -183,6 +204,7 @@ class _SosPulseButtonState extends State<_SosPulseButton> with SingleTickerProvi
               ],
             ),
             child: FloatingActionButton(
+              // SOS is always free — no guard
               onPressed: () => context.push('/sos'),
               backgroundColor: AppColors.tertiary,
               foregroundColor: AppColors.onTertiary,

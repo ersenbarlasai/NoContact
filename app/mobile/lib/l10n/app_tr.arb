@@ -352,6 +352,12 @@
   "subscriptionGateRecoveryPath": "30 Günlük İyileşme Yolu premium ile açılır.",
   "subscriptionGateSilentReply": "Sessiz Cevap rehberi premium ile açılır.",
   "subscriptionGateInsights": "Gelişmiş içgörüler premium ile açılır.",
+  "subscriptionGateMoodJournal": "Duygu Günlüğü premium ile açılır.",
+  "subscriptionGateLettersVault": "Mektup Kasası premium ile açılır.",
+  "subscriptionGateSupportCenter": "Bugünün Desteği premium ile açılır.",
+  "subscriptionGateLibrary": "Sessiz Küтüphane premium ile açılır.",
+  "subscriptionGateSettings": "Ayarlar premium ile açılır.",
+  "subscriptionGateBetaFeedback": "Geri bildirim ekranı premium ile açılır.",
   "subscriptionGateDefault": "Bu özellik premium üyelere özeldir."
 }
 
