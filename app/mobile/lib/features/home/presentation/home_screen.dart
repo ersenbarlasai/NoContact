@@ -57,7 +57,9 @@ class HomeScreen extends ConsumerWidget {
                     const SizedBox(width: 12),
                     IconButton(
                       icon: const Icon(Icons.eco_outlined, color: AppColors.primary, size: 22),
-                      onPressed: () => guardPremiumAccess(context, ref, targetRoute: '/recovery-path'),
+                      onPressed: () => guardPremiumAccess(context, ref,
+                          targetRoute: '/recovery-path',
+                          feature: PremiumFeature.recoveryPath),
                       tooltip: l10n.recoveryPathTitle,
                     ),
                   ],
@@ -467,7 +469,9 @@ class _BentoSilentReplyCard extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
-      onTap: () => guardPremiumAccess(context, ref, targetRoute: '/silent-reply'),
+      onTap: () => guardPremiumAccess(context, ref,
+          targetRoute: '/silent-reply',
+          feature: PremiumFeature.silentReply),
       color: AppColors.primaryContainer.withValues(alpha: 0.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -507,7 +511,9 @@ class _TodayStepMiniCard extends ConsumerWidget {
 
     return StillCard(
       padding: const EdgeInsets.all(20),
-      onTap: () => guardPremiumAccess(context, ref, targetRoute: '/recovery-path'),
+      onTap: () => guardPremiumAccess(context, ref,
+          targetRoute: '/recovery-path',
+          feature: PremiumFeature.recoveryPath),
       color: AppColors.tertiaryFixed.withValues(alpha: 0.3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

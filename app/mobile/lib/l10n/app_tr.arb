@@ -1,4 +1,4 @@
-﻿{
+{
   "@@locale": "tr",
 
   "appTitle": "STILL",
@@ -337,6 +337,21 @@
   "notifPauseExpiredTitle": "24 saat tamamlandı.",
   "notifPauseExpiredBody": "Kararını korudun. Şimdi daha net bir yerden düşünebilirsin.",
   "notifSilentReplySavedTitle": "Yazdın, göndermedin.",
-  "notifSilentReplySavedBody": "Bu da bir güç. Sessiz cevabın kasada seni bekliyor."
+  "notifSilentReplySavedBody": "Bu da bir güç. Sessiz cevabın kasanda seni bekliyor.",
+
+  "subscriptionTitle": "Still Premium",
+  "subscriptionTagline": "İyileşme Yolculuğunu Destekle",
+  "subscriptionSubtitle": "Premium özellikler, daha derin bir iyileşme deneyimi için tasarlandı.",
+  "subscriptionCurrentPlan": "Mevcut Plan",
+  "subscriptionFreePlan": "Ücretsiz Plan",
+  "subscriptionPremiumPlan": "Premium Plan (Yakında)",
+  "subscriptionContinueBtn": "DEVAM ET",
+  "subscriptionDevToggleToPremium": "Premium Moduna Geç (DEV)",
+  "subscriptionDevToggleToFree": "Ücretsiz Moduna Dön (DEV)",
+  "subscriptionPaymentNote": "Ödeme entegrasyonu henüz aktif değil. Şu an tüm özellikleri ücretsiz deneyebilirsin.",
+  "subscriptionGateRecoveryPath": "30 Günlük İyileşme Yolu premium ile açılır.",
+  "subscriptionGateSilentReply": "Sessiz Cevap rehberi premium ile açılır.",
+  "subscriptionGateInsights": "Gelişmiş içgörüler premium ile açılır.",
+  "subscriptionGateDefault": "Bu özellik premium üyelere özeldir."
 }
 

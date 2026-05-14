@@ -1589,8 +1589,92 @@ abstract class AppLocalizations {
   /// No description provided for @notifSilentReplySavedBody.
   ///
   /// In tr, this message translates to:
-  /// **'Bu da bir güç. Sessiz cevabın kasada seni bekliyor.'**
+  /// **'Bu da bir güç. Sessiz cevabın kasanda seni bekliyor.'**
   String get notifSilentReplySavedBody;
+
+  /// No description provided for @subscriptionTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Still Premium'**
+  String get subscriptionTitle;
+
+  /// No description provided for @subscriptionTagline.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyileşme Yolculuğunu Destekle'**
+  String get subscriptionTagline;
+
+  /// No description provided for @subscriptionSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Premium özellikler, daha derin bir iyileşme deneyimi için tasarlandı.'**
+  String get subscriptionSubtitle;
+
+  /// No description provided for @subscriptionCurrentPlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut Plan'**
+  String get subscriptionCurrentPlan;
+
+  /// No description provided for @subscriptionFreePlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz Plan'**
+  String get subscriptionFreePlan;
+
+  /// No description provided for @subscriptionPremiumPlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Premium Plan (Yakında)'**
+  String get subscriptionPremiumPlan;
+
+  /// No description provided for @subscriptionContinueBtn.
+  ///
+  /// In tr, this message translates to:
+  /// **'DEVAM ET'**
+  String get subscriptionContinueBtn;
+
+  /// No description provided for @subscriptionDevToggleToPremium.
+  ///
+  /// In tr, this message translates to:
+  /// **'Premium Moduna Geç (DEV)'**
+  String get subscriptionDevToggleToPremium;
+
+  /// No description provided for @subscriptionDevToggleToFree.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz Moduna Dön (DEV)'**
+  String get subscriptionDevToggleToFree;
+
+  /// No description provided for @subscriptionPaymentNote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme entegrasyonu henüz aktif değil. Şu an tüm özellikleri ücretsiz deneyebilirsin.'**
+  String get subscriptionPaymentNote;
+
+  /// No description provided for @subscriptionGateRecoveryPath.
+  ///
+  /// In tr, this message translates to:
+  /// **'30 Günlük İyileşme Yolu premium ile açılır.'**
+  String get subscriptionGateRecoveryPath;
+
+  /// No description provided for @subscriptionGateSilentReply.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sessiz Cevap rehberi premium ile açılır.'**
+  String get subscriptionGateSilentReply;
+
+  /// No description provided for @subscriptionGateInsights.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gelişmiş içgörüler premium ile açılır.'**
+  String get subscriptionGateInsights;
+
+  /// No description provided for @subscriptionGateDefault.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik premium üyelere özeldir.'**
+  String get subscriptionGateDefault;
 }
 
 class _AppLocalizationsDelegate

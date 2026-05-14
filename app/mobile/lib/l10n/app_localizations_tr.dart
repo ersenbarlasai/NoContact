@@ -826,5 +826,52 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notifSilentReplySavedBody =>
-      'Bu da bir güç. Sessiz cevabın kasada seni bekliyor.';
+      'Bu da bir güç. Sessiz cevabın kasanda seni bekliyor.';
+
+  @override
+  String get subscriptionTitle => 'Still Premium';
+
+  @override
+  String get subscriptionTagline => 'İyileşme Yolculuğunu Destekle';
+
+  @override
+  String get subscriptionSubtitle =>
+      'Premium özellikler, daha derin bir iyileşme deneyimi için tasarlandı.';
+
+  @override
+  String get subscriptionCurrentPlan => 'Mevcut Plan';
+
+  @override
+  String get subscriptionFreePlan => 'Ücretsiz Plan';
+
+  @override
+  String get subscriptionPremiumPlan => 'Premium Plan (Yakında)';
+
+  @override
+  String get subscriptionContinueBtn => 'DEVAM ET';
+
+  @override
+  String get subscriptionDevToggleToPremium => 'Premium Moduna Geç (DEV)';
+
+  @override
+  String get subscriptionDevToggleToFree => 'Ücretsiz Moduna Dön (DEV)';
+
+  @override
+  String get subscriptionPaymentNote =>
+      'Ödeme entegrasyonu henüz aktif değil. Şu an tüm özellikleri ücretsiz deneyebilirsin.';
+
+  @override
+  String get subscriptionGateRecoveryPath =>
+      '30 Günlük İyileşme Yolu premium ile açılır.';
+
+  @override
+  String get subscriptionGateSilentReply =>
+      'Sessiz Cevap rehberi premium ile açılır.';
+
+  @override
+  String get subscriptionGateInsights =>
+      'Gelişmiş içgörüler premium ile açılır.';
+
+  @override
+  String get subscriptionGateDefault => 'Bu özellik premium üyelere özeldir.';
 }

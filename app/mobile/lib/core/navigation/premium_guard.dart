@@ -3,30 +3,34 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/subscription/presentation/entitlement_controller.dart';
 
-/// Routes guarded behind a premium subscription.
-/// SOS and core safety features are intentionally excluded.
-const premiumRoutes = {
-  '/recovery-path',
-  '/insights',
-  '/silent-reply',
-};
+/// Premium feature keys — used to show contextual paywall messages.
+enum PremiumFeature {
+  recoveryPath,
+  silentReply,
+  insights,
+}
 
-/// Navigates to [targetRoute] if the user is premium.
-/// Otherwise redirects to the subscription screen.
+/// Navigates to [targetRoute] if the user has premium access.
+/// Otherwise pushes /subscription with an optional [feature] context
+/// so the paywall can show a feature-specific message.
 ///
 /// Usage:
 /// ```dart
-/// guardPremiumAccess(context, ref, targetRoute: '/recovery-path');
+/// guardPremiumAccess(context, ref,
+///   targetRoute: '/recovery-path',
+///   feature: PremiumFeature.recoveryPath,
+/// );
 /// ```
 void guardPremiumAccess(
   BuildContext context,
   WidgetRef ref, {
   required String targetRoute,
+  PremiumFeature? feature,
 }) {
   final isPremium = ref.read(entitlementControllerProvider).isPremium;
   if (isPremium) {
     context.push(targetRoute);
   } else {
-    context.push('/subscription');
+    context.push('/subscription', extra: feature);
   }
 }

@@ -337,6 +337,21 @@
   "notifPauseExpiredTitle": "24 hours complete.",
   "notifPauseExpiredBody": "You held your boundary. You can think more clearly from here.",
   "notifSilentReplySavedTitle": "You wrote. You didn't send.",
-  "notifSilentReplySavedBody": "That takes strength. Your quiet reply is waiting in the vault."
+  "notifSilentReplySavedBody": "That takes strength. Your quiet reply is waiting in the vault.",
+
+  "subscriptionTitle": "Still Premium",
+  "subscriptionTagline": "Support Your Healing Journey",
+  "subscriptionSubtitle": "Premium features are designed for a deeper healing experience.",
+  "subscriptionCurrentPlan": "Current Plan",
+  "subscriptionFreePlan": "Free Plan",
+  "subscriptionPremiumPlan": "Premium Plan (Coming Soon)",
+  "subscriptionContinueBtn": "CONTINUE",
+  "subscriptionDevToggleToPremium": "Switch to Premium (DEV)",
+  "subscriptionDevToggleToFree": "Switch to Free (DEV)",
+  "subscriptionPaymentNote": "Payment integration is not yet active. You can try all features for free right now.",
+  "subscriptionGateRecoveryPath": "The 30-Day Recovery Path is unlocked with premium.",
+  "subscriptionGateSilentReply": "The Silent Reply guide is unlocked with premium.",
+  "subscriptionGateInsights": "Advanced insights are unlocked with premium.",
+  "subscriptionGateDefault": "This feature is for premium members."
 }
 

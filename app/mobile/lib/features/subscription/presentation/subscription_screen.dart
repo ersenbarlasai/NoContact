@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../core/navigation/premium_guard.dart';
+import '../../../l10n/app_localizations.dart';
 import '../domain/entitlement_state.dart';
 import 'entitlement_controller.dart';
 
@@ -10,7 +13,12 @@ class SubscriptionScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final state = ref.watch(entitlementControllerProvider);
+
+    // Contextual feature message — passed via GoRouter extra
+    final feature = GoRouterState.of(context).extra as PremiumFeature?;
+    final gateMessage = _gateMessage(l10n, feature);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -20,7 +28,7 @@ class SubscriptionScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
+              // Header row
               Row(
                 children: [
                   IconButton(
@@ -29,7 +37,7 @@ class SubscriptionScreen extends ConsumerWidget {
                   ),
                   const Spacer(),
                   Text(
-                    'STILL PREMIUM',
+                    l10n.subscriptionTitle,
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           letterSpacing: 2,
                           color: AppColors.primary,
@@ -39,16 +47,45 @@ class SubscriptionScreen extends ConsumerWidget {
                   const SizedBox(width: 48),
                 ],
               ),
-              const SizedBox(height: 48),
+              const SizedBox(height: 40),
 
-              const StillSectionHeader(
-                title: 'İyileşme Yolculuğunu Destekle',
-                subtitle:
-                    'Premium özellikler, daha derin bir iyileşme deneyimi için tasarlandı.',
+              // Contextual gate message (feature-specific paywall hint)
+              if (gateMessage != null) ...[
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.workspace_premium_rounded,
+                          color: AppColors.primary, size: 20),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          gateMessage,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 28),
+              ],
+
+              StillSectionHeader(
+                title: l10n.subscriptionTagline,
+                subtitle: l10n.subscriptionSubtitle,
               ),
               const SizedBox(height: 32),
 
-              // Current status badge
+              // Current plan badge
               StillGlassCard(
                 padding: const EdgeInsets.all(20),
                 child: Row(
@@ -65,12 +102,14 @@ class SubscriptionScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Mevcut Plan',
+                          l10n.subscriptionCurrentPlan,
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          state.isPremium ? 'Premium' : 'Ücretsiz',
+                          state.isPremium
+                              ? 'Premium'
+                              : l10n.subscriptionFreePlan,
                           style:
                               Theme.of(context).textTheme.titleMedium?.copyWith(
                                     fontWeight: FontWeight.bold,
@@ -85,26 +124,26 @@ class SubscriptionScreen extends ConsumerWidget {
 
               const SizedBox(height: 40),
 
-              // Free plan
+              // Free plan features
               _buildPlanSection(
                 context,
-                title: 'Ücretsiz Plan',
+                title: l10n.subscriptionFreePlan,
                 features: const [
                   'SOS Yardımı (Sınırsız)',
                   'No-Contact Sayacı',
-                  'Duygu Günlüğü (Temel)',
+                  'Duygu Günlüğü',
                   'Mektup Kasası',
                   'Sakin Kütüphane',
                 ],
                 isCurrent: !state.isPremium,
-                isPremium: false,
+                isPremiumPlan: false,
               ),
               const SizedBox(height: 24),
 
-              // Premium plan
+              // Premium plan features
               _buildPlanSection(
                 context,
-                title: 'Premium Plan (Yakında)',
+                title: l10n.subscriptionPremiumPlan,
                 features: const [
                   '30 Günlük İyileşme Yolu',
                   'Sessiz Cevap Rehberi',
@@ -113,7 +152,7 @@ class SubscriptionScreen extends ConsumerWidget {
                   'Kişisel Ritim ve Destek Önerileri',
                 ],
                 isCurrent: state.isPremium,
-                isPremium: true,
+                isPremiumPlan: true,
               ),
 
               const SizedBox(height: 48),
@@ -129,7 +168,7 @@ class SubscriptionScreen extends ConsumerWidget {
                     const SizedBox(width: 16),
                     Expanded(
                       child: Text(
-                        'Ödeme entegrasyonu henüz aktif değil. Şu an tüm özellikleri ücretsiz deneyebilirsin.',
+                        l10n.subscriptionPaymentNote,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall
@@ -143,7 +182,7 @@ class SubscriptionScreen extends ConsumerWidget {
               const SizedBox(height: 32),
 
               StillPrimaryButton(
-                label: 'DEVAM ET',
+                label: l10n.subscriptionContinueBtn,
                 onPressed: () => Navigator.pop(context),
               ),
 
@@ -156,8 +195,8 @@ class SubscriptionScreen extends ConsumerWidget {
                       ref.read(entitlementControllerProvider.notifier).toggleMockTier(),
                   child: Text(
                     state.isPremium
-                        ? 'Ücretsiz Moduna Dön (DEV)'
-                        : 'Premium Moduna Geç (DEV)',
+                        ? l10n.subscriptionDevToggleToFree
+                        : l10n.subscriptionDevToggleToPremium,
                     style: TextStyle(
                       color: AppColors.onSurfaceVariant.withValues(alpha: 0.4),
                       fontSize: 11,
@@ -172,19 +211,29 @@ class SubscriptionScreen extends ConsumerWidget {
     );
   }
 
+  /// Returns the contextual gate message for the triggering feature.
+  String? _gateMessage(AppLocalizations l10n, PremiumFeature? feature) {
+    if (feature == null) return null;
+    return switch (feature) {
+      PremiumFeature.recoveryPath => l10n.subscriptionGateRecoveryPath,
+      PremiumFeature.silentReply => l10n.subscriptionGateSilentReply,
+      PremiumFeature.insights => l10n.subscriptionGateInsights,
+    };
+  }
+
   Widget _buildPlanSection(
     BuildContext context, {
     required String title,
     required List<String> features,
     required bool isCurrent,
-    required bool isPremium,
+    required bool isPremiumPlan,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            if (isPremium)
+            if (isPremiumPlan)
               const Padding(
                 padding: EdgeInsets.only(right: 8),
                 child: Icon(Icons.workspace_premium_rounded,

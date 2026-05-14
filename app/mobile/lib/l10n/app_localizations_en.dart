@@ -829,4 +829,51 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notifSilentReplySavedBody =>
       'That takes strength. Your quiet reply is waiting in the vault.';
+
+  @override
+  String get subscriptionTitle => 'Still Premium';
+
+  @override
+  String get subscriptionTagline => 'Support Your Healing Journey';
+
+  @override
+  String get subscriptionSubtitle =>
+      'Premium features are designed for a deeper healing experience.';
+
+  @override
+  String get subscriptionCurrentPlan => 'Current Plan';
+
+  @override
+  String get subscriptionFreePlan => 'Free Plan';
+
+  @override
+  String get subscriptionPremiumPlan => 'Premium Plan (Coming Soon)';
+
+  @override
+  String get subscriptionContinueBtn => 'CONTINUE';
+
+  @override
+  String get subscriptionDevToggleToPremium => 'Switch to Premium (DEV)';
+
+  @override
+  String get subscriptionDevToggleToFree => 'Switch to Free (DEV)';
+
+  @override
+  String get subscriptionPaymentNote =>
+      'Payment integration is not yet active. You can try all features for free right now.';
+
+  @override
+  String get subscriptionGateRecoveryPath =>
+      'The 30-Day Recovery Path is unlocked with premium.';
+
+  @override
+  String get subscriptionGateSilentReply =>
+      'The Silent Reply guide is unlocked with premium.';
+
+  @override
+  String get subscriptionGateInsights =>
+      'Advanced insights are unlocked with premium.';
+
+  @override
+  String get subscriptionGateDefault => 'This feature is for premium members.';
 }
