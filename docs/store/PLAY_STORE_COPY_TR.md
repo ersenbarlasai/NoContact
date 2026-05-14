@@ -31,9 +31,12 @@ Kişisel notların, mektupların ve duygu kayıtların yalnızca senin cihazınd
 - Şifreli mektup kasası
 - Yargısız duygu günlüğü
 - Ani istekler için SOS desteği
+- 30 Günlük İyileşme Yolu ✨
+- Sessiz Cevap rehberi ✨
 - Sadece sana özel ve gizli
 
 ## 5. Data Safety Notes (For Play Console Declaration)
 - **Data Collected:** None of the sensitive user content (journal text, letter text, message text) is collected.
 - **Encryption:** Data stored on the device is encrypted locally.
 - **Account Data:** If user accounts are implemented later, basic auth data is stored, but not personal journal content.
+

@@ -37,7 +37,7 @@
 - [ ] Format for 6.5" iPhone, 5.5" iPhone, and standard Android sizes.
 
 ## 8. Known Limitations (Document for Internal / Review)
-- AI Message Analysis is currently a local mock engine.
+- AI Mesaj Analizi özelliği bu sürümden kaldırılmıştır.
 - Subscriptions are in placeholder mode; no real billing occurs.
 
 ## 9. Pre-release Manual QA Checklist
