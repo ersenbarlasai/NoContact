@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
-import '../../../core/design_system/emotional_tokens.dart';
 import '../../../data/models/recovery_profile.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../onboarding/presentation/onboarding_controller.dart';
 import '../../sos/presentation/sos_controller.dart';
 import '../../support_system/presentation/support_controller.dart';
@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final onboardingState = ref.watch(onboardingControllerProvider);
     final sosState = ref.watch(sosControllerProvider);
     final managedUrges = ref.watch(managedUrgeCountProvider);
@@ -42,19 +43,12 @@ class HomeScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Hoş geldin, ${onboardingState.name}',
+                            _getGreeting(context, l10n, onboardingState.name),
                             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   color: AppColors.primary,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Literata',
                                 ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Bugün harika gidiyorsun. Sadece bu anı yaşa.',
-                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                              color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
-                            ),
                           ),
                         ],
                       ),
@@ -63,30 +57,30 @@ class HomeScreen extends ConsumerWidget {
                     IconButton(
                       icon: const Icon(Icons.eco_outlined, color: AppColors.primary, size: 22),
                       onPressed: () => context.push('/recovery-path'),
-                      tooltip: 'İyileşme Yolum',
+                      tooltip: l10n.recoveryPathTitle,
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
-  
-                if (sosState.completedAt != null && 
+
+                if (sosState.completedAt != null &&
                     DateTime.now().difference(sosState.completedAt!).inMinutes < 60)
                   _SosSuccessMessage(onDismiss: () {
                     ref.read(sosControllerProvider.notifier).reset();
                   }),
-  
+
                 // No-Contact Day Counter
                 _DayCounterCard(onboardingState: onboardingState),
                 const SizedBox(height: 32),
-  
+
                 // Today's Support (Priority Card)
                 const _BentoSupportCard(),
                 const SizedBox(height: 32),
-  
+
                 // Bento Grid
                 const StillSectionHeader(title: 'Senin Alanın'),
                 const SizedBox(height: 16),
-                
+
                 // Row 1: Today's Step & Library
                 Row(
                   children: [
@@ -114,7 +108,7 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Row 3: Stats & Letters
                 Row(
                   children: [
@@ -127,19 +121,27 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-                
+
                 const SizedBox(height: 24),
-                
-                const StillPrivacyNotice(
-                  text: 'Veriler bu cihazda şifreli saklanır.',
+
+                StillPrivacyNotice(
+                  text: l10n.settingsPrivacyNotice,
                 ),
-                const SizedBox(height: 180), // Safe space for bottom nav & FAB
+                const SizedBox(height: 180),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  String _getGreeting(BuildContext context, AppLocalizations l10n, String name) {
+    final hour = DateTime.now().hour;
+    if (hour >= 5 && hour < 12) return l10n.homeGreetingMorning(name);
+    if (hour >= 12 && hour < 18) return l10n.homeGreetingAfternoon(name);
+    if (hour >= 18 && hour < 22) return l10n.homeGreetingEvening(name);
+    return l10n.homeGreetingNight(name);
   }
 }
 
@@ -149,6 +151,7 @@ class _DayCounterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final startDate = onboardingState.noContactStartDate ?? DateTime.now();
     final days = DateTime.now().difference(startDate).inDays;
 
@@ -158,7 +161,7 @@ class _DayCounterCard extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'İLETİŞİMSİZ GEÇEN',
+              l10n.homeNcLabel,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     letterSpacing: 2,
                     fontWeight: FontWeight.bold,
@@ -167,7 +170,7 @@ class _DayCounterCard extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              '$days Gün',
+              l10n.homeNcDays(days),
               style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     color: AppColors.primary,
                     fontFamily: 'Literata',
@@ -175,7 +178,7 @@ class _DayCounterCard extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              'Kendini seçtiğin anlar',
+              l10n.insightsSosReflection,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.onSurfaceVariant.withValues(alpha: 0.7),
                     fontStyle: FontStyle.italic,
@@ -195,6 +198,7 @@ class _BentoMoodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return StillCard(
       onTap: () => context.push('/mood-journal'),
       color: AppColors.secondaryContainer.withValues(alpha: 0.3),
@@ -205,7 +209,7 @@ class _BentoMoodCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'DUYGULARIN',
+                  l10n.moodJournalTitle.toUpperCase(),
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         letterSpacing: 1.2,
                         fontWeight: FontWeight.bold,
@@ -214,7 +218,7 @@ class _BentoMoodCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Nasıl hissediyorsun?',
+                  l10n.moodJournalTodaySubtitle,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 16),
                 ),
               ],
@@ -233,6 +237,7 @@ class _BentoStatsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
       color: AppColors.tertiaryFixed.withValues(alpha: 0.4),
@@ -254,7 +259,7 @@ class _BentoStatsCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Dürtü Yönetildi',
+            l10n.insightsSosStrength,
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: AppColors.onTertiaryContainer,
@@ -262,7 +267,7 @@ class _BentoStatsCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Temas etmeden atlattığın anlar',
+            l10n.insightsSosReflection,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: AppColors.onTertiaryContainer.withValues(alpha: 0.7),
                   fontSize: 10,
@@ -280,6 +285,7 @@ class _BentoActionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
       onTap: () => context.push('/letters-vault'),
@@ -290,7 +296,7 @@ class _BentoActionCard extends StatelessWidget {
           const Icon(Icons.auto_stories, color: AppColors.primary, size: 24),
           const SizedBox(height: 20),
           Text(
-            'Göndermeyeceğin Mektup',
+            l10n.homeLetterTitle,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   height: 1.2,
                   fontSize: 13,
@@ -298,7 +304,7 @@ class _BentoActionCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'İçini dök',
+            l10n.homeLetterSubtitle,
             style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
@@ -313,6 +319,7 @@ class _SosSuccessMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 24),
       padding: const EdgeInsets.all(16),
@@ -324,10 +331,10 @@ class _SosSuccessMessage extends StatelessWidget {
         children: [
           const Icon(Icons.check_circle_outline, color: AppColors.primary),
           const SizedBox(width: 12),
-          const Expanded(
+          Expanded(
             child: Text(
-              'Bir dürtüyü daha başarıyla atlattın.',
-              style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.primary),
+              l10n.homeSosSuccess,
+              style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.primary),
             ),
           ),
           IconButton(
@@ -343,15 +350,9 @@ class _SosSuccessMessage extends StatelessWidget {
 class _BentoSupportCard extends ConsumerWidget {
   const _BentoSupportCard();
 
-  String _formatDuration(Duration? duration) {
-    if (duration == null) return '';
-    final hours = duration.inHours;
-    final minutes = duration.inMinutes % 60;
-    return '${hours}s ${minutes}dk kaldı';
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final supportState = ref.watch(supportControllerProvider);
     final status = supportState.pauseStatus;
     final latestNote = supportState.latestNote;
@@ -359,23 +360,25 @@ class _BentoSupportCard extends ConsumerWidget {
     final isActive = status == SupportPauseStatus.active;
     final isExpired = status == SupportPauseStatus.expired;
 
-    String title = 'BUGÜNÜN DESTEĞİ';
-    String subtitle = latestNote?.body ?? 'Şu an ihtiyacın olan küçük adımı seç.';
-    IconData icon = Icons.shield_outlined;
-    Color cardColor = AppColors.surfaceContainerLow;
+    String title;
+    String subtitle;
+    IconData icon;
 
     if (isActive) {
-      title = '24 SAATLİK DURAKLAMA AKTİF';
-      subtitle = '${_formatDuration(supportState.remainingPauseTime)}\nKararını şu an koruyorsun.';
+      final remaining = supportState.remainingPauseTime;
+      final hours = remaining?.inHours ?? 0;
+      final minutes = (remaining?.inMinutes ?? 0) % 60;
+      title = l10n.homePauseActive;
+      subtitle = l10n.homePauseActiveSubtitle(hours, minutes);
       icon = Icons.timer_outlined;
-      cardColor = AppColors.primaryContainer.withValues(alpha: 0.2);
     } else if (isExpired) {
-      title = 'DURAKLAMA TAMAMLANDI';
-      subtitle = 'Şimdi daha sakin bir yerden karar verebilirsin.';
+      title = l10n.homePauseExpired;
+      subtitle = l10n.homePauseExpiredSubtitle;
       icon = Icons.check_circle_outline;
-      cardColor = AppColors.primaryContainer.withValues(alpha: 0.2);
     } else {
-      cardColor = AppColors.surfaceContainerLowest.withValues(alpha: 0.7);
+      title = l10n.homeSupportTitle;
+      subtitle = latestNote?.body ?? l10n.homeSupportSubtitle;
+      icon = Icons.shield_outlined;
     }
 
     return StillGlassCard(
@@ -429,6 +432,7 @@ class _BentoSupportCard extends ConsumerWidget {
 class _BentoLibraryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
       onTap: () => context.push('/library'),
@@ -439,7 +443,7 @@ class _BentoLibraryCard extends StatelessWidget {
           const Icon(Icons.local_library_outlined, color: AppColors.secondary, size: 24),
           const SizedBox(height: 20),
           Text(
-            'Sessiz Kütüphane',
+            l10n.homeLibraryTitle,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   height: 1.2,
                   fontSize: 13,
@@ -447,7 +451,7 @@ class _BentoLibraryCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Sakin içerikler',
+            l10n.homeLibrarySubtitle,
             style: Theme.of(context).textTheme.labelSmall,
           ),
         ],
@@ -459,6 +463,7 @@ class _BentoLibraryCard extends StatelessWidget {
 class _BentoSilentReplyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return StillCard(
       padding: const EdgeInsets.all(20),
       onTap: () => context.push('/silent-reply'),
@@ -469,7 +474,7 @@ class _BentoSilentReplyCard extends StatelessWidget {
           const Icon(Icons.chat_bubble_outline, color: AppColors.primary, size: 24),
           const SizedBox(height: 20),
           Text(
-            'Sessiz Cevap',
+            l10n.homeSilentReplyTitle,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   height: 1.2,
                   fontSize: 13,
@@ -477,7 +482,7 @@ class _BentoSilentReplyCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Göndermeden yaz.',
+            l10n.homeSilentReplySubtitle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.labelSmall,
@@ -487,12 +492,14 @@ class _BentoSilentReplyCard extends StatelessWidget {
     );
   }
 }
+
 class _TodayStepMiniCard extends StatelessWidget {
   final RecoveryProfile onboardingState;
   const _TodayStepMiniCard({required this.onboardingState});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final startDate = onboardingState.noContactStartDate ?? DateTime.now();
     final days = DateTime.now().difference(startDate).inDays;
     final step = Static30DayRecoveryPlan.getStepForDay(days);
@@ -507,7 +514,7 @@ class _TodayStepMiniCard extends StatelessWidget {
           const Icon(Icons.flare_outlined, color: AppColors.tertiary, size: 24),
           const SizedBox(height: 20),
           Text(
-            'GÜN ${step.dayNumber}',
+            l10n.homeTodayStepLabel(step.dayNumber),
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: AppColors.tertiary,
                   fontWeight: FontWeight.bold,
@@ -515,7 +522,7 @@ class _TodayStepMiniCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Bugünün Adımı',
+            l10n.homeTodayStepTitle,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 13),
           ),
         ],

@@ -13,12 +13,14 @@ import '../../../app/bootstrap/app_startup_controller.dart';
 import '../../privacy_lock/presentation/privacy_lock_controller.dart';
 import '../../daily_rhythm/presentation/rhythm_controller.dart';
 import '../../../core/design_system/emotional_background.dart';
+import '../../../l10n/app_localizations.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: EmotionalBackground(
@@ -34,7 +36,7 @@ class SettingsScreen extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'AYARLAR',
+                      l10n.settingsTitle.toUpperCase(),
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                             letterSpacing: 4,
                             color: AppColors.primary,
@@ -45,7 +47,7 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 24),
               
-              const StillSectionHeader(title: 'Hesap ve Profil'),
+              StillSectionHeader(title: l10n.settingsProfileSection),
               const SizedBox(height: 16),
               StillGlassCard(
                 padding: EdgeInsets.zero,
@@ -156,8 +158,8 @@ class SettingsScreen extends ConsumerWidget {
                               // ─── Sabah Nazik Başlangıç ─────────────────────
                               ListTile(
                                 leading: const Icon(Icons.wb_sunny_outlined, color: AppColors.primary, size: 22),
-                                title: const Text('Sabah Nazik Başlangıç'),
-                                subtitle: const Text('~08:00 · "Bugün kendine sert davranmadan ilerleyebilirsin."'),
+                                title: Text(l10n.settingsMorningLabel),
+                                subtitle: Text('~08:00 · "${l10n.notifMorningBody}"'),
                                 trailing: Switch(
                                   value: rhythmState.morningEnabled,
                                   activeColor: AppColors.primary,
@@ -168,8 +170,8 @@ class SettingsScreen extends ConsumerWidget {
                               // ─── Öğlen Kısa Duraklama ──────────────────────
                               ListTile(
                                 leading: const Icon(Icons.self_improvement_outlined, color: AppColors.primary, size: 22),
-                                title: const Text('Öğlen Kısa Duraklama'),
-                                subtitle: const Text('~12:30 · "Bir an durup bedenini fark etmek ister misin?"'),
+                                title: Text(l10n.settingsMiddayLabel),
+                                subtitle: Text('~12:30 · "${l10n.notifMiddayBody}"'),
                                 trailing: Switch(
                                   value: rhythmState.middayEnabled,
                                   activeColor: AppColors.primary,
@@ -180,8 +182,8 @@ class SettingsScreen extends ConsumerWidget {
                               // ─── Akşam Yansıması ───────────────────────────
                               ListTile(
                                 leading: const Icon(Icons.bedtime_outlined, color: AppColors.primary, size: 22),
-                                title: const Text('Akşam Yansıması'),
-                                subtitle: const Text('~21:00 · "Bugün içinden geçenleri güvenli bir yere bırakabilirsin."'),
+                                title: Text(l10n.settingsEveningLabel),
+                                subtitle: Text('~21:00 · "${l10n.notifEveningBody}"'),
                                 trailing: Switch(
                                   value: rhythmState.eveningEnabled,
                                   activeColor: AppColors.primary,
@@ -194,8 +196,8 @@ class SettingsScreen extends ConsumerWidget {
                               // ─── Bağlama Göre Akıllı Bildirimler ──────────
                               ListTile(
                                 leading: const Icon(Icons.tips_and_updates_outlined, color: AppColors.primary, size: 22),
-                                title: const Text('Bağlama Göre Hatırlatmalar'),
-                                subtitle: const Text('SOS, 24 saat bekleme veya güvenli çıkış sonrasında nazik takip.'),
+                                title: Text(l10n.settingsContextualLabel),
+                                subtitle: Text(l10n.settingsContextualSubtitle),
                                 trailing: Switch(
                                   value: rhythmState.contextualEnabled,
                                   activeColor: AppColors.primary,
@@ -217,15 +219,15 @@ class SettingsScreen extends ConsumerWidget {
                                         await rhythmController.sendTestNotification();
                                         if (context.mounted) {
                                           ScaffoldMessenger.of(context).showSnackBar(
-                                            const SnackBar(
-                                              content: Text('Test bildirimi 1 dakika sonra gelecek.'),
-                                              duration: Duration(seconds: 3),
+                                            SnackBar(
+                                              content: Text(l10n.settingsTestNotifSnackbar),
+                                              duration: const Duration(seconds: 3),
                                             ),
                                           );
                                         }
                                       },
                                       child: Text(
-                                        '1 dk sonra test bildirimi gönder',
+                                        l10n.settingsTestNotifBtn,
                                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                           color: AppColors.onSurfaceVariant,
                                           decoration: TextDecoration.underline,
@@ -236,10 +238,10 @@ class SettingsScreen extends ConsumerWidget {
                                 ),
                               ),
 
-                            const Padding(
-                              padding: EdgeInsets.only(left: 56, right: 16, bottom: 16),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 56, right: 16, bottom: 16),
                               child: StillPrivacyNotice(
-                                text: 'Tüm bildirimler cihazında planlanır. Mektup, günlük veya SOS içeriğin bildirimlerde hiçbir zaman görünmez.',
+                                text: l10n.settingsPrivacyNotice,
                               ),
                             ),
                           ],
@@ -251,7 +253,7 @@ class SettingsScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 32),
-              const StillSectionHeader(title: 'Veri ve Gizlilik'),
+              StillSectionHeader(title: l10n.settingsDataSection),
               const SizedBox(height: 16),
               StillGlassCard(
                 padding: EdgeInsets.zero,
@@ -264,8 +266,8 @@ class SettingsScreen extends ConsumerWidget {
                         
                         return ListTile(
                           leading: const Icon(Icons.fingerprint_outlined, color: AppColors.primary),
-                          title: const Text('Biyometrik Kilit'),
-                          subtitle: const Text('Günlük ve mektuplarını açmadan önce cihaz doğrulaması ister.'),
+                          title: Text(l10n.settingsBiometricLabel),
+                          subtitle: Text(l10n.settingsBiometricSubtitle),
                           trailing: Switch(
                             value: lockState.isEnabled,
                             activeColor: AppColors.primary,
@@ -279,14 +281,14 @@ class SettingsScreen extends ConsumerWidget {
                     const Divider(height: 1, indent: 56),
                     ListTile(
                       leading: const Icon(Icons.cleaning_services_outlined, color: AppColors.tertiary),
-                      title: const Text('Yerel Verileri Temizle'),
-                      subtitle: const Text('Uygulamayı sıfırlar ve başlangıca döner.'),
+                      title: Text(l10n.settingsClearDataLabel),
+                      subtitle: Text(l10n.settingsClearDataSubtitle),
                       onTap: () async => _handleClearData(context, ref),
                     ),
                     const Divider(height: 1, indent: 56),
                     ListTile(
                       leading: const Icon(Icons.delete_forever_outlined, color: AppColors.error),
-                      title: const Text('Verileri Kalıcı Olarak Sil', style: TextStyle(color: AppColors.error)),
+                      title: Text(l10n.settingsDeleteDataLabel, style: const TextStyle(color: AppColors.error)),
                       onTap: () {
                         // TODO: Implement full account deletion
                       },
@@ -327,17 +329,20 @@ class SettingsScreen extends ConsumerWidget {
   Future<void> _handleClearData(BuildContext context, WidgetRef ref) async {
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Emin misiniz?'),
-        content: const Text('Tüm yerel verileriniz (günlükler, mektuplar) silinecek.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('VAZGEÇ')),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true), 
-            child: const Text('TEMİZLE', style: TextStyle(color: AppColors.error)),
-          ),
-        ],
-      ),
+      builder: (ctx) {
+        final dl10n = AppLocalizations.of(ctx);
+        return AlertDialog(
+          title: Text(dl10n.settingsClearConfirmTitle),
+          content: Text(dl10n.settingsClearConfirmBody),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(dl10n.settingsClearCancelBtn)),
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: Text(dl10n.settingsClearBtn, style: const TextStyle(color: AppColors.error)),
+            ),
+          ],
+        );
+      },
     );
 
     if (confirmed == true) {

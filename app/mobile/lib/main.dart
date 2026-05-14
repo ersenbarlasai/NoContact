@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app/router/app_router.dart';
 import 'app/theme/app_theme.dart';
+import 'l10n/app_localizations.dart';
 
 import 'core/services/supabase_service.dart';
 import 'core/storage/local_storage_service.dart';
@@ -30,20 +31,26 @@ class NoContactApp extends ConsumerWidget {
     final router = ref.watch(appRouter);
 
     return MaterialApp.router(
-      title: 'NoContact',
+      title: 'STILL',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       routerConfig: router,
+      // --- Localization ---
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('tr', 'TR'),
-        Locale('en', 'US'),
-      ],
-      locale: const Locale('tr', 'TR'),
+      supportedLocales: AppLocalizations.supportedLocales,
+      // Cihaz dili Türkçe ise Türkçe, değilse İngilizce fallback
+      localeResolutionCallback: (deviceLocale, supportedLocales) {
+        if (deviceLocale != null &&
+            deviceLocale.languageCode == 'tr') {
+          return const Locale('tr', 'TR');
+        }
+        return const Locale('en', 'US');
+      },
     );
   }
 }

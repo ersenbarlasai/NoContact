@@ -6,6 +6,7 @@ import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
 import '../../../data/models/recovery_profile.dart';
+import '../../../l10n/app_localizations.dart';
 import 'onboarding_controller.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -52,6 +53,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final state = ref.watch(onboardingControllerProvider);
 
     return Scaffold(
@@ -154,7 +156,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: TextButton(
                     onPressed: _previousPage,
-                    child: Text('GERİ GİT', style: Theme.of(context).textTheme.labelLarge?.copyWith(color: AppColors.onSurfaceVariant)),
+                    child: Text(l10n.backBtn, style: Theme.of(context).textTheme.labelLarge?.copyWith(color: AppColors.onSurfaceVariant)),
                   ),
                 ),
             ],
@@ -171,6 +173,7 @@ class _StepWelcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -218,19 +221,19 @@ class _StepWelcome extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Zayıf olduğun için burada değilsin.',
+                  l10n.onboardingWelcomeHeadline1,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 32),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Buradasın çünkü şu an her şey çok zor.',
+                  l10n.onboardingWelcomeHeadline2,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 32, color: AppColors.primary),
                 ),
                 const SizedBox(height: 24),
                 Text(
-                  'Duygusal iyileşme ve öz saygı yolculuğunda özel yardımcın.',
+                  l10n.onboardingWelcomeSubtitle,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.onSurfaceVariant),
                 ),
@@ -241,7 +244,7 @@ class _StepWelcome extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: StillPrimaryButton(
-              label: 'Yolculuğuma Başla',
+              label: l10n.onboardingStartBtn,
               onPressed: onNext,
             ),
           ),
@@ -259,28 +262,23 @@ class _StepName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Sana nasıl hitap edelim?',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+          Text(l10n.onboardingNameTitle, style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 12),
           Text(
-            'Bu ismi sadece sana özel planında kullanacağız.',
+            l10n.onboardingNameSubtitle,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant),
           ),
           const SizedBox(height: 48),
-          StillTextField(
-            controller: controller,
-            hintText: 'Adın veya takma adın',
-          ),
+          StillTextField(controller: controller, hintText: l10n.onboardingNameHint),
           const Spacer(),
           StillPrimaryButton(
-            label: 'DEVAM ET',
+            label: l10n.continueBtn,
             onPressed: () {
               if (controller.text.isNotEmpty) {
                 onNext(controller.text);
@@ -300,16 +298,16 @@ class _StepReason extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final reasons = [
-      'Ona yazmamam gerektiğini biliyorum',
-      'Onu düşünmeden duramıyorum',
-      'İyileşmek istiyorum ama nereden başlayacağımı bilmiyorum',
-      'No-contact’ı bozdum ve suçlu hissediyorum',
-      'Duygularımı kontrol etmekte zorlanıyorum',
+      l10n.onboardingReason1,
+      l10n.onboardingReason2,
+      l10n.onboardingReason3,
+      l10n.onboardingReason4,
+      l10n.onboardingReason5,
     ];
-
     return _BuildSelectionStep(
-      title: 'Seni buraya ne getirdi?',
+      title: l10n.onboardingReasonTitle,
       options: reasons,
       selectedOption: selectedReason,
       onSelected: onSelected,
@@ -324,17 +322,17 @@ class _StepRelationshipDuration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final options = [
-      '1 aydan kısa',
-      '1-3 ay',
-      '3-6 ay',
-      '6-12 ay',
-      '1 yıldan fazla',
-      '3 yıldan fazla',
+      l10n.onboardingRelDuration1,
+      l10n.onboardingRelDuration2,
+      l10n.onboardingRelDuration3,
+      l10n.onboardingRelDuration4,
+      l10n.onboardingRelDuration5,
+      l10n.onboardingRelDuration6,
     ];
-
     return _BuildSelectionStep(
-      title: 'İlişkiniz ne kadar sürdü?',
+      title: l10n.onboardingRelDurationTitle,
       options: options,
       selectedOption: selectedDuration,
       onSelected: onSelected,
@@ -349,15 +347,15 @@ class _StepTimeSinceBreakup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final options = [
-      '1 haftadan az',
-      '1-4 hafta',
-      '1-3 ay',
-      '3 aydan fazla',
+      l10n.onboardingBreakupTime1,
+      l10n.onboardingBreakupTime2,
+      l10n.onboardingBreakupTime3,
+      l10n.onboardingBreakupTime4,
     ];
-
     return _BuildSelectionStep(
-      title: 'Ayrılığın üzerinden ne kadar geçti?',
+      title: l10n.onboardingBreakupTimeTitle,
       options: options,
       selectedOption: selectedTime,
       onSelected: onSelected,
@@ -372,10 +370,14 @@ class _StepWhoEnded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final options = ['Ben', 'O', 'Ortak karar'];
-
+    final l10n = AppLocalizations.of(context);
+    final options = [
+      l10n.onboardingWhoEndedMe,
+      l10n.onboardingWhoEndedThem,
+      l10n.onboardingWhoEndedMutual,
+    ];
     return _BuildSelectionStep(
-      title: 'İlişkiyi kim bitirdi?',
+      title: l10n.onboardingWhoEndedTitle,
       options: options,
       selectedOption: selectedWho,
       onSelected: onSelected,
@@ -395,19 +397,18 @@ class _StepNoContactDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final locale = Localizations.localeOf(context).toString();
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'İletişimi ne zaman kestin?',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            Text(l10n.onboardingNoContactDateTitle, style: Theme.of(context).textTheme.headlineMedium),
             const SizedBox(height: 12),
             Text(
-              'Hatırlamıyorsan veya bugün başladıysan geçebilirsin.',
+              l10n.onboardingNoContactDateSubtitle,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant),
             ),
             const SizedBox(height: 64),
@@ -417,7 +418,7 @@ class _StepNoContactDate extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      DateFormat('dd MMMM yyyy', 'tr_TR').format(selectedDate),
+                      DateFormat('dd MMMM yyyy', locale).format(selectedDate),
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 24),
@@ -432,7 +433,7 @@ class _StepNoContactDate extends StatelessWidget {
                         if (picked != null) onSelected(picked);
                       },
                       icon: const Icon(Icons.calendar_today, size: 18),
-                      label: const Text('TARİH DEĞİŞTİR'),
+                      label: Text(l10n.onboardingChangeDateBtn),
                       style: OutlinedButton.styleFrom(
                         shape: const StadiumBorder(),
                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -444,14 +445,14 @@ class _StepNoContactDate extends StatelessWidget {
             ),
             const SizedBox(height: 64),
             StillPrimaryButton(
-              label: 'DEVAM ET',
+              label: l10n.continueBtn,
               onPressed: () => onSelected(selectedDate),
             ),
             const SizedBox(height: 16),
             Center(
               child: TextButton(
                 onPressed: onSkip,
-                child: Text('Hatırlamıyorum / Bugün Başladım', style: TextStyle(color: AppColors.onSurfaceVariant)),
+                child: Text(l10n.onboardingSkipDateBtn, style: TextStyle(color: AppColors.onSurfaceVariant)),
               ),
             ),
           ],
@@ -468,10 +469,17 @@ class _StepEmotion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final options = ['Üzgün', 'Öfkeli', 'Kaygılı', 'Sakin', 'Kafam karışık', 'Özlüyorum'];
-
+    final l10n = AppLocalizations.of(context);
+    final options = [
+      l10n.emotionSad,
+      l10n.emotionAngry,
+      l10n.emotionAnxious,
+      l10n.emotionCalm,
+      l10n.emotionConfused,
+      l10n.emotionMissing,
+    ];
     return _BuildSelectionStep(
-      title: 'Bugün en çok ne hissediyorsun?',
+      title: l10n.onboardingEmotionTitle,
       options: options,
       selectedOption: selectedEmotion,
       onSelected: onSelected,
@@ -491,12 +499,13 @@ class _StepTriggers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final options = [
-      'Yalnız hissettiğimde',
-      'Gece geç saatlerde',
-      'Eski anılar aklıma geldiğinde',
-      'Sosyal medyada bir şey gördüğümde',
-      'Stresli veya kaygılı olduğumda',
+      l10n.onboardingTrigger1,
+      l10n.onboardingTrigger2,
+      l10n.onboardingTrigger3,
+      l10n.onboardingTrigger4,
+      l10n.onboardingTrigger5,
     ];
 
     return Padding(
@@ -504,13 +513,10 @@ class _StepTriggers extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'En çok ne zaman yazmak istiyorsun?',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+          Text(l10n.onboardingTriggersTitle, style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 12),
           Text(
-            'Birden fazla seçenek seçebilirsin.',
+            l10n.onboardingTriggersSubtitle,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant),
           ),
           const SizedBox(height: 32),
@@ -528,7 +534,7 @@ class _StepTriggers extends StatelessWidget {
             ),
           ),
           StillPrimaryButton(
-            label: 'DEVAM ET',
+            label: l10n.continueBtn,
             onPressed: selectedTriggers.isEmpty ? null : onNext,
           ),
         ],
@@ -543,44 +549,45 @@ class _StepContract extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Column(
           children: [
             StillSectionHeader(
-              title: 'İçsel Akit',
-              subtitle: 'Kendine bir söz ver.',
+              title: l10n.onboardingContractTitle,
+              subtitle: l10n.onboardingContractSubtitle,
               centered: true,
             ),
             const SizedBox(height: 16),
             Text(
-              'İyileşme doğrusal bir yol değil, bir dizi bilinçli seçimdir. Bugün, dürtülerin yerine huzurunu seçiyorsun.',
+              l10n.onboardingContractBody,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant),
             ),
             const SizedBox(height: 48),
             _ContractItem(
               icon: Icons.emergency,
-              title: 'İletişim kurmadan önce SOS’u açacağım.',
-              subtitle: 'Dürtüyle hareket etmeden önce kendime 10 dakika nefes alanı tanıyacağım.',
+              title: l10n.onboardingContract1Title,
+              subtitle: l10n.onboardingContract1Subtitle,
               color: AppColors.primary,
             ),
             _ContractItem(
               icon: Icons.visibility_off,
-              title: 'İletişimsizliği manipülasyon olarak kullanmayacağım.',
-              subtitle: 'Sessizliğim karşı taraftan tepki almak için değil, kendi iyileşmem için bir araçtır.',
+              title: l10n.onboardingContract2Title,
+              subtitle: l10n.onboardingContract2Subtitle,
               color: AppColors.tertiary,
             ),
             _ContractItem(
               icon: Icons.psychology_alt,
-              title: 'Sosyal medya kontrolünün bir tetikleyici olduğunu fark edeceğim.',
-              subtitle: 'Haber aramanın sadece kaygımı artırdığını kabul ediyorum.',
+              title: l10n.onboardingContract3Title,
+              subtitle: l10n.onboardingContract3Subtitle,
               color: AppColors.secondary,
             ),
             const SizedBox(height: 48),
             Text(
-              'Sözünü mühürlemek için butona basılı tut.',
+              l10n.onboardingContractSealHint,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(fontStyle: FontStyle.italic),
             ),
             const SizedBox(height: 32),
@@ -628,15 +635,9 @@ class _ContractItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18),
-                  ),
+                  Text(title, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18)),
                   const SizedBox(height: 8),
-                  Text(
-                    subtitle,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant),
-                  ),
+                  Text(subtitle, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.onSurfaceVariant)),
                 ],
               ),
             ),
@@ -680,6 +681,7 @@ class _HoldToCommitButtonState extends State<_HoldToCommitButton> with SingleTic
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return GestureDetector(
       onTapDown: (_) {
         setState(() => _isHolding = true);
@@ -699,11 +701,14 @@ class _HoldToCommitButtonState extends State<_HoldToCommitButton> with SingleTic
           SizedBox(
             width: 140,
             height: 140,
-            child: CircularProgressIndicator(
-              value: _controller.value,
-              strokeWidth: 8,
-              backgroundColor: AppColors.primary.withOpacity(0.1),
-              valueColor: const AlwaysStoppedAnimation(AppColors.primary),
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (_, __) => CircularProgressIndicator(
+                value: _controller.value,
+                strokeWidth: 8,
+                backgroundColor: AppColors.primary.withOpacity(0.1),
+                valueColor: const AlwaysStoppedAnimation(AppColors.primary),
+              ),
             ),
           ),
           AnimatedScale(
@@ -716,21 +721,17 @@ class _HoldToCommitButtonState extends State<_HoldToCommitButton> with SingleTic
                 shape: BoxShape.circle,
                 color: AppColors.primary,
                 boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
+                  BoxShadow(color: Colors.black12, blurRadius: 10, offset: Offset(0, 4)),
                 ],
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.fingerprint, color: Colors.white, size: 40),
-                  SizedBox(height: 8),
+                  const Icon(Icons.fingerprint, color: Colors.white, size: 40),
+                  const SizedBox(height: 8),
                   Text(
-                    'SÖZ VER',
-                    style: TextStyle(
+                    l10n.onboardingContractSealBtn,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -754,8 +755,9 @@ class _StepPlanPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final days = DateTime.now().difference(state.noContactStartDate ?? DateTime.now()).inDays;
-    final mainTrigger = state.contactTriggers.isNotEmpty ? state.contactTriggers.first : 'Bilinmiyor';
+    final mainTrigger = state.contactTriggers.isNotEmpty ? state.contactTriggers.first : l10n.onboardingPlanTriggerUnknown;
 
     return SingleChildScrollView(
       child: Padding(
@@ -764,13 +766,13 @@ class _StepPlanPreview extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             StillSectionHeader(
-              title: 'Yol Haritan Hazır',
-              subtitle: 'Planın tamamlandı, ${state.name}.',
+              title: l10n.onboardingPlanTitle,
+              subtitle: l10n.onboardingPlanSubtitle(state.name),
             ),
             const SizedBox(height: 48),
-            _buildInfoRow(context, Icons.timer_outlined, 'Mevcut Süre', '$days Gün'),
-            _buildInfoRow(context, Icons.mood_outlined, 'Ruh Halin', state.dominantEmotion),
-            _buildInfoRow(context, Icons.warning_amber_outlined, 'En Büyük Tetikleyici', mainTrigger),
+            _buildInfoRow(context, Icons.timer_outlined, l10n.onboardingPlanDurationLabel, l10n.onboardingPlanDurationValue(days)),
+            _buildInfoRow(context, Icons.mood_outlined, l10n.onboardingPlanMoodLabel, state.dominantEmotion),
+            _buildInfoRow(context, Icons.warning_amber_outlined, l10n.onboardingPlanTriggerLabel, mainTrigger),
             const SizedBox(height: 48),
             StillCard(
               color: AppColors.primary.withOpacity(0.05),
@@ -778,29 +780,23 @@ class _StepPlanPreview extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'İLK 24 SAAT HEDEFİ',
+                    l10n.onboardingPlanFirst24Title,
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(letterSpacing: 1.2, color: AppColors.primary),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    'Bugün hedefin basit: temas etmeden 24 saati korumak. Zorlandığında önce SOS planını açacağız.',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
+                  Text(l10n.onboardingPlanFirst24Body, style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
             ),
             const SizedBox(height: 48),
             Center(
               child: Text(
-                'Bu uygulama terapi veya acil destek yerine geçmez.',
+                l10n.appDisclaimer,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.onSurfaceVariant),
               ),
             ),
             const SizedBox(height: 24),
-            StillPrimaryButton(
-              label: 'HAYDİ BAŞLAYALIM',
-              onPressed: onComplete,
-            ),
+            StillPrimaryButton(label: l10n.onboardingStartJourneyBtn, onPressed: onComplete),
           ],
         ),
       ),
@@ -814,10 +810,7 @@ class _StepPlanPreview extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceContainerHigh,
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: AppColors.surfaceContainerHigh, shape: BoxShape.circle),
             child: Icon(icon, color: AppColors.primary, size: 24),
           ),
           const SizedBox(width: 20),
@@ -856,10 +849,7 @@ class _BuildSelectionStep extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+          Text(title, style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 48),
           Expanded(
             child: ListView.builder(

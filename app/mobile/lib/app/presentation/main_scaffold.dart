@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../theme/app_theme.dart';
 import '../../features/milestones/presentation/milestone_overlay.dart';
+import '../../l10n/app_localizations.dart';
 
 class MainScaffold extends StatelessWidget {
   final Widget child;
@@ -56,25 +57,25 @@ class _BottomNavBar extends StatelessWidget {
               children: [
                 _NavItem(
                   icon: Icons.home_max,
-                  label: 'Ana Sayfa',
+                  label: AppLocalizations.of(context).navHome,
                   isActive: location == '/',
                   onTap: () => context.go('/'),
                 ),
                 _NavItem(
                   icon: Icons.edit_note,
-                  label: 'Günlük',
+                  label: AppLocalizations.of(context).navJournal,
                   isActive: location == '/mood-journal',
                   onTap: () => context.go('/mood-journal'),
                 ),
                 _NavItem(
                   icon: Icons.history_edu,
-                  label: 'Kasa',
+                  label: AppLocalizations.of(context).navVault,
                   isActive: location.startsWith('/letters-vault'),
                   onTap: () => context.go('/letters-vault'),
                 ),
                 _NavItem(
                   icon: Icons.settings,
-                  label: 'Ayarlar',
+                  label: AppLocalizations.of(context).navSettings,
                   isActive: location == '/settings',
                   onTap: () => context.go('/settings'),
                 ),

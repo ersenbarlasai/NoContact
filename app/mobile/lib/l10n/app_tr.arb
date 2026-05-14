@@ -1,0 +1,362 @@
+{
+  "@@locale": "tr",
+
+  "appTitle": "STILL",
+  "appTagline": "The Quiet Companion",
+
+  "navHome": "Ana Sayfa",
+  "navJournal": "Günlük",
+  "navVault": "Kasa",
+  "navSettings": "Ayarlar",
+
+  "continueBtn": "DEVAM ET",
+  "cancelBtn": "VAZGEÇ",
+  "okBtn": "TAMAM",
+  "closeBtn": "KAPAT",
+  "backBtn": "GERİ GİT",
+  "saveBtn": "KAYDET",
+  "deleteBtn": "SİL",
+  "restoreBtn": "GERİ YÜKLE",
+  "archiveBtn": "ARŞİVLE",
+  "copyBtn": "KOPYALA",
+  "newAnalysisBtn": "YENİ ANALİZ",
+  "yesBtn": "EVET",
+  "noBtn": "HAYIR",
+
+  "onboardingWelcomeHeadline1": "Zayıf olduğun için burada değilsin.",
+  "onboardingWelcomeHeadline2": "Buradasın çünkü şu an her şey çok zor.",
+  "onboardingWelcomeSubtitle": "Duygusal iyileşme ve öz saygı yolculuğunda özel yardımcın.",
+  "onboardingStartBtn": "Yolculuğuma Başla",
+
+  "onboardingNameTitle": "Sana nasıl hitap edelim?",
+  "onboardingNameSubtitle": "Bu ismi sadece sana özel planında kullanacağız.",
+  "onboardingNameHint": "Adın veya takma adın",
+
+  "onboardingReasonTitle": "Seni buraya ne getirdi?",
+  "onboardingReason1": "Ona yazmamam gerektiğini biliyorum",
+  "onboardingReason2": "Onu düşünmeden duramıyorum",
+  "onboardingReason3": "İyileşmek istiyorum ama nereden başlayacağımı bilmiyorum",
+  "onboardingReason4": "No-contact'ı bozdum ve suçlu hissediyorum",
+  "onboardingReason5": "Duygularımı kontrol etmekte zorlanıyorum",
+
+  "onboardingRelDurationTitle": "İlişkiniz ne kadar sürdü?",
+  "onboardingRelDuration1": "1 aydan kısa",
+  "onboardingRelDuration2": "1-3 ay",
+  "onboardingRelDuration3": "3-6 ay",
+  "onboardingRelDuration4": "6-12 ay",
+  "onboardingRelDuration5": "1 yıldan fazla",
+  "onboardingRelDuration6": "3 yıldan fazla",
+
+  "onboardingBreakupTimeTitle": "Ayrılığın üzerinden ne kadar geçti?",
+  "onboardingBreakupTime1": "1 haftadan az",
+  "onboardingBreakupTime2": "1-4 hafta",
+  "onboardingBreakupTime3": "1-3 ay",
+  "onboardingBreakupTime4": "3 aydan fazla",
+
+  "onboardingWhoEndedTitle": "İlişkiyi kim bitirdi?",
+  "onboardingWhoEndedMe": "Ben",
+  "onboardingWhoEndedThem": "O",
+  "onboardingWhoEndedMutual": "Ortak karar",
+
+  "onboardingNoContactDateTitle": "İletişimi ne zaman kestin?",
+  "onboardingNoContactDateSubtitle": "Hatırlamıyorsan veya bugün başladıysan geçebilirsin.",
+  "onboardingChangeDateBtn": "TARİH DEĞİŞTİR",
+  "onboardingSkipDateBtn": "Hatırlamıyorum / Bugün Başladım",
+
+  "onboardingEmotionTitle": "Bugün en çok ne hissediyorsun?",
+  "emotionSad": "Üzgün",
+  "emotionAngry": "Öfkeli",
+  "emotionAnxious": "Kaygılı",
+  "emotionCalm": "Sakin",
+  "emotionConfused": "Kafam karışık",
+  "emotionMissing": "Özlüyorum",
+
+  "onboardingTriggersTitle": "En çok ne zaman yazmak istiyorsun?",
+  "onboardingTriggersSubtitle": "Birden fazla seçenek seçebilirsin.",
+  "onboardingTrigger1": "Yalnız hissettiğimde",
+  "onboardingTrigger2": "Gece geç saatlerde",
+  "onboardingTrigger3": "Eski anılar aklıma geldiğinde",
+  "onboardingTrigger4": "Sosyal medyada bir şey gördüğümde",
+  "onboardingTrigger5": "Stresli veya kaygılı olduğumda",
+
+  "onboardingContractTitle": "İçsel Akit",
+  "onboardingContractSubtitle": "Kendine bir söz ver.",
+  "onboardingContractBody": "İyileşme doğrusal bir yol değil, bir dizi bilinçli seçimdir. Bugün, dürtülerin yerine huzurunu seçiyorsun.",
+  "onboardingContract1Title": "İletişim kurmadan önce SOS'u açacağım.",
+  "onboardingContract1Subtitle": "Dürtüyle hareket etmeden önce kendime 10 dakika nefes alanı tanıyacağım.",
+  "onboardingContract2Title": "İletişimsizliği manipülasyon olarak kullanmayacağım.",
+  "onboardingContract2Subtitle": "Sessizliğim karşı taraftan tepki almak için değil, kendi iyileşmem için bir araçtır.",
+  "onboardingContract3Title": "Sosyal medya kontrolünün bir tetikleyici olduğunu fark edeceğim.",
+  "onboardingContract3Subtitle": "Haber aramanın sadece kaygımı artırdığını kabul ediyorum.",
+  "onboardingContractSealHint": "Sözünü mühürlemek için butona basılı tut.",
+  "onboardingContractSealBtn": "SÖZ VER",
+
+  "onboardingPlanTitle": "Yol Haritan Hazır",
+  "onboardingPlanSubtitle": "Planın tamamlandı, {name}.",
+  "@onboardingPlanSubtitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "onboardingPlanDurationLabel": "Mevcut Süre",
+  "onboardingPlanDurationValue": "{days} Gün",
+  "@onboardingPlanDurationValue": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "onboardingPlanMoodLabel": "Ruh Halin",
+  "onboardingPlanTriggerLabel": "En Büyük Tetikleyici",
+  "onboardingPlanTriggerUnknown": "Bilinmiyor",
+  "onboardingPlanFirst24Title": "İLK 24 SAAT HEDEFİ",
+  "onboardingPlanFirst24Body": "Bugün hedefin basit: temas etmeden 24 saati korumak. Zorlandığında önce SOS planını açacağız.",
+  "appDisclaimer": "Bu uygulama terapi veya acil destek yerine geçmez.",
+  "onboardingStartJourneyBtn": "HAYDI BAŞLAYALIM",
+
+  "homeGreetingMorning": "Günaydın, {name}.",
+  "@homeGreetingMorning": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "homeGreetingAfternoon": "İyi günler, {name}.",
+  "@homeGreetingAfternoon": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "homeGreetingEvening": "İyi akşamlar, {name}.",
+  "@homeGreetingEvening": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "homeGreetingNight": "İyi geceler, {name}.",
+  "@homeGreetingNight": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "homeNcDays": "{days} gün",
+  "@homeNcDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "homeNcLabel": "NO-CONTACT",
+  "homeSosSuccess": "Bir dürtüyü daha başarıyla atlattın.",
+
+  "homeSupportTitle": "BUGÜNÜN DESTEĞİ",
+  "homeSupportSubtitle": "Şu an ihtiyacın olan küçük adımı seç.",
+  "homePauseActive": "24 SAATLİK DURAKLAMA AKTİF",
+  "homePauseActiveSubtitle": "{hours}s {minutes}dk kaldı\nKararını şu an koruyorsun.",
+  "@homePauseActiveSubtitle": {
+    "placeholders": {
+      "hours": {"type": "int"},
+      "minutes": {"type": "int"}
+    }
+  },
+  "homePauseExpired": "DURAKLAMA TAMAMLANDI",
+  "homePauseExpiredSubtitle": "Şimdi daha sakin bir yerden karar verebilirsin.",
+
+  "homeLibraryTitle": "Sessiz Kütüphane",
+  "homeLibrarySubtitle": "Sakin içerikler",
+  "homeSilentReplyTitle": "Sessiz Cevap",
+  "homeSilentReplySubtitle": "Göndermeden yaz.",
+  "homeLetterTitle": "Göndermeyeceğin Mektup",
+  "homeLetterSubtitle": "İçini dök.",
+  "homeTodayStepLabel": "GÜN {day}",
+  "@homeTodayStepLabel": {
+    "placeholders": {
+      "day": {"type": "int"}
+    }
+  },
+  "homeTodayStepTitle": "Bugünün Adımı",
+
+  "sosTitle": "Nefes Al",
+  "sosSubtitle": "Bir an için dur. Buradayız.",
+  "sosStep1Title": "Dur ve Nefes Al",
+  "sosStep2Title": "Buraya Yaz, Ona Değil",
+  "sosStep3Title": "Kendini Seç",
+  "sosWriteTitle": "Buraya Yaz, Ona Değil",
+  "sosWriteSubtitle": "Düşüncelerini bu sayfaya dök. Kelimelerin ağırlığı zihninden çıksın ve burada kalsın.",
+  "sosWriteHint": "Ona ne söylemek istiyorsan buraya yaz, asla duyulmayacak olsa bile...",
+  "sosWritePrivacyNote": "Bu mesaj asla gönderilmeyecek.",
+  "sosWriteReleaseBtn": "Mesajı Serbest Bırak",
+  "sosChooseTitle": "Son Bir Adım",
+  "sosChooseSubtitle": "Şu an temas etmeme kararını koruyor musun?",
+  "sosChooseYes": "EVET, KENDİMİ SEÇİYORUM",
+  "sosChooseStillStruggling": "HÂLÂ ÇOK ZORLANIYORUM",
+  "sosCompletionTitle": "Bu dalgayı atlattın.",
+  "sosCompletionSubtitle": "Bugün kendini seçtin. Gurur duyulacak bir şey yaptın.",
+  "sosReturnBtn": "HUZURLA DÖN",
+  "sosGroundingTitle": "Yanındayız.",
+  "sosGroundingSubtitle": "Zorlanman çok normal. Şu an bunlardan birini dene:",
+  "sosGroundingAction1": "Bir bardak su iç",
+  "sosGroundingAction2": "Telefonu 10 dk başka odaya bırak",
+  "sosGroundingAction3": "Temiz hava al",
+  "sosCrisisWarning": "Kendine zarar verme düşüncen varsa hemen yerel acil destek hattına ulaş.",
+  "sosBetterBtn": "BİRAZ DAHA İYİYİM",
+
+  "supportTitle": "Bugünün Desteği",
+  "support24hTitle": "24 Saatlik Alan",
+  "support24hBody": "Bu mesajı bugün göndermeyeceğim. 24 saat sonra daha sakin karar vereceğim.",
+  "support24hStartBtn": "24 SAAT BEKLEMEYE AL",
+  "supportPauseActiveTitle": "24 Saatlik Duraklama Aktif",
+  "supportPauseActiveBody": "Kalan süre: {hours}s {minutes}dk.\nKararını şu an koruyorsun.",
+  "@supportPauseActiveBody": {
+    "placeholders": {
+      "hours": {"type": "int"},
+      "minutes": {"type": "int"}
+    }
+  },
+  "supportPauseExpiredTitle": "Duraklama Tamamlandı",
+  "supportPauseExpiredBody": "Şimdi daha sakin bir yerden karar verebilirsin.",
+  "supportPauseDismissBtn": "KAPAT",
+  "supportWhyStartedBtn": "NEDEN BAŞLADIĞIMI HATIRLA",
+  "supportLeaveNoteBtn": "KENDİME NOT BIRAK",
+  "supportSilentReplyBtn": "SESSİZ CEVAP YAZ",
+  "supportNoteSnackbar": "Bunu kendin için bıraktın.",
+  "supportReasonTitle": "Neden Başladığını Hatırla",
+  "supportNoteDialogTitle": "Kendine Not",
+  "supportNoteHint": "Kendine bırakmak istediğin bir şey...",
+  "supportNoteSaveBtn": "KAYDET",
+
+  "moodJournalTitle": "Duygu Günlüğü",
+  "moodJournalTodayTitle": "Bugünün Yansıması",
+  "moodJournalTodaySubtitle": "Şu an nasıl hissediyorsun?",
+  "moodJournalHowFeel": "Bugün nasıl hissettim:",
+  "moodJournalIntensity": "Yoğunluk",
+  "moodJournalTriggers": "Bugünkü Tetikleyiciler (opsiyonel)",
+  "moodJournalNote": "Özel Not (Opsiyonel)",
+  "moodJournalNoteHint": "Zihninden geçenleri buraya dök...",
+  "moodJournalSaveBtn": "YANSIMAYI KAYDET",
+  "moodJournalUpdateBtn": "YANSIMAYI GÜNCELLE",
+  "moodJournalSavedSnackbar": "Yansıman güvenle saklandı.",
+  "moodJournalUpdatedSnackbar": "Bugünkü yansıman güncellendi.",
+  "moodJournalWeeklyTitle": "HAFTALIK ÖZET",
+  "moodJournalWeeklySubtitle": "Dengeyi Bulmak",
+  "moodJournalWeeklyStreak": "Bu hafta {streak} günlük bir seri yakaladın. En sık tetikleyicin: {trigger}.",
+  "@moodJournalWeeklyStreak": {
+    "placeholders": {
+      "streak": {"type": "int"},
+      "trigger": {"type": "String"}
+    }
+  },
+  "moodJournalHistory": "Geçmiş Kayıtlar",
+
+  "lettersVaultTitle": "Mektup Kasası",
+  "lettersVaultEmpty": "Henüz mektup yok.\nYazmak, göndermekten daha güçlüdür.",
+  "lettersVaultNewBtn": "YENİ MEKTUP",
+  "lettersVaultActiveTab": "Aktif",
+  "lettersVaultArchiveTab": "Arşiv",
+  "letterEditorTitleHint": "Başlık (isteğe bağlı)...",
+  "letterEditorBodyHint": "Ona ne söylemek istiyorsan buraya yaz, asla duyulmayacak olsa bile...",
+  "letterEditorEmotionSection": "Duygu Durumu",
+  "letterEditorLetterSection": "Mektup",
+  "letterEditorPrivacyNote": "Bu mektup asla gönderilmez. Sadece içinden çıkarman için.",
+  "letterEditorReleaseBtn": "MEKTUBU SERBEST BIRAK",
+  "letterEditorEmptyError": "Boş mektup kaydedilemez.",
+  "letterEditorSavedSnackbar": "Yazdın. Göndermedin. Bu da bir ilerleme.",
+  "letterEditorArchiveTitle": "Gözümün önünden kaldır",
+  "letterEditorArchiveBody": "Bu mektup silinmez. Sadece Arşivlenenler bölümüne taşınır.",
+  "letterEditorArchiveBtn": "KALDIR",
+  "letterEditorArchivedSnackbar": "Mektup arşive kaldırıldı.",
+  "letterEditorRestoreTitle": "Tekrar kasaya taşı",
+  "letterEditorRestoreBody": "Bu mektup tekrar Aktif Mektuplar listesinde görünür.",
+  "letterEditorRestoreBtn": "TAŞI",
+  "letterEditorRestoredSnackbar": "Mektup aktif listeye geri taşındı.",
+  "letterEditorDeleteTitle": "Bu mektubu kalıcı olarak silmek istiyor musun?",
+  "letterEditorDeleteBody": "Bu işlem geri alınamaz.",
+  "letterEditorDeleteConfirmBtn": "Kalıcı Olarak Sil",
+  "letterEditorCancelBtn": "Vazgeç",
+
+  "silentReplyTitle": "Sessiz Cevap",
+  "silentReplySubtitle": "Bir mesaj aldın ve cevap yazmak istiyorsun. Ama göndermeden önce bir adım geri çekil.",
+  "silentReplyHint": "Ne yazmak istiyordun?",
+  "silentReplyPrivacyNote": "Bu hiçbir zaman gönderilmez.",
+  "silentReplySaveToVault": "KASAYA KAYDET",
+  "silentReplyRelease": "SERBEST BIRAK",
+  "silentReplySavedSnackbar": "Sessiz cevabın kasaya eklendi.",
+
+  "recoveryPathTitle": "30 Günlük Yol",
+  "recoveryPathMilestone": "MEVCUT KİLOMETRE TAŞI",
+  "recoveryPathDayCount": "/ 30 Gün",
+  "recoveryPathOpenStep": "BU ADIMI AÇ",
+
+  "insightsTitle": "İçgörüler",
+  "insightsMoodBalance": "Duygu Dengesi",
+  "insightsMoodBalanceSubtitle": "Son 14 gündeki baskın hislerin.",
+  "insightsMilestones": "Yol İzleri",
+  "insightsMilestonesSubtitle": "Geride bıraktığın anlamlı anlar.",
+  "insightsSosStrength": "GÜÇLÜ DURUŞ",
+  "insightsSosManagedUrges": "Yönettiğin {count} dürtü.",
+  "@insightsSosManagedUrges": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "insightsSosReflection": "Her duraklama, kendini seçtiğin bir andır.",
+
+  "settingsTitle": "Ayarlar",
+  "settingsProfileSection": "Profilim",
+  "settingsDaysLabel": "gün no-contact",
+  "settingsNotificationsSection": "Bildirimler",
+  "settingsRhythmToggle": "Günlük Ritim",
+  "settingsRhythmSubtitle": "Sabah, öğle ve akşam için nazik hatırlatmalar.",
+  "settingsMorningLabel": "Sabah",
+  "settingsMiddayLabel": "Öğle",
+  "settingsEveningLabel": "Akşam",
+  "settingsContextualLabel": "Bağlama Göre Hatırlatmalar",
+  "settingsContextualSubtitle": "SOS, 24 saat bekleme veya güvenli çıkış sonrasında nazik takip.",
+  "settingsTestNotifBtn": "1 dk sonra test bildirimi gönder",
+  "settingsTestNotifSnackbar": "Test bildirimi 1 dakika sonra gelecek.",
+  "settingsPrivacyNotice": "Tüm bildirimler cihazında planlanır. Mektup, günlük veya SOS içeriğin bildirimlerde hiçbir zaman görünmez.",
+  "settingsDataSection": "Veri ve Gizlilik",
+  "settingsBiometricLabel": "Biyometrik Kilit",
+  "settingsBiometricSubtitle": "Günlük ve mektuplarını açmadan önce cihaz doğrulaması ister.",
+  "settingsClearDataLabel": "Yerel Verileri Temizle",
+  "settingsClearDataSubtitle": "Uygulamayı sıfırlar ve başlangıca döner.",
+  "settingsDeleteDataLabel": "Verileri Kalıcı Olarak Sil",
+  "settingsClearConfirmTitle": "Emin misiniz?",
+  "settingsClearConfirmBody": "Tüm yerel verileriniz (günlükler, mektuplar) silinecek.",
+  "settingsClearBtn": "TEMİZLE",
+  "settingsClearCancelBtn": "VAZGEÇ",
+
+  "messageAnalysisTitle": "Mesaj Analizi",
+  "messageAnalysisInputTitle": "Mesajı Yapıştır",
+  "messageAnalysisInputSubtitle": "Ondan aldığın mesajı buraya yapıştır. Bu içerik cihazında işlenir.",
+  "messageAnalysisHint": "Mesajı buraya yapıştır...",
+  "messageAnalysisAnalyzeBtn": "ANALİZ ET",
+  "messageAnalysisLoading": "Analiz ediliyor...",
+  "messageAnalysisRisk": "Risk Seviyesi",
+  "messageAnalysisPatterns": "Tespit Edilen Paternler",
+  "messageAnalysisSuggestedAction": "Önerilen Eylem",
+  "messageAnalysisDetailTitle": "Detaylı Analiz",
+  "messageAnalysisSafeReply": "Güvenli Yanıt Örneği",
+  "messageAnalysisGrounding": "İçsel Onaylama",
+  "messageAnalysisRiskHigh": "Yüksek",
+  "messageAnalysisRiskMedium": "Orta",
+  "messageAnalysisRiskLow": "Düşük",
+  "messageAnalysisRiskHighDesc": "Duygusal güvenliğin için yanıt vermemek en iyisidir.",
+  "messageAnalysisRiskMediumDesc": "İletişim döngüsünü yeniden açma riski taşır.",
+  "messageAnalysisRiskLowDesc": "Bu mesaj düşük duygusal risk içeriyor gibi görünüyor.",
+  "messageAnalysisActionDoNotReply": "Cevap Verme",
+  "messageAnalysisActionWait": "Bekle",
+  "messageAnalysisActionBoundary": "Sınır Koy",
+  "messageAnalysisActionSos": "SOS Kullan",
+  "messageAnalysisActionLetter": "Mektup Yaz",
+
+  "notifMorningTitle": "Günaydın 🌿",
+  "notifMorningBody": "Bugün de kendinle birliktesin. Bu yeterlice güçlü bir başlangıç.",
+  "notifMiddayTitle": "Bir an dur ✨",
+  "notifMiddayBody": "Öğlen sana ufak bir hatırlatma: şu an burada olman başlı başına bir seçim.",
+  "notifEveningTitle": "Bu akşam 🌙",
+  "notifEveningBody": "Bugün nasıl geçti? Mektup kasası veya günlük her zaman hazır.",
+  "notifSosFollowupTitle": "Nasılsın?",
+  "notifSosFollowupBody": "Dünkü o anı atlattın. Bugün nasıl hissediyorsun?",
+  "notifPauseExpiredTitle": "24 saat tamamlandı.",
+  "notifPauseExpiredBody": "Kararını korudun. Şimdi daha net bir yerden düşünebilirsin.",
+  "notifSilentReplySavedTitle": "Yazdın, göndermedin.",
+  "notifSilentReplySavedBody": "Bu da bir güç. Sessiz cevabın kasada seni bekliyor."
+}

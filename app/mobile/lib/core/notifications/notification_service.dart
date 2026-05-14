@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'timezone_helper.dart';
+import 'notification_strings.dart';
 
 // ─── Kanal sabitleri ─────────────────────────────────────────────────────────
 const _kChannelId   = 'daily_rhythm_soft';
@@ -28,36 +29,7 @@ class NotificationIds {
   static const List<int> rhythm = [daily, morning, midday, evening];
 }
 
-// ─── Bildirim metinleri (Privacy-safe: hassas içerik YOK) ────────────────────
-class _Copy {
-  // Günlük ritim
-  static const dailyTitle  = 'Sessiz Bir An';
-  static const dailyBody   = 'Bugün kendini bir cümleyle yoklamak ister misin?';
-
-  // Sabah
-  static const morningTitle = 'Güne Nazikçe Başla';
-  static const morningBody  = 'Bugün kendine sert davranmadan ilerleyebilirsin.';
-
-  // Öğlen
-  static const middayTitle = 'Bir Anlık Duraklama';
-  static const middayBody  = 'Bir an durup bedenini fark etmek ister misin?';
-
-  // Akşam
-  static const eveningTitle = 'Bugün Nasıldı?';
-  static const eveningBody  = 'Bugün içinden geçenleri güvenli bir yere bırakabilirsin.';
-
-  // 24 saat bekleme takibi
-  static const pauseFollowUpTitle = 'Kararına yeniden bakmak ister misin?';
-  static const pauseFollowUpBody  = 'Dün kendine bir alan açmıştın. Şimdi daha sakin bir yerden bakabilirsin.';
-
-  // SOS sonrası
-  static const postSosTitle = 'Dün zor bir anı atlattın.';
-  static const postSosBody  = 'Bugün biraz daha yavaş ilerleyebilirsin.';
-
-  // Sessiz cevap kasaya bırakıldı
-  static const silentReplyTitle = 'Göndermeden bıraktığın şey hâlâ güvende.';
-  static const silentReplyBody  = 'İstersen bugün sadece bir cümleyle kendine dönebilirsin.';
-}
+// _Copy class removed — use NotificationStrings instead.
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -143,34 +115,37 @@ class NotificationService {
   }
 
   /// Sabah nazik başlangıç (ID: 2, ~08:00).
-  static Future<void> scheduleMorningReminder() async {
+  static Future<void> scheduleMorningReminder({String? languageCode}) async {
     if (kIsWeb) return;
+    final s = NotificationStrings.fromLanguageCode(languageCode);
     await _scheduleRepeating(
       id: NotificationIds.morning,
-      title: _Copy.morningTitle,
-      body: _Copy.morningBody,
+      title: s.morningTitle,
+      body: s.morningBody,
       hour: 8, minute: 0,
     );
   }
 
   /// Öğlen kısa duraklama (ID: 3, ~12:30).
-  static Future<void> scheduleMiddayReminder() async {
+  static Future<void> scheduleMiddayReminder({String? languageCode}) async {
     if (kIsWeb) return;
+    final s = NotificationStrings.fromLanguageCode(languageCode);
     await _scheduleRepeating(
       id: NotificationIds.midday,
-      title: _Copy.middayTitle,
-      body: _Copy.middayBody,
+      title: s.middayTitle,
+      body: s.middayBody,
       hour: 12, minute: 30,
     );
   }
 
   /// Akşam yansıması (ID: 4, ~21:00).
-  static Future<void> scheduleEveningReflectionReminder() async {
+  static Future<void> scheduleEveningReflectionReminder({String? languageCode}) async {
     if (kIsWeb) return;
+    final s = NotificationStrings.fromLanguageCode(languageCode);
     await _scheduleRepeating(
       id: NotificationIds.evening,
-      title: _Copy.eveningTitle,
-      body: _Copy.eveningBody,
+      title: s.eveningTitle,
+      body: s.eveningBody,
       hour: 21, minute: 0,
     );
   }
@@ -178,15 +153,15 @@ class NotificationService {
   // ─── Bağlamsal (Contextual) Bildirimler ─────────────────────────────────────
 
   /// 24 saat bekleme başlatıldığında: 24 saat sonra bir kez planlar (ID: 10).
-  static Future<void> schedule24hPauseFollowUp() async {
+  static Future<void> schedule24hPauseFollowUp({String? languageCode}) async {
     if (kIsWeb) return;
+    final s = NotificationStrings.fromLanguageCode(languageCode);
     await _plugin.cancel(id: NotificationIds.pauseFollowUp);
-    final scheduledDate = tz.TZDateTime.now(tz.local)
-        .add(const Duration(hours: 24));
+    final scheduledDate = tz.TZDateTime.now(tz.local).add(const Duration(hours: 24));
     await _plugin.zonedSchedule(
       id: NotificationIds.pauseFollowUp,
-      title: _Copy.pauseFollowUpTitle,
-      body: _Copy.pauseFollowUpBody,
+      title: s.pauseFollowUpTitle,
+      body: s.pauseFollowUpBody,
       scheduledDate: scheduledDate,
       notificationDetails: _defaultDetails(),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
@@ -194,17 +169,16 @@ class NotificationService {
   }
 
   /// SOS tamamlandıktan sonra: ertesi gün 10:00'da bir kez planlar (ID: 11).
-  static Future<void> schedulePostSosFollowUp() async {
+  static Future<void> schedulePostSosFollowUp({String? languageCode}) async {
     if (kIsWeb) return;
+    final s = NotificationStrings.fromLanguageCode(languageCode);
     await _plugin.cancel(id: NotificationIds.postSos);
     final now = tz.TZDateTime.now(tz.local);
-    var scheduledDate = tz.TZDateTime(
-      tz.local, now.year, now.month, now.day + 1, 10, 0,
-    );
+    final scheduledDate = tz.TZDateTime(tz.local, now.year, now.month, now.day + 1, 10, 0);
     await _plugin.zonedSchedule(
       id: NotificationIds.postSos,
-      title: _Copy.postSosTitle,
-      body: _Copy.postSosBody,
+      title: s.postSosTitle,
+      body: s.postSosBody,
       scheduledDate: scheduledDate,
       notificationDetails: _defaultDetails(),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
@@ -231,19 +205,18 @@ class NotificationService {
     );
   }
 
-  /// Sessiz Cevap → Kasaya Bırak sonrası bildirim (ID: 12, ~22:00 veya ertesi 09:00).
-  static Future<void> scheduleSilentReplyFollowUp() async {
+  /// Sessiz cevap kasaya bırakıldığında: aynı gün 22:00 veya ertesi gün 09:00 (ID: 12).
+  static Future<void> scheduleSilentReplyFollowUp({String? languageCode}) async {
     if (kIsWeb) return;
+    final s = NotificationStrings.fromLanguageCode(languageCode);
     final now = tz.TZDateTime.now(tz.local);
-    // Aynı gün 22:00'dan önce ise 22:00'da, sonrasındaysa ertesi gün 09:00'da planla.
     final todayEvening = tz.TZDateTime(tz.local, now.year, now.month, now.day, 22, 0);
     final delay = now.isBefore(todayEvening)
         ? todayEvening.difference(now)
-        : Duration(hours: 9 + (24 - now.hour)); // ertesi gün 09:00 yaklaşımı
-
+        : Duration(hours: 9 + (24 - now.hour));
     await scheduleContextualReminder(
-      title: _Copy.silentReplyTitle,
-      body: _Copy.silentReplyBody,
+      title: s.silentReplyTitle,
+      body: s.silentReplyBody,
       id: NotificationIds.silentReply,
       delay: delay,
     );

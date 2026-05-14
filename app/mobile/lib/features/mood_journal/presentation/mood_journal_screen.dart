@@ -5,6 +5,7 @@ import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
 import '../../../data/models/mood_entry.dart';
+import '../../../l10n/app_localizations.dart';
 import 'mood_journal_controller.dart';
 import '../../privacy_lock/presentation/privacy_lock_gate.dart';
 
@@ -33,9 +34,9 @@ class MoodJournalScreen extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const StillSectionHeader(
-                          title: 'Akşam Yansıması',
-                          subtitle: 'Şu an nasıl hissettiğini onurlandırmak için sessiz bir alan.',
+                        StillSectionHeader(
+                          title: AppLocalizations.of(context).moodJournalTodayTitle,
+                          subtitle: AppLocalizations.of(context).moodJournalTodaySubtitle,
                         ),
                         const SizedBox(height: 32),
                         _WeeklySnapshot(state: state),
@@ -127,7 +128,7 @@ class _TodayCheckInState extends ConsumerState<_TodayCheckIn> {
                 ),
                 const SizedBox(height: 24),
               ],
-              const StillSectionHeader(title: 'Kalbin nasıl hissediyor?'),
+              StillSectionHeader(title: AppLocalizations.of(context).moodJournalHowFeel),
               const SizedBox(height: 16),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -173,7 +174,7 @@ class _TodayCheckInState extends ConsumerState<_TodayCheckIn> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const StillSectionHeader(title: 'Yoğunluk'),
+                  StillSectionHeader(title: AppLocalizations.of(context).moodJournalIntensity),
                   Text(
                     '${entry?.intensity ?? 3}',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: AppColors.primary),
@@ -200,7 +201,7 @@ class _TodayCheckInState extends ConsumerState<_TodayCheckIn> {
                 ),
               ),
               const SizedBox(height: 40),
-              const StillSectionHeader(title: 'Buna ne sebep oldu?'),
+              StillSectionHeader(title: AppLocalizations.of(context).moodJournalTriggers),
               const SizedBox(height: 16),
               Wrap(
                 spacing: 8,
@@ -230,25 +231,28 @@ class _TodayCheckInState extends ConsumerState<_TodayCheckIn> {
                 }).toList(),
               ),
               const SizedBox(height: 40),
-              const StillSectionHeader(title: 'Özel Not (Opsiyonel)'),
+              StillSectionHeader(title: AppLocalizations.of(context).moodJournalNote),
               const SizedBox(height: 16),
               StillTextField(
                 controller: _noteController,
-                hintText: 'Zihninden geçenleri buraya dök...',
+                hintText: AppLocalizations.of(context).moodJournalNoteHint,
                 isLarge: true,
                 onChanged: (value) => controller.updateNote(value),
               ),
               const SizedBox(height: 40),
               StillPrimaryButton(
-                label: widget.state.isEditing ? 'YANSIMAYI GÜNCELLE' : 'YANSIMAYI KAYDET',
+                label: widget.state.isEditing
+                    ? AppLocalizations.of(context).moodJournalUpdateBtn
+                    : AppLocalizations.of(context).moodJournalSaveBtn,
                 onPressed: () async {
                   await controller.saveTodayEntry();
                   if (mounted) {
+                    final l10n = AppLocalizations.of(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
-                          widget.state.isEditing ? 'Bugünkü yansıman güncellendi.' : 'Yansıman güvenle saklandı.',
-                        ),
+                        content: Text(widget.state.isEditing
+                            ? l10n.moodJournalUpdatedSnackbar
+                            : l10n.moodJournalSavedSnackbar),
                       ),
                     );
                   }
@@ -283,7 +287,7 @@ class _WeeklySnapshot extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'HAFTALIK ÖZET',
+                    AppLocalizations.of(context).moodJournalWeeklyTitle,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: AppColors.onSurfaceVariant,
                           letterSpacing: 2,
@@ -291,7 +295,7 @@ class _WeeklySnapshot extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Dengeyi Bulmak',
+                    AppLocalizations.of(context).moodJournalWeeklySubtitle,
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: AppColors.primary),
                   ),
                 ],
@@ -330,7 +334,8 @@ class _WeeklySnapshot extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Bu hafta ${state.currentStreak} günlük bir seri yakaladın. En sık tetikleyicin: ${state.mostCommonTrigger}.',
+                  AppLocalizations.of(context).moodJournalWeeklyStreak(
+                      state.currentStreak, state.mostCommonTrigger),
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(color: AppColors.onSurfaceVariant),
                 ),
               ),
@@ -356,7 +361,7 @@ class _History extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const StillSectionHeader(title: 'Geçmiş Kayıtlar'),
+        StillSectionHeader(title: AppLocalizations.of(context).moodJournalHistory),
         const SizedBox(height: 24),
         ListView.separated(
           shrinkWrap: true,
@@ -374,7 +379,9 @@ class _History extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        DateFormat('d MMMM y', 'tr_TR').format(entry.date).toUpperCase(),
+                        DateFormat('d MMMM y', Localizations.localeOf(context).toString())
+                            .format(entry.date)
+                            .toUpperCase(),
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
                               color: AppColors.onSurfaceVariant,
                               letterSpacing: 1,
