@@ -186,9 +186,7 @@ class _BetaFeedbackScreenState extends ConsumerState<BetaFeedbackScreen> {
           _buildField('İlk ekran sana ne hissettirdi?', _firstImpressionCtrl),
           _buildField('Onboarding (giriş süreci) nasıldı?', _onboardingCtrl),
           _buildField('SOS modu zor bir anda işe yarar gibi hissettirdi mi?', _sosCtrl),
-          _buildField('Günlük ve mektup kasası sana güvenli geldi mi?', _moodJournalCtrl), // Merging some questions for simplicity
-          _buildField('Mesaj analizi faydalı mıydı?', _messageAnalysisCtrl),
-          _buildField('Mesaj analizi gerçek AI ile çalışsa daha değerli olur muydu?', _aiValueCtrl),
+          _buildField('Günlük ve mektuplar sana güvenli geldi mi?', _moodJournalCtrl), // Merging some questions for simplicity
           _buildField('Seni rahatsız eden, güvensiz hissettiren bir şey oldu mu?', _safetyCtrl),
           _buildField('En eksik bulduğun özellik nedir?', _missingFeatureCtrl),
           _buildField('Eklemek istediğin başka notlar?', _extraNotesCtrl),

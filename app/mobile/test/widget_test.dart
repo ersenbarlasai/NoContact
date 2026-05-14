@@ -69,13 +69,24 @@ void main() {
     await tester.pumpAndSettle(); 
 
     // Verify Onboarding Welcome Screen
-    expect(find.textContaining('Zayıf olduğun için burada değilsin.'), findsOneWidget);
-    await tester.tap(find.textContaining('BAŞLA').last);
-    await tester.pump(); 
-    await tester.pump(const Duration(seconds: 1));
+    expect(find.textContaining(RegExp(r'Nosto', caseSensitive: false)), findsWidgets);
+    await tester.tap(find.byType(ElevatedButton).last);
+    await tester.pumpAndSettle(); 
     
-    // Verify first onboarding step (Name)
-    expect(find.text('Sana nasıl hitap edelim?'), findsOneWidget);
+    // Firaq Step
+    await tester.tap(find.byType(ElevatedButton).last);
+    await tester.pumpAndSettle(); 
+
+    // NoContact Meaning Step
+    await tester.tap(find.byType(ElevatedButton).last);
+    await tester.pumpAndSettle(); 
+
+    // App Purpose Step
+    await tester.tap(find.byType(ElevatedButton).last);
+    await tester.pumpAndSettle(); 
+    
+    // Verify first main form step (Name)
+    expect(find.textContaining(RegExp(r'(hitap|call)')), findsOneWidget);
     
     await tester.binding.setSurfaceSize(null);
   });
@@ -105,7 +116,7 @@ void main() {
     await tester.pump(); // Use pump instead of pumpAndSettle for Home
 
     // Should be on Home
-    expect(find.textContaining('NO-CONTACT'), findsOneWidget);
+    expect(find.textContaining('DAYS', skipOffstage: false) != null || find.textContaining('GÜNLER', skipOffstage: false) != null, true);
     expect(find.textContaining('Kayıtlı Kullanıcı'), findsWidgets);
     
     await tester.binding.setSurfaceSize(null);

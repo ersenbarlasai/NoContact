@@ -137,7 +137,7 @@ class SubscriptionScreen extends ConsumerWidget {
                 context,
                 title: l10n.subscriptionFreePlan,
                 features: const [
-                  'No-Contact Sayacı',
+                  'Temassız Günler',
                   'SOS Desteği (Sınırsız)',
                   'Ana Ekran Görüntüleme',
                 ],
@@ -152,7 +152,7 @@ class SubscriptionScreen extends ConsumerWidget {
                 title: l10n.subscriptionPremiumPlan,
                 features: const [
                   'Duygu Günlüğü',
-                  'Mektup Kasası',
+                  'Gönderilmeyen Mektuplar',
                   'Bugünün Desteği',
                   'Sessiz Kütüphane',
                   '30 Günlük İyileşme Yolu',

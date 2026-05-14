@@ -1,10 +1,10 @@
 # Privacy Disclosure Draft - NoContact MVP
 
-**Başlık:** Still - Gizlilik Politikası Özeti
+**Başlık:** Nosto - Gizlilik Politikası Özeti
 **Sürüm:** 1.0 (MVP)
 
 ## 1. Hangi Veriler Nerede Saklanır?
-Still uygulaması, mahremiyetinize en yüksek düzeyde saygı göstermek üzere tasarlanmıştır ("Privacy-by-Design").
+Nosto uygulaması, mahremiyetinize en yüksek düzeyde saygı göstermek üzere tasarlanmıştır ("Privacy-by-Design").
 
 - **Lokal (Cihaz İçi) Saklanan Veriler:** 
   Duygu günlüğü kayıtlarınız, Mektup Kasası'na yazdığınız mektuplar, SOS modunda girdiğiniz metinler ve elde ettiğiniz "Milestone" (gelişim) verileriniz SADECE sizin cihazınızda (telefonunuzda) saklanır.
@@ -28,3 +28,4 @@ Sessiz Cevap alanına yazdığınız metinler asla cihaz dışına çıkmaz. Kas
 
 ## 5. Biyometrik Kilit (Privacy Lock)
 Eğer ayarlardan aktif ederseniz, cihazınızın kendi Face ID veya Touch ID (Parmak İzi) sistemini kullanırız. Biyometrik verileriniz cihazın güvenli donanımında kalır; uygulama bu biyometrik verilere asla erişemez veya onları kopyalayamaz. Sadece cihazdan gelen "Başarılı" veya "Başarısız" sinyalini alırız.
+

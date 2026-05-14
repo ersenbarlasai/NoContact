@@ -1,4 +1,4 @@
-# Final Screenshot Copy (TR) - NoContact / Still
+# Final Screenshot Copy (TR) - NoContact / Nosto
 
 Use this exact text for the overlay text above the device frames in the App Store and Play Store screenshots.
 
@@ -29,3 +29,4 @@ Use this exact text for the overlay text above the device frames in the App Stor
 ## Screenshot 7: Privacy Reassurance
 **Headline:** Tamamen Sana Ait
 **Caption:** Notların ve mektupların sadece bu cihazda kalır ve şifrelenir.
+

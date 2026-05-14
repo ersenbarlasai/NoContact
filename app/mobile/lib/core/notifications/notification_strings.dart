@@ -29,8 +29,8 @@ class NotificationStrings {
   // ─── Evening ────────────────────────────────────────────────────────────────
   String get eveningTitle => _lang == 'tr' ? 'Bu akşam 🌙' : 'This evening 🌙';
   String get eveningBody  => _lang == 'tr'
-      ? 'Bugün nasıl geçti? Mektup kasası veya günlük her zaman hazır.'
-      : 'How did today go? Your letter vault and journal are always ready.';
+      ? 'Kendine dönmek bazen yazmamaktır.'
+      : 'Sometimes returning to yourself means not writing.';
 
   // ─── SOS Follow-up ──────────────────────────────────────────────────────────
   String get postSosTitle => _lang == 'tr' ? 'Nasılsın?' : 'How are you doing?';

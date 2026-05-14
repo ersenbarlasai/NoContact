@@ -23,7 +23,7 @@
 - [ ] Verify Row Level Security (RLS) is enabled on all tables, even if unused by MVP.
 
 ## 5. Privacy Policy
-- [ ] Publish Privacy Policy to a live URL (e.g., `stillapp.com/privacy`).
+- [ ] Publish Privacy Policy to a live URL (e.g., `nosto.com/privacy`).
 - [ ] Ensure the policy accurately reflects local-only storage of sensitive data.
 
 ## 6. Store Listings
@@ -50,3 +50,4 @@
 - [ ] Enable Daily Rhythm, verify notification schedules without crashing.
 - [ ] Press SOS, navigate flow, exit gracefully.
 - [ ] Clear Local Data from Settings, verify app resets to Onboarding.
+

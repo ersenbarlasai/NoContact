@@ -1,7 +1,7 @@
 # Icon & Brand Direction - NoContact MVP
 
-## 1. Brand Philosophy: "Still"
-The brand is built around the concept of "Still" (Durgun, Sakin). It is the opposite of chaotic social media or urgent dating apps. It is a quiet room you enter to regulate yourself. 
+## 1. Brand Philosophy: "Nosto"
+The brand is built around the concept of "Nosto" (Durgun, Sakin). It is the opposite of chaotic social media or urgent dating apps. It is a quiet room you enter to regulate yourself. 
 
 ## 2. Colors to Use
 - **Primary:** Sage Green (Calming, nature, growth without force)
@@ -30,3 +30,4 @@ The icon should be recognizable but abstract enough not to draw unwanted attenti
 ## 6. Typography Recommendation
 - **Store Name:** Use a clean, modern Sans-serif (like Inter or Manrope). No script fonts or overly playful typography.
 - **Vibe:** Mature, quiet, self-respecting.
+

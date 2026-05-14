@@ -17,7 +17,7 @@
         android:maxSdkVersion="32"/>
 
     <application
-        android:label="nocontact"
+        android:label="Nosto"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

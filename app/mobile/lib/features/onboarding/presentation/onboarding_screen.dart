@@ -19,7 +19,7 @@ class OnboardingScreen extends ConsumerStatefulWidget {
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  final int _totalSteps = 11;
+  final int _totalSteps = 14;
 
   final TextEditingController _nameController = TextEditingController();
 
@@ -77,6 +77,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   onPageChanged: (page) => setState(() => _currentPage = page),
                   children: [
                     _StepWelcome(onNext: _nextPage),
+                    _StepFiraq(onNext: _nextPage),
+                    _StepNoContactMeaning(onNext: _nextPage),
+                    _StepAppPurpose(onNext: _nextPage),
                     _StepName(
                       controller: _nameController,
                       onNext: (name) {
@@ -140,8 +143,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         _nextPage();
                       },
                     ),
-                    _StepPlanPreview(
-                      state: state,
+                    _StepStartRitual(
                       onComplete: () async {
                         final router = GoRouter.of(context);
                         await ref.read(onboardingControllerProvider.notifier).completeOnboarding();
@@ -249,6 +251,122 @@ class _StepWelcome extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 48),
+        ],
+      ),
+    );
+  }
+}
+
+class _StepFiraq extends StatelessWidget {
+  final VoidCallback onNext;
+  const _StepFiraq({required this.onNext});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(32),
+      child: Column(
+        children: [
+          const SizedBox(height: 48),
+          Container(
+            width: 180,
+            height: 180,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.primary.withValues(alpha: 0.8), width: 10),
+            ),
+            child: Center(
+              child: Container(
+                width: 28,
+                height: 28,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primary,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 56),
+          StillSectionHeader(
+            title: l10n.onboardingFiraqTitle,
+            subtitle: l10n.onboardingFiraqSubtitle,
+            centered: true,
+          ),
+          const SizedBox(height: 24),
+          Text(
+            l10n.onboardingFiraqBody,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: AppColors.onSurfaceVariant,
+                  height: 1.6,
+                ),
+          ),
+          const SizedBox(height: 56),
+          StillPrimaryButton(
+            label: l10n.onboardingFiraqBtn,
+            onPressed: onNext,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StepNoContactMeaning extends StatelessWidget {
+  final VoidCallback onNext;
+  const _StepNoContactMeaning({required this.onNext});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(32),
+      child: Column(
+        children: [
+          const SizedBox(height: 48),
+          Icon(Icons.shield_outlined, size: 80, color: AppColors.primary),
+          const SizedBox(height: 56),
+          StillSectionHeader(
+            title: l10n.onboardingNoContactTitle,
+            subtitle: l10n.onboardingNoContactBody,
+            centered: true,
+          ),
+          const SizedBox(height: 56),
+          StillPrimaryButton(
+            label: l10n.onboardingNoContactBtn,
+            onPressed: onNext,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StepAppPurpose extends StatelessWidget {
+  final VoidCallback onNext;
+  const _StepAppPurpose({required this.onNext});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(32),
+      child: Column(
+        children: [
+          const SizedBox(height: 48),
+          Icon(Icons.spa_outlined, size: 80, color: AppColors.primary),
+          const SizedBox(height: 56),
+          StillSectionHeader(
+            title: l10n.onboardingAppPurposeTitle,
+            subtitle: l10n.onboardingAppPurposeBody,
+            centered: true,
+          ),
+          const SizedBox(height: 56),
+          StillPrimaryButton(
+            label: l10n.onboardingAppPurposeBtn,
+            onPressed: onNext,
+          ),
         ],
       ),
     );
@@ -748,50 +866,33 @@ class _HoldToCommitButtonState extends State<_HoldToCommitButton> with SingleTic
   }
 }
 
-class _StepPlanPreview extends StatelessWidget {
-  final RecoveryProfile state;
+class _StepStartRitual extends StatelessWidget {
   final VoidCallback onComplete;
-  const _StepPlanPreview({required this.state, required this.onComplete});
+  const _StepStartRitual({required this.onComplete});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final days = DateTime.now().difference(state.noContactStartDate ?? DateTime.now()).inDays;
-    final mainTrigger = state.contactTriggers.isNotEmpty ? state.contactTriggers.first : l10n.onboardingPlanTriggerUnknown;
 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(height: 64),
+            Icon(Icons.looks_one_outlined, size: 80, color: AppColors.primary),
+            const SizedBox(height: 56),
             StillSectionHeader(
               title: l10n.onboardingPlanTitle,
-              subtitle: l10n.onboardingPlanSubtitle(state.name),
+              subtitle: l10n.onboardingPlanSubtitle,
+              centered: true,
             ),
-            const SizedBox(height: 48),
-            _buildInfoRow(context, Icons.timer_outlined, l10n.onboardingPlanDurationLabel, l10n.onboardingPlanDurationValue(days)),
-            _buildInfoRow(context, Icons.mood_outlined, l10n.onboardingPlanMoodLabel, state.dominantEmotion),
-            _buildInfoRow(context, Icons.warning_amber_outlined, l10n.onboardingPlanTriggerLabel, mainTrigger),
-            const SizedBox(height: 48),
-            StillCard(
-              color: AppColors.primary.withOpacity(0.05),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    l10n.onboardingPlanFirst24Title,
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(letterSpacing: 1.2, color: AppColors.primary),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(l10n.onboardingPlanFirst24Body, style: Theme.of(context).textTheme.bodyMedium),
-                ],
-              ),
-            ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 80),
             Center(
               child: Text(
                 l10n.appDisclaimer,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.onSurfaceVariant),
               ),
             ),
@@ -799,31 +900,6 @@ class _StepPlanPreview extends StatelessWidget {
             StillPrimaryButton(label: l10n.onboardingStartJourneyBtn, onPressed: onComplete),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(BuildContext context, IconData icon, String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 24),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(color: AppColors.surfaceContainerHigh, shape: BoxShape.circle),
-            child: Icon(icon, color: AppColors.primary, size: 24),
-          ),
-          const SizedBox(width: 20),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(label, style: Theme.of(context).textTheme.labelSmall),
-                Text(value, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 18)),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

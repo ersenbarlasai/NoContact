@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nocontact/features/recovery_path/application/recovery_path_builder.dart';
 import 'package:nocontact/features/recovery_path/domain/recovery_path_step.dart';
 import 'package:nocontact/features/recovery_path/presentation/recovery_path_screen.dart';
+import 'package:nocontact/l10n/app_localizations.dart';
 
 void main() {
   group('RecoveryPathBuilder Tests', () {
@@ -78,15 +79,18 @@ void main() {
     await tester.pumpWidget(
       const ProviderScope(
         child: MaterialApp(
-          home: RecoveryPathScreen(),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale('tr'),
+          home: const RecoveryPathScreen(),
         ),
       ),
     );
 
     await tester.pumpAndSettle();
 
-    expect(find.text('İyileşme Yolun'), findsOneWidget);
-    expect(find.text('Mevcut Kilometre Taşı'.toUpperCase()), findsOneWidget);
+    expect(find.text('30 Günlük Yol'), findsOneWidget);
+    expect(find.text('MEVCUT KİLOMETRE TAŞI'), findsOneWidget);
     expect(find.textContaining('DENGELEN'), findsAtLeast(1));
   });
 }

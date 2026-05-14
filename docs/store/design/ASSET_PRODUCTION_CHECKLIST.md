@@ -1,4 +1,4 @@
-# Asset Production Checklist - NoContact / Still
+# Asset Production Checklist - NoContact / Nosto
 
 ## 1. Asset Sizes & Export Requirements
 
@@ -37,3 +37,4 @@ To ensure smooth upload and organization, name exported files systematically:
 - Do not include the word "Free" or price information in the screenshots.
 - Do not include Android hardware in iOS screenshots, and vice versa.
 - Ensure no real user data is visible.
+

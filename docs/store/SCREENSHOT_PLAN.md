@@ -1,6 +1,6 @@
 # Store Screenshot Plan - NoContact MVP
 
-This document outlines 7 screenshot concepts for the App Store and Play Store. The visual style should follow the "Still" design philosophy: clean, spacious, calm colors (Sage, Cream, Terracotta), and sans-serif typography (Manrope/Inter).
+This document outlines 7 screenshot concepts for the App Store and Play Store. The visual style should follow the "Nosto" design philosophy: clean, spacious, calm colors (Sage, Cream, Terracotta), and sans-serif typography (Manrope/Inter).
 
 ---
 
@@ -52,3 +52,4 @@ This document outlines 7 screenshot concepts for the App Store and Play Store. T
 - **Overlay Headline (TR):** Tamamen Sana Ait
 - **Supporting Caption:** Notların ve mektupların sadece bu cihazda kalır.
 - **Sample Data:** Blur background, clear authentication dialog.
+

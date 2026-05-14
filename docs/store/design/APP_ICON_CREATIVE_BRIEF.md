@@ -1,4 +1,4 @@
-# App Icon Creative Brief - NoContact / Still
+# App Icon Creative Brief - NoContact / Nosto
 
 ## 1. Brand Objective
 The app icon is the first touchpoint for a user who is likely feeling overwhelmed, anxious, or heartbroken. The icon must communicate safety, stillness, and privacy. It should NOT broadcast to anyone looking at their phone screen that they are going through a breakup or using a mental health crisis app.
@@ -32,7 +32,7 @@ A simple, calm horizon line.
 ## 5. Rejected Concepts (DO NOT USE)
 - **Broken Hearts:** Reinforces trauma, looks like a cliché dating app feature.
 - **Plasters / Band-Aids:** Looks like a medical or first-aid app.
-- **Chat Bubbles with a Slash:** Too aggressive, focuses on the "No" rather than the "Still".
+- **Chat Bubbles with a Slash:** Too aggressive, focuses on the "No" rather than the "Nosto".
 - **Padlocks:** Looks like a password manager or generic security app.
 
 ## 6. App Store Visibility Notes
@@ -42,3 +42,4 @@ A simple, calm horizon line.
 ## 7. Accessibility Considerations
 - Ensure adequate contrast between the background and the central symbol.
 - Do not rely solely on thin lines; the central motif must have enough thickness to be legible for users with low vision.
+

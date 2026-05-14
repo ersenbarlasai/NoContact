@@ -9,10 +9,10 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get appTitle => 'STILL';
+  String get appTitle => 'NOSTO';
 
   @override
-  String get appTagline => 'The Quiet Companion';
+  String get appTagline => 'Bırak. Kendine dön.';
 
   @override
   String get navHome => 'Ana Sayfa';
@@ -21,7 +21,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get navJournal => 'Günlük';
 
   @override
-  String get navVault => 'Kasa';
+  String get navVault => 'Mektuplar';
 
   @override
   String get navSettings => 'Ayarlar';
@@ -66,19 +66,17 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noBtn => 'HAYIR';
 
   @override
-  String get onboardingWelcomeHeadline1 =>
-      'Zayıf olduğun için burada değilsin.';
+  String get onboardingWelcomeHeadline1 => 'Nosto’ya hoş geldin.';
 
   @override
-  String get onboardingWelcomeHeadline2 =>
-      'Buradasın çünkü şu an her şey çok zor.';
+  String get onboardingWelcomeHeadline2 => '';
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Duygusal iyileşme ve öz saygı yolculuğunda özel yardımcın.';
+      'Burası unutmaya zorlandığın yer değil.\nKendine geri dönmeye başladığın sessiz alan.';
 
   @override
-  String get onboardingStartBtn => 'Yolculuğuma Başla';
+  String get onboardingStartBtn => 'Bırak. Kendine dön.';
 
   @override
   String get onboardingNameTitle => 'Sana nasıl hitap edelim?';
@@ -255,12 +253,45 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboardingContractSealBtn => 'SÖZ VER';
 
   @override
-  String get onboardingPlanTitle => 'Yol Haritan Hazır';
+  String get onboardingFiraqTitle => 'Önce Firaq vardı.';
 
   @override
-  String onboardingPlanSubtitle(String name) {
-    return 'Planın tamamlandı, $name.';
-  }
+  String get onboardingFiraqSubtitle =>
+      'Firaq; bir kişiden, bir dönemden ya da eski bir senden uzak düşme hâlidir.';
+
+  @override
+  String get onboardingFiraqBody =>
+      'Bazen gitmek gerekir. Bazen de temas etmemek.';
+
+  @override
+  String get onboardingFiraqBtn => 'Mesafemi Koru';
+
+  @override
+  String get onboardingNoContactTitle => 'NoContact bir ceza değildir.';
+
+  @override
+  String get onboardingNoContactBody =>
+      'Bu, karşı tarafı cezalandırmak için değil;\nkendini korumak, sakinleşmek ve yeniden duymak için açılmış bir mesafedir.';
+
+  @override
+  String get onboardingNoContactBtn => 'Mesafemi Koru';
+
+  @override
+  String get onboardingAppPurposeTitle => 'Nosto yanında durur.';
+
+  @override
+  String get onboardingAppPurposeBody =>
+      'Temas isteği geldiğinde seni durdurur.\nDuygularını yazmana alan açar.\nGeçen günleri, zor anları ve küçük dönüşleri takip eder.';
+
+  @override
+  String get onboardingAppPurposeBtn => 'Kendime Dönüyorum';
+
+  @override
+  String get onboardingPlanTitle => 'Bugün bir mesafe başlıyor.';
+
+  @override
+  String get onboardingPlanSubtitle =>
+      'Birini silmek zorunda değilsin. Sadece bugün, kendini seçiyorsun.';
 
   @override
   String get onboardingPlanDurationLabel => 'Mevcut Süre';
@@ -291,7 +322,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Bu uygulama terapi veya acil destek yerine geçmez.';
 
   @override
-  String get onboardingStartJourneyBtn => 'HAYDI BAŞLAYALIM';
+  String get onboardingStartJourneyBtn => 'Nosto’yu Başlat';
 
   @override
   String homeGreetingMorning(String name) {
@@ -319,10 +350,11 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get homeNcLabel => 'NO-CONTACT';
+  String get homeNcLabel => 'TEMASSIZ GÜNLER';
 
   @override
-  String get homeSosSuccess => 'Bir dürtüyü daha başarıyla atlattın.';
+  String get homeSosSuccess =>
+      'Bu küçük anı atlattın.\nBugün kendine biraz daha yaklaştın.';
 
   @override
   String get homeSupportTitle => 'BUGÜNÜN DESTEĞİ';
@@ -372,7 +404,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get homeTodayStepTitle => 'Bugünün Adımı';
 
   @override
-  String get sosTitle => 'Nefes Al';
+  String get sosTitle => 'Şu an yazmak istiyorsun.';
 
   @override
   String get sosBreathIn => 'Nefes Al';
@@ -381,19 +413,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sosBreathOut => 'Nefes Ver';
 
   @override
-  String get sosSubtitle => 'Bir an için dur. Buradayız.';
+  String get sosSubtitle =>
+      'Bu istek geçici.\nŞu an karar vermek zorunda değilsin.\nÖnce 90 saniye dur. Sonra ne hissettiğini yaz.';
 
   @override
-  String get sosStep1Title => 'Dur ve Nefes Al';
+  String get sosStep1Title => '90 Saniye Dur';
 
   @override
-  String get sosStep2Title => 'Buraya Yaz, Ona Değil';
+  String get sosStep2Title => 'Göndermeden Yaz';
 
   @override
   String get sosStep3Title => 'Kendini Seç';
 
   @override
-  String get sosWriteTitle => 'Buraya Yaz, Ona Değil';
+  String get sosWriteTitle => 'Göndermeden Yaz';
 
   @override
   String get sosWriteSubtitle =>
@@ -416,17 +449,17 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sosChooseSubtitle => 'Şu an temas etmeme kararını koruyor musun?';
 
   @override
-  String get sosChooseYes => 'EVET, KENDİMİ SEÇİYORUM';
+  String get sosChooseYes => 'BUGÜN TEMAS ETMEYECEĞİM';
 
   @override
   String get sosChooseStillStruggling => 'HÂLÂ ÇOK ZORLANIYORUM';
 
   @override
-  String get sosCompletionTitle => 'Bu dalgayı atlattın.';
+  String get sosCompletionTitle => 'Geçti. Sen hâlâ buradasın.';
 
   @override
   String get sosCompletionSubtitle =>
-      'Bugün kendini seçtin. Gurur duyulacak bir şey yaptın.';
+      'Bu küçük anı atlattın.\nBugün kendine biraz daha yaklaştın.';
 
   @override
   String get sosReturnBtn => 'HUZURLA DÖN';
@@ -560,11 +593,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get moodJournalHistory => 'Geçmiş Kayıtlar';
 
   @override
-  String get lettersVaultTitle => 'Mektup Kasası';
+  String get lettersVaultTitle => 'Gönderilmeyen Mektuplar';
 
   @override
   String get lettersVaultEmpty =>
-      'Henüz mektup yok.\nYazmak, göndermekten daha güçlüdür.';
+      'Henüz mektup yok.\nSöylemek istediklerini yaz. Ama göndermek zorunda değilsin.';
 
   @override
   String get lettersVaultNewBtn => 'YENİ MEKTUP';
@@ -579,8 +612,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get letterEditorTitleHint => 'Başlık (isteğe bağlı)...';
 
   @override
-  String get letterEditorBodyHint =>
-      'Ona ne söylemek istiyorsan buraya yaz, asla duyulmayacak olsa bile...';
+  String get letterEditorBodyHint => 'Şu an sana söylemek istediğim şey…';
 
   @override
   String get letterEditorEmotionSection => 'Duygu Durumu';
@@ -599,8 +631,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get letterEditorEmptyError => 'Boş mektup kaydedilemez.';
 
   @override
-  String get letterEditorSavedSnackbar =>
-      'Yazdın. Göndermedin. Bu da bir ilerleme.';
+  String get letterEditorSavedSnackbar => 'Yazdın. Göndermedin. Bu da bir güç.';
 
   @override
   String get letterEditorArchiveTitle => 'Gözümün önünden kaldır';
@@ -796,49 +827,43 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notifMorningTitle => 'Günaydın 🌿';
 
   @override
-  String get notifMorningBody =>
-      'Bugün de kendinle birliktesin. Bu yeterlice güçlü bir başlangıç.';
+  String get notifMorningBody => 'Bugün kendine verdiğin sözü hatırla.';
 
   @override
   String get notifMiddayTitle => 'Bir an dur ✨';
 
   @override
-  String get notifMiddayBody =>
-      'Öğlen sana ufak bir hatırlatma: şu an burada olman başlı başına bir seçim.';
+  String get notifMiddayBody => 'Bugün sadece mesafeni koru. Bu yeter.';
 
   @override
   String get notifEveningTitle => 'Bu akşam 🌙';
 
   @override
-  String get notifEveningBody =>
-      'Bugün nasıl geçti? Mektup kasası veya günlük her zaman hazır.';
+  String get notifEveningBody => 'Kendine dönmek bazen yazmamaktır.';
 
   @override
   String get notifSosFollowupTitle => 'Nasılsın?';
 
   @override
-  String get notifSosFollowupBody =>
-      'Dünkü o anı atlattın. Bugün nasıl hissediyorsun?';
+  String get notifSosFollowupBody => 'Temas isteği geçer. Kendine dönüş kalır.';
 
   @override
   String get notifPauseExpiredTitle => '24 saat tamamlandı.';
 
   @override
-  String get notifPauseExpiredBody =>
-      'Kararını korudun. Şimdi daha net bir yerden düşünebilirsin.';
+  String get notifPauseExpiredBody => 'Onu değil, kendini dinle. Sadece bugün.';
 
   @override
   String get notifSilentReplySavedTitle => 'Yazdın, göndermedin.';
 
   @override
-  String get notifSilentReplySavedBody =>
-      'Bu da bir güç. Sessiz cevabın kasanda seni bekliyor.';
+  String get notifSilentReplySavedBody => 'Nosto burada. Önce buraya yaz.';
 
   @override
-  String get subscriptionTitle => 'Still Premium';
+  String get subscriptionTitle => 'Nosto Premium';
 
   @override
-  String get subscriptionTagline => 'İyileşme Yolculuğunu Destekle';
+  String get subscriptionTagline => 'Kendine Dönüş Yolculuğunu Destekle';
 
   @override
   String get subscriptionSubtitle =>
@@ -883,7 +908,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get subscriptionGateLettersVault =>
-      'Mektup Kasası premium ile açılır.';
+      'Gönderilmeyen Mektuplar premium ile açılır.';
 
   @override
   String get subscriptionGateSupportCenter =>

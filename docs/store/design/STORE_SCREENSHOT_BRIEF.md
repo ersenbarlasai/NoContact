@@ -12,7 +12,7 @@
 ### Formatting Guidance
 - **Safe Area:** Keep text and key elements away from the top/bottom edges (notches, home indicators).
 - **Phone Frame:** Use a minimal, flat device frame or a subtle clay mockup. Do not use hyper-realistic glossy renders.
-- **Background Color:** Use Cream (`#FAF9F6`) or a very soft Sage (`#E8EFEA`) for the background to maintain the "Still" aesthetic.
+- **Background Color:** Use Cream (`#FAF9F6`) or a very soft Sage (`#E8EFEA`) for the background to maintain the "Nosto" aesthetic.
 - **Typography:** Inter or Manrope. Bold for headlines, regular for captions. Dark Charcoal color.
 - **Overlay Text Placement:** Top 20% of the image. The device frame sits below the text.
 
@@ -78,3 +78,4 @@ Use the following translations for common UI elements:
 - "Begin Session" -> **"Seansa Başla"**
 - "Daily Rhythm" -> **"Günlük Ritim"**
 - "Rhythm & Privacy" -> **"Ritim ve Gizlilik"**
+

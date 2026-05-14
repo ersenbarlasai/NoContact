@@ -9,10 +9,10 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'STILL';
+  String get appTitle => 'NOSTO';
 
   @override
-  String get appTagline => 'The Quiet Companion';
+  String get appTagline => 'Let go. Return to yourself.';
 
   @override
   String get navHome => 'Home';
@@ -21,7 +21,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navJournal => 'Journal';
 
   @override
-  String get navVault => 'Vault';
+  String get navVault => 'Unsent Letters';
 
   @override
   String get navSettings => 'Settings';
@@ -66,19 +66,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noBtn => 'NO';
 
   @override
-  String get onboardingWelcomeHeadline1 =>
-      'You\'re not here because you\'re weak.';
+  String get onboardingWelcomeHeadline1 => 'Welcome to Nosto.';
 
   @override
-  String get onboardingWelcomeHeadline2 =>
-      'You\'re here because right now, everything feels heavy.';
+  String get onboardingWelcomeHeadline2 => '';
 
   @override
   String get onboardingWelcomeSubtitle =>
-      'Your quiet companion through emotional healing and self-respect.';
+      'This is not where you force yourself to forget.\nThis is a quiet space where you begin returning to yourself.';
 
   @override
-  String get onboardingStartBtn => 'Begin My Journey';
+  String get onboardingStartBtn => 'Let go. Return to yourself.';
 
   @override
   String get onboardingNameTitle => 'What should we call you?';
@@ -254,12 +252,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingContractSealBtn => 'COMMIT';
 
   @override
-  String get onboardingPlanTitle => 'Your Path Is Ready';
+  String get onboardingFiraqTitle => 'First, there was Firaq.';
 
   @override
-  String onboardingPlanSubtitle(String name) {
-    return 'Your plan is set, $name.';
-  }
+  String get onboardingFiraqSubtitle =>
+      'Firaq is the distance from a person, a season, or an older version of yourself.';
+
+  @override
+  String get onboardingFiraqBody =>
+      'Sometimes you need to leave. Sometimes you need not to reach out.';
+
+  @override
+  String get onboardingFiraqBtn => 'Protect My Distance';
+
+  @override
+  String get onboardingNoContactTitle => 'No contact is not a punishment.';
+
+  @override
+  String get onboardingNoContactBody =>
+      'It is not here to punish the other person.\nIt is a distance opened so you can protect yourself, settle, and hear yourself again.';
+
+  @override
+  String get onboardingNoContactBtn => 'Protect My Distance';
+
+  @override
+  String get onboardingAppPurposeTitle => 'Nosto stays with you.';
+
+  @override
+  String get onboardingAppPurposeBody =>
+      'When the urge to reach out comes, it helps you pause.\nIt gives you space to write what you feel.\nIt follows the days, the hard moments, and the small returns.';
+
+  @override
+  String get onboardingAppPurposeBtn => 'I’m Returning to Myself';
+
+  @override
+  String get onboardingPlanTitle => 'Today, a distance begins.';
+
+  @override
+  String get onboardingPlanSubtitle =>
+      'You do not have to erase anyone. Just for today, you choose yourself.';
 
   @override
   String get onboardingPlanDurationLabel => 'Time So Far';
@@ -290,7 +321,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'This app is not a substitute for therapy or crisis support.';
 
   @override
-  String get onboardingStartJourneyBtn => 'LET\'S BEGIN';
+  String get onboardingStartJourneyBtn => 'Start Nosto';
 
   @override
   String homeGreetingMorning(String name) {
@@ -318,10 +349,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get homeNcLabel => 'NO-CONTACT';
+  String get homeNcLabel => 'DAYS WITHOUT CONTACT';
 
   @override
-  String get homeSosSuccess => 'You held through another urge.';
+  String get homeSosSuccess =>
+      'You got through this small moment.\nToday, you moved a little closer to yourself.';
 
   @override
   String get homeSupportTitle => 'TODAY\'S SUPPORT';
@@ -799,45 +831,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifMorningBody =>
-      'Today, you\'re still here with yourself. That\'s a strong enough start.';
+      'Remember the promise you made to yourself today.';
 
   @override
-  String get notifMiddayTitle => 'A quiet pause ✨';
+  String get notifMiddayTitle => 'Pause for a moment ✨';
 
   @override
   String get notifMiddayBody =>
-      'A midday reminder: simply being here right now is already a choice.';
+      'Today, just protect your distance. That is enough.';
 
   @override
   String get notifEveningTitle => 'This evening 🌙';
 
   @override
   String get notifEveningBody =>
-      'How did today go? Your letter vault and journal are always ready.';
+      'Sometimes returning to yourself means not writing.';
 
   @override
-  String get notifSosFollowupTitle => 'How are you doing?';
+  String get notifSosFollowupTitle => 'How are you?';
 
   @override
   String get notifSosFollowupBody =>
-      'You got through that moment yesterday. How are you feeling today?';
+      'The urge to reach out passes. Returning to yourself stays.';
 
   @override
-  String get notifPauseExpiredTitle => '24 hours complete.';
+  String get notifPauseExpiredTitle => '24 hours completed.';
 
   @override
   String get notifPauseExpiredBody =>
-      'You held your boundary. You can think more clearly from here.';
+      'Listen to yourself, not them. Just for today.';
 
   @override
-  String get notifSilentReplySavedTitle => 'You wrote. You didn\'t send.';
+  String get notifSilentReplySavedTitle => 'You wrote, you didn\'t send.';
 
   @override
-  String get notifSilentReplySavedBody =>
-      'That takes strength. Your quiet reply is waiting in the vault.';
+  String get notifSilentReplySavedBody => 'Nosto is here. Write here first.';
 
   @override
-  String get subscriptionTitle => 'Still Premium';
+  String get subscriptionTitle => 'Nosto Premium';
 
   @override
   String get subscriptionTagline => 'Support Your Healing Journey';
@@ -886,7 +917,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get subscriptionGateLettersVault =>
-      'Letters Vault is unlocked with premium.';
+      'Unsent Letters is unlocked with premium.';
 
   @override
   String get subscriptionGateSupportCenter =>

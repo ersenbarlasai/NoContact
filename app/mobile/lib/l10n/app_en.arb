@@ -1,12 +1,12 @@
 {
   "@@locale": "en",
 
-  "appTitle": "STILL",
-  "appTagline": "The Quiet Companion",
+  "appTitle": "NOSTO",
+  "appTagline": "Let go. Return to yourself.",
 
   "navHome": "Home",
   "navJournal": "Journal",
-  "navVault": "Vault",
+  "navVault": "Unsent Letters",
   "navSettings": "Settings",
 
   "continueBtn": "CONTINUE",
@@ -23,10 +23,10 @@
   "yesBtn": "YES",
   "noBtn": "NO",
 
-  "onboardingWelcomeHeadline1": "You're not here because you're weak.",
-  "onboardingWelcomeHeadline2": "You're here because right now, everything feels heavy.",
-  "onboardingWelcomeSubtitle": "Your quiet companion through emotional healing and self-respect.",
-  "onboardingStartBtn": "Begin My Journey",
+  "onboardingWelcomeHeadline1": "Welcome to Nosto.",
+  "onboardingWelcomeHeadline2": "",
+  "onboardingWelcomeSubtitle": "This is not where you force yourself to forget.\nThis is a quiet space where you begin returning to yourself.",
+  "onboardingStartBtn": "Let go. Return to yourself.",
 
   "onboardingNameTitle": "What should we call you?",
   "onboardingNameSubtitle": "We'll only use this name in your personal plan.",
@@ -91,13 +91,23 @@
   "onboardingContractSealHint": "Hold the button to seal your commitment.",
   "onboardingContractSealBtn": "COMMIT",
 
-  "onboardingPlanTitle": "Your Path Is Ready",
-  "onboardingPlanSubtitle": "Your plan is set, {name}.",
-  "@onboardingPlanSubtitle": {
-    "placeholders": {
-      "name": {"type": "String"}
-    }
-  },
+  "onboardingContractSealBtn": "COMMIT",
+
+  "onboardingFiraqTitle": "First, there was Firaq.",
+  "onboardingFiraqSubtitle": "Firaq is the distance from a person, a season, or an older version of yourself.",
+  "onboardingFiraqBody": "Sometimes you need to leave. Sometimes you need not to reach out.",
+  "onboardingFiraqBtn": "Protect My Distance",
+
+  "onboardingNoContactTitle": "No contact is not a punishment.",
+  "onboardingNoContactBody": "It is not here to punish the other person.\nIt is a distance opened so you can protect yourself, settle, and hear yourself again.",
+  "onboardingNoContactBtn": "Protect My Distance",
+
+  "onboardingAppPurposeTitle": "Nosto stays with you.",
+  "onboardingAppPurposeBody": "When the urge to reach out comes, it helps you pause.\nIt gives you space to write what you feel.\nIt follows the days, the hard moments, and the small returns.",
+  "onboardingAppPurposeBtn": "I’m Returning to Myself",
+
+  "onboardingPlanTitle": "Today, a distance begins.",
+  "onboardingPlanSubtitle": "You do not have to erase anyone. Just for today, you choose yourself.",
   "onboardingPlanDurationLabel": "Time So Far",
   "onboardingPlanDurationValue": "{days} Days",
   "@onboardingPlanDurationValue": {
@@ -111,7 +121,7 @@
   "onboardingPlanFirst24Title": "FIRST 24-HOUR GOAL",
   "onboardingPlanFirst24Body": "Today's goal is simple: hold the boundary for 24 hours. If it gets hard, your SOS plan is right here.",
   "appDisclaimer": "This app is not a substitute for therapy or crisis support.",
-  "onboardingStartJourneyBtn": "LET'S BEGIN",
+  "onboardingStartJourneyBtn": "Start Nosto",
 
   "homeGreetingMorning": "Good morning, {name}.",
   "@homeGreetingMorning": {
@@ -143,8 +153,8 @@
       "days": {"type": "int"}
     }
   },
-  "homeNcLabel": "NO-CONTACT",
-  "homeSosSuccess": "You held through another urge.",
+  "homeNcLabel": "DAYS WITHOUT CONTACT",
+  "homeSosSuccess": "You got through this small moment.\nToday, you moved a little closer to yourself.",
 
   "homeSupportTitle": "TODAY'S SUPPORT",
   "homeSupportSubtitle": "Choose the small step you need right now.",
@@ -329,19 +339,19 @@
   "settingsClearCancelBtn": "CANCEL",
 
   "notifMorningTitle": "Good morning 🌿",
-  "notifMorningBody": "Today, you're still here with yourself. That's a strong enough start.",
-  "notifMiddayTitle": "A quiet pause ✨",
-  "notifMiddayBody": "A midday reminder: simply being here right now is already a choice.",
+  "notifMorningBody": "Remember the promise you made to yourself today.",
+  "notifMiddayTitle": "Pause for a moment ✨",
+  "notifMiddayBody": "Today, just protect your distance. That is enough.",
   "notifEveningTitle": "This evening 🌙",
-  "notifEveningBody": "How did today go? Your letter vault and journal are always ready.",
-  "notifSosFollowupTitle": "How are you doing?",
-  "notifSosFollowupBody": "You got through that moment yesterday. How are you feeling today?",
-  "notifPauseExpiredTitle": "24 hours complete.",
-  "notifPauseExpiredBody": "You held your boundary. You can think more clearly from here.",
-  "notifSilentReplySavedTitle": "You wrote. You didn't send.",
-  "notifSilentReplySavedBody": "That takes strength. Your quiet reply is waiting in the vault.",
+  "notifEveningBody": "Sometimes returning to yourself means not writing.",
+  "notifSosFollowupTitle": "How are you?",
+  "notifSosFollowupBody": "The urge to reach out passes. Returning to yourself stays.",
+  "notifPauseExpiredTitle": "24 hours completed.",
+  "notifPauseExpiredBody": "Listen to yourself, not them. Just for today.",
+  "notifSilentReplySavedTitle": "You wrote, you didn't send.",
+  "notifSilentReplySavedBody": "Nosto is here. Write here first.",
 
-  "subscriptionTitle": "Still Premium",
+  "subscriptionTitle": "Nosto Premium",
   "subscriptionTagline": "Support Your Healing Journey",
   "subscriptionSubtitle": "Premium features are designed for a deeper healing experience.",
   "subscriptionCurrentPlan": "Current Plan",
@@ -355,7 +365,7 @@
   "subscriptionGateSilentReply": "The Silent Reply guide is unlocked with premium.",
   "subscriptionGateInsights": "Advanced insights are unlocked with premium.",
   "subscriptionGateMoodJournal": "Mood Journal is unlocked with premium.",
-  "subscriptionGateLettersVault": "Letters Vault is unlocked with premium.",
+  "subscriptionGateLettersVault": "Unsent Letters is unlocked with premium.",
   "subscriptionGateSupportCenter": "Today's Support is unlocked with premium.",
   "subscriptionGateLibrary": "The Quiet Library is unlocked with premium.",
   "subscriptionGateBetaFeedback": "The feedback screen is unlocked with premium.",

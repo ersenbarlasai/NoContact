@@ -28,7 +28,7 @@ class Static30DayRecoveryPlan {
       title: 'Dürtüyü Geçirmek',
       theme: 'Direnç',
       shortExplanation: 'Dürtü geldiğinde onunla hareket etmek zorunda değilsin.',
-      smallTask: 'Ona yazmak istediğin bir cümleyi Mektup Kasası’na bırak.',
+      smallTask: 'Ona yazmak istediğin bir cümleyi Gönderilmeyen Mektuplara bırak.',
       reflectionQuestion: 'Bu mesajı gönderirsem 5 dakika sonra ne hissedeceğim?',
       linkedTool: LibrarySuggestedAction.lettersVault,
       linkedToolLabel: 'MEKTUP KASASI',

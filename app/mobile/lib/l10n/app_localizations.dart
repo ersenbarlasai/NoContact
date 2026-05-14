@@ -101,13 +101,13 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In tr, this message translates to:
-  /// **'STILL'**
+  /// **'NOSTO'**
   String get appTitle;
 
   /// No description provided for @appTagline.
   ///
   /// In tr, this message translates to:
-  /// **'The Quiet Companion'**
+  /// **'Bırak. Kendine dön.'**
   String get appTagline;
 
   /// No description provided for @navHome.
@@ -125,7 +125,7 @@ abstract class AppLocalizations {
   /// No description provided for @navVault.
   ///
   /// In tr, this message translates to:
-  /// **'Kasa'**
+  /// **'Mektuplar'**
   String get navVault;
 
   /// No description provided for @navSettings.
@@ -215,25 +215,25 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingWelcomeHeadline1.
   ///
   /// In tr, this message translates to:
-  /// **'Zayıf olduğun için burada değilsin.'**
+  /// **'Nosto’ya hoş geldin.'**
   String get onboardingWelcomeHeadline1;
 
   /// No description provided for @onboardingWelcomeHeadline2.
   ///
   /// In tr, this message translates to:
-  /// **'Buradasın çünkü şu an her şey çok zor.'**
+  /// **''**
   String get onboardingWelcomeHeadline2;
 
   /// No description provided for @onboardingWelcomeSubtitle.
   ///
   /// In tr, this message translates to:
-  /// **'Duygusal iyileşme ve öz saygı yolculuğunda özel yardımcın.'**
+  /// **'Burası unutmaya zorlandığın yer değil.\nKendine geri dönmeye başladığın sessiz alan.'**
   String get onboardingWelcomeSubtitle;
 
   /// No description provided for @onboardingStartBtn.
   ///
   /// In tr, this message translates to:
-  /// **'Yolculuğuma Başla'**
+  /// **'Bırak. Kendine dön.'**
   String get onboardingStartBtn;
 
   /// No description provided for @onboardingNameTitle.
@@ -560,17 +560,77 @@ abstract class AppLocalizations {
   /// **'SÖZ VER'**
   String get onboardingContractSealBtn;
 
+  /// No description provided for @onboardingFiraqTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Önce Firaq vardı.'**
+  String get onboardingFiraqTitle;
+
+  /// No description provided for @onboardingFiraqSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Firaq; bir kişiden, bir dönemden ya da eski bir senden uzak düşme hâlidir.'**
+  String get onboardingFiraqSubtitle;
+
+  /// No description provided for @onboardingFiraqBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bazen gitmek gerekir. Bazen de temas etmemek.'**
+  String get onboardingFiraqBody;
+
+  /// No description provided for @onboardingFiraqBtn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mesafemi Koru'**
+  String get onboardingFiraqBtn;
+
+  /// No description provided for @onboardingNoContactTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'NoContact bir ceza değildir.'**
+  String get onboardingNoContactTitle;
+
+  /// No description provided for @onboardingNoContactBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu, karşı tarafı cezalandırmak için değil;\nkendini korumak, sakinleşmek ve yeniden duymak için açılmış bir mesafedir.'**
+  String get onboardingNoContactBody;
+
+  /// No description provided for @onboardingNoContactBtn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mesafemi Koru'**
+  String get onboardingNoContactBtn;
+
+  /// No description provided for @onboardingAppPurposeTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nosto yanında durur.'**
+  String get onboardingAppPurposeTitle;
+
+  /// No description provided for @onboardingAppPurposeBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temas isteği geldiğinde seni durdurur.\nDuygularını yazmana alan açar.\nGeçen günleri, zor anları ve küçük dönüşleri takip eder.'**
+  String get onboardingAppPurposeBody;
+
+  /// No description provided for @onboardingAppPurposeBtn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kendime Dönüyorum'**
+  String get onboardingAppPurposeBtn;
+
   /// No description provided for @onboardingPlanTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Yol Haritan Hazır'**
+  /// **'Bugün bir mesafe başlıyor.'**
   String get onboardingPlanTitle;
 
   /// No description provided for @onboardingPlanSubtitle.
   ///
   /// In tr, this message translates to:
-  /// **'Planın tamamlandı, {name}.'**
-  String onboardingPlanSubtitle(String name);
+  /// **'Birini silmek zorunda değilsin. Sadece bugün, kendini seçiyorsun.'**
+  String get onboardingPlanSubtitle;
 
   /// No description provided for @onboardingPlanDurationLabel.
   ///
@@ -623,7 +683,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingStartJourneyBtn.
   ///
   /// In tr, this message translates to:
-  /// **'HAYDI BAŞLAYALIM'**
+  /// **'Nosto’yu Başlat'**
   String get onboardingStartJourneyBtn;
 
   /// No description provided for @homeGreetingMorning.
@@ -659,13 +719,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeNcLabel.
   ///
   /// In tr, this message translates to:
-  /// **'NO-CONTACT'**
+  /// **'TEMASSIZ GÜNLER'**
   String get homeNcLabel;
 
   /// No description provided for @homeSosSuccess.
   ///
   /// In tr, this message translates to:
-  /// **'Bir dürtüyü daha başarıyla atlattın.'**
+  /// **'Bu küçük anı atlattın.\nBugün kendine biraz daha yaklaştın.'**
   String get homeSosSuccess;
 
   /// No description provided for @homeSupportTitle.
@@ -755,7 +815,7 @@ abstract class AppLocalizations {
   /// No description provided for @sosTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Nefes Al'**
+  /// **'Şu an yazmak istiyorsun.'**
   String get sosTitle;
 
   /// No description provided for @sosBreathIn.
@@ -773,19 +833,19 @@ abstract class AppLocalizations {
   /// No description provided for @sosSubtitle.
   ///
   /// In tr, this message translates to:
-  /// **'Bir an için dur. Buradayız.'**
+  /// **'Bu istek geçici.\nŞu an karar vermek zorunda değilsin.\nÖnce 90 saniye dur. Sonra ne hissettiğini yaz.'**
   String get sosSubtitle;
 
   /// No description provided for @sosStep1Title.
   ///
   /// In tr, this message translates to:
-  /// **'Dur ve Nefes Al'**
+  /// **'90 Saniye Dur'**
   String get sosStep1Title;
 
   /// No description provided for @sosStep2Title.
   ///
   /// In tr, this message translates to:
-  /// **'Buraya Yaz, Ona Değil'**
+  /// **'Göndermeden Yaz'**
   String get sosStep2Title;
 
   /// No description provided for @sosStep3Title.
@@ -797,7 +857,7 @@ abstract class AppLocalizations {
   /// No description provided for @sosWriteTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Buraya Yaz, Ona Değil'**
+  /// **'Göndermeden Yaz'**
   String get sosWriteTitle;
 
   /// No description provided for @sosWriteSubtitle.
@@ -839,7 +899,7 @@ abstract class AppLocalizations {
   /// No description provided for @sosChooseYes.
   ///
   /// In tr, this message translates to:
-  /// **'EVET, KENDİMİ SEÇİYORUM'**
+  /// **'BUGÜN TEMAS ETMEYECEĞİM'**
   String get sosChooseYes;
 
   /// No description provided for @sosChooseStillStruggling.
@@ -851,13 +911,13 @@ abstract class AppLocalizations {
   /// No description provided for @sosCompletionTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Bu dalgayı atlattın.'**
+  /// **'Geçti. Sen hâlâ buradasın.'**
   String get sosCompletionTitle;
 
   /// No description provided for @sosCompletionSubtitle.
   ///
   /// In tr, this message translates to:
-  /// **'Bugün kendini seçtin. Gurur duyulacak bir şey yaptın.'**
+  /// **'Bu küçük anı atlattın.\nBugün kendine biraz daha yaklaştın.'**
   String get sosCompletionSubtitle;
 
   /// No description provided for @sosReturnBtn.
@@ -1109,13 +1169,13 @@ abstract class AppLocalizations {
   /// No description provided for @lettersVaultTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Mektup Kasası'**
+  /// **'Gönderilmeyen Mektuplar'**
   String get lettersVaultTitle;
 
   /// No description provided for @lettersVaultEmpty.
   ///
   /// In tr, this message translates to:
-  /// **'Henüz mektup yok.\nYazmak, göndermekten daha güçlüdür.'**
+  /// **'Henüz mektup yok.\nSöylemek istediklerini yaz. Ama göndermek zorunda değilsin.'**
   String get lettersVaultEmpty;
 
   /// No description provided for @lettersVaultNewBtn.
@@ -1145,7 +1205,7 @@ abstract class AppLocalizations {
   /// No description provided for @letterEditorBodyHint.
   ///
   /// In tr, this message translates to:
-  /// **'Ona ne söylemek istiyorsan buraya yaz, asla duyulmayacak olsa bile...'**
+  /// **'Şu an sana söylemek istediğim şey…'**
   String get letterEditorBodyHint;
 
   /// No description provided for @letterEditorEmotionSection.
@@ -1181,7 +1241,7 @@ abstract class AppLocalizations {
   /// No description provided for @letterEditorSavedSnackbar.
   ///
   /// In tr, this message translates to:
-  /// **'Yazdın. Göndermedin. Bu da bir ilerleme.'**
+  /// **'Yazdın. Göndermedin. Bu da bir güç.'**
   String get letterEditorSavedSnackbar;
 
   /// No description provided for @letterEditorArchiveTitle.
@@ -1541,7 +1601,7 @@ abstract class AppLocalizations {
   /// No description provided for @notifMorningBody.
   ///
   /// In tr, this message translates to:
-  /// **'Bugün de kendinle birliktesin. Bu yeterlice güçlü bir başlangıç.'**
+  /// **'Bugün kendine verdiğin sözü hatırla.'**
   String get notifMorningBody;
 
   /// No description provided for @notifMiddayTitle.
@@ -1553,7 +1613,7 @@ abstract class AppLocalizations {
   /// No description provided for @notifMiddayBody.
   ///
   /// In tr, this message translates to:
-  /// **'Öğlen sana ufak bir hatırlatma: şu an burada olman başlı başına bir seçim.'**
+  /// **'Bugün sadece mesafeni koru. Bu yeter.'**
   String get notifMiddayBody;
 
   /// No description provided for @notifEveningTitle.
@@ -1565,7 +1625,7 @@ abstract class AppLocalizations {
   /// No description provided for @notifEveningBody.
   ///
   /// In tr, this message translates to:
-  /// **'Bugün nasıl geçti? Mektup kasası veya günlük her zaman hazır.'**
+  /// **'Kendine dönmek bazen yazmamaktır.'**
   String get notifEveningBody;
 
   /// No description provided for @notifSosFollowupTitle.
@@ -1577,7 +1637,7 @@ abstract class AppLocalizations {
   /// No description provided for @notifSosFollowupBody.
   ///
   /// In tr, this message translates to:
-  /// **'Dünkü o anı atlattın. Bugün nasıl hissediyorsun?'**
+  /// **'Temas isteği geçer. Kendine dönüş kalır.'**
   String get notifSosFollowupBody;
 
   /// No description provided for @notifPauseExpiredTitle.
@@ -1589,7 +1649,7 @@ abstract class AppLocalizations {
   /// No description provided for @notifPauseExpiredBody.
   ///
   /// In tr, this message translates to:
-  /// **'Kararını korudun. Şimdi daha net bir yerden düşünebilirsin.'**
+  /// **'Onu değil, kendini dinle. Sadece bugün.'**
   String get notifPauseExpiredBody;
 
   /// No description provided for @notifSilentReplySavedTitle.
@@ -1601,19 +1661,19 @@ abstract class AppLocalizations {
   /// No description provided for @notifSilentReplySavedBody.
   ///
   /// In tr, this message translates to:
-  /// **'Bu da bir güç. Sessiz cevabın kasanda seni bekliyor.'**
+  /// **'Nosto burada. Önce buraya yaz.'**
   String get notifSilentReplySavedBody;
 
   /// No description provided for @subscriptionTitle.
   ///
   /// In tr, this message translates to:
-  /// **'Still Premium'**
+  /// **'Nosto Premium'**
   String get subscriptionTitle;
 
   /// No description provided for @subscriptionTagline.
   ///
   /// In tr, this message translates to:
-  /// **'İyileşme Yolculuğunu Destekle'**
+  /// **'Kendine Dönüş Yolculuğunu Destekle'**
   String get subscriptionTagline;
 
   /// No description provided for @subscriptionSubtitle.
@@ -1691,7 +1751,7 @@ abstract class AppLocalizations {
   /// No description provided for @subscriptionGateLettersVault.
   ///
   /// In tr, this message translates to:
-  /// **'Mektup Kasası premium ile açılır.'**
+  /// **'Gönderilmeyen Mektuplar premium ile açılır.'**
   String get subscriptionGateLettersVault;
 
   /// No description provided for @subscriptionGateSupportCenter.

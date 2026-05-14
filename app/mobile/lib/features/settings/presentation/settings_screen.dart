@@ -287,7 +287,7 @@ class SettingsScreen extends ConsumerWidget {
                 child: Column(
                   children: [
                     Text(
-                      'STILL v1.0.0',
+                      '${l10n.appTitle} v1.0.0',
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: AppColors.primary,
                             letterSpacing: 2,
@@ -296,7 +296,7 @@ class SettingsScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'The Quiet Companion',
+                      l10n.appTagline,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: AppColors.onSurfaceVariant,
                             fontStyle: FontStyle.italic,
