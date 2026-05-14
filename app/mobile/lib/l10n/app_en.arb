@@ -276,6 +276,9 @@
   "silentReplyHint": "What did you want to write?",
   "silentReplyPrivacyNote": "This is never sent.",
   "silentReplySaveToVault": "SAVE TO VAULT",
+  "silentReplyShowOptions": "SHOW MY OPTIONS",
+  "silentReplyStep3Title": "Choose a safer exit now.",
+  "silentReplyStep3Subtitle": "You protected your words. Now choose what to do with them.",
   "silentReplyRelease": "RELEASE",
   "silentReplySavedSnackbar": "Your quiet reply was added to the vault.",
 

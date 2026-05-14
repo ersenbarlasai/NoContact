@@ -1274,6 +1274,24 @@ abstract class AppLocalizations {
   /// **'KASAYA KAYDET'**
   String get silentReplySaveToVault;
 
+  /// No description provided for @silentReplyShowOptions.
+  ///
+  /// In tr, this message translates to:
+  /// **'SEÇENEKLERİ GÖSTER'**
+  String get silentReplyShowOptions;
+
+  /// No description provided for @silentReplyStep3Title.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şimdi daha güvenli bir çıkış seç.'**
+  String get silentReplyStep3Title;
+
+  /// No description provided for @silentReplyStep3Subtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kelimelerini korudun. Şimdi onlarla ne yapacağını seç.'**
+  String get silentReplyStep3Subtitle;
+
   /// No description provided for @silentReplyRelease.
   ///
   /// In tr, this message translates to:

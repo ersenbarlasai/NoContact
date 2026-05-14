@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
+import '../../../l10n/app_localizations.dart';
 import '../domain/recovery_path_step.dart';
 import 'recovery_path_controller.dart';
 import '../data/static_30_day_recovery_plan.dart';
@@ -33,7 +34,7 @@ class RecoveryPathScreen extends ConsumerWidget {
                 onPressed: () => context.pop(),
               ),
               title: Text(
-                'İyileşme Yolun',
+                AppLocalizations.of(context).recoveryPathTitle,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.bold,
@@ -47,9 +48,9 @@ class RecoveryPathScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const StillSectionHeader(
-                      title: 'Yolculuğun',
-                      subtitle: 'Bu bir yarış değil. Sadece sıradaki nazik adım.',
+                    StillSectionHeader(
+                      title: AppLocalizations.of(context).recoveryPathTitle,
+                      subtitle: AppLocalizations.of(context).recoveryPathMilestone,
                     ),
                     const SizedBox(height: 32),
                     _ProgressCard(
@@ -187,7 +188,7 @@ class _TodayStepCard extends StatelessWidget {
           
           const SizedBox(height: 24),
           StillPrimaryButton(
-            label: 'BU ADIMI AÇ',
+            label: AppLocalizations.of(context).recoveryPathOpenStep,
             onPressed: () => _handleToolAction(context, step.linkedTool),
           ),
         ],
@@ -241,7 +242,7 @@ class _ProgressCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Mevcut Kilometre Taşı'.toUpperCase(),
+                    AppLocalizations.of(context).recoveryPathMilestone,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: AppColors.primary,
                           letterSpacing: 1.5,
@@ -270,7 +271,7 @@ class _ProgressCard extends StatelessWidget {
                         ),
                   ),
                   Text(
-                    '/ 30 Gün',
+                    AppLocalizations.of(context).recoveryPathDayCount,
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: AppColors.onSurfaceVariant,
                         ),
@@ -419,7 +420,7 @@ class _PathStepItem extends StatelessWidget {
                       if (isActive && step.suggestedActionRoute != null) ...[
                         const SizedBox(height: 16),
                         StillPrimaryButton(
-                          label: 'BU ADIMI AÇ',
+                          label: AppLocalizations.of(context).recoveryPathOpenStep,
                           icon: Icons.play_arrow_rounded,
                           onPressed: () => context.push(step.suggestedActionRoute!),
                         ),

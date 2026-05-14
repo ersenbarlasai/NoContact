@@ -652,6 +652,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get silentReplySaveToVault => 'SAVE TO VAULT';
 
   @override
+  String get silentReplyShowOptions => 'SHOW MY OPTIONS';
+
+  @override
+  String get silentReplyStep3Title => 'Choose a safer exit now.';
+
+  @override
+  String get silentReplyStep3Subtitle =>
+      'You protected your words. Now choose what to do with them.';
+
+  @override
   String get silentReplyRelease => 'RELEASE';
 
   @override

@@ -653,6 +653,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get silentReplySaveToVault => 'KASAYA KAYDET';
 
   @override
+  String get silentReplyShowOptions => 'SEÇENEKLERİ GÖSTER';
+
+  @override
+  String get silentReplyStep3Title => 'Şimdi daha güvenli bir çıkış seç.';
+
+  @override
+  String get silentReplyStep3Subtitle =>
+      'Kelimelerini korudun. Şimdi onlarla ne yapacağını seç.';
+
+  @override
   String get silentReplyRelease => 'SERBEST BIRAK';
 
   @override

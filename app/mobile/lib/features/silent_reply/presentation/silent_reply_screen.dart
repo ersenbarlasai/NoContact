@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/emotional_background.dart';
 import '../../../core/design_system/still_widgets.dart';
+import '../../../l10n/app_localizations.dart';
 import '../domain/silent_reply_need.dart';
 import 'silent_reply_controller.dart';
 import '../../support_system/presentation/support_controller.dart';
@@ -123,9 +124,9 @@ class _Step1Write extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const StillSectionHeader(
-            title: 'Ona değil, önce buraya yaz.',
-            subtitle: 'Bu cevap gönderilmez. Sadece düşünceni dışarı alman için güvenli bir alan.',
+          StillSectionHeader(
+            title: AppLocalizations.of(context).silentReplyTitle,
+            subtitle: AppLocalizations.of(context).silentReplySubtitle,
           ),
           const SizedBox(height: 32),
           StillGlassCard(
@@ -134,7 +135,7 @@ class _Step1Write extends ConsumerWidget {
               maxLines: 12,
               onChanged: (val) => ref.read(silentReplyControllerProvider.notifier).updateDraftText(val),
               decoration: InputDecoration(
-                hintText: 'Ne yazmak istiyorsan buraya bırak...',
+                hintText: AppLocalizations.of(context).silentReplyHint,
                 hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: AppColors.onSurfaceVariant.withValues(alpha: 0.5),
                 ),
@@ -157,12 +158,12 @@ class _Step1Write extends ConsumerWidget {
               ),
             ),
           StillPrimaryButton(
-            label: 'DEVAM ET',
+            label: AppLocalizations.of(context).continueBtn,
             onPressed: state.draftText.trim().isNotEmpty ? onNext : null,
           ),
           const SizedBox(height: 32),
-          const StillPrivacyNotice(
-            text: 'Bu metin bu cihazdan dışarı çıkmaz. İstersen kasaya bırakabilirsin.',
+          StillPrivacyNotice(
+            text: AppLocalizations.of(context).silentReplyPrivacyNote,
           ),
         ],
       ),
@@ -238,12 +239,12 @@ class _Step2Notice extends ConsumerWidget {
               ),
             ),
           StillPrimaryButton(
-            label: 'SEÇENEKLERİ GÖSTER',
+            label: AppLocalizations.of(context).silentReplyShowOptions,
             onPressed: state.selectedNeed != null ? onNext : null,
           ),
           const SizedBox(height: 16),
           StillSecondaryButton(
-            label: 'GERİ DÖN',
+            label: AppLocalizations.of(context).backBtn,
             onPressed: onBack,
           ),
         ],
@@ -272,9 +273,9 @@ class _Step3ChooseState extends ConsumerState<_Step3Choose> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const StillSectionHeader(
-            title: 'Şimdi daha güvenli bir çıkış seç.',
-            subtitle: 'Kelimelerini korudun. Şimdi onlarla ne yapacağını seç.',
+          StillSectionHeader(
+            title: AppLocalizations.of(context).silentReplyStep3Title,
+            subtitle: AppLocalizations.of(context).silentReplyStep3Subtitle,
           ),
           const SizedBox(height: 32),
           
@@ -295,7 +296,7 @@ class _Step3ChooseState extends ConsumerState<_Step3Choose> {
                         const Icon(Icons.auto_awesome, size: 16, color: AppColors.primary),
                         const SizedBox(width: 8),
                         Text(
-                          'Sakin Bir Alternatif',
+                          AppLocalizations.of(context).silentReplyTitle,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: AppColors.primary,
                             fontWeight: FontWeight.bold,
@@ -320,13 +321,14 @@ class _Step3ChooseState extends ConsumerState<_Step3Choose> {
 
           _OptionItem(
             icon: Icons.lock_outline,
-            title: 'Kasaya bırak',
-            description: 'Bu cevabı Mektup Kasası’na kaydet ve zihnini boşalt.',
+            title: AppLocalizations.of(context).silentReplySaveToVault,
+            description: AppLocalizations.of(context).silentReplyPrivacyNote,
             onTap: () async {
               final success = await ref.read(silentReplyControllerProvider.notifier).saveToVault();
               if (success && mounted) {
+                final l10n = AppLocalizations.of(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Cevabın gönderilmedi. Güvenli alanda kaldı.')),
+                  SnackBar(content: Text(l10n.silentReplySavedSnackbar)),
                 );
                 context.go('/');
               }
@@ -365,7 +367,7 @@ class _Step3ChooseState extends ConsumerState<_Step3Choose> {
           
           const SizedBox(height: 32),
           StillSecondaryButton(
-            label: 'GERİ DÖN',
+            label: AppLocalizations.of(context).backBtn,
             onPressed: widget.onBack,
           ),
         ],

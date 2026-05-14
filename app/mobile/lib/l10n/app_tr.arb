@@ -276,6 +276,9 @@
   "silentReplyHint": "Ne yazmak istiyordun?",
   "silentReplyPrivacyNote": "Bu hiçbir zaman gönderilmez.",
   "silentReplySaveToVault": "KASAYA KAYDET",
+  "silentReplyShowOptions": "SEÇENEKLERİ GÖSTER",
+  "silentReplyStep3Title": "Şimdi daha güvenli bir çıkış seç.",
+  "silentReplyStep3Subtitle": "Kelimelerini korudun. Şimdi onlarla ne yapacağını seç.",
   "silentReplyRelease": "SERBEST BIRAK",
   "silentReplySavedSnackbar": "Sessiz cevabın kasaya eklendi.",
 
