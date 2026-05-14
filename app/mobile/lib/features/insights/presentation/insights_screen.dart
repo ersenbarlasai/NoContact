@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../milestones/domain/milestone.dart';
 import 'insights_controller.dart';
 import '../domain/insights_data.dart';
@@ -32,7 +33,7 @@ class InsightsScreen extends ConsumerWidget {
                 onPressed: () => context.pop(),
               ),
               title: Text(
-                'Yansımalar',
+                AppLocalizations.of(context).insightsTitle,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       color: AppColors.primary,
                       fontWeight: FontWeight.bold,
@@ -51,9 +52,9 @@ class InsightsScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const StillSectionHeader(
-                        title: 'Sessiz Gelişim',
-                        subtitle: 'İyileşme yolculuğunun nazik bir özeti.',
+                      StillSectionHeader(
+                        title: AppLocalizations.of(context).insightsTitle,
+                        subtitle: AppLocalizations.of(context).insightsMoodBalanceSubtitle,
                       ),
                       const SizedBox(height: 32),
                       _SummaryGrid(state: state),
@@ -180,9 +181,9 @@ class _MoodInsights extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const StillSectionHeader(
-          title: 'Duygu Dengesi',
-          subtitle: 'Son 14 gündeki baskın hislerin.',
+        StillSectionHeader(
+          title: AppLocalizations.of(context).insightsMoodBalance,
+          subtitle: AppLocalizations.of(context).insightsMoodBalanceSubtitle,
         ),
         const SizedBox(height: 24),
         StillGlassCard(
@@ -254,9 +255,9 @@ class _MilestoneHistory extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const StillSectionHeader(
-          title: 'Yol İzleri',
-          subtitle: 'Geride bıraktığın anlamlı anlar.',
+        StillSectionHeader(
+          title: AppLocalizations.of(context).insightsMilestones,
+          subtitle: AppLocalizations.of(context).insightsMilestonesSubtitle,
         ),
         const SizedBox(height: 24),
         ListView.builder(
@@ -265,8 +266,8 @@ class _MilestoneHistory extends StatelessWidget {
           itemCount: history.length,
           itemBuilder: (context, index) {
             final milestone = history[index];
-            final dateStr = milestone.seenAt != null 
-                ? DateFormat('d MMMM', 'tr_TR').format(milestone.seenAt!)
+            final dateStr = milestone.seenAt != null
+                ? DateFormat('d MMMM', Localizations.localeOf(context).toString()).format(milestone.seenAt!)
                 : '';
 
             return IntrinsicHeight(
@@ -353,7 +354,7 @@ class _SosReflection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'GÜÇLÜ DURUŞ',
+                  AppLocalizations.of(context).insightsSosStrength,
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         color: AppColors.tertiary,
                         letterSpacing: 1.5,
@@ -362,14 +363,14 @@ class _SosReflection extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Yönettiğin $managedUrges dürtü.',
+                  AppLocalizations.of(context).insightsSosManagedUrges(managedUrges),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Her duraklama, kendini seçtiğin bir andı.',
+                  AppLocalizations.of(context).insightsSosReflection,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.onSurfaceVariant,
                         fontStyle: FontStyle.italic,

@@ -6,8 +6,8 @@ import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/design_system/emotional_background.dart';
 import '../../../data/models/unsent_letter.dart';
+import '../../../l10n/app_localizations.dart';
 import 'letters_vault_controller.dart';
-
 import '../../privacy_lock/presentation/privacy_lock_gate.dart';
 
 class LettersVaultScreen extends ConsumerWidget {
@@ -15,6 +15,7 @@ class LettersVaultScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final state = ref.watch(lettersVaultControllerProvider);
 
     return PrivacyLockGate(
@@ -36,7 +37,7 @@ class LettersVaultScreen extends ConsumerWidget {
                         onPressed: () => context.go('/'),
                       ),
                       Text(
-                        'MEKTUP KASASI',
+                        l10n.lettersVaultTitle.toUpperCase(),
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               letterSpacing: 2,
                               color: AppColors.primary,
@@ -47,10 +48,10 @@ class LettersVaultScreen extends ConsumerWidget {
                   ),
                 ),
                 
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: StillPrivacyNotice(
-                    text: 'Buraya yazdıkların bu cihazda şifreli saklanır ve asla kimseye gönderilmez.',
+                    text: l10n.letterEditorPrivacyNote,
                   ),
                 ),
                 
@@ -61,13 +62,13 @@ class LettersVaultScreen extends ConsumerWidget {
                           length: 2,
                           child: Column(
                             children: [
-                              const TabBar(
+                              TabBar(
                                 labelColor: AppColors.primary,
                                 unselectedLabelColor: AppColors.onSurfaceVariant,
                                 indicatorColor: AppColors.primary,
                                 tabs: [
-                                  Tab(text: 'Aktif Mektuplar'),
-                                  Tab(text: 'Arşivlenenler'),
+                                  Tab(text: l10n.lettersVaultActiveTab),
+                                  Tab(text: l10n.lettersVaultArchiveTab),
                                 ],
                               ),
                               Expanded(
@@ -75,9 +76,9 @@ class LettersVaultScreen extends ConsumerWidget {
                                   children: [
                                     // Aktif Mektuplar Tab
                                     state.activeLetters.isEmpty
-                                        ? const _EmptyState(
-                                            title: 'Henüz burada sakladığın bir mektup yok.',
-                                            subtitle: 'Yazmak istediğinde burası güvenli alanın.',
+                                        ? _EmptyState(
+                                            title: l10n.lettersVaultEmpty.split('\n').first,
+                                            subtitle: l10n.lettersVaultEmpty.split('\n').last,
                                           )
                                         : ListView.builder(
                                             padding: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 100),
@@ -88,9 +89,9 @@ class LettersVaultScreen extends ConsumerWidget {
                                           ),
                                     // Arşivlenenler Tab
                                     state.archivedLetters.isEmpty
-                                        ? const _EmptyState(
-                                            title: 'Henüz arşivlediğin bir mektup yok.',
-                                            subtitle: 'Hazır olduğunda bazı mektupları gözünün önünden kaldırabilirsin.',
+                                        ? _EmptyState(
+                                            title: l10n.lettersVaultEmpty.split('\n').first,
+                                            subtitle: l10n.lettersVaultEmpty.split('\n').last,
                                           )
                                         : ListView.builder(
                                             padding: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 100),
@@ -118,7 +119,7 @@ class LettersVaultScreen extends ConsumerWidget {
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.onPrimary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          label: const Text('MEKTUP YAZ'),
+          label: Text(l10n.lettersVaultNewBtn),
           icon: const Icon(Icons.history_edu),
         ),
       ),
@@ -178,7 +179,8 @@ class _LetterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final preview = letter.body.split('\n').first;
-    final date = DateFormat('d MMMM y', 'tr_TR').format(isArchived ? letter.archivedAt! : letter.updatedAt);
+    final date = DateFormat('d MMMM y', Localizations.localeOf(context).toString())
+        .format(isArchived ? letter.archivedAt! : letter.updatedAt);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
