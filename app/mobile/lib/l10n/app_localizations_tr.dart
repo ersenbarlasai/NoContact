@@ -414,10 +414,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get sosSubtitle =>
-      'Bu istek geçici.\nŞu an karar vermek zorunda değilsin.\nÖnce 90 saniye dur. Sonra ne hissettiğini yaz.';
+      'Bu istek geçici.\nŞu an karar vermek zorunda değilsin.\nÖnce 60 saniye dur. Sonra ne hissettiğini yaz.';
 
   @override
-  String get sosStep1Title => '90 Saniye Dur';
+  String get sosStep1Title => '60 Saniye Dur';
 
   @override
   String get sosStep2Title => 'Göndermeden Yaz';

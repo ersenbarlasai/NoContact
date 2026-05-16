@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/config/build_flags.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/design_system/still_widgets.dart';
 import '../../../core/navigation/premium_guard.dart';
@@ -196,22 +198,25 @@ class SubscriptionScreen extends ConsumerWidget {
 
               const SizedBox(height: 16),
 
-              // DEV ONLY — visible only in debug builds
-              Center(
-                child: TextButton(
-                  onPressed: () =>
-                      ref.read(entitlementControllerProvider.notifier).toggleMockTier(),
-                  child: Text(
-                    state.isPremium
-                        ? l10n.subscriptionDevToggleToFree
-                        : l10n.subscriptionDevToggleToPremium,
-                    style: TextStyle(
-                      color: AppColors.onSurfaceVariant.withValues(alpha: 0.4),
-                      fontSize: 11,
+              // TEST ONLY — visible only in debug or internal test builds
+              if (kDebugMode || BuildFlags.isInternalTest)
+                Center(
+                  child: TextButton(
+                    onPressed: () =>
+                        ref.read(entitlementControllerProvider.notifier).toggleMockTier(),
+                    child: Text(
+                      state.isPremium
+                          ? 'Test için Premium\'u Kapat'
+                          : 'Test için Premium\'u Aç',
+                      style: TextStyle(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

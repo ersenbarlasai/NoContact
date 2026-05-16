@@ -1,4 +1,4 @@
-# Icon & Brand Direction - NoContact MVP
+# Icon & Brand Direction - Nosto
 
 ## 1. Brand Philosophy: "Nosto"
 The brand is built around the concept of "Nosto" (Durgun, Sakin). It is the opposite of chaotic social media or urgent dating apps. It is a quiet room you enter to regulate yourself. 

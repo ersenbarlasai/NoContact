@@ -1,4 +1,4 @@
-# Final Screenshot Copy (TR) - NoContact / Nosto
+# Final Screenshot Copy (TR) - Nosto
 
 Use this exact text for the overlay text above the device frames in the App Store and Play Store screenshots.
 

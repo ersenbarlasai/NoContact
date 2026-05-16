@@ -1,4 +1,4 @@
-# App Icon Creative Brief - NoContact / Nosto
+# App Icon Creative Brief - Nosto
 
 ## 1. Brand Objective
 The app icon is the first touchpoint for a user who is likely feeling overwhelmed, anxious, or heartbroken. The icon must communicate safety, stillness, and privacy. It should NOT broadcast to anyone looking at their phone screen that they are going through a breakup or using a mental health crisis app.

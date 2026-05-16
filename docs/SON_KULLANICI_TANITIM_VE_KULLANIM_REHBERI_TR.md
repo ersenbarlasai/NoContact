@@ -1,12 +1,12 @@
-# Still / NoContact Son Kullanici Tanitim ve Kullanim Rehberi
+# Nosto / NoContact Son Kullanici Tanitim ve Kullanim Rehberi
 
-Still, ayrilik sonrasi "temas etmeme" kararini korumak isteyen kullanicilar icin tasarlanmis sakin, gizlilik odakli bir mobil destek alanidir. Uygulama eski partneri geri getirme, mesaj yorumlama ya da terapi verme vaadi sunmaz. Amaci, zor anlarda kullanicinin kendi sinirini korumasina, duygusunu yazmasina, durup nefes almasina ve guvenli bir sonraki adimi secmesine yardim etmektir.
+Nosto, ayrilik sonrasi "temas etmeme" kararini korumak isteyen kullanicilar icin tasarlanmis sakin, gizlilik odakli bir mobil destek alanidir. Uygulama eski partneri geri getirme, mesaj yorumlama ya da terapi verme vaadi sunmaz. Amaci, zor anlarda kullanicinin kendi sinirini korumasina, duygusunu yazmasina, durup nefes almasina ve guvenli bir sonraki adimi secmesine yardim etmektir.
 
-> Still profesyonel terapi, tibbi destek veya acil yardim yerine gecmez. Kendine ya da bir baskasina zarar verme riski varsa yerel acil yardim hatlarina veya guvendigin bir kisiye hemen ulasmalisin.
+> Nosto profesyonel terapi, tibbi destek veya acil yardim yerine gecmez. Kendine ya da bir baskasina zarar verme riski varsa yerel acil yardim hatlarina veya guvendigin bir kisiye hemen ulasmalisin.
 
 ## Uygulama Kime Hitap Eder?
 
-Still su durumlarda destek olmak icin tasarlanmistir:
+Nosto su durumlarda destek olmak icin tasarlanmistir:
 
 - Eski partnere yazma, arama veya sosyal medyadan kontrol etme durtusu geldiginde.
 - "Neden baslamistim?" sorusunu kendine tekrar hatirlatmak istediginde.
@@ -14,7 +14,7 @@ Still su durumlarda destek olmak icin tasarlanmistir:
 - Gonderilmeyecek mektuplar yazarak icinde kalanlari guvenli bir alana birakmak istediginde.
 - Ilk 30 gunde kucuk, yonlendirici ve uygulanabilir adimlara ihtiyac duydugunda.
 
-Still'in tonu bilerek yavas, sakin ve yargisizdir. Uygulama kullaniciyi yaristirmaz, suclu hissettirmez ve "basarisizlik" dili kullanmaz.
+Nosto'in tonu bilerek yavas, sakin ve yargisizdir. Uygulama kullaniciyi yaristirmaz, suclu hissettirmez ve "basarisizlik" dili kullanmaz.
 
 ## Ilk Acilis ve Kisisellestirme
 
@@ -204,7 +204,7 @@ Bildirim turleri:
 - SOS sonrasi nazik takip.
 - Sessiz Cevap sonrasi guvenli hatirlatma.
 
-Bildirimler hassas icerik tasimaz. Eski partner adi, mektup metni, gunluk notu veya SOS metni bildirimde gosterilmez. Android tarafinda uygulamaya ozel yumusak bir bildirim sesi bulunur: `still_soft_chime`.
+Bildirimler hassas icerik tasimaz. Eski partner adi, mektup metni, gunluk notu veya SOS metni bildirimde gosterilmez. Android tarafinda uygulamaya ozel yumusak bir bildirim sesi bulunur: `nosto_soft_chime`.
 
 ## Biyometrik Kilit
 
@@ -233,7 +233,7 @@ Yerel verileri temizleme islemi uygulamadaki yerel ilerlemeyi ve hassas kayitlar
 
 ## Gizlilik Ozeti
 
-Still'in temel gizlilik yaklasimi sudur:
+Nosto'in temel gizlilik yaklasimi sudur:
 
 - Mektuplar cihazda sifreli saklanir.
 - Gunluk notlari cihazda sifreli saklanir.
@@ -245,9 +245,9 @@ Still'in temel gizlilik yaklasimi sudur:
 
 ## Sik Sorulan Sorular
 
-### Still mesajlarimi analiz ediyor mu?
+### Nosto mesajlarimi analiz ediyor mu?
 
-Ana kullanici akisi mesaj analizi uzerine kurulu degildir. Still kullanicinin kendi kararini korumasina yardim eden yerel ve guvenilir araclar sunar. Mevcut ana deneyim "Bugunun Destegi", SOS, Sessiz Cevap, Gunluk, Mektup Kasasi ve 30 Gunluk Yol'dur.
+Ana kullanici akisi mesaj analizi uzerine kurulu degildir. Nosto kullanicinin kendi kararini korumasina yardim eden yerel ve guvenilir araclar sunar. Mevcut ana deneyim "Bugunun Destegi", SOS, Sessiz Cevap, Gunluk, Mektup Kasasi ve 30 Gunluk Yol'dur.
 
 ### Mektuplarim baskalarina gider mi?
 

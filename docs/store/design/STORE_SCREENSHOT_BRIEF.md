@@ -1,4 +1,4 @@
-# Store Screenshot Brief - NoContact MVP
+# Store Screenshot Brief - Nosto
 
 ## 1. Specifications
 ### iOS Requirements
@@ -20,10 +20,10 @@
 
 ### Screenshot 1: Home Dashboard
 - **Screen:** Home / Ana Ekran
-- **Visual Focus:** Clean dashboard, No Contact counter, calm greeting.
+- **Visual Focus:** Clean dashboard, Temassiz Gunler counter, calm greeting.
 - **Headline:** Sınırlarını Koruman İçin
 - **Caption:** Kendi iyileşme hızına saygı duyan, yargısız ve sessiz bir alan.
-- **Mock Data:** "14 Gündür İletişimde Değilsin." "Bugün kendini nasıl hissediyorsun?"
+- **Mock Data:** "14 gündür temas yok." "Mesafeni koru. Kendine yaklaş."
 
 ### Screenshot 2: SOS Mode
 - **Screen:** SOS / Acil Destek
@@ -33,7 +33,7 @@
 - **Mock Data:** "Şu an yazmak istiyorum ama biliyorum ki..."
 
 ### Screenshot 3: Unsent Letters Vault
-- **Screen:** Mektup Kasası
+- **Screen:** Gönderilmeyen Mektuplar
 - **Visual Focus:** List of letters with a lock/privacy icon.
 - **Headline:** Söylenmemiş Sözler
 - **Caption:** Göndermekten vazgeçtiğin mektupları cihazında şifreli olarak sakla.
@@ -73,7 +73,7 @@ When mocking up the screens inside the device frames, ALL in-app UI text must be
 Use the following translations for common UI elements:
 - "Morning, Alex" -> **"Bugün kendini seçtin"**
 - "Day 14 of choosing yourself" -> **"14 gündür temas yok"**
-- "Unsent Letters" -> **"İsimsiz Mektuplar"**
+- "Unsent Letters" -> **"Gönderilmeyen Mektuplar"**
 - "My Journey" -> **"İyileşme Yolum"**
 - "Begin Session" -> **"Seansa Başla"**
 - "Daily Rhythm" -> **"Günlük Ritim"**

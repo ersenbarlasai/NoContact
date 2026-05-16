@@ -833,13 +833,13 @@ abstract class AppLocalizations {
   /// No description provided for @sosSubtitle.
   ///
   /// In tr, this message translates to:
-  /// **'Bu istek geçici.\nŞu an karar vermek zorunda değilsin.\nÖnce 90 saniye dur. Sonra ne hissettiğini yaz.'**
+  /// **'Bu istek geçici.\nŞu an karar vermek zorunda değilsin.\nÖnce 60 saniye dur. Sonra ne hissettiğini yaz.'**
   String get sosSubtitle;
 
   /// No description provided for @sosStep1Title.
   ///
   /// In tr, this message translates to:
-  /// **'90 Saniye Dur'**
+  /// **'60 Saniye Dur'**
   String get sosStep1Title;
 
   /// No description provided for @sosStep2Title.

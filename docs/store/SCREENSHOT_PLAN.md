@@ -1,4 +1,4 @@
-# Store Screenshot Plan - NoContact MVP
+# Store Screenshot Plan - Nosto
 
 This document outlines 7 screenshot concepts for the App Store and Play Store. The visual style should follow the "Nosto" design philosophy: clean, spacious, calm colors (Sage, Cream, Terracotta), and sans-serif typography (Manrope/Inter).
 
@@ -6,10 +6,10 @@ This document outlines 7 screenshot concepts for the App Store and Play Store. T
 
 ## Screenshot 1: Home Dashboard
 - **Screen Name:** Home / Ana Ekran
-- **Visual Focus:** The clean dashboard showing the No Contact day counter and the calm greeting.
+- **Visual Focus:** The clean dashboard showing the Temassiz Gunler counter and the calm greeting.
 - **Overlay Headline (TR):** Sınırlarını Koruman İçin
 - **Supporting Caption:** Kendi iyileşme hızına saygı duyan, yargısız ve sessiz bir alan.
-- **Sample Data:** "14 Gündür İletişimde Değilsin." "Bugün kendini nasıl hissediyorsun?"
+- **Sample Data:** "14 gündür temas yok." "Mesafeni koru. Kendine yaklaş."
 
 ## Screenshot 2: SOS Mode
 - **Screen Name:** SOS / Acil Destek
@@ -19,7 +19,7 @@ This document outlines 7 screenshot concepts for the App Store and Play Store. T
 - **Sample Data:** "Şu an yazmak istiyorum ama biliyorum ki..." (Text inside the SOS box).
 
 ## Screenshot 3: Unsent Letters Vault
-- **Screen Name:** Mektup Kasası / Letters Vault
+- **Screen Name:** Gönderilmeyen Mektuplar / Unsent Letters
 - **Visual Focus:** The locked-looking list of unsent letters with the privacy badge.
 - **Overlay Headline (TR):** Söylenmemiş Sözler
 - **Supporting Caption:** Göndermekten vazgeçtiğin mektupları cihazında şifreli olarak sakla.

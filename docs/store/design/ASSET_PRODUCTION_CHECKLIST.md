@@ -1,4 +1,4 @@
-# Asset Production Checklist - NoContact / Nosto
+# Asset Production Checklist - Nosto
 
 ## 1. Asset Sizes & Export Requirements
 

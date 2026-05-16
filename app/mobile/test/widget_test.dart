@@ -9,6 +9,8 @@ import 'package:nocontact/core/storage/local_storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'dart:async';
+import 'package:nocontact/core/design_system/still_widgets.dart';
+import 'package:nocontact/features/onboarding/presentation/onboarding_screen.dart';
 
 class MockHttpClient extends CustomHttpClient {}
 class CustomHttpClient extends Fake implements HttpClient {
@@ -58,7 +60,7 @@ void main() {
     await LocalStorageService.init();
   });
 
-  testWidgets('End-to-end Onboarding and SOS flow', (WidgetTester tester) async {
+  testWidgets('End-to-end Onboarding flow', (WidgetTester tester) async {
     await tester.binding.setSurfaceSize(const Size(1080, 1920));
     
     await tester.pumpWidget(const ProviderScope(child: NoContactApp()));
@@ -68,25 +70,82 @@ void main() {
     await tester.pump(const Duration(seconds: 2)); 
     await tester.pumpAndSettle(); 
 
-    // Verify Onboarding Welcome Screen
+    // Helper to tap the main button in a step
+    Future<void> tapMainButton() async {
+      final button = find.byType(StillPrimaryButton).last;
+      await tester.tap(button);
+      await tester.pumpAndSettle();
+    }
+
+    // Step 1: Welcome
     expect(find.textContaining(RegExp(r'Nosto', caseSensitive: false)), findsWidgets);
-    await tester.tap(find.byType(ElevatedButton).last);
-    await tester.pumpAndSettle(); 
+    await tapMainButton();
     
-    // Firaq Step
-    await tester.tap(find.byType(ElevatedButton).last);
-    await tester.pumpAndSettle(); 
+    // Step 2: Firaq
+    expect(find.textContaining(RegExp(r'Firaq', caseSensitive: false)), findsWidgets);
+    await tapMainButton();
 
-    // NoContact Meaning Step
-    await tester.tap(find.byType(ElevatedButton).last);
-    await tester.pumpAndSettle(); 
+    // Step 3: NoContact Meaning
+    expect(find.textContaining(RegExp(r'(No[- ]?Contact|ceza|penalty)', caseSensitive: false)), findsWidgets);
+    await tapMainButton();
 
-    // App Purpose Step
-    await tester.tap(find.byType(ElevatedButton).last);
-    await tester.pumpAndSettle(); 
+    // Step 4: App Purpose
+    expect(find.textContaining(RegExp(r'Nosto', caseSensitive: false)), findsWidgets);
+    await tapMainButton();
     
-    // Verify first main form step (Name)
-    expect(find.textContaining(RegExp(r'(hitap|call)')), findsOneWidget);
+    // Step 5: Name
+    expect(find.textContaining(RegExp(r'(hitap|call|name)', caseSensitive: false)), findsWidgets);
+    await tester.enterText(find.byType(TextField), 'Test User');
+    await tapMainButton();
+
+    // Step 6: Reason
+    await tester.tap(find.byType(StillOptionTile).first);
+    await tester.pumpAndSettle();
+
+    // Step 7: Relationship Duration
+    await tester.tap(find.byType(StillOptionTile).first);
+    await tester.pumpAndSettle();
+
+    // Step 8: Time Since Breakup
+    await tester.tap(find.byType(StillOptionTile).first);
+    await tester.pumpAndSettle();
+
+    // Step 9: Who Ended
+    await tester.tap(find.byType(StillOptionTile).first);
+    await tester.pumpAndSettle();
+
+    // Step 10: No Contact Date (Skip)
+    final skipText = RegExp(r'(Hatırlamıyorum|Remember|today|bugün)', caseSensitive: false);
+    await tester.tap(find.textContaining(skipText).last);
+    await tester.pumpAndSettle();
+
+    // Step 11: Emotion
+    await tester.tap(find.byType(StillOptionTile).first);
+    await tester.pumpAndSettle();
+
+    // Step 12: Triggers
+    await tester.tap(find.byType(StillOptionTile).first);
+    await tester.pumpAndSettle();
+    await tapMainButton();
+
+    // Step 13: Contract (Long Press)
+    final gesture = await tester.startGesture(tester.getCenter(find.byIcon(Icons.fingerprint)));
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 3));
+    await gesture.up();
+    await tester.pumpAndSettle();
+
+    // Step 14: Start Ritual
+    // Final step button
+    await tester.tap(find.byType(StillPrimaryButton).last);
+    await tester.pump(); 
+    await tester.pump(const Duration(seconds: 2)); 
+
+
+    // Verify Home Screen
+    // We use pump instead of pumpAndSettle here because the SOS pulse button animates infinitely
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.textContaining(RegExp(r'(GÜN|DAY)', caseSensitive: false)), findsWidgets);
     
     await tester.binding.setSurfaceSize(null);
   });
@@ -113,10 +172,12 @@ void main() {
     // Wait for splash and redirects
     await tester.pump(); 
     await tester.pump(const Duration(seconds: 2)); 
-    await tester.pump(); // Use pump instead of pumpAndSettle for Home
+    await tester.pump(); // Start navigation
+    await tester.pump(const Duration(seconds: 1)); // Wait for Home to load
 
     // Should be on Home
-    expect(find.textContaining('DAYS', skipOffstage: false) != null || find.textContaining('GÜNLER', skipOffstage: false) != null, true);
+    // Use pump instead of pumpAndSettle because of infinite pulse animation
+    expect(find.textContaining(RegExp(r'(GÜN|DAY)', caseSensitive: false), skipOffstage: false), findsWidgets);
     expect(find.textContaining('Kayıtlı Kullanıcı'), findsWidgets);
     
     await tester.binding.setSurfaceSize(null);

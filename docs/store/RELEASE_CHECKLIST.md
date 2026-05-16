@@ -1,4 +1,4 @@
-# MVP Release Checklist - NoContact
+# Nosto Release Checklist
 
 ## 1. Flutter Build Readiness
 - [ ] Run `flutter analyze` and resolve any critical errors.
@@ -37,15 +37,16 @@
 - [ ] Format for 6.5" iPhone, 5.5" iPhone, and standard Android sizes.
 
 ## 8. Known Limitations (Document for Internal / Review)
-- AI Mesaj Analizi özelliği bu sürümden kaldırılmıştır.
-- Subscriptions are in placeholder mode; no real billing occurs.
+- AI mesaj analizi yoktur ve store metinlerinde vaat edilmez.
+- Gerçek ödeme entegrasyonu aktif değilse, Nosto Premium alanları test/review notlarında açıkça anlatılmalıdır.
+- Üretim erişimi için Google Play kapalı test gereklilikleri tamamlanmalıdır.
 
 ## 9. Pre-release Manual QA Checklist
 - [ ] Install release build on physical iOS device.
 - [ ] Install release build on physical Android device.
 - [ ] Complete Onboarding.
 - [ ] Add a Mood Journal entry, verify it saves.
-- [ ] Add a Letter, verify it saves.
+- [ ] Add an Unsent Letter, verify it saves.
 - [ ] Open Settings, enable Biometric Lock, close app, reopen, verify lock appears.
 - [ ] Enable Daily Rhythm, verify notification schedules without crashing.
 - [ ] Press SOS, navigate flow, exit gracefully.

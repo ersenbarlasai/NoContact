@@ -1,6 +1,6 @@
-# Web Beta Feedback Form Questions
+# Nosto Closed Test Feedback Form Questions
 
-**Amaç:** Erken test kullanıcılarından NoContact (Still) uygulamasının MVP sürümü hakkında geri bildirim toplamak. Bu sorular bir Typeform, Google Form veya benzeri bir araçla sunulabilir.
+**Amaç:** Kapalı test kullanıcılarından Nosto hakkında geri bildirim toplamak. Bu sorular bir Typeform, Google Form veya benzeri bir araçla sunulabilir.
 
 ---
 
@@ -21,22 +21,22 @@
    - Hayır, yetersiz.
    (Nedenini açıklar mısın? - İsteğe bağlı)
 
-5. **Günlük ve mektup kasası sana güvenli geldi mi?**
+5. **Duygu Günlüğü ve Gönderilmeyen Mektuplar sana güvenli geldi mi?**
    - Evet, şifreli olması rahatlattı.
    - Kararsızım.
    - Hayır, verilerimi yazmak istemem.
 
-6. **Mesaj analizi faydalı mıydı?**
-   - Evet, bakış açısı kazandırdı.
-   - Kısmen faydalıydı.
-   - Hayır, anlamlı gelmedi.
+6. **Premium paywall beklediğin yerde mi çıktı?**
+   - Evet, mantıklıydı.
+   - Çok erken çıktı.
+   - Nerede/ne zaman çıktığını anlamadım.
 
-7. **Sence mesaj analizi özelliği gerçek bir AI (Yapay Zeka) ile çalışıp daha detaylı yorumlar yapsa, bu uygulama için daha değerli olur muydu?**
-   - Kesinlikle evet.
-   - Olmasa da olur.
-   - Hayır, şu anki basit hali daha iyi.
+7. **Bildirim dili nasıl hissettirdi?**
+   - Sakin ve destekleyici.
+   - Fazla sık veya baskıcı.
+   - Rahatsız edici.
 
-8. **Bu uygulamada hangi özellik eksikti? İyileşme sürecinde ne olsa sana daha çok yardımcı olurdu?**
+8. **Bu uygulamada hangi özellik eksikti? Kendine dönüş sürecinde ne olsa sana daha çok yardımcı olurdu?**
    (Açık uçlu metin)
 
 9. **Uygulamayı kullanırken seni rahatsız eden, güvensiz hissettiren veya "bu olmamış" dediğin herhangi bir şey oldu mu?**
